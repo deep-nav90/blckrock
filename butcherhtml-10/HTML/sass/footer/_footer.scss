@@ -1,0 +1,122 @@
+// footer css start
+.footer-main-wrapper {
+	background-image: url(../images/bg-1.jpg);
+    
+    background-position: top center;
+    background-size: auto;
+    padding: 100px 0px;
+	// background-color: #252526;
+	// position: relative;
+	// z-index: 99;
+		.link{
+			span{
+				font-size: 13px;
+    			font-weight: 700;
+    			text-transform: uppercase;
+    			color: #9f9f9f;
+			}
+			
+			h4{
+				font-size: 40px;
+    			font-weight: 300;
+    			color: #9f9f9f;
+    			padding: 6px 0px;
+			}
+			.input-filed{
+				display: flex;
+				margin-top: 20px;
+					input{
+						border: 1px solid #fff;
+						padding: 0px 12px;
+						height: 40px;
+					}
+					button{
+						height: 40px;
+						border: 1px solid #ed4f4f;
+						background-color: #ed4f4f;
+						padding: 0px 12px;
+						color: #fff;
+						text-transform: uppercase;
+    					font-size: 14px;
+					}
+			}
+		}
+		.widgettitle{
+			h4{
+				font-size: 13px;
+    			font-weight: 700;
+    			text-transform: uppercase;
+    			color: #9f9f9f;
+			}
+		}
+		.link-page{
+			padding-top: 12px;
+			ul{
+				li{
+					a{
+						font-size: 14px;
+						color: #9f9f9f;
+						font-weight: 500;
+							&:hover{
+								color: #ed4f4f;
+							}
+					}
+				}
+			}
+			.img-ftr{
+				display: flex;
+			    flex-wrap: wrap;
+			    width: 100%;
+			    justify-content: space-between;
+					.small-img{
+						width: 32%;
+						padding-bottom: 8px;
+							img{
+								width: 100%;
+							}
+					}
+			}
+		}
+}
+
+.copy-right-wrapper{
+	background-color: #1f1f20;
+	padding: 12px 0px;
+	.copy-social{
+		ul{
+			display: flex;
+				li{
+					a{
+						display: inline-block;
+						width: 40px;
+						height: 40px;
+						line-height: 40px;
+						text-align: center;
+						color: #9f9f9f;
+						font-size: 14px;
+						border-radius: 50%;
+						background-color: #252526;
+							&:hover{
+								background-color: #ed4f4f;
+								color: #fff;
+							}
+					}
+				}
+				li + li{
+					margin-left: 12px;
+				}
+		}
+	}
+	.copy-right{
+		display: flex;
+		justify-content: end;
+		padding-top: 6px;
+			a{
+				color: #ed4f4f;
+				padding-right: 10px;
+			}
+			p{
+				padding-right: 12px;
+			}
+	}
+}
