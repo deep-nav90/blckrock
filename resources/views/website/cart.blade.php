@@ -14,14 +14,13 @@ span#totalProductPrice, span#shippingCharges, span#couponAmount, span#finalPrice
 
 .coupon {
     border: 5px dotted #bbb;
-    width: 80%;
+    width: 32%;
     border-radius: 15px;
-    margin: 35px 0px 0px 50px;
+    margin: 35px -30px -25px 37px;
     max-width: 480px;
     max-height: 203px;
     overflow: scroll;
 }
-
 .container {
   padding: 2px 16px;
   background-color: #f1f1f1;
@@ -63,8 +62,8 @@ a.custom-btn.applyCoupon {
 
 .couponAppendData {
     display: flex;
+    flex-wrap: wrap;
 }
-
 h6.h6_coupon {
     font-size: 22px;
     font-weight: 600;

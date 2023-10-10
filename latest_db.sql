@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 09, 2023 at 07:30 PM
+-- Generation Time: Oct 10, 2023 at 07:10 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -81,7 +81,10 @@ CREATE TABLE `attributes` (
 --
 
 INSERT INTO `attributes` (`id`, `attribute_name`, `status`, `meta_keyword`, `meta_description`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'asdasd', 'Active', 'sfasfasa', 'DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI', NULL, '2023-10-05 13:03:21', '2023-10-05 13:03:21');
+(1, 'PCS', 'Active', 'PCS PCS PCS', 'Sales with pieces of eggs in marketing.', NULL, '2023-10-10 10:27:52', '2023-10-10 10:27:52'),
+(2, 'Tray', 'Active', 'Tray Tray', 'Tray Tray Tray Tray Tray Tray Tray Tray Tray Tray Tray Tray Tray Tray Tray Tray Tray Tray Tray Tray Tray Tray Tray Tray Tray Tray Tray Tray', NULL, '2023-10-10 10:28:20', '2023-10-10 10:28:20'),
+(3, 'Half Tray', 'Active', 'Half Tray', 'Half Tray Half Tray Half Tray Half Tray Half Tray Half Tray Half Tray Half Tray Half Tray Half Tray Half Tray Half Tray Half Tray Half Tray Half Tray', NULL, '2023-10-10 10:28:40', '2023-10-10 10:28:40'),
+(4, 'Dozen Tray', 'Active', 'Dozen Tray Dozen Tray', 'Dozen Tray Dozen Tray Dozen Tray Dozen Tray Dozen Tray Dozen Tray Dozen Tray Dozen Tray Dozen Tray Dozen Tray Dozen Tray Dozen Tray Dozen Tray', NULL, '2023-10-10 10:29:09', '2023-10-10 10:29:09');
 
 -- --------------------------------------------------------
 
@@ -119,7 +122,7 @@ CREATE TABLE `billing_shipping_addresses` (
 --
 
 INSERT INTO `billing_shipping_addresses` (`id`, `payment_id`, `order_id`, `billing_first_name`, `billing_last_name`, `billing_email`, `billing_phone_number`, `billing_address`, `billing_city`, `billing_state`, `billing_zip_code`, `shipping_first_name`, `shipping_last_name`, `shipping_email`, `shipping_phone_number`, `shipping_address`, `shipping_city`, `shipping_state`, `shipping_zip_code`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'Host', 'Testing', 'ee@yopmail.com', '6467023890', 'California Road', 'Stockholm', 'Maine', '04783', 'Host', 'Testing', 'hosttesting@yopmail.com', '6467023890', 'California Road', 'Stockholm', 'Maine', '04783', NULL, '2023-10-08 03:39:48', '2023-10-08 03:39:48');
+(1, 1, 1, 'Host', 'Testing', 'aman@yopmail.com', '6467023890', 'California Road', 'Stockholm', 'Maine', '04783', 'Host', 'Testing', 'aman@yopmail.com', '6467023890', 'California Road', 'Stockholm', 'Maine', '04783', NULL, '2023-10-10 11:28:40', '2023-10-10 11:28:40');
 
 -- --------------------------------------------------------
 
@@ -144,9 +147,12 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `category_name`, `category_image`, `meta_keyword`, `meta_description`, `status`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'Chicken', '10032023173456651c50c0e2969.jpg', 'Fried Chicken, Butter Chicken, Malai Chicken', 'Very tasty and delicious food with gravy include. It\'s good food for sale in market for current year.', 'Active', NULL, '2023-10-03 12:04:56', '2023-10-03 12:04:56'),
-(2, 'Egg', '10032023173740651c51642f4e5.png', 'Desi Egg, Normal Egg, Premium Egg', 'Desi Egg is good for old person and our team make a special Omlet with desi Egg.', 'Active', NULL, '2023-10-03 12:07:40', '2023-10-03 12:07:40'),
-(3, 'Fish', '10032023174006651c51f65c6ca.jpeg', 'Sanghara Fish, Mali Fish', 'We have so many items for fish like as Fried fish, Mali Fish, Rosted Fish etc.', 'Active', NULL, '2023-10-03 12:10:06', '2023-10-03 12:10:06');
+(1, 'Eggitarians', '1010202315405465257086e3d70.jpeg', 'Eggitarians Eggitarians Eggitarians Eggitarians', 'This one is for all the ‘Eggitarians’ out there, who can relish eggs in all the meals. If researchers are to be believed, eggs are among the most nutrient-rich foods in the world and are most versatile in terms of preparation too. From snacks to desserts, they can be twisted in very course to create flavourful delicacies. From proteins to fats to vitamins, eggs have them all. According to food experts, there are two types of edible eggs that include bird eggs and fish eggs. Have a look at these 6 varieties that you can eat.', 'Active', NULL, '2023-10-10 10:10:54', '2023-10-10 10:10:54'),
+(2, 'Chicken Eggs', '10102023154159652570c7f133c.jpeg', 'Chicken Eggs Chicken Eggs Chicken Eggs', 'Chicken egg is the most common type of eggs that is avaioable in two colours- brown and white. They both are rich in proteins, calcium, and zinc and are mild in taste. In India, both the variations are widly used for making omelette, scrammbled eggs, egg curry and salad.', 'Active', NULL, '2023-10-10 10:11:59', '2023-10-10 10:11:59'),
+(3, 'Duck Eggs', '10102023154234652570ea964a9.jpeg', 'Duck Eggs Duck Eggs Duck Eggs', 'They are rich in fats and protein and have slightly larger yolk than the chicken eggs. It is suggested to consume them in breakfast, as they are filled with vitamin B complex compounds, that keeps your energized throughout the day.', 'Active', NULL, '2023-10-10 10:12:34', '2023-10-10 10:12:34'),
+(4, 'Turkey Eggs', '101020231543176525711532e58.jpeg', 'Turkey Eggs Turkey Eggs Turkey Eggs Turkey Eggs', 'hey are very similar to duck eggs in size, but have a creamier taste due to thick yolk and egg-white. They are rich in calcium and are good for growing kids.', 'Active', NULL, '2023-10-10 10:13:17', '2023-10-10 10:13:17'),
+(5, 'Goose Eggs', '101020231543516525713766d62.jpeg', 'Goose Eggs Goose Eggs Goose Eggs', 'They are double the size of chicken eggs and have enriched taste and have a greater content of proteins. It has been proven that a goose egg has 19.97 g. of protein and a chicken egg has 6.23 grams.', 'Active', NULL, '2023-10-10 10:13:51', '2023-10-10 10:13:51'),
+(6, 'Caviar', '1010202315444165257169ec0af.png', 'Caviar Caviar Caviar', 'They are counted among the most exquisite eggs. Belonging to the family of fish eggs, they are from the fish Roe that is salt- cured. They are rich in anti-oxidants and are a treasure of sea minerals.', 'Active', NULL, '2023-10-10 10:14:41', '2023-10-10 10:14:41');
 
 -- --------------------------------------------------------
 
@@ -175,7 +181,10 @@ CREATE TABLE `coupons` (
 --
 
 INSERT INTO `coupons` (`id`, `coupon_name`, `coupon_type`, `coupon_amount_and_percentage`, `meta_keyword`, `from_date`, `to_date`, `meta_description`, `status`, `coupon_code`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'gs', 'Flat', 21, 'Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsu', '2023-10-07', '2023-10-30', 'Loream Ipsum Loream Ipsum Loream Ipsum Loream IpsuLoream Ipsum Loream Ipsum Loream Ipsum Loream IpsuLoream Ipsum Loream Ipsum Loream Ipsum Loream Ipsu', 'Active', 'tWEQi05R', NULL, '2023-10-07 07:08:27', '2023-10-07 07:08:27');
+(1, 'Super Discount', 'Flat', 60, 'Super Discount Super Discount', '2023-10-10', '2023-11-10', 'Super Discount Super Discount Super Discount Super Discount Super Discount Super Discount Super Discount Super Discount Super Discount Super Discount Super Discount Super Discount Super Discount Super Discount', 'Active', 'AqFGzlr6', NULL, '2023-10-10 10:30:29', '2023-10-10 10:30:29'),
+(2, 'Monthly Discount', 'Flat', 50, 'Monthly Discount', '2023-10-10', '2023-11-10', 'Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum', 'Active', 'y0oh8Zbo', NULL, '2023-10-10 10:31:12', '2023-10-10 10:31:12'),
+(3, 'Daily Discount', 'Percentage', 5, 'Daily Discount Daily Discount Daily Discount Daily', '2023-10-10', '2023-11-10', 'Daily Discount Daily Discount Daily Discount Daily Discount Daily Discount Daily Discount Daily Discount Daily Discount Daily Discount Daily Discount Daily Discount Daily Discount Daily Discount Daily Discount Daily Discount Daily Discount Daily Discount', 'Active', 'wUVLk2kP', NULL, '2023-10-10 10:31:47', '2023-10-10 10:31:47'),
+(4, 'Always Discount', 'Percentage', 20, 'Always Discount Always Discount Always Discount Al', '2023-10-10', '2023-11-10', 'Always Discount Always Discount Always Discount Always Discount Always Discount Always Discount Always Discount Always Discount Always Discount Always Discount Always Discount Always Discount Always Discount', 'Active', 'rwifKeP4', NULL, '2023-10-10 10:32:19', '2023-10-10 10:32:19');
 
 -- --------------------------------------------------------
 
@@ -273,18 +282,6 @@ CREATE TABLE `oauth_access_tokens` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `oauth_access_tokens`
---
-
-INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes`, `revoked`, `created_at`, `updated_at`, `expires_at`) VALUES
-('3c27c1786063b1efcbe988d9de151e1710886699f06540e4d074d12f6eb28ba98db63c8badf3ba56', 2, 1, 'bookys', '[]', 1, '2022-03-08 05:02:52', '2022-03-08 05:02:52', '2023-03-08 10:32:52'),
-('6aa4d277d785bf7232f5e2002e9305054e442cb233d8590a572f0021fbcc613b38dfacd6f0a13e57', 2, 1, 'bookys', '[]', 1, '2022-03-08 07:35:25', '2022-03-08 07:35:25', '2023-03-08 13:05:25'),
-('7a9a544d868f3075bbaa7576215838bd7f442f4b4f44600a227d965d04b0f6a46d71b8cff893724b', 1, 1, 'bookys', '[]', 1, '2022-03-08 04:56:35', '2022-03-08 04:56:35', '2023-03-08 10:26:35'),
-('8384ff947ec9e6093ebbc528b39f0e37bd2c076b0c3d9e34bdce6d47b3fa44691dbead6c9a305328', 1, 1, 'bookys', '[]', 0, '2022-03-08 04:56:47', '2022-03-08 04:56:47', '2023-03-08 10:26:47'),
-('ccaea675ba3848abbc4ae425057385eace1a8b68e9421505328a1b591d12162bdbc64ddec7bb3a6b', 2, 1, 'bookys', '[]', 1, '2022-03-08 05:03:12', '2022-03-08 05:03:12', '2023-03-08 10:33:12'),
-('d9165823ac023555820e57e73e35ffe54739832ad0bbf6733ec2751ac77184497f8816a967af99a7', 2, 1, 'bookys', '[]', 0, '2022-03-09 01:30:45', '2022-03-09 01:30:45', '2023-03-09 07:00:45');
 
 -- --------------------------------------------------------
 
@@ -393,7 +390,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `unique_order_id`, `user_id`, `payment_id`, `coupon_code`, `coupon_amount_and_percentage`, `coupon_type`, `discount_amount_for_coupon`, `shipping_charger`, `total_amount`, `order_status`, `payment_type`, `pay_amount`, `payment_received`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'q06zseGiM7', 5, 1, 'tWEQi05R', 21, 'Flat', 21, 0, 58, 'Completed', 'COD', 37, 1, NULL, '2023-10-08 03:39:48', '2023-10-08 12:20:11');
+(1, '52R6ZWEtVU', 1, 1, NULL, 0, 'None', 0, 0, 108, 'Pending', 'COD', 108, 0, NULL, '2023-10-10 11:28:40', '2023-10-10 11:28:40');
 
 -- --------------------------------------------------------
 
@@ -406,13 +403,6 @@ CREATE TABLE `password_resets` (
   `token` varchar(191) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `password_resets`
---
-
-INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
-('adminn@yopmail.com', 'zPtRCL2TWY2aqR3SH9hZzamyaqs53Xah', '2023-09-14 16:28:37');
 
 -- --------------------------------------------------------
 
@@ -443,7 +433,7 @@ CREATE TABLE `payments` (
 --
 
 INSERT INTO `payments` (`id`, `user_id`, `order_id`, `transaction_id`, `payment_type`, `coupon_code`, `coupon_amount_and_percentage`, `coupon_type`, `discount_amount_for_coupon`, `shipping_charger`, `total_amount`, `pay_amount`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 5, 1, 'xxxxxxx12345', 'COD', 'tWEQi05R', 21, 'Flat', 21, 0, 58, 37, NULL, '2023-10-08 03:39:48', '2023-10-08 03:39:48');
+(1, 1, 1, 'xxxxxxx12345', 'COD', NULL, 0, 'None', 0, 0, 108, 108, NULL, '2023-10-10 11:28:40', '2023-10-10 11:28:40');
 
 -- --------------------------------------------------------
 
@@ -593,10 +583,16 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `sub_category_id`, `product_name`, `status`, `meta_keyword`, `meta_description`, `product_quantity`, `average_rating`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 2, 1, 'asfasf', 'Active', 'DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI', 'DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI', 23, 5, NULL, '2023-10-05 13:28:22', '2023-10-05 13:28:22'),
-(2, 2, 1, 'Testing Product', 'Active', 'Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsu', 'Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum', 90, 5, NULL, '2023-10-07 00:14:16', '2023-10-07 00:14:16'),
-(3, 2, 1, 'Testing 2', 'Active', 'Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsu', 'Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum', 12, 5, NULL, '2023-10-07 00:16:55', '2023-10-07 00:16:55'),
-(4, 2, 1, 'Testing 3', 'Active', 'Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsu', 'Loream Ipsum Loream Ipsum Loream Ipsum Loream IpsuLoream Ipsum Loream Ipsum Loream Ipsum Loream IpsuLoream Ipsum Loream Ipsum Loream Ipsum Loream IpsuLoream Ipsum Loream Ipsum Loream Ipsum Loream IpsuLoream Ipsum Loream Ipsum Loream Ipsum Loream Ipsu', 12, 5, NULL, '2023-10-07 00:29:01', '2023-10-07 00:29:01');
+(1, 1, 1, 'Eggitarians', 'Active', 'EGGITARIANS EGGITARIANS EGGITARIANS EGGITARIANS', 'This one is for all the ‘Eggitarians’ out there, who can relish eggs in all the meals. If researchers are to be believed, eggs are among the most nutrient-rich foods in the world and are most versatile in terms of preparation too. From snacks to desserts, they can be twisted in very course to create flavourful delicacies. From proteins to fats to vitamins, eggs have them all. According to food experts, there are two types of edible eggs that include bird eggs and fish eggs. Have a look at these 6 varieties that you can eat.', 40, 5, NULL, '2023-10-10 10:34:26', '2023-10-10 10:34:26'),
+(2, 1, 2, 'Eggitarians NORMAL', 'Active', 'Eggitarians NORMAL Eggitarians NORMAL', 'This one is for all the ‘Eggitarians’ out there, who can relish eggs in all the meals. If researchers are to be believed, eggs are among the most nutrient-rich foods in the world and are most versatile in terms of preparation too. From snacks to desserts, they can be twisted in very course to create flavourful delicacies. From proteins to fats to vitamins, eggs have them all. According to food experts, there are two types of edible eggs that include bird eggs and fish eggs. Have a look at these 6 varieties that you can eat.', 50, 5, NULL, '2023-10-10 10:36:29', '2023-10-10 10:36:29'),
+(3, 1, 3, 'Eggitarians BETTER', 'Active', 'Eggitarians Eggitarians Eggitarians Eggitarians', 'This one is for all the ‘Eggitarians’ out there, who can relish eggs in all the meals. If researchers are to be believed, eggs are among the most nutrient-rich foods in the world and are most versatile in terms of preparation too. From snacks to desserts, they can be twisted in very course to create flavourful delicacies. From proteins to fats to vitamins, eggs have them all. According to food experts, there are two types of edible eggs that include bird eggs and fish eggs. Have a look at these 6 varieties that you can eat.', 50, 5, NULL, '2023-10-10 10:38:03', '2023-10-10 10:38:03'),
+(4, 2, 5, 'Chiken Eggs BETTER', 'Active', 'Chiken Eggs', 'Chicken egg is the most common type of eggs that is avaioable in two colours- brown and white. They both are rich in proteins, calcium, and zinc and are mild in taste. In India, both the variations are widly used for making omelette, scrammbled eggs, egg curry and salad.', 67, 5, NULL, '2023-10-10 10:39:48', '2023-10-10 10:41:54'),
+(5, 2, 4, 'Chicken Eggs', 'Active', 'Chicken Eggs Chicken Eggs', 'Chicken egg is the most common type of eggs that is avaioable in two colours- brown and white. They both are rich in proteins, calcium, and zinc and are mild in taste. In India, both the variations are widly used for making omelette, scrammbled eggs, egg curry and salad.', 20, 5, NULL, '2023-10-10 10:41:29', '2023-10-10 10:41:29'),
+(6, 2, 6, 'Chicken Egg Normal', 'Active', 'Chicken Egg Normal', 'Chicken egg is the most common type of eggs that is avaioable in two colours- brown and white. They both are rich in proteins, calcium, and zinc and are mild in taste. In India, both the variations are widly used for making omelette, scrammbled eggs, egg curry and salad.', 43, 5, NULL, '2023-10-10 10:43:07', '2023-10-10 10:43:07'),
+(7, 3, 7, 'Duck EGG', 'Active', 'Duck EGG Duck EGG Duck EGG Duck EGG Duck EGG', 'They are rich in fats and protein and have slightly larger yolk than the chicken eggs. It is suggested to consume them in breakfast, as they are filled with vitamin B complex compounds, that keeps your energized throughout the day.', 30, 5, NULL, '2023-10-10 10:44:29', '2023-10-10 10:44:29'),
+(8, 3, 8, 'Duck EGG NORMAL', 'Active', 'Duck EGG Duck EGG Duck EGG Duck EGG Duck EGG', 'They are rich in fats and protein and have slightly larger yolk than the chicken eggs. It is suggested to consume them in breakfast, as they are filled with vitamin B complex compounds, that keeps your energized throughout the day.', 43, 5, NULL, '2023-10-10 10:45:32', '2023-10-10 10:45:32'),
+(9, 3, 9, 'Duck Egg Better', 'Active', 'Duck Egg Better', 'Duck Egg Better Duck Egg Better Duck Egg Better Duck Egg Better', 32, 5, NULL, '2023-10-10 10:46:30', '2023-10-10 10:46:30'),
+(10, 4, 10, 'Turkey EGG', 'Active', 'They are very similar to duck eggs in size, but ha', 'They are very similar to duck eggs in size, but have a creamier taste due to thick yolk and egg-white. They are rich in calcium and are good for growing kids.', 30, 5, NULL, '2023-10-10 10:47:46', '2023-10-10 10:47:46');
 
 -- --------------------------------------------------------
 
@@ -619,26 +615,47 @@ CREATE TABLE `product_images` (
 --
 
 INSERT INTO `product_images` (`id`, `product_id`, `product_image`, `is_featured_image`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 1, '10052023185822651f074e98e96.jpg', 1, NULL, '2023-10-05 13:28:22', '2023-10-05 13:28:22'),
-(2, 1, '10052023185822651f074e99077.jpg', 0, NULL, '2023-10-05 13:28:22', '2023-10-05 13:28:22'),
-(3, 1, '10052023185822651f074e990d0.jpg', 0, NULL, '2023-10-05 13:28:22', '2023-10-05 13:28:22'),
-(4, 2, '100720230544166520f03007a2a.jpg', 1, NULL, '2023-10-07 00:14:16', '2023-10-07 00:14:16'),
-(5, 2, '100720230544166520f03007b5e.jpg', 0, NULL, '2023-10-07 00:14:16', '2023-10-07 00:14:16'),
-(6, 2, '100720230544166520f03007bab.jpg', 0, NULL, '2023-10-07 00:14:16', '2023-10-07 00:14:16'),
-(7, 2, '100720230544166520f03007bf2.jpg', 0, NULL, '2023-10-07 00:14:16', '2023-10-07 00:14:16'),
-(8, 2, '100720230544166520f03007c35.jpg', 0, NULL, '2023-10-07 00:14:16', '2023-10-07 00:14:16'),
-(9, 2, '100720230544166520f03007c73.jpg', 0, NULL, '2023-10-07 00:14:16', '2023-10-07 00:14:16'),
-(10, 3, '100720230546556520f0cf83b6f.jpg', 1, NULL, '2023-10-07 00:16:55', '2023-10-07 00:16:55'),
-(11, 3, '100720230546556520f0cf83cbd.jpg', 0, NULL, '2023-10-07 00:16:55', '2023-10-07 00:16:55'),
-(12, 3, '100720230546556520f0cf83d1e.jpg', 0, NULL, '2023-10-07 00:16:55', '2023-10-07 00:16:55'),
-(13, 3, '100720230546556520f0cf83d67.jpg', 0, NULL, '2023-10-07 00:16:55', '2023-10-07 00:16:55'),
-(14, 3, '100720230546556520f0cf83dac.jpg', 0, NULL, '2023-10-07 00:16:55', '2023-10-07 00:16:55'),
-(15, 4, '100720230559016520f3a57b3c2.jpg', 1, NULL, '2023-10-07 00:29:01', '2023-10-07 01:11:46'),
-(16, 4, '100720230559016520f3a57b503.jpg', 0, NULL, '2023-10-07 00:29:01', '2023-10-07 01:11:46'),
-(17, 4, '100720230559016520f3a57b610.jpg', 0, NULL, '2023-10-07 00:29:01', '2023-10-07 01:11:46'),
-(18, 4, '100720230559016520f3a57b65b.jpg', 0, NULL, '2023-10-07 00:29:01', '2023-10-07 01:11:46'),
-(19, 4, '100720230559016520f3a57b6a4.jpg', 0, NULL, '2023-10-07 00:29:01', '2023-10-07 01:11:46'),
-(20, 4, '100720230559016520f3a57b6e7.jpg', 0, NULL, '2023-10-07 00:29:01', '2023-10-07 01:11:46');
+(1, 1, '101020231604266525760a84664.jpeg', 1, NULL, '2023-10-10 10:34:26', '2023-10-10 10:35:11'),
+(2, 1, '101020231605116525763700b3d.jpeg', 0, NULL, '2023-10-10 10:35:11', '2023-10-10 10:35:11'),
+(3, 1, '101020231605116525763700bf2.jpeg', 0, NULL, '2023-10-10 10:35:11', '2023-10-10 10:35:11'),
+(4, 1, '101020231605116525763700c45.jpeg', 0, NULL, '2023-10-10 10:35:11', '2023-10-10 10:35:11'),
+(5, 1, '101020231605116525763700c87.jpeg', 0, NULL, '2023-10-10 10:35:11', '2023-10-10 10:35:11'),
+(6, 2, '10102023160629652576859c01e.jpeg', 1, NULL, '2023-10-10 10:36:29', '2023-10-10 10:36:29'),
+(7, 2, '10102023160629652576859c0c9.jpeg', 0, NULL, '2023-10-10 10:36:29', '2023-10-10 10:36:29'),
+(8, 2, '10102023160629652576859c120.jpeg', 0, NULL, '2023-10-10 10:36:29', '2023-10-10 10:36:29'),
+(9, 2, '10102023160629652576859c16e.jpeg', 0, NULL, '2023-10-10 10:36:29', '2023-10-10 10:36:29'),
+(10, 3, '10102023160803652576e33b9b3.jpeg', 1, NULL, '2023-10-10 10:38:03', '2023-10-10 10:38:03'),
+(11, 3, '10102023160803652576e33ba9a.jpeg', 0, NULL, '2023-10-10 10:38:03', '2023-10-10 10:38:03'),
+(12, 3, '10102023160803652576e33bafc.jpeg', 0, NULL, '2023-10-10 10:38:03', '2023-10-10 10:38:03'),
+(13, 3, '10102023160803652576e33bb45.jpeg', 0, NULL, '2023-10-10 10:38:03', '2023-10-10 10:38:03'),
+(14, 4, '101020231609486525774cf3f1e.jpeg', 1, NULL, '2023-10-10 10:39:48', '2023-10-10 10:41:54'),
+(15, 4, '101020231609486525774cf3fc0.jpeg', 0, NULL, '2023-10-10 10:39:49', '2023-10-10 10:41:54'),
+(16, 4, '101020231609486525774cf400e.jpeg', 0, NULL, '2023-10-10 10:39:49', '2023-10-10 10:41:54'),
+(17, 4, '101020231609486525774cf4058.jpeg', 0, NULL, '2023-10-10 10:39:49', '2023-10-10 10:41:54'),
+(18, 5, '10102023161129652577b1446c7.jpeg', 1, NULL, '2023-10-10 10:41:29', '2023-10-10 10:41:29'),
+(19, 5, '10102023161129652577b14477c.jpeg', 0, NULL, '2023-10-10 10:41:29', '2023-10-10 10:41:29'),
+(20, 5, '10102023161129652577b1447e0.jpeg', 0, NULL, '2023-10-10 10:41:29', '2023-10-10 10:41:29'),
+(21, 5, '10102023161129652577b14481f.jpeg', 0, NULL, '2023-10-10 10:41:29', '2023-10-10 10:41:29'),
+(22, 6, '1010202316130765257813a102a.jpeg', 1, NULL, '2023-10-10 10:43:07', '2023-10-10 10:43:07'),
+(23, 6, '1010202316130765257813a113c.jpeg', 0, NULL, '2023-10-10 10:43:07', '2023-10-10 10:43:07'),
+(24, 6, '1010202316130765257813a119e.jpeg', 0, NULL, '2023-10-10 10:43:07', '2023-10-10 10:43:07'),
+(25, 6, '1010202316130765257813a11e1.jpeg', 0, NULL, '2023-10-10 10:43:07', '2023-10-10 10:43:07'),
+(26, 7, '101020231614296525786505a25.jpeg', 1, NULL, '2023-10-10 10:44:29', '2023-10-10 10:44:29'),
+(27, 7, '101020231614296525786505b16.jpeg', 0, NULL, '2023-10-10 10:44:29', '2023-10-10 10:44:29'),
+(28, 7, '101020231614296525786505b67.jpeg', 0, NULL, '2023-10-10 10:44:29', '2023-10-10 10:44:29'),
+(29, 7, '101020231614296525786505ba9.jpeg', 0, NULL, '2023-10-10 10:44:29', '2023-10-10 10:44:29'),
+(30, 8, '10102023161532652578a4bf90d.jpeg', 0, NULL, '2023-10-10 10:45:32', '2023-10-10 10:45:32'),
+(31, 8, '10102023161532652578a4bf9ab.jpeg', 0, NULL, '2023-10-10 10:45:32', '2023-10-10 10:45:32'),
+(32, 8, '10102023161532652578a4bf9ff.jpeg', 0, NULL, '2023-10-10 10:45:32', '2023-10-10 10:45:32'),
+(33, 8, '10102023161532652578a4bfa52.jpeg', 1, NULL, '2023-10-10 10:45:32', '2023-10-10 10:45:32'),
+(34, 9, '10102023161630652578de788d3.jpeg', 1, NULL, '2023-10-10 10:46:30', '2023-10-10 10:46:30'),
+(35, 9, '10102023161630652578de7896d.jpeg', 0, NULL, '2023-10-10 10:46:30', '2023-10-10 10:46:30'),
+(36, 9, '10102023161630652578de789b6.jpeg', 0, NULL, '2023-10-10 10:46:30', '2023-10-10 10:46:30'),
+(37, 9, '10102023161630652578de789fa.jpeg', 0, NULL, '2023-10-10 10:46:30', '2023-10-10 10:46:30'),
+(38, 10, '101020231617466525792ab84d0.jpeg', 1, NULL, '2023-10-10 10:47:46', '2023-10-10 10:47:46'),
+(39, 10, '101020231617466525792ab856c.jpeg', 0, NULL, '2023-10-10 10:47:46', '2023-10-10 10:47:46'),
+(40, 10, '101020231617466525792ab85b4.jpeg', 0, NULL, '2023-10-10 10:47:46', '2023-10-10 10:47:46'),
+(41, 10, '101020231617466525792ab85f5.jpeg', 0, NULL, '2023-10-10 10:47:46', '2023-10-10 10:47:46');
 
 -- --------------------------------------------------------
 
@@ -669,8 +686,7 @@ CREATE TABLE `product_orders` (
 --
 
 INSERT INTO `product_orders` (`id`, `order_id`, `payment_id`, `product_price`, `sale_price`, `quantity`, `category_name`, `sub_category_name`, `product_name`, `product_meta_description`, `product_meta_keyord`, `calculated_amount`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 45, 45, 1, 'Egg', 'DESI', 'asfasf', 'DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI', 'DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI', 45, NULL, '2023-10-08 03:39:48', '2023-10-08 03:39:48'),
-(2, 1, 1, 13, 13, 1, 'Egg', 'DESI', 'Testing Product', 'Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsum', 'Loream Ipsum Loream Ipsum Loream Ipsum Loream Ipsu', 13, NULL, '2023-10-08 03:39:48', '2023-10-08 03:39:48');
+(1, 1, 1, 12, 12, 9, 'Eggitarians', 'SUB EGGITARIANS', 'Eggitarians', 'This one is for all the ‘Eggitarians’ out there, who can relish eggs in all the meals. If researchers are to be believed, eggs are among the most nutrient-rich foods in the world and are most versatile in terms of preparation too. From snacks to desserts, they can be twisted in very course to create flavourful delicacies. From proteins to fats to vitamins, eggs have them all. According to food experts, there are two types of edible eggs that include bird eggs and fish eggs. Have a look at these 6 varieties that you can eat.', 'EGGITARIANS EGGITARIANS EGGITARIANS EGGITARIANS', 108, NULL, '2023-10-10 11:28:40', '2023-10-10 11:28:40');
 
 -- --------------------------------------------------------
 
@@ -696,23 +712,51 @@ CREATE TABLE `product_price_attributes` (
 --
 
 INSERT INTO `product_price_attributes` (`id`, `product_id`, `attribute_id`, `product_price`, `sale_price`, `attribute_value`, `is_default_show`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 12, 1, 45, 0, NULL, '2023-10-05 13:28:22', '2023-10-05 13:28:22'),
-(2, 1, 1, 12, 12, 45, 0, NULL, '2023-10-05 13:28:22', '2023-10-05 13:28:22'),
-(3, 1, 1, 45, 45, 45, 1, NULL, '2023-10-05 13:28:22', '2023-10-05 13:28:22'),
-(4, 2, 1, 12, 12, 12, 0, NULL, '2023-10-07 00:14:16', '2023-10-07 00:14:16'),
-(5, 2, 1, 13, 13, 13, 1, NULL, '2023-10-07 00:14:16', '2023-10-07 00:14:16'),
-(6, 2, 1, 15, 15, 15, 0, NULL, '2023-10-07 00:14:16', '2023-10-07 00:14:16'),
-(7, 2, 1, 14, 14, 14, 0, NULL, '2023-10-07 00:14:16', '2023-10-07 00:14:16'),
-(8, 3, 1, 11, 11, 11, 0, NULL, '2023-10-07 00:16:55', '2023-10-07 00:16:55'),
-(9, 3, 1, 12, 12, 12, 1, NULL, '2023-10-07 00:16:55', '2023-10-07 00:16:55'),
-(10, 3, 1, 13, 13, 13, 0, NULL, '2023-10-07 00:16:55', '2023-10-07 00:16:55'),
-(11, 3, 1, 14, 14, 14, 0, NULL, '2023-10-07 00:16:55', '2023-10-07 00:16:55'),
-(12, 4, 1, 11, 11, 11, 0, '2023-10-07 01:11:46', '2023-10-07 00:29:01', '2023-10-07 01:11:46'),
-(13, 4, 1, 12, 12, 12, 0, '2023-10-07 01:11:46', '2023-10-07 00:29:01', '2023-10-07 01:11:46'),
-(14, 4, 1, 13, 13, 13, 0, '2023-10-07 01:11:46', '2023-10-07 00:29:01', '2023-10-07 01:11:46'),
-(15, 4, 1, 14, 14, 14, 0, '2023-10-07 01:11:46', '2023-10-07 00:29:01', '2023-10-07 01:11:46'),
-(16, 4, 1, 11, 11, 11, 1, NULL, '2023-10-07 01:11:46', '2023-10-07 01:11:46'),
-(17, 4, 1, 16, 16, 16, 0, NULL, '2023-10-07 01:11:46', '2023-10-07 01:11:46');
+(1, 1, 1, 12, 12, 12, 1, '2023-10-10 10:35:11', '2023-10-10 10:34:26', '2023-10-10 10:35:11'),
+(2, 1, 2, 20, 20, 20, 0, '2023-10-10 10:35:11', '2023-10-10 10:34:26', '2023-10-10 10:35:11'),
+(3, 1, 3, 30, 30, 30, 0, '2023-10-10 10:35:11', '2023-10-10 10:34:26', '2023-10-10 10:35:11'),
+(4, 1, 4, 70, 70, 70, 0, '2023-10-10 10:35:11', '2023-10-10 10:34:26', '2023-10-10 10:35:11'),
+(5, 1, 1, 12, 12, 12, 1, NULL, '2023-10-10 10:35:11', '2023-10-10 10:35:11'),
+(6, 1, 2, 20, 20, 20, 0, NULL, '2023-10-10 10:35:11', '2023-10-10 10:35:11'),
+(7, 1, 3, 30, 30, 30, 0, NULL, '2023-10-10 10:35:11', '2023-10-10 10:35:11'),
+(8, 1, 4, 70, 70, 70, 0, NULL, '2023-10-10 10:35:11', '2023-10-10 10:35:11'),
+(9, 2, 1, 10, 10, 10, 1, NULL, '2023-10-10 10:36:29', '2023-10-10 10:36:29'),
+(10, 2, 2, 20, 20, 20, 0, NULL, '2023-10-10 10:36:29', '2023-10-10 10:36:29'),
+(11, 2, 3, 30, 30, 30, 0, NULL, '2023-10-10 10:36:29', '2023-10-10 10:36:29'),
+(12, 2, 4, 40, 40, 40, 0, NULL, '2023-10-10 10:36:29', '2023-10-10 10:36:29'),
+(13, 3, 1, 30, 30, 30, 1, NULL, '2023-10-10 10:38:03', '2023-10-10 10:38:03'),
+(14, 3, 2, 40, 40, 40, 0, NULL, '2023-10-10 10:38:03', '2023-10-10 10:38:03'),
+(15, 3, 3, 50, 50, 50, 0, NULL, '2023-10-10 10:38:03', '2023-10-10 10:38:03'),
+(16, 3, 4, 60, 60, 20, 0, NULL, '2023-10-10 10:38:03', '2023-10-10 10:38:03'),
+(17, 4, 1, 10, 10, 10, 1, '2023-10-10 10:41:54', '2023-10-10 10:39:49', '2023-10-10 10:41:54'),
+(18, 4, 2, 20, 20, 20, 0, '2023-10-10 10:41:54', '2023-10-10 10:39:49', '2023-10-10 10:41:54'),
+(19, 4, 3, 30, 30, 30, 0, '2023-10-10 10:41:54', '2023-10-10 10:39:49', '2023-10-10 10:41:54'),
+(20, 4, 4, 40, 40, 40, 0, '2023-10-10 10:41:54', '2023-10-10 10:39:49', '2023-10-10 10:41:54'),
+(21, 5, 1, 12, 12, 12, 1, NULL, '2023-10-10 10:41:29', '2023-10-10 10:41:29'),
+(22, 5, 2, 13, 7, 3, 0, NULL, '2023-10-10 10:41:29', '2023-10-10 10:41:29'),
+(23, 5, 3, 14, 14, 14, 0, NULL, '2023-10-10 10:41:29', '2023-10-10 10:41:29'),
+(24, 5, 4, 15, 15, 15, 0, NULL, '2023-10-10 10:41:29', '2023-10-10 10:41:29'),
+(25, 4, 1, 10, 10, 10, 1, NULL, '2023-10-10 10:41:54', '2023-10-10 10:41:54'),
+(26, 4, 2, 20, 20, 20, 0, NULL, '2023-10-10 10:41:54', '2023-10-10 10:41:54'),
+(27, 4, 3, 30, 30, 30, 0, NULL, '2023-10-10 10:41:54', '2023-10-10 10:41:54'),
+(28, 4, 4, 40, 40, 40, 0, NULL, '2023-10-10 10:41:54', '2023-10-10 10:41:54'),
+(29, 6, 1, 28, 33, 3, 1, NULL, '2023-10-10 10:43:07', '2023-10-10 10:43:07'),
+(30, 6, 2, 34, 34, 2, 0, NULL, '2023-10-10 10:43:07', '2023-10-10 10:43:07'),
+(31, 6, 3, 45, 35, 3, 0, NULL, '2023-10-10 10:43:07', '2023-10-10 10:43:07'),
+(32, 6, 4, 35, 23, 2, 0, NULL, '2023-10-10 10:43:07', '2023-10-10 10:43:07'),
+(33, 7, 1, 45, 45, 75, 1, NULL, '2023-10-10 10:44:29', '2023-10-10 10:44:29'),
+(34, 7, 2, 45, 45, 65, 0, NULL, '2023-10-10 10:44:29', '2023-10-10 10:44:29'),
+(35, 7, 3, 45, 45, 55, 0, NULL, '2023-10-10 10:44:29', '2023-10-10 10:44:29'),
+(36, 7, 4, 45, 45, 45, 0, NULL, '2023-10-10 10:44:29', '2023-10-10 10:44:29'),
+(37, 8, 3, 112, 23, 12, 1, NULL, '2023-10-10 10:45:32', '2023-10-10 10:45:32'),
+(38, 8, 2, 222, 110, 12, 0, NULL, '2023-10-10 10:45:32', '2023-10-10 10:45:32'),
+(39, 9, 2, 23, 42, 12, 1, NULL, '2023-10-10 10:46:30', '2023-10-10 10:46:30'),
+(40, 9, 4, 12, 21, 23, 0, NULL, '2023-10-10 10:46:30', '2023-10-10 10:46:30'),
+(41, 9, 3, 1, 2, 3, 0, NULL, '2023-10-10 10:46:30', '2023-10-10 10:46:30'),
+(42, 10, 1, 12, 12, 12, 1, NULL, '2023-10-10 10:47:46', '2023-10-10 10:47:46'),
+(43, 10, 2, 23, 23, 23, 0, NULL, '2023-10-10 10:47:46', '2023-10-10 10:47:46'),
+(44, 10, 3, 23, 23, 23, 0, NULL, '2023-10-10 10:47:46', '2023-10-10 10:47:46'),
+(45, 10, 4, 34, 34, 2, 0, NULL, '2023-10-10 10:47:46', '2023-10-10 10:47:46');
 
 -- --------------------------------------------------------
 
@@ -803,7 +847,24 @@ CREATE TABLE `sub_categories` (
 --
 
 INSERT INTO `sub_categories` (`id`, `category_id`, `sub_category_name`, `sub_category_image`, `meta_keyword`, `meta_description`, `status`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 2, 'DESI', '10052023183229651f013de8c71.png', 'DESI DESI DESI DESI DESI DESI DESI', 'DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI DESI', 'Active', NULL, '2023-10-05 13:02:29', '2023-10-05 13:02:29');
+(1, 1, 'SUB EGGITARIANS', '10102023154538652571a2143d4.jpeg', 'EGGITARIANS EGGITARIANS EGGITARIANS EGGITARIANS', 'This one is for all the ‘Eggitarians’ out there, who can relish eggs in all the meals. If researchers are to be believed, eggs are among the most nutrient-rich foods in the world and are most versatile in terms of preparation too. From snacks to desserts, they can be twisted in very course to create flavourful delicacies. From proteins to fats to vitamins, eggs have them all. According to food experts, there are two types of edible eggs that include bird eggs and fish eggs. Have a look at these 6 varieties that you can eat.', 'Active', NULL, '2023-10-10 10:15:38', '2023-10-10 10:15:38'),
+(2, 1, 'Eggitarians Normal', '10102023154629652571d585585.jpeg', 'Eggitarians', 'This one is for all the ‘Eggitarians’ out there, who can relish eggs in all the meals. If researchers are to be believed, eggs are among the most nutrient-rich foods in the world and are most versatile in terms of preparation too. From snacks to desserts, they can be twisted in very course to create flavourful delicacies. From proteins to fats to vitamins, eggs have them all. According to food experts, there are two types of edible eggs that include bird eggs and fish eggs. Have a look at these 6 varieties that you can eat.', 'Active', NULL, '2023-10-10 10:16:29', '2023-10-10 10:16:29'),
+(3, 1, 'Eggitarians Better', '10102023154711652571ff77bf9.jpeg', 'EGGITARIANS EGGITARIANS EGGITARIANS EGGITARIANS', 'This one is for all the ‘Eggitarians’ out there, who can relish eggs in all the meals. If researchers are to be believed, eggs are among the most nutrient-rich foods in the world and are most versatile in terms of preparation too. From snacks to desserts, they can be twisted in very course to create flavourful delicacies. From proteins to fats to vitamins, eggs have them all. According to food experts, there are two types of edible eggs that include bird eggs and fish eggs. Have a look at these 6 varieties that you can eat.', 'Active', NULL, '2023-10-10 10:17:11', '2023-10-10 10:17:11'),
+(4, 2, 'Chicken Eggs', '101020231547566525722cc0212.jpeg', 'Chicken Eggs Chicken Eggs Chicken Eggs Chicken Egg', 'Chicken egg is the most common type of eggs that is avaioable in two colours- brown and white. They both are rich in proteins, calcium, and zinc and are mild in taste. In India, both the variations are widly used for making omelette, scrammbled eggs, egg curry and salad.', 'Active', NULL, '2023-10-10 10:17:56', '2023-10-10 10:17:56'),
+(5, 2, 'CHICKEN EGG Better', '1010202315485665257268813c0.jpeg', 'Chicken egg is the most common.', 'Chicken egg is the most common type of eggs that is avaioable in two colours- brown and white. They both are rich in proteins, calcium, and zinc and are mild in taste. In India, both the variations are widly used for making omelette, scrammbled eggs, egg curry and salad.', 'Active', NULL, '2023-10-10 10:18:56', '2023-10-10 10:18:56'),
+(6, 2, 'CHICKEN EGG NORMAL', '1010202315493665257290595cd.jpeg', 'Chicken egg is the most common type.', 'Chicken egg is the most common type of eggs that is avaioable in two colours- brown and white. They both are rich in proteins, calcium, and zinc and are mild in taste. In India, both the variations are widly used for making omelette, scrammbled eggs, egg curry and salad.', 'Active', NULL, '2023-10-10 10:19:36', '2023-10-10 10:19:36'),
+(7, 3, 'Duck EGG', '10102023155018652572ba6629a.jpeg', 'Duck EGG Duck EGG Duck EGG Duck EGG Duck EGG', 'They are rich in fats and protein and have slightly larger yolk than the chicken eggs. It is suggested to consume them in breakfast, as they are filled with vitamin B complex compounds, that keeps your energized throughout the day.', 'Active', NULL, '2023-10-10 10:20:18', '2023-10-10 10:20:18'),
+(8, 3, 'Duck Egg Normal', '10102023155040652572d0974f3.jpeg', 'Duck EGG Duck EGG Duck EGG Duck EGG Duck EGG', 'They are rich in fats and protein and have slightly larger yolk than the chicken eggs. It is suggested to consume them in breakfast, as they are filled with vitamin B complex compounds, that keeps your energized throughout the day.', 'Active', NULL, '2023-10-10 10:20:40', '2023-10-10 10:20:40'),
+(9, 3, 'DUCK EGG BETTER', '10102023155120652572f84d4a8.jpeg', 'Duck EGG Duck EGG Duck EGG Duck EGG Duck EGG', 'They are rich in fats and protein and have slightly larger yolk than the chicken eggs. It is suggested to consume them in breakfast, as they are filled with vitamin B complex compounds, that keeps your energized throughout the day.', 'Active', NULL, '2023-10-10 10:21:20', '2023-10-10 10:21:20'),
+(10, 4, 'Turkey EGG', '101020231551586525731eb1d62.jpeg', 'Turkey EGG Turkey EGG Turkey EGG Turkey EGG Turkey', 'They are very similar to duck eggs in size, but have a creamier taste due to thick yolk and egg-white. They are rich in calcium and are good for growing kids.', 'Active', NULL, '2023-10-10 10:21:58', '2023-10-10 10:21:58'),
+(11, 4, 'Turkey EGG Normal', '101020231552346525734225c8f.jpeg', 'Turkey EGG Turkey EGG Turkey EGG Turkey EGG Turkey', 'They are very similar to duck eggs in size, but have a creamier taste due to thick yolk and egg-white. They are rich in calcium and are good for growing kids.', 'Active', NULL, '2023-10-10 10:22:34', '2023-10-10 10:22:34'),
+(12, 4, 'Turkey EGG Better', '10102023155256652573583541f.jpeg', 'Turkey EGG Turkey EGG Turkey EGG Turkey EGG Turkey', 'They are very similar to duck eggs in size, but have a creamier taste due to thick yolk and egg-white. They are rich in calcium and are good for growing kids.', 'Active', NULL, '2023-10-10 10:22:56', '2023-10-10 10:22:56'),
+(13, 5, 'Goose Egg', '1010202315534365257387398d1.png', 'Gooes Egg Gooes Egg Gooes Egg Gooes Egg Gooes Egg', 'They are double the size of chicken eggs and have enriched taste and have a greater content of proteins. It has been proven that a goose egg has 19.97 g. of protein and a chicken egg has 6.23 grams.', 'Active', NULL, '2023-10-10 10:23:43', '2023-10-10 10:23:43'),
+(14, 5, 'Goose Egg Normal', '10102023155414652573a635cd7.png', 'Gooes Egg Gooes Egg Gooes Egg Gooes Egg Gooes Egg', 'They are double the size of chicken eggs and have enriched taste and have a greater content of proteins. It has been proven that a goose egg has 19.97 g. of protein and a chicken egg has 6.23 grams.', 'Active', NULL, '2023-10-10 10:24:14', '2023-10-10 10:24:14'),
+(15, 5, 'Goose Egg Better', '10102023155434652573ba67fb8.png', 'Gooes Egg Gooes Egg Gooes Egg Gooes Egg Gooes Egg', 'They are double the size of chicken eggs and have enriched taste and have a greater content of proteins. It has been proven that a goose egg has 19.97 g. of protein and a chicken egg has 6.23 grams.', 'Active', NULL, '2023-10-10 10:24:34', '2023-10-10 10:24:34'),
+(16, 6, 'Claviar', '10102023155521652573e9da29c.jpeg', 'Claviar Claviar Claviar Claviar Claviar Claviar', 'They are counted among the most exquisite eggs. Belonging to the family of fish eggs, they are from the fish Roe that is salt- cured. They are rich in anti-oxidants and are a treasure of sea minerals.', 'Active', NULL, '2023-10-10 10:25:21', '2023-10-10 10:25:21'),
+(17, 6, 'Claviar Normal', '1010202315555365257409853c8.jpeg', 'Claviar Claviar Claviar Claviar Claviar Claviar', 'They are counted among the most exquisite eggs. Belonging to the family of fish eggs, they are from the fish Roe that is salt- cured. They are rich in anti-oxidants and are a treasure of sea minerals.', 'Active', NULL, '2023-10-10 10:25:53', '2023-10-10 10:25:53'),
+(18, 6, 'Claviar Better', '101020231556136525741d8215e.jpeg', 'Claviar Claviar Claviar Claviar Claviar Claviar', 'They are counted among the most exquisite eggs. Belonging to the family of fish eggs, they are from the fish Roe that is salt- cured. They are rich in anti-oxidants and are a treasure of sea minerals.', 'Active', NULL, '2023-10-10 10:26:13', '2023-10-10 10:26:13');
 
 -- --------------------------------------------------------
 
@@ -859,8 +920,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_type`, `full_name`, `email`, `password`, `otp_sent_on_email`, `email_sent_at`, `email_verified_at`, `is_email_verified`, `reset_password_token`, `reset_password_mail_sent_at`, `ip_address`, `remember_token`, `login_with`, `user_locked`, `user_locked_at`, `wrong_attampt`, `last_login_at`, `job_alert`, `is_online`, `location`, `latitude`, `longitude`, `is_block`, `language_selected`, `self_reference_code`, `use_reference_code`, `status_reference_code_used`, `refresh_token`, `device_type`, `device_token`, `deleted_at`, `created_at`, `updated_at`, `last_update_date_time_online`, `otp_verification_is_restricted`, `stripe_id`, `card_brand`, `card_last_four`, `trial_ends_at`) VALUES
-(4, 'Employee', 'sdfsg', 'abc@yopmail.com', '$2y$10$5QG4ZmlFxSs8B9S/jnWLoeuZ57U2bMkcbbAJ2rhKN18mh2eCrC1.K', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, 0, 'English', NULL, NULL, 0, NULL, NULL, NULL, '2023-10-09 10:03:32', '2023-10-02 11:10:51', '2023-10-09 10:03:32', NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 'Employee', 'asdasf', 'hosttesting@yopmail.com', '$2y$10$JpBtvgGN0xHVEwO/fJ66HOSr0iq8kipMDiLLrMp6wMiv7j8xcdQ/W', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, 0, 'English', NULL, NULL, 0, NULL, NULL, NULL, NULL, '2023-10-02 11:12:33', '2023-10-02 11:12:33', NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'Employee', 'Aman', 'aman@yopmail.com', '$2y$10$Q19FQTpa28/kEonZ2M1XhOPecqAT18uRHTB3ngJ9SN.x0Y9biaKiW', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, 0, 'English', NULL, NULL, 0, NULL, NULL, NULL, NULL, '2023-10-10 11:27:58', '2023-10-10 11:27:58', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -889,7 +949,7 @@ CREATE TABLE `user_addresses` (
 --
 
 INSERT INTO `user_addresses` (`id`, `user_id`, `first_name`, `last_name`, `email`, `phone_number`, `address`, `city`, `state`, `zip_code`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 5, 'Host', 'Testing', 'hosttesting@yopmail.com', '6467023890', 'California Road', 'Stockholm', 'Maine', '04783', NULL, '2023-10-08 03:39:48', '2023-10-08 03:39:48');
+(1, 1, 'Host', 'Testing', 'aman@yopmail.com', '6467023890', 'California Road', 'Stockholm', 'Maine', '04783', NULL, '2023-10-10 11:28:40', '2023-10-10 11:28:40');
 
 --
 -- Indexes for dumped tables
@@ -1104,7 +1164,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `attributes`
 --
 ALTER TABLE `attributes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `billing_shipping_addresses`
@@ -1116,13 +1176,13 @@ ALTER TABLE `billing_shipping_addresses`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `coupons`
 --
 ALTER TABLE `coupons`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1158,7 +1218,7 @@ ALTER TABLE `oauth_personal_access_clients`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `payments`
@@ -1182,25 +1242,25 @@ ALTER TABLE `permission_role`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `product_orders`
 --
 ALTER TABLE `product_orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `product_price_attributes`
 --
 ALTER TABLE `product_price_attributes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -1224,13 +1284,13 @@ ALTER TABLE `subscription_items`
 -- AUTO_INCREMENT for table `sub_categories`
 --
 ALTER TABLE `sub_categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_addresses`

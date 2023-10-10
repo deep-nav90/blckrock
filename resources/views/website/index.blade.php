@@ -150,7 +150,10 @@
                   <div id="{{$category->category_name}}" class="tabcontent">
                      <div class="product-new-filter-block">
                         @if(count($category->topThreeProducts) > 0)
+                        <?php $m = 1;?>
                         @foreach($category->topThreeProducts as $product)
+
+                        @if($m <= 3)
                         <div class="custom-tabs-prdt">
                            <div class="product-thumbnail">
                               <a href="javascript:;">
@@ -186,7 +189,8 @@
                               <a class="custom-btn AddCartAnchorTab" product_details = "{{$product}}" is_added_in_cart="false" product_id="{{$product->id}}" href="javascript:void(0);">Add Cart</a>
                            </div>
                         </div>
-                        
+                        @endif()
+                        <?php $m++; ?>
                         @endforeach()
 
 

@@ -1,0 +1,36 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+    
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+    
+    
+
+    RewriteRule ^css/(.*)$ public/css/$1 [L]
+    RewriteRule ^js/(.*)$ public/js/$1 [L]
+    RewriteRule ^vendor/(.*)$ public/vendor/$1 [L]
+    RewriteRule ^assets/(.*)$ public/assets/$1 [L]
+    RewriteRule ^bar_chart/(.*)$ public/bar_chart/$1 [L]
+    RewriteRule ^Basic-Line-Chart-Plugin-with-jQuery-and-Canvas-linechart-js/(.*)$ public/Basic-Line-Chart-Plugin-with-jQuery-and-Canvas-linechart-js/$1 [L]
+    RewriteRule ^CANVAS_CHART/(.*)$ public/CANVAS_CHART/$1 [L]
+    RewriteRule ^logo/(.*)$ public/logo/$1 [L]
+    RewriteRule ^multiple-select-checkboxes/(.*)$ public/multiple-select-checkboxes/$1 [L]
+    RewriteRule ^raty-master/(.*)$ public/raty-master/$1 [L]
+    RewriteRule ^web-storage/(.*)$ public/web-storage/$1 [L]
+    RewriteRule ^images/(.*)$ public/images/$1 [L]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
