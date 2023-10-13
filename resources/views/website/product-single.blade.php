@@ -25,7 +25,7 @@
             <li><a href="javascript:void(0);">{{$productFind->category->category_name}}</a></li>
             <li class="active">{{$productFind->product_name}}</li>
          </ol>
-         <img class="meat" src="{{url('public/website/images/foodc1.jpg')}}" alt="img">
+         <!-- <img class="meat" src="{{url('public/website/images/foodc1.jpg')}}" alt="img"> -->
       </div>
    </div>
    <!-- banner section start end-->
@@ -68,12 +68,12 @@
                      </div>
                      <div class="card-product-rate">
                         <h5>₹<span class="sales_price single_page_sales_price">{{$productFind->default_sale_price}}</span></h5>
-                        <form>
+                        <!-- <form>
                            <div class="form-group">
                               <input type="checkbox" id="price" checked disabled>
                               <label for="price"></label>
                            </div>
-                        </form>
+                        </form> -->
                      </div>
                   </div>
 

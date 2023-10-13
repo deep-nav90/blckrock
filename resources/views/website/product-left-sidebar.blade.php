@@ -43,7 +43,7 @@ span.relative.inline-flex {
             <li><a href="{{route('index')}}">Home</a></li>
             <li class="active">All Products</li>
          </ol>
-         <img class="meat" src="{{url('public/website/images/title-bottom.png')}}" alt="img">
+         <!-- <img class="meat" src="{{url('public/website/images/title-bottom.png')}}" alt="img"> -->
       </div>
    </div>
    <!-- banner section start end-->
@@ -85,12 +85,14 @@ span.relative.inline-flex {
                      </ul>
                   </div>
                </div>
+               
                <div class="side-bar-strip">
                   <h4>Top Seller</h4>
                   <img src="{{url('public/website/images/side-title.png')}}" alt="img">
 
                   @if(count($topSellers) > 0)
                   @foreach($topSellers as $product)
+                 
                   <div class="side-main-box">
                      @foreach($product->productImages as $productImage)
                      @if($productImage->is_featured_image == 1)
@@ -102,7 +104,7 @@ span.relative.inline-flex {
                      <div class="side-img-content">
                         <h5> <a href="{{route('singleProductDetails',base64_encode($product->id))}}">{{$product->product_name}}</a> </h5>
                         <span class="star_rating" style="--rating:{{$product->average_rating}}"></span>
-                        <h5> <a href="product-single.html">₹{{$product->sale_price}}</a> </h5>
+                        <h5> <a href="javascript:void(0);">₹{{$product->default_product_price}}</a> </h5>
                      </div>
                   </div>
                   @endforeach()
@@ -132,9 +134,9 @@ span.relative.inline-flex {
                      </div>
                      <div class="slider-content">
                         <del>₹{{$mainProduct->default_product_price}}</del>
-                        <h4><a href="product-single.html">NOW ONLY ₹{{$mainProduct->default_sale_price}}</a></h4>
+                        <h4><a href="javascript:void(0);">NOW ONLY ₹{{$mainProduct->default_sale_price}}</a></h4>
                         <div class="post-tag">
-                           <a href="#">{{$mainProduct->subCategory->sub_category_name}} ({{$mainProduct->default_attribute_value}} {{$mainProduct->default_attribute_name}}) </a>
+                           <a href="javascript:void(0);">{{$mainProduct->subCategory->sub_category_name}} ({{$mainProduct->default_attribute_value}} {{$mainProduct->default_attribute_name}}) </a>
                         </div>
                         <span class="star_rating" style="--rating:{{$mainProduct->average_rating}}"></span>
 
@@ -224,7 +226,7 @@ span.relative.inline-flex {
       </div>
    </div>
 
-   <div class="call-now-wrapper float_left">
+   <!-- <div class="call-now-wrapper float_left">
       <div class="container">
          <div class="row">
             <div class="col-lg-6 col-md-12 col-sm-6"></div>
@@ -240,7 +242,7 @@ span.relative.inline-flex {
             </div>
          </div>
       </div>
-   </div>
+   </div> -->
 
    <div class="modal fade" id="lodaerModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="lodaerModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

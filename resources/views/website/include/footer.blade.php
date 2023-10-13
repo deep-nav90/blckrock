@@ -14,7 +14,7 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                <div class="link">
                   <span>Call Now</span>
-                  <h4>+1 800 123 4567</h4>
+                  <h4>+91 828 8800 857</h4>
                   <span>Get Special Email Offers</span>
                   <div class="line">
                      <img src="{{url('public/website/images/4.png')}}" alt="line">

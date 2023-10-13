@@ -30,6 +30,8 @@
    <link rel="stylesheet" type="text/css" href="{{url('public/website/css/responsive.css')}}" />
    <!--favicon-->
    <link rel="shortcut icon" type="image/png" href="{{url('public/website/images/fav-icon.png')}}" />
+   <link rel="stylesheet" type="text/css" href="{{url('public/website/css/custom.css')}}" />
+   
 </head>
 
 <style type="text/css">
@@ -51,7 +53,7 @@
    <div class="login_box_main_wrapper" id="login_height">
       <div class="container">
          <div class="login-logo">
-            <a href="index.html"> <img style="width: 80px; height: 80px;" src="{{url('public/website/images/logo.jpg')}}" alt="logo"> </a>
+            <a href="/"> <img style="width: 200px; " src="{{url('public/webimg/newlogo.png')}}" alt="logo"> </a>
          </div>
          <div class="signin-wrapper">
             <div class="row">
@@ -136,7 +138,7 @@
                </div>
                <div class="col-lg-6 col-md-12 col-12">
                   <div class="login-img">
-                     <img class="img-fluid" src="{{url('public/website/images/product/login.jpg')}}" alt="img">
+                     <img class="img-fluid" src="{{url('public/website/images/product/login.webp')}}" alt="img">
                   </div>
                </div>
             </div>

@@ -1,7 +1,7 @@
 .index1-logo a img {
-    width: 50px;
+    width: 210px;
     object-fit: contain;
-    height: 50px;
+   /* height: 50px; */
 }
 
 button.tablinks span img.category_images_index_page {
@@ -372,6 +372,12 @@ p.attribute_v_n[is_default_show='true'] .pro_price,  p.attribute_v_n[is_default_
     color: unset; 
 }
 
+
+label.error {
+    color: red!important;
+    font-size: 14px;
+    font-weight: 600;
+}
 
 
 

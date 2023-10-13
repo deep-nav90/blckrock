@@ -2,47 +2,35 @@
 @section('title','Food Court')
 
 @section('content')
-
-
-
-   <!-- banner section start start-->
-   <div class="index1-slider-wrapper float_left ptb-100">
-      <div class="container">
-         <div class="slider-caption wow fadeInUp" data-wow-delay="0.1s">
-            <h4>Organic Meat and Sustainable Sea Food for You</h4>
-            <a class="custom-btn" href="{{route('allProducts')}}"> Shop Now </a>
-         </div>
-         <div class="slider-item">
-            <ul>
-               <li class="wow fadeInUp" data-wow-delay="0.1s">
-                  <div class="item-icon">
-                     <img class="image_short" alt="img" src="{{url('public/website/images/banner3.jpg')}}">
+  <!-- banner section start start-->
+  <div class=" float_left ptb-10">
+      <div class="">
+         <!-- 2 -->
+         <div style="width:100%;margin: 40px auto;background:#eee;"><div id="carouselExampleControls" class="carousel slide newcarousal" data-ride="carousel">
+               <div class="carousel-inner">
+                  <div class="carousel-item active">
+                     <img class="d-block w-100"src="{{url('public/webimg/ban4.webp')}}" alt="First slide">
                   </div>
-                  <div class="item-text">
-                     <h4>Free Delivery on orders over £50</h4>
-                     <p>Proin varius malesuada lacinia.</p>
+                  <div class="carousel-item">
+                     <img class="d-block w-100" src="{{url('public/webimg/ban2.webp')}}" alt="Second slide">
                   </div>
-               </li>
-               <li class="wow fadeInUp" data-wow-delay="0.2s">
-                  <div class="item-icon">
-                     <img class="image_short" alt="img" src="{{url('public/website/images/banner4.jpg')}}">
+                  <div class="carousel-item">
+                     <img class="d-block w-100" src="{{url('public/webimg/ban3.webp')}}" alt="Third slide">
                   </div>
-                  <div class="item-text">
-                     <h4>Cut to order by Master Butchers</h4>
-                     <p>Proin varius malesuada lacinia.</p>
-                  </div>
-               </li>
-               <li class="wow fadeInUp" data-wow-delay="0.3s">
-                  <div class="item-icon">
-                     <img class="image_short" alt="img" src="{{url('public/website/images/banner5.jpg')}}">
-                  </div>
-                  <div class="item-text">
-                     <h4>Choose your own Delivery Date</h4>
-                     <p>Proin varius malesuada lacinia.</p>
-                  </div>
-               </li>
-            </ul>
-         </div>
+               </div>
+               <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+               </a>
+               <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+               </a>
+               </div>
+               </div>
+         <!-- end 2 -->
+           
+        
       </div>
    </div>
    <!-- banner section start end-->
@@ -63,20 +51,14 @@
                   <img class="img-fluid" src="{{url('public/website/images/line-yal.png')}}" alt="img">
                </div>
                <div class="div_p">
-                  <p>Nunc elementum purus vel ex iaculis eleifend. Curabitur bibendum odio dui, at placerat
-                     antperer vitae. In hac habitasse platea dictumst. Phasellus nec sodales enim. Mauris malesuada
-                     nulla
-                     hole enim, nec eleifend lacus vulputate ut. Sed eu diam tellus. Sed feugiat, risus ut porta iaculis
-                     mauris metus volutpat metus, vitae egestas nibh neque vulputate libero.
+                  <p>The Black Rooster India brings you the goodness of Kadaknath eggs – low on fat, high on protein, and a cholesterol-friendly choice.The primary aim for us is to reach as many people as we can and make this delectable and healthy poultry available to them. Our passion and devotion to providing a healthier alternative to people & our sense of patriotic pride makes us want our own domestic breed to be the front runner at the global scale.
                   </p>
                   <br>
-                  <p>Nunc elementum purus vel ex iaculis eleifend. Curabitur bibendum odio dui, at placerat
-                     antperer vitae. In hac habitasse platea dictumst. Phasellus nec sodales enim. Mauris malesuada
-                     nulla
-                     hole enim, nec eleifend lacus vulputate ut. Sed eu diam tellus. Sed feugiat, risus ut porta iaculis
-                     mauris metus volutpat metus, vitae egestas nibh neque vulputate libero.
+                  <p>Taking up the mantle of being the biggest provider of the best quality & healthy produce is a big responsibility for us. We believe in breeding the birds ourselves in order to maintain the highest standards of hygiene on our completely organic farm. Our farm size is growing rapidly. We have our own hatchery & a feed processing plant that prepares the feed strictly according to the nutritional requirements of Kadaknath bird.
                   </p>
-                  <a class="custom-btn" href="about-us.html">Read More</a>
+                  <br>
+                  <p>Nothing less than the ‘natural miracle’, this premium breed is a quality product of nature itself. This bird is completely black – Black plumage, black legs, and toenails, beak, tongue, comb, wattles, meat, bones & even dark organs. This breed has a bachelor’s in adaption and a masters in disease resistance. And of course, an honorary in superb flavour and succulence.</p>
+                  <a class="custom-btn" href="#">Read More</a>
                </div>
             </div>
          </div>
@@ -113,9 +95,7 @@
          </div>
       </div>
    </div>
-
-
-   <div class="product-filter-main-wrapper float_left ptb-100">
+   <div class="product-filter-main-wrapper float_left ptb-20">
       <div class="container">
          <div class="heading-title">
             <h4>Our Product's</h4>
@@ -156,17 +136,19 @@
                         @if($m <= 3)
                         <div class="custom-tabs-prdt">
                            <div class="product-thumbnail">
-                              <a href="javascript:;">
+                              
                               @foreach($product->productImages as $productImage)
                               @if($productImage->is_featured_image == 1)
+                              <a href="{{route('singleProductDetails',base64_encode($product->id))}}">
                               <img src="{{$productImage->product_image}}" alt="img">
+                                 </a>
                               @endif()
                               @endforeach()
-                              </a>
+                              
                            </div>
                            <div class="product-body">
                               <h5 class="product-title">
-                                 <a href="product-single.html" title="{{$product->product_name}}">{{$product->product_name}}</a>
+                                 <a href="{{route('singleProductDetails',base64_encode($product->id))}}" title="{{$product->product_name}}">{{$product->product_name}}</a>
                                  <a class="sub_category_name_anchor" href="javascript:void(0);">{{$product->subCategory->sub_category_name}}</a>
                                  <a class="attribute_anchor" href="javascript:void(0);">{{$product->default_attribute_value}} ({{$product->default_attribute_name}})</a>
                               </h5>
@@ -205,11 +187,7 @@
                         </div>
                         @endif()
 
-
-                        
-
-
-                     </div>
+                        </div>
                   </div>
 
                   
@@ -221,7 +199,9 @@
                   </div>
                   @endif()
                </div>
-            </div>
+         </div>
+      </div>
+   </div>
 
    <div class="our-butchery-wrapper float_left">
       <div class="container">
@@ -235,37 +215,28 @@
                   <img class="img-fluid" src="{{url('public/website/images/line-yal.png')}}" alt="img">
                </div>
                <div class="div_p">
-                  <p class="p1">Nunc elementum purus vel ex iaculis eleifend. Curabitur bibendum odio dui, at placerat
-                     antperer vitae. In hac habitasse platea dictumst. Phasellus nec sodales enim. Mauris malesuada
-                     nulla
-                     hole enim, nec eleifend lacus vulputate ut. Sed eu diam tellus. Sed feugiat, risus ut porta iaculis
-                     mauris metus volutpat metus, vitae egestas nibh neque vulputate libero.
+                  <p class="p1">The Black Rooster India brings you the goodness of Kadaknath eggs – low on fat, high on protein, and a cholesterol-friendly choice.The primary aim for us is to reach as many people as we can and make this delectable and healthy poultry available to them. Our passion and devotion to providing a healthier alternative to people & our sense of patriotic pride makes us want our own domestic breed to be the front runner at the global scale.
                   </p>
                   <br>
-                  <p class="p1">Nunc elementum purus vel ex iaculis eleifend. Curabitur bibendum odio dui, at placerat
-                     antperer vitae. In hac habitasse platea dictumst. Phasellus nec sodales enim. Mauris malesuada
-                     nulla
-                     hole enim, nec eleifend lacus vulputate ut. Sed eu diam tellus. Sed feugiat, risus ut porta iaculis
-                     mauris metus volutpat metus, vitae egestas nibh neque vulputate libero.
+                  <p class="p1">Taking up the mantle of being the biggest provider of the best quality & healthy produce is a big responsibility for us. We believe in breeding the birds ourselves in order to maintain the highest standards of hygiene on our completely organic farm. Our farm size is growing rapidly. We have our own hatchery & a feed processing plant that prepares the feed strictly according to the nutritional requirements of Kadaknath bird.
                   </p>
-                  <a class="custom-btn" href="about-us.html">Read More</a>
+                  <a class="custom-btn" href="#">Read More</a>
                </div>
             </div>
             <div class="col-lg-7 col-md-12 col-sm-12">
                <div class="about-img-block">
                   <figure class="img1">
-                     <img class="img-fluid" src="{{url('public/website/images/banner6.jpg')}}" alt="img">
+                     <img class="img-fluid" src="{{url('public/webimg/sideegg.webp')}}" alt="img">
                   </figure>
-                  <figure class="img2">
+                  <!-- <figure class="img2">
                      <img class="img-fluid doubleImg" src="{{url('public/website/images/banner7.jpg')}}" alt="img">
-                  </figure>
+                  </figure> -->
                </div>
             </div>
          </div>
       </div>
    </div>
-
-
+   <!-- 
    <div class="team-client-main-wrapper float_left ptb-100">
       <div class="container">
          <div class="heading-title">
@@ -588,11 +559,11 @@
             </div>
          </div>
       </div>
-   </div>
+   </div> -->
 
 
 
-   <div class="call-now-wrapper float_left">
+   <!-- <div class="call-now-wrapper float_left">
       <div class="container">
          <div class="row">
             <div class="col-lg-6 col-md-12 col-sm-6"></div>
@@ -608,11 +579,11 @@
             </div>
          </div>
       </div>
-   </div>
+   </div> -->
 
 
 
-   <div class="news-blog-wrapper float_left ptb-100">
+   <!-- <div class="news-blog-wrapper float_left ptb-100">
       <div class="container">
          <div class="heading-title">
             <h4>New’s & Blog’s</h4>
@@ -651,7 +622,7 @@
 
          </div>
       </div>
-   </div>
+   </div> -->
 
 
 
@@ -758,7 +729,7 @@
    </div>
 
 
-   <div class="contact_img_background">
+   <!-- <div class="contact_img_background">
       <div class="container">
          <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-12">
@@ -774,7 +745,7 @@
                      <h4>PO Box 16122 Collins Street <br /> West Victoria 8007</h4>
                   </div>
                </div>
-               <!--  -->
+            
                <div class="request-list">
                   <div class="r-list">
                      <i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -783,7 +754,7 @@
                      <h4> 121 King Street, Melbourne <br /> Victoria 3000</h4>
                   </div>
                </div>
-               <!--  -->
+            
                <div class="request-list">
                   <div class="r-list">
                      <i class="fa fa-phone" aria-hidden="true"></i>
@@ -792,7 +763,7 @@
                      <h4> +1 800 123 4567</h4>
                   </div>
                </div>
-               <!--  -->
+            
                <div class="request-list">
                   <div class="r-list">
                      <i class="far fa-envelope"></i>
@@ -801,7 +772,7 @@
                      <h4> info@example.com</h4>
                   </div>
                </div>
-               <!--  -->
+            
 
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-12">
@@ -835,7 +806,7 @@
             </div>
          </div>
       </div>
-   </div>
+   </div> -->
 
 
    <div class="brand-company-wrapper float_left ptb-100">
@@ -865,6 +836,7 @@
          </div>
       </div>
    </div>
+   
 @endsection()
 
 @section('js')
@@ -948,7 +920,16 @@ document.querySelectorAll("[style^=--rating]").forEach(starRating);
       })
 
       // Get the element with id="defaultOpen" and click on it
-      
+     // $('#carouselExampleControls').carousel();
+      $(document).ready(function(){
+         var myCarousel = document.querySelector('#carouselExampleControls')
+               var carousel = new bootstrap.Carousel(myCarousel, {
+               interval: 1500,
+               wrap: true,
+               touch:true,
+               ride:true
+               })
+      })
 </script>
 
 @endsection()

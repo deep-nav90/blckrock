@@ -55,7 +55,7 @@ a.custom-btn.applyCoupon {
     font-weight: 400;
     position: relative;
     overflow: hidden;
-    margin-left: 280px;
+    margin-left: 200px;
     
 }
 
@@ -88,7 +88,7 @@ h6.h6_coupon {
             <li><a href="{{route('index')}}">Home</a></li>
             <li class="active">Shopping Cart</li>
          </ol>
-         <img class="meat" src="{{url('public/website/images/foodc2.jpg')}}" alt="img">
+         <!-- <img class="meat" src="{{url('public/website/images/foodc2.jpg')}}" alt="img"> -->
       </div>
    </div>
    <!-- banner section start end-->
@@ -124,7 +124,7 @@ h6.h6_coupon {
   
            <div class="container" style="background-color:white">
              <h6 class="h6_coupon">{{$text_show}}</h6> 
-             <p style="font-size: 12px;" class="wordwrap">
+             <!-- <p style="font-size: 12px;" class="wordwrap">
                <span class="text_view">{{$show_description}}</span>
 
                @if(strlen($coupon->meta_description) > $limit)
@@ -132,7 +132,7 @@ h6.h6_coupon {
                
                @endif()
 
-             </p>
+             </p> -->
              
            </div>
            <div class="container">
@@ -141,7 +141,7 @@ h6.h6_coupon {
                   $expireDate = Carbon\Carbon::parse($coupon->to_date)->format('d-M-Y');
              ?>
              <p style="font-size: 12px;" class="expire">Expires: {{$expireDate}}</p>
-             <a class="custom-btn applyCoupon" coupon_id="{{$coupon->id}}" coupon_details="{{$coupon}}" href="javascript:void(0);">Apply</a>
+             <a class="custom-btn applyCoupon " coupon_id="{{$coupon->id}}" coupon_details="{{$coupon}}" href="javascript:void(0);">Apply</a>
            </div>
          </div>
 
