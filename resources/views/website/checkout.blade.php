@@ -3,6 +3,16 @@
 
 @section('content')
 
+<style>
+   span.do_you_have_an_account {
+    color: #111;
+}
+
+span.signupNow {
+    color: #ef5350;
+}
+</style>
+
 <?php 
 $is_login = "false";
 if(Auth::guard('web')->user()){
@@ -21,7 +31,7 @@ if(Auth::guard('web')->user()){
             <li><a href="{{route('index')}}">Home</a></li>
             <li class="active">Checkout</li>
          </ol>
-         <img class="meat" src="{{url('public/website/images/foodc1.jpg')}}" alt="img">
+         <!-- <img class="meat" src="{{url('public/website/images/foodc1.jpg')}}" alt="img"> -->
       </div>
    </div>
    <!-- banner section start end-->
@@ -38,7 +48,7 @@ if(Auth::guard('web')->user()){
                         <h2 class="accordion-header" id="headingFour">
                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
                               data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                              Checkout Method
+                              Signup / Login Account
                            </button>
                         </h2>
                         <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour"
@@ -46,6 +56,11 @@ if(Auth::guard('web')->user()){
                            <div class="accordion-body">
                               <div class="row">
                                  <div class="col-md-6 col-12">
+
+                                 <div class="login-img">
+                                    <img class="img-fluid" src="{{url('/public/website/images/product/login.webp')}}" alt="img">
+                                 </div>
+
                                     <!-- <div class="new_customer">
                                        <h3>New Customer</h3>
                                        <form>
@@ -85,8 +100,13 @@ if(Auth::guard('web')->user()){
                                                 <!-- <a href="#">Forgot Password!</a> -->
                                              </div>
                                           </div>
+
+                                          
+                                          
                                           <button class="submit_btn">Login Now</button>
                                        </form>
+
+                                       <p class="signupCheckout mt-4"><span class="do_you_have_an_account">Do have an account?</span> <a  href="{{route('signUp')}}"><span class="signupNow">Sign Up now!</span></a></p>
                                        
                                     </div>
                                  </div>

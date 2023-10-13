@@ -56,10 +56,10 @@
                         <ul class="contact-details">
                            <li class="hidden-xs"><a href="#">Family Butchers Est. 1901</a>
                            </li>
-                           <li><a href="#"><i class="fa fa-phone"></i> <b>+1 800 123 4567</b> (Open Right Now)</a>
+                           <li><a href="#"><i class="fa fa-phone"></i> <b>+91 8288800857</b> (Open Right Now)</a>
                            </li>
                            <li class="hidden-xs"><a href="#"><i
-                                    class="fa fa-paper-plane-o"></i>&nbsp;&nbsp;hello@example.com</a>
+                                    class="fa fa-paper-plane-o"></i>&nbsp;&nbsp;info@example.com</a>
                            </li>
                         </ul>
                      </div>
@@ -89,7 +89,7 @@
                      <div class="col-lg-12 col-md-12">
                         <div class="index1-logo">
                            <a href="{{route('index')}}">
-                              <img src="{{url('public/website/images/logo.jpg')}}" alt="logo">
+                              <img src="{{url('public/webimg/newlogo.png')}}" alt="logo">
                            </a>
                         </div>
                         <nav class="navbar navbar-expand-lg">

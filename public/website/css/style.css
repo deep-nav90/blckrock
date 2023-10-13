@@ -4123,7 +4123,7 @@ header css
 
 .login_box_main_wrapper {
   float: left;
-  background-image: url("../images/product/loginback.jpg");
+  background-image: url("../images/product/loginback.webp");
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
@@ -10628,7 +10628,10 @@ ul {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 100px 0px;
+  /* padding: 10px 0px; */
+}
+.ptb-20{
+  padding: 35px 0px;
 }
 
 .home-delivery-sec-wrapper .heading-title {
@@ -10747,7 +10750,7 @@ ul {
   background-size: cover;
   background-repeat: no-repeat;
   padding-top: 80px;
-  padding-bottom: 60px;
+  padding-bottom: 1px;
 }
 
 .our-butchery-wrapper .about-text {
@@ -11061,7 +11064,7 @@ ul {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 100px 0px;
+  padding: 10px 0px;
 }
 
 .countdown-wrapper .counter-main-wrapper {
