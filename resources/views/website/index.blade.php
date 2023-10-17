@@ -165,7 +165,7 @@
                               <p class="product-text">
                                  <span class="text_view">{{$show_description}}</span>
                                  @if(strlen($product->meta_description) > $limit)
-                                 <span class="read_more" less_read="{{$show_description}}" full_read = "{{$product->meta_description}}">Read More</span>
+                                 <!-- <span class="read_more" less_read="{{$show_description}}" full_read = "{{$product->meta_description}}">Read More</span> -->
                                  @endif()
                               </p>
                               <a class="custom-btn AddCartAnchorTab" product_details = "{{$product}}" is_added_in_cart="false" product_id="{{$product->id}}" href="javascript:void(0);">Add Cart</a>

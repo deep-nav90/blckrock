@@ -30,7 +30,6 @@
    </div>
    <!-- banner section start end-->
 
-   <input type="hidden" class="selected_price_show" id="selected_price_show" value="{{$productFind->default_sale_price}}">
 
 
    <div class="product-client-say-wrapper float_left ptb-100">
@@ -61,58 +60,30 @@
                   <span class="from_only">From only ₹{{$productFind->default_sale_price}}</span>
                   <h5 class="h5_class_from_only">{{$productFind->default_product_price}}₹</h5>
                   <span class="star_rating" style="--rating:{{$productFind->average_rating}}"></span>
-                  <div class="card-product">
+
+                  
+                  @foreach($productFind->productPriceAttributes as $product_price_attribute)
+
+                  <div class="card-product attributePrice" data-id="{{$product_price_attribute->id}}">
                      <div class="card-product-text">
                         <h5><span class="multiplyBy">1</span> x {{$productFind->product_name}}</h5>
-                        <span>{{$productFind->subCategory->sub_category_name}}</span>
+                        <span class="sub_cat">{{$productFind->subCategory->sub_category_name}}</span>
+                        <span class="attributePrice">({{$product_price_attribute->attribute_value}} {{$product_price_attribute->attribute->attribute_name}})</span>
                      </div>
                      <div class="card-product-rate">
-                        <h5>₹<span class="sales_price single_page_sales_price">{{$productFind->default_sale_price}}</span></h5>
-                        <!-- <form>
+                        <h5>₹<span class="sales_price single_page_sales_price">{{$product_price_attribute->sale_price}}</span></h5>
+                        <form>
                            <div class="form-group">
-                              <input type="checkbox" id="price" checked disabled>
-                              <label for="price"></label>
+                              <input type="checkbox" class="checkboxForAttribute" data-all="{{$product_price_attribute}}" id="price_{{$product_price_attribute->id}}"  @if($product_price_attribute->is_default_show == 1) checked @endif()>
+                              <label for="price_{{$product_price_attribute->id}}"></label>
                            </div>
-                        </form> -->
+                        </form>
                      </div>
                   </div>
+                  
+                  @endforeach()
 
-
-
-                  <div class="main_attribute_price">
-                    <h6>Attribute / Prices</h6>
-
-                    
-                    <div class="select_attr_price">
-                      @foreach($productFind->productPriceAttributes as $product_price_attribute)
-
-                        @if($product_price_attribute->is_default_show == 1)
-
-                        <p class="attribute_v_n active" name_attr="{{$product_price_attribute->attribute->attribute_name}}" val_attr="{{$product_price_attribute->attribute_value}}"  sale_attr="{{$product_price_attribute->sale_price}}" price_attr="{{$product_price_attribute->product_price}}" data-id="{{$product_price_attribute->id}}" is_default_show="true">
-                          <span class="pp_at_name">
-                            {{$product_price_attribute->attribute_value}} {{$product_price_attribute->attribute->attribute_name}}
-                          </span> : 
-                          <span class="ss_price">{{$product_price_attribute->sale_price}}₹</span>
-                          <span class="pro_price">{{$product_price_attribute->product_price}}₹</span>
-                        </p>
-
-                        @else
-
-                        <p class="attribute_v_n" name_attr="{{$product_price_attribute->attribute->attribute_name}}" val_attr="{{$product_price_attribute->attribute_value}}" sale_attr="{{$product_price_attribute->sale_price}}" price_attr="{{$product_price_attribute->product_price}}" is_default_show="false" data-id="{{$product_price_attribute->id}}">
-                          <span class="pp_at_name">
-                            {{$product_price_attribute->attribute_value}} {{$product_price_attribute->attribute->attribute_name}}
-                          </span> : 
-                          <span class="ss_price">{{$product_price_attribute->sale_price}}₹</span>
-                          <span class="pro_price">{{$product_price_attribute->product_price}}₹</span>
-                        </p>
-
-
-                        @endif()
-                      @endforeach()
-                    </div>
-
-                    
-                  </div>
+                
                   
                </div>
                <div class="value-produt">
@@ -302,20 +273,8 @@
       
       $(document).ready(function() {
 
-         
-
-         
-
-
-         
-        let sale_price = $("#selected_price_show").val();
-        console.log(sale_price);
-         
-         $(".sales_price").text(parseFloat(sale_price).toFixed(2));
 
          $('.minus').click(function () {
-
-            sale_price = $("#selected_price_show").val();
 
             var $input = $(this).parent().find('input');
             var count = parseInt($input.val()) - 1;
@@ -323,19 +282,25 @@
             $input.val(count);
             $input.change();
 
-            $(".multiplyBy").text(count);
+            $(".checkboxForAttribute:checked").parents(".attributePrice").find(".multiplyBy").text(count);
+
+            let productPriceAttribute = JSON.parse($(".checkboxForAttribute:checked").attr("data-all"));
 
             
 
-            let calculatePrice = parseFloat(sale_price) * parseFloat(count);
+            let calculatePrice = parseFloat(productPriceAttribute.sale_price) * parseFloat(count);
             calculatePrice = calculatePrice.toFixed(2);
 
-            $(".sales_price").text(calculatePrice);
+
+            $(".checkboxForAttribute:checked").parents(".attributePrice").find(".single_page_sales_price").text(calculatePrice);
+            
             return false;
          });
          $('.plus').click(function () {
 
-            sale_price = $("#selected_price_show").val();
+
+            
+    
 
             var $input = $(this).parent().find('input');
             var count = parseInt($input.val()) + 1;
@@ -344,17 +309,18 @@
             $input.val(count);
             $input.change();
 
-            console.log($input.val())
-
-            $(".multiplyBy").text($input.val());
-
-
             
 
-            let calculatePrice = parseFloat(sale_price) * parseFloat($input.val());
+            
+            $(".checkboxForAttribute:checked").parents(".attributePrice").find(".multiplyBy").text(count);
+            let productPriceAttribute = JSON.parse($(".checkboxForAttribute:checked").attr("data-all"));
+
+            let calculatePrice = parseFloat(productPriceAttribute.sale_price) * parseFloat($input.val());
             calculatePrice = calculatePrice.toFixed(2);
 
-            $(".sales_price").text(calculatePrice);
+           // console.log("hgghhgh", $(".checkboxForAttribute:checked").parents(".attributePrice").find(".single_page_sales_price"))
+            $(".checkboxForAttribute:checked").parents(".attributePrice").find(".single_page_sales_price").text(calculatePrice);
+  
 
             return false;
          });
@@ -366,18 +332,21 @@
             $("#lodaerModal").modal("show");
             let product_detail = JSON.parse($(this).attr('product_detail'));
             let selected_quantity = $("#quantity").val();
-            let calculate_price = $(".sales_price").text();
-            let selected_product_price_attribute = $(".attribute_v_n.active").data("id");
+            let calculate_price = $(".checkboxForAttribute:checked").parents(".attributePrice").find(".sales_price").text();
+
+            let productPriceAttribute = JSON.parse($(".checkboxForAttribute:checked").attr("data-all"));
+
+            let selected_product_price_attribute = productPriceAttribute.id;
             //alert(selected_product_price_attribute)
 
             product_detail.selected_quantity = selected_quantity;
             product_detail.calculate_price = calculate_price;
             product_detail.selected_product_price_attribute = selected_product_price_attribute;
-            product_detail.selected_attribute_value = $(".attribute_v_n.active").attr('val_attr');
-            product_detail.selected_attribute_name = $(".attribute_v_n.active").attr('name_attr');
-            product_detail.selected_sale_price = $(".attribute_v_n.active").attr('sale_attr');
+            product_detail.selected_attribute_value = productPriceAttribute.attribute_value;
+            product_detail.selected_attribute_name = productPriceAttribute.attribute.attribute_name;
+            product_detail.selected_sale_price = productPriceAttribute.sale_price;
             //alert(product_detail.selected_sale_price)
-            product_detail.selected_product_price = $(".attribute_v_n.active").attr('price_attr');
+            product_detail.selected_product_price = productPriceAttribute.product_price;
 
 
 
@@ -475,35 +444,67 @@
 
    <script type="text/javascript">
      $(document).ready(function(){
-      $(document).on("click",".attribute_v_n",function(){
-        $(".attribute_v_n").removeClass("active").attr("is_default_show","false");
-        $(this).addClass('active').attr("is_default_show","true");
+
+      $(document).on("click",".checkboxForAttribute",function(){
+         $(".checkboxForAttribute:checked").prop("checked",false);
+         $(this).prop("checked", true);
+
+         let productPriceAttribute = JSON.parse($(this).attr("data-all"));
+         $(".attr_price_name").text(productPriceAttribute.attribute_value + " " + productPriceAttribute.attribute.attribute_name);
+         $(".h5_class_from_only").text(productPriceAttribute.sale_price + "₹");
 
 
-        let ss_price = $(".attribute_v_n.active").find(".ss_price").text();
-        ss_price = ss_price.replace("₹","");
-
-        let pro_price = $(".attribute_v_n.active").find(".pro_price").text();
-        pro_price = pro_price.replace("₹","");
-
-        let pp_at_name = $(".attribute_v_n.active").find('.pp_at_name').text();
+         let quantity = $(".checkboxForAttribute:checked").parents(".attributePrice").find(".multiplyBy").text();
+         $("#quantity").val(quantity);
+         
+      });
 
 
-        $(".attr_price_name").text(pp_at_name);
-        //alert(pp_at_name)
-        $(".sales_price").text(parseFloat(ss_price).toFixed(2));
-        $(".h5_class_from_only").text(ss_price + "₹");
-        $(".from_only").text(ss_price + "₹");
+      //Default Selected ProductPriceAttribute
 
-        $("#selected_price_show").val(parseFloat(ss_price).toFixed(2));
+         let productInCart = JSON.parse(localStorage.getItem('productInCart'));
+
+         let currentProductID = "{{$product_find_id}}";
+         let findInArray = [];
+         if(currentProductID){
+            findInArray = productInCart.filter(function(item) {
+            
+               return item["id"] == currentProductID;
+            });
+         }else{
+            findInArray = productInCart;
+         }
+         
+
+         if(findInArray.length > 0){
+            let productDetail = findInArray[0];
+
+            let selected_product_price_attribute = productDetail.selected_product_price_attribute;
 
 
-        let multiplyBy = parseInt($("#quantity").val()) * parseFloat($(".selected_price_show").val());
+            $(".checkboxForAttribute[id='price_"+selected_product_price_attribute+"']").parents(".attributePrice").find(".multiplyBy").text(productDetail.selected_quantity);
 
-        $(".sales_price").text(parseFloat(multiplyBy).toFixed(2));
+            $(".checkboxForAttribute[id='price_"+selected_product_price_attribute+"']").parents(".attributePrice").find(".sales_price").text(productDetail.calculate_price);
 
+            $(".checkboxForAttribute[id='price_"+selected_product_price_attribute+"']").trigger("click");
 
-      })
+            
+            
+            $("#addToCartBtn").text("View Cart").attr("link_add","added");
+            //console.log("kjhbhfhg", productDetail)
+
+            // $(".multiplyBy").text(productDetail.selected_quantity);
+            // $(".single_page_sales_price").text(parseFloat(productDetail.calculate_price).toFixed(2));
+            
+            // $("#quantity").val(productDetail.selected_quantity);
+            // $("#addToCartBtn").text("View Cart").attr("link_add","added");
+
+            // let selected_product_price_attribute_id = productDetail.selected_product_price_attribute;
+            // $(".attribute_v_n.active").removeClass("active").attr("is_default_show","false");
+            // $(".attribute_v_n[data-id='"+selected_product_price_attribute_id+"']").trigger("click");
+            //console.log("sss", productDetail)
+         }
+      
      })
    </script>
 
