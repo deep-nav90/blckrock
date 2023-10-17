@@ -154,7 +154,7 @@ span.relative.inline-flex {
                         <p class="product-text">
                             <span class="text_view" style="font-size: 12px;">{{$show_description}}</span>
                             @if(strlen($mainProduct->meta_description) > $limit)
-                            <span class="read_more" less_read="{{$show_description}}" full_read = "{{$mainProduct->meta_description}}">Read More</span>
+                            <!-- <span class="read_more" less_read="{{$show_description}}" full_read = "{{$mainProduct->meta_description}}">Read More</span> -->
                             
                             @endif()
 
@@ -412,7 +412,7 @@ document.querySelectorAll("[style^=--rating]").forEach(starRating);
                    if(result[k].meta_description.length > limit){
 
                       show_description = result[k].meta_description.substr(0, limit) + " ...";
-                      readMoreShow += `<span class="read_more" less_read="`+show_description+`" full_read = "`+result[k].meta_description+`">Read More</span>`;
+                      //readMoreShow += `<span class="read_more" less_read="`+show_description+`" full_read = "`+result[k].meta_description+`">Read More</span>`;
                     }else{
                       show_description =result[k].meta_description;
                     }

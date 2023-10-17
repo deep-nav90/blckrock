@@ -226,31 +226,31 @@
 
             if(productInCart){
                $(".haveCartItem").removeAttr("hidden");
-               let currentProductID = "{{$product_find_id}}";
-               let findInArray = [];
-               if(currentProductID){
-                  findInArray = productInCart.filter(function(item) {
+               // let currentProductID = "{{$product_find_id}}";
+               // let findInArray = [];
+               // if(currentProductID){
+               //    findInArray = productInCart.filter(function(item) {
                   
-                    return item["id"] == currentProductID;
-                  });
-               }else{
-                  findInArray = productInCart;
-               }
+               //      return item["id"] == currentProductID;
+               //    });
+               // }else{
+               //    findInArray = productInCart;
+               // }
                
 
-               if(findInArray.length > 0){
-                  let productDetail = findInArray[0];
-                  $(".multiplyBy").text(productDetail.selected_quantity);
-                  $(".single_page_sales_price").text(parseFloat(productDetail.calculate_price).toFixed(2));
+               // if(findInArray.length > 0){
+               //    let productDetail = findInArray[0];
+               //    $(".multiplyBy").text(productDetail.selected_quantity);
+               //    $(".single_page_sales_price").text(parseFloat(productDetail.calculate_price).toFixed(2));
                   
-                  $("#quantity").val(productDetail.selected_quantity);
-                  $("#addToCartBtn").text("View Cart").attr("link_add","added");
+               //    $("#quantity").val(productDetail.selected_quantity);
+               //    $("#addToCartBtn").text("View Cart").attr("link_add","added");
 
-                  let selected_product_price_attribute_id = productDetail.selected_product_price_attribute;
-                  $(".attribute_v_n.active").removeClass("active").attr("is_default_show","false");
-                  $(".attribute_v_n[data-id='"+selected_product_price_attribute_id+"']").trigger("click");
-                  //console.log("sss", productDetail)
-               }
+               //    let selected_product_price_attribute_id = productDetail.selected_product_price_attribute;
+               //    $(".attribute_v_n.active").removeClass("active").attr("is_default_show","false");
+               //    $(".attribute_v_n[data-id='"+selected_product_price_attribute_id+"']").trigger("click");
+               //    //console.log("sss", productDetail)
+               // }
 
 
                let htmlCartUL = '';
