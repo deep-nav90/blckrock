@@ -165,7 +165,7 @@
    </script>
    <!-- tabs -->
 
-   @yield('js')
+   
 
    <script type="text/javascript">
       $(document).ready(function(){
@@ -443,8 +443,27 @@
          
       }
    </script>
+
+   <script>
+      $(document).ready(function(){
+         $(document).on("change",".categorySelect",function(){
+            let categoryID = $(this).val();
+            localStorage.setItem("category_id_selected", categoryID);
+         })
+
+
+         let category_id_selected = localStorage.getItem('category_id_selected');
+         if(category_id_selected){
+            $(".optionCategorySelect").removeAttr("selected");
+
+            $(".optionCategorySelect[data-id='"+category_id_selected+"']").attr("selected","selected");
+         }
+      })
+      
+   </script>
    
 
+   @yield('js')
    
 </body>
 
