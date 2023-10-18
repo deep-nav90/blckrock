@@ -52,16 +52,16 @@ span.relative.inline-flex {
       <div class="container">
          <div class="row">
             <div class="col-lg-4 col-md-4 col-12">
-               <div class="side-bar-strip">
+               <!-- <div class="side-bar-strip">
                   <h4>Search</h4>
                   <img src="{{url('public/website/images/side-title.png')}}" alt="img">
                   <div class="input-search">
                      <input type="text" id="searchbar" placeholder="Search Here">
                      <button id="searchBtn"><i class="fa fa-search"></i></button>
                   </div>
-               </div>
+               </div> -->
                <!--  -->
-               <div class="side-bar-strip">
+               <div class="side-bar-strip" style="display:none;">
                   <h4>Categories</h4>
                   <img src="{{url('public/website/images/side-title.png')}}" alt="img">
                   <div class="side-accordian">
@@ -86,7 +86,7 @@ span.relative.inline-flex {
                   </div>
                </div>
                
-               <div class="side-bar-strip">
+               <div class="side-bar-strip" style="display:none;">
                   <h4>Top Seller</h4>
                   <img src="{{url('public/website/images/side-title.png')}}" alt="img">
 
@@ -119,10 +119,10 @@ span.relative.inline-flex {
 
 
             </div>
-            <div class="col-lg-8 col-md-8 col-12">
+            <div class="col-lg-12 col-md-12 col-12">
                <div class="blog-slider-wrapper float_left">
                   @if($mainProduct)
-                  <div class="blog-cat">
+                  <div class="blog-cat" style="display:none;">
                      <div class="blog-post-slider">
                         <div class="owl-carousel owl-theme">
                            @foreach($mainProduct->productImages as $productImage)
@@ -171,6 +171,16 @@ span.relative.inline-flex {
                   </div>
                   @endif()
                   <!--  -->
+                  
+
+                  <div class="side-bar-strip">
+                     <h4>Search</h4>
+                     <img src="{{url('public/website/images/side-title.png')}}" alt="img">
+                     <div class="input-search">
+                        <input type="text" id="searchbar" placeholder="Search Here">
+                        <button id="searchBtn"><i class="fa fa-search"></i></button>
+                     </div>
+                  </div>
 
                   <div class="product-single-wrapper appendProduct">
 
@@ -304,9 +314,13 @@ document.querySelectorAll("[style^=--rating]").forEach(starRating);
 
       $("#searchBtn").on("click",function(){
 
-          let category_id = $(".category_all_products.active").attr("id");
-          category_id = category_id.replace("cat_","");
-          category_id = btoa(category_id);
+         //  let category_id = $(".category_all_products.active").attr("id");
+         //  category_id = category_id.replace("cat_","");
+         //  category_id = btoa(category_id);
+
+         let category_id = $(".categorySelect").val();
+         category_id = btoa(category_id);
+
           let searchbar = $("#searchbar").val().trim();
 
           
@@ -326,16 +340,32 @@ document.querySelectorAll("[style^=--rating]").forEach(starRating);
 
       setTimeout(function(){
         let category_id = $(".category_all_products").eq(0).attr("id");
-        document.getElementById(category_id).click();
+        let selected_category_id = $(".categorySelect").val();
+
+        if(selected_category_id){
+            //alert(selected_category_id)
+            document.getElementById("cat_"+selected_category_id).click();
+         }else{
+            document.getElementById(category_id).click();
+         }
+
+        
       },500)
+      $(document).on("change",".categorySelect",function(){
+         let cat_id = $(this).val();
+         document.getElementById("cat_"+cat_id).click();
+      })
 
                 
 
       $(document).on("click",".category_all_products",function(){
          $(".category_all_products").removeClass('active');
          $(this).addClass('active');
-         let category_id = $(this).attr("id");
-         category_id = category_id.replace("cat_","");
+         // let category_id = $(this).attr("id");
+         // category_id = category_id.replace("cat_","");
+         // category_id = btoa(category_id);
+
+         let category_id = $(".categorySelect").val();
          category_id = btoa(category_id);
 
          let searchbar = $("#searchbar").val().trim();
@@ -357,9 +387,13 @@ document.querySelectorAll("[style^=--rating]").forEach(starRating);
 
         let url = $(this).attr("href");
         if(url){
-          let category_id = $(".category_all_products.active").attr("id");
-          category_id = category_id.replace("cat_","");
-          category_id = btoa(category_id);
+         //  let category_id = $(".category_all_products.active").attr("id");
+         //  category_id = category_id.replace("cat_","");
+         //  category_id = btoa(category_id);
+
+         let category_id = $(".categorySelect").val();
+         category_id = btoa(category_id);
+         
           let searchbar = $("#searchbar").val().trim();
 
           let data = {

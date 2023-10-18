@@ -26,8 +26,27 @@ class IndexController extends Controller
 {
     public function index(Request $request){
 
+        $all_product = Product::whereDeletedAt(null)->select("*", DB::raw('(SELECT attribute_name FROM attributes WHERE attributes.id = (SELECT attribute_id FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND is_default_show = 1 AND product_price_attributes.deleted_at IS NULL)) AS default_attribute_name'), DB::raw('(SELECT product_price FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND product_price_attributes.deleted_at IS NULL) AS default_product_price'), DB::raw('(SELECT sale_price FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND deleted_at IS NULL) AS default_sale_price'), DB::raw('(SELECT attribute_value FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND deleted_at IS NULL) AS default_attribute_value'),DB::raw('(SELECT category_name FROM categories WHERE categories.id = products.category_id) AS cat_name'),DB::raw('(SELECT sub_category_name FROM sub_categories WHERE sub_categories.id = products.sub_category_id) AS sub_cat_name'))->where(DB::raw('(SELECT status FROM sub_categories WHERE sub_categories.id = products.sub_category_id)'), '=', 'Active')->where(DB::raw('(SELECT status FROM categories WHERE categories.id = products.category_id)'), '=', 'Active')->with('productImages','subCategory','productPriceAttributes')->orderBy('average_rating','desc')->limit(4)->get();
+
+        $createObjectCategory = (object)[
+            "id" => 0,
+            "category_name" => "All Product",
+            "category_image" => url('public/website/images/blogi2.jpeg'),
+            "meta_keyword" => "Show All roduct",
+            "meta_description" => "Show All Products",
+            "status" => "Active",
+            "topThreeProducts" => $all_product
+        ];
+
         $categories = Category::whereDeletedAt(null)->whereStatus('Active')->with('topThreeProducts')->get();
-        //$categories = [];
+
+
+        $categories = [$createObjectCategory, ...$categories];
+
+
+        
+       //$categories = [];
+
     	return view('website.index',compact('categories'));
     }
 
@@ -51,6 +70,18 @@ class IndexController extends Controller
             $topSellers = Product::select("*", DB::raw('(SELECT attribute_name FROM attributes WHERE attributes.id = (SELECT attribute_id FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND is_default_show = 1 AND product_price_attributes.deleted_at IS NULL)) AS default_attribute_name'), DB::raw('(SELECT product_price FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND deleted_at IS NULL) AS default_product_price'), DB::raw('(SELECT sale_price FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND deleted_at IS NULL) AS default_sale_price'), DB::raw('(SELECT attribute_value FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND deleted_at IS NULL) AS default_attribute_value'),DB::raw('(SELECT category_name FROM categories WHERE categories.id = products.category_id) AS cat_name'),DB::raw('(SELECT sub_category_name FROM sub_categories WHERE sub_categories.id = products.sub_category_id) AS sub_cat_name'))->whereDeletedAt(null)->whereStatus('Active')->where(DB::raw('(SELECT status FROM sub_categories WHERE sub_categories.id = products.sub_category_id)'), '=', 'Active')->where(DB::raw('(SELECT status FROM categories WHERE categories.id = products.category_id)'), '=', 'Active')->with('category','subCategory','productPriceAttributes','productImages')->orderBy('average_rating','desc')->limit(10)->get();
 
             $categories = Category::whereDeletedAt(null)->whereStatus('Active')->get();
+
+            $createObjectCategory = (object)[
+                "id" => 0,
+                "category_name" => "All Product",
+                "category_image" => url('public/website/images/blogi2.jpeg'),
+                "meta_keyword" => "Show All roduct",
+                "meta_description" => "Show All Products",
+                "status" => "Active"
+            ];
+
+            $categories = [$createObjectCategory, ...$categories];
+
             return view('website.product-left-sidebar',compact('categories','mainProduct','topSellers'));
         }
 
@@ -59,21 +90,29 @@ class IndexController extends Controller
             $category_id = base64_decode($data['category_id']);
             $products = Product::select("*", DB::raw('(SELECT attribute_name FROM attributes WHERE attributes.id = (SELECT attribute_id FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND is_default_show = 1 AND product_price_attributes.deleted_at IS NULL)) AS default_attribute_name'), DB::raw('(SELECT product_price FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND deleted_at IS NULL) AS default_product_price'), DB::raw('(SELECT sale_price FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND deleted_at IS NULL) AS default_sale_price'), DB::raw('(SELECT attribute_value FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND deleted_at IS NULL) AS default_attribute_value'),DB::raw('(SELECT category_name FROM categories WHERE categories.id = products.category_id) AS cat_name'),DB::raw('(SELECT sub_category_name FROM sub_categories WHERE sub_categories.id = products.sub_category_id) AS sub_cat_name'))
                 ->where(function($query) use ($data, $category_id){
-                    $query->whereCategoryId($category_id);
+
+                    if((int)$category_id != 0){
+                        $query->whereCategoryId($category_id);
+                    }
+                    
                     $query->whereStatus('Active');
                     $query->where(DB::raw('(SELECT status FROM sub_categories WHERE sub_categories.id = products.sub_category_id)'), '=', 'Active');
                     $query->where(DB::raw('(SELECT status FROM categories WHERE categories.id = products.category_id)'), '=', 'Active');
                     $query->where(DB::raw('(SELECT category_name FROM categories WHERE categories.id = products.category_id)'), 'Like', '%'. $data['search_text'] . '%');
                     $query->whereDeletedAt(null);
                 })->orWhere(function($query) use ($data,$category_id){
-                    $query->whereCategoryId($category_id);
+                    if((int)$category_id != 0){
+                        $query->whereCategoryId($category_id);
+                    }
                     $query->whereStatus('Active');
                     $query->where(DB::raw('(SELECT status FROM sub_categories WHERE sub_categories.id = products.sub_category_id)'), '=', 'Active');
                     $query->where(DB::raw('(SELECT status FROM categories WHERE categories.id = products.category_id)'), '=', 'Active');
                     $query->where(DB::raw('(SELECT sub_category_name FROM sub_categories WHERE sub_categories.id = products.sub_category_id)'), 'Like', '%'. $data['search_text'] . '%');
                     $query->whereDeletedAt(null);
                 })->orWhere(function($query) use ($data,$category_id){
-                    $query->whereCategoryId($category_id);
+                    if((int)$category_id != 0){
+                        $query->whereCategoryId($category_id);
+                    }
                     $query->whereStatus('Active');
                     $query->where(DB::raw('(SELECT status FROM sub_categories WHERE sub_categories.id = products.sub_category_id)'), '=', 'Active');
                     $query->where(DB::raw('(SELECT status FROM categories WHERE categories.id = products.category_id)'), '=', 'Active');

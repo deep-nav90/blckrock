@@ -19,13 +19,15 @@ span.no_record_found {
     font-weight: bold;
 }
 
-.no_product_found .no_record_found {
-    position: absolute;
-    text-align: center;
-    right: 0;
-    left: 0;
-    margin-top: 16%;
-    margin-left: 20%;
+.custom-tbs-content.float_left .no_product_found .no_record_found {
+    position: unset;
+    justify-content: center;
+    margin: 10px 0px 20px 0px;
+    display: flex;
+    /* right: 0; */
+    /* left: 0; */
+    /* margin-top: 31%; */
+    /* margin-left: 20%; */
     font-size: 30px;
 }
 
@@ -380,6 +382,21 @@ label.error {
 }
 
 
+.product-filter-main-wrapper .custom-tbs-content .tabcontent .product-new-filter-block .custom-tabs-prdt {
+    width: 24%;
+}
+
+select.form-select.categorySelect {
+    width: 250px!important;
+    margin: -8px 0px 0px 0px!important;
+}
+
+
+
+.product-single-wrapper .custom-tabs-prdt {
+    
+    width: 24%!important;
+}
 
 
 

@@ -36,6 +36,10 @@
    <link rel="shortcut icon" type="image/png" href="{{url('public/website/images/fav-icon.png')}}" />
 </head>
 
+<?php 
+   $dropdownCats = App\Models\Category::whereDeletedAt(null)->whereStatus('Active')->get();
+?>
+
 <body>
    <div id="preloader">
       <div id="status">
@@ -94,6 +98,15 @@
                         </div>
                         <nav class="navbar navbar-expand-lg">
                            <ul class="navbar-nav">
+                           <li class="nav-item categorySelectLi">
+                              <select class="form-select categorySelect" aria-label="category">
+                                 <option class="optionCategorySelect" value="0" data-id="" selected>Select Category</option>
+                                 @foreach($dropdownCats as $dropdownCat)
+                                 <option class="optionCategorySelect" data-id="{{$dropdownCat->id}}" value="{{$dropdownCat->id}}">{{$dropdownCat->category_name}}</option>
+                                 @endforeach()
+                              </select>
+                           </li>
+
                               <li class="nav-item  menu-click5 ps-rel">
                                  <a class="nav-link" href="{{route('index')}}">Home</a>
                                  

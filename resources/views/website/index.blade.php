@@ -103,7 +103,7 @@
             <img class="img-fluid" src="{{url('public/website/images/line-yal.png')}}" alt="img">
          </div>
          <div class="row">
-            <div class="col-lg-3 col-md-3 col-12">
+            <div class="col-lg-3 col-md-3 col-12" style="display:none;">
                <div class="tab">
 
                   @if(count($categories) > 0)
@@ -123,7 +123,7 @@
 
                </div>
             </div>
-            <div class="col-lg-9 col-md-9 col-12">
+            <div class="col-lg-12 col-md-12 col-12">
                <div class="custom-tbs-content float_left">
                   @if(count($categories) > 0)
                   @foreach($categories as $category)
@@ -133,7 +133,7 @@
                         <?php $m = 1;?>
                         @foreach($category->topThreeProducts as $product)
 
-                        @if($m <= 3)
+                        @if($m <= 4)
                         <div class="custom-tabs-prdt">
                            <div class="product-thumbnail">
                               
@@ -914,9 +914,22 @@ document.querySelectorAll("[style^=--rating]").forEach(starRating);
 
 
       $(document).ready(function(){
-
+         let selected_category_id = $(".categorySelect").val();
          let id = $(".category_opencity").eq(0).attr("id");
-         document.getElementById(id).click();
+         if(selected_category_id){
+            //alert(selected_category_id)
+            document.getElementById("category_"+selected_category_id).click();
+         }else{
+            document.getElementById(id).click();
+         }
+
+
+         $(".categorySelect").on("change",function(){
+            let cat_id = $(this).val();
+            document.getElementById("category_"+cat_id).click();
+         })
+         
+         
       })
 
       // Get the element with id="defaultOpen" and click on it
