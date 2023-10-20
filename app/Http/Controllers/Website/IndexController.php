@@ -216,6 +216,11 @@ class IndexController extends Controller
 
     public function loginWeb(Request $request){
         if($request->isMethod('GET')){
+
+            $checkLogin = Auth::guard('web')->user();
+            if($checkLogin){
+                return redirect(route('index'));
+            }
             return view('website.login');
         }
 
@@ -476,5 +481,183 @@ class IndexController extends Controller
 
 
 
+    }
+
+    public function accountDetails(Request $request){
+        $checkLogin = Auth::guard('web')->user();
+
+        if($checkLogin == ""){
+            return redirect(route('loginWeb'));
+        }
+
+        return view('website.account-details',compact('checkLogin'));
+
+        
+    }
+
+    public function updateAccount(Request $request){
+        $checkLogin = Auth::guard('web')->user();
+
+        if($checkLogin == ""){
+            return ['status' => 'sessionExpired','message' => "Your Session has been expired. Please login again."];
+        }
+
+        $data = $request->all();
+
+        $updateUser = User::whereId($checkLogin->id)->update(['full_name' => $data['full_name']]);
+        
+        $findUserAddress = UserAddress::whereId($checkLogin->id)->first();
+        $findUserAddress->fill($data);
+        $findUserAddress->update();
+
+        return ['status' => 'true','message' => "Your Account has been updated successfully."];
+    }
+
+    public function changePasswordUser(Request $request){
+        $checkLogin = Auth::guard('web')->user();
+
+        if($checkLogin == ""){
+            return ['status' => 'sessionExpired','message' => "Your Session has been expired. Please login again."];
+        }
+
+        $data = $request->all();
+
+
+        if(Hash::check($data['old_password'], $checkLogin->password)){
+            $hashMake = Hash::make($data['new_password']);
+            $updateUser = User::whereId($checkLogin->id)->update(['password' => $hashMake]);
+            //after change then logout user
+            Auth::guard('web')->logout();
+            return ['status' => 'true','message' => "Your Password has been updated successfully."];
+        }else{
+            return ['status' => 'false', 'message' => 'Old Password is wrong.'];
+        }
+        
+    }
+
+    public function myOrders(Request $request){
+        $checkLogin = Auth::guard('web')->user();
+
+        if($checkLogin == ""){
+            return ['status' => 'sessionExpired','message' => "Your Session has been expired. Please login again."];
+        }
+
+            $column = "id";
+            $asc_desc = $request->get("order")[0]['dir'];
+
+            if($asc_desc == "asc"){
+                $asc_desc = "desc";
+            }else{
+                $asc_desc = "asc";
+            }
+
+            $order = $request->get("order")[0]['column'];
+            if($order == 0){
+                $column = "id";
+            }elseif($order == 1){
+                $column = "unique_order_id";
+            }elseif($order == 2){
+                $column = "total_amount";
+            }elseif($order == 3){
+                $column = "discount_amount_for_coupon";
+            }elseif($order == 4){
+                $column = "pay_amount";
+            }elseif($order == 5){
+                $column = "payment_type";
+            }elseif($order == 6){
+                $column = "payment_received";
+            }elseif($order == 7){
+                $column = "order_status";
+            }elseif($order == 8){
+                $column = "created_at";
+            }
+        
+
+            $data = Order::select("*", DB::raw('(SELECT full_name from users WHERE users.id = orders.user_id) AS user_name'), DB::raw('CASE WHEN payment_received = 1 THEN "Yes" ELSE "No" END as payment_received'), DB::raw('CONCAT("₹",total_amount) AS total_amount'), DB::raw('CONCAT("₹",discount_amount_for_coupon) AS discount_amount_for_coupon'), DB::raw('CONCAT("₹",pay_amount) AS pay_amount'), DB::raw('DATE_FORMAT(created_at, "%m-%d-%Y") AS date_show'))
+            ->whereDeletedAt(null)
+            ->whereUserId($checkLogin->id)
+            ->orderBy($column,$asc_desc);
+            $total = $data->get()->count();
+
+            if(!empty($request->get("search")["value"])){
+                $search = $request->get("search")["value"];
+            }else{
+
+                $search = $request->search_txt;
+            }
+            $filter = $total;
+
+
+            if($search){
+                $data  = $data->where(function($query) use($search){
+                			$query->orWhere('unique_order_id', 'Like', '%'. $search . '%');
+                            $query->orWhere(DB::raw('(SELECT full_name from users WHERE users.id = orders.user_id)'), 'Like', '%'. $search . '%');
+                            $query->orWhere(DB::raw('CONCAT("₹",total_amount)'), 'Like', '%'. $search . '%');
+                            $query->orWhere(DB::raw('CONCAT("₹",discount_amount_for_coupon)'), 'Like', '%'. $search . '%');
+                            $query->orWhere(DB::raw('CONCAT("₹",pay_amount)'), 'Like', '%'. $search . '%');
+                            
+                            $query->orWhere('payment_type', 'Like', '%'. $search . '%');
+
+                            $query->orWhere(DB::raw('CASE WHEN payment_received = 1 THEN "Yes" ELSE "No" END'), 'Like', '%'. $search . '%');
+                            
+
+                            $query->orWhere('order_status', 'Like', '%'. $search . '%');
+
+                            $query->orWhere(DB::raw('DATE_FORMAT(created_at, "%m-%d-%Y")'), 'Like', '%'. $search . '%');
+                        });
+
+                $filter = $data->get()->count();
+
+            }
+
+            $data = $data->offset($request->start);
+            $data = $data->take($request->length);
+            $data = $data->get();
+
+
+            $start_from = $request->start;
+            if($start_from == 0){
+                $start_from  = 1;
+            }
+            if($start_from % 10 == 0){
+                $start_from = $start_from + 1;
+            }
+
+
+            foreach ($data as $k => $row) {
+
+                $btn ="";
+
+                
+
+
+                
+                $btn .= '<a class="action-button openOrderDetailsModel" style="cursor:pointer;" title="View" data-id="'.$row->id.'" href="javascript:void(0);"><i class="text-info fa fa-eye"></i></a>';
+                   
+
+              
+
+                
+
+
+                
+
+                $row->action = $btn;
+
+                $row->DT_RowIndex = $start_from++;
+
+
+
+            }
+
+
+            $return_data = [
+                    "data" => $data,
+                    "draw" => (int)$request->draw,
+                    "recordsTotal" => $total,
+                    "recordsFiltered" => $filter,
+                    "input" => $request->all()
+            ];
+            return response()->json($return_data);
     }
 }

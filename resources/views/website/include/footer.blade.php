@@ -461,6 +461,23 @@
       })
       
    </script>
+
+   <script>
+      $(document).ready(function(){
+         $(document).on("click",".clickOnDropDownNavBar",function(){
+            let clickON = $(this).attr("id");
+            localStorage.setItem("clickOnDropDownNavBar",clickON);
+            
+
+            if(clickON == "myAccount" || clickON == "myOrders" || clickON == "changePassword"){
+               window.location.href = "{{route('accountDetails')}}";
+            }
+         });
+
+
+         
+      })
+   </script>
    
 
    @yield('js')
