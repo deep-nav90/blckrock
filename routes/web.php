@@ -205,7 +205,17 @@ Route::match(['GET','POST'],'loginWeb',[IndexController::class,'loginWeb'])->nam
 Route::get('logout',[IndexController::class,'logout'])->name('logout');
 
 
+
+
+
+//AFTER LOGIN ROUTES
 Route::post('place-order',[IndexController::class,'placeOrder'])->name('placeOrder');
+Route::get('account-details',[IndexController::class,'accountDetails'])->name('accountDetails');
+Route::post('updateAccount',[IndexController::class,'updateAccount'])->name('updateAccount');
+Route::post('changePasswordUser',[IndexController::class,'changePasswordUser'])->name('changePasswordUser');
+Route::post('myOrders',[IndexController::class,'myOrders'])->name('myOrders');
+
+
 
 
 

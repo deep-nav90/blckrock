@@ -34,6 +34,10 @@
    <link rel="stylesheet" type="text/css" href="{{url('public/website/css/custom.css')}}" />
    <!--favicon-->
    <link rel="shortcut icon" type="image/png" href="{{url('public/website/images/fav-icon.png')}}" />
+
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+
+
 </head>
 
 <?php 
@@ -69,12 +73,40 @@
                      </div>
                      <div class="col-md-3 col-sm-3 col-xs-6">
                         @if(Auth::guard('web')->user())
+                        
+
+                        <div class="dropdown">
+
                         <ul class="social-list">
-                           <li>
-                              <a href="javascript:void(0);" id="logoutBtn"><i class="fa fa-user" aria-hidden="true"></i>
-                                 Logout</a>
-                           </li>
+
+
+                        <li>
+                           <div class="dropdown">
+                              <a class="dropdown-toggle" href="javascript:void(0);" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                              <i class="fa fa-user" aria-hidden="true"></i>
+                              {{Auth::guard('web')->user()->userAddress->first_name}} {{Auth::guard('web')->user()->userAddress->last_name}}
+                              </a>
+
+                              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                 
+                                 <li><a class="dropdown-item clickOnDropDownNavBar" href="javascript:void(0);" id="myAccount">My Account</a></li>
+                                 <li><a class="dropdown-item clickOnDropDownNavBar"  href="javascript:void(0);" id="myOrders">My Orders</a></li>
+                                 <li><a class="dropdown-item clickOnDropDownNavBar"  href="javascript:void(0);" id="myNotifications">Notifications</a></li>
+                                 <li><a class="dropdown-item clickOnDropDownNavBar"  href="javascript:void(0);" id="navChangePassword">Change Password</a></li>
+                                 <li><a class="dropdown-item clickOnDropDownNavBar" href="javascript:void(0);" id="logoutBtn">Logout</a></li>
+                              </ul>
+                           </div>
+                        </li>
+
+
+                          
+                           
                         </ul>
+                        
+                           
+                        </div>
+
+                        
                         @else
                         <ul class="social-list">
                            <li>
