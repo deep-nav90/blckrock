@@ -37,7 +37,7 @@ span.relative.inline-flex {
       <div class="container">
          <div class="inner-caption">
             <h4>All Products</h4>
-            <img src="{{url('public/website/images/title.png')}}" alt="img">
+            <!-- <img src="{{url('public/webimg/tibreadtle.png')}}" alt="img"> -->
          </div>
          <ol class="breadcrumb sicon">
             <li><a href="{{route('index')}}">Home</a></li>

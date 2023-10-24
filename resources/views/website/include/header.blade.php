@@ -84,7 +84,7 @@
                            <div class="dropdown">
                               <a class="dropdown-toggle" href="javascript:void(0);" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                               <i class="fa fa-user" aria-hidden="true"></i>
-                              {{Auth::guard('web')->user()->userAddress->first_name}} {{Auth::guard('web')->user()->userAddress->last_name}}
+                              {{Auth::guard('web')->user()->full_name}} 
                               </a>
 
                               <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -130,14 +130,14 @@
                         </div>
                         <nav class="navbar navbar-expand-lg">
                            <ul class="navbar-nav">
-                           <li class="nav-item categorySelectLi">
+                           <!-- <li class="nav-item categorySelectLi">
                               <select class="form-select categorySelect" aria-label="category">
                                  <option class="optionCategorySelect" value="0" data-id="" selected>Select Category</option>
                                  @foreach($dropdownCats as $dropdownCat)
                                  <option class="optionCategorySelect" data-id="{{$dropdownCat->id}}" value="{{$dropdownCat->id}}">{{$dropdownCat->category_name}}</option>
                                  @endforeach()
                               </select>
-                           </li>
+                           </li> -->
 
                               <li class="nav-item  menu-click5 ps-rel">
                                  <a class="nav-link" href="{{route('index')}}">Home</a>
@@ -192,6 +192,18 @@
                                     <li><a href="product-single.html"> Product Single</a></li>
                                     <li><a href="checkout.html"> Checkout</a></li>
                                  </ul> -->
+                              </li>
+                              <li class="nav-item menu-click3 ps-rel">
+                                 <a class="nav-link" >Our Product <span>
+                                    <i class="fas fa-chevron-down"></i>
+                                       </span></a>
+                                 <ul class="dropdown-items menu-open3">
+                                 @foreach($dropdownCats as $dropdownCat)
+                                 <li><a data-id="{{$dropdownCat->id}}" href="javascrip:void(0)">{{$dropdownCat->category_name}}</a></li>
+                                 <!-- <option class="optionCategorySelect" data-id="{{$dropdownCat->id}}" value="{{$dropdownCat->id}}">{{$dropdownCat->category_name}}</option> -->
+                                 @endforeach()
+                                    
+                                 </ul>
                               </li>
                               <li class="nav-item menu-click ps-rel">
                                  <a class="nav-link" href="javascript:;">Blog

@@ -288,7 +288,8 @@ overflow: auto;
 }
 
 .inner-slider-wrapper {
-    background-image : url('../images/banner2.jpg')!important;
+    background-image : url('../../webimg/bread.jpg')!important;
+    background-size: contain !important;
 }
 
 img.meat {
@@ -300,6 +301,10 @@ img.meat {
 .product-single-wrapper {
      justify-content: unset; 
 }
+h4.font-italic.mb-4.heading-color{
+    color: #fdbd3e !important;
+}
+    
 
 
 
@@ -396,6 +401,14 @@ select.form-select.categorySelect {
 .product-single-wrapper .custom-tabs-prdt {
     
     width: 24%!important;
+}
+h4.font-italic.mb-4.heading-color{
+    color: #fdbd3e !important;
+}
+.btn-web {
+    color: #fff;
+    background-color: #fdbd3e;
+    border-color: #fdbd3e;
 }
 
 

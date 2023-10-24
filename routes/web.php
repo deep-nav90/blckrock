@@ -30,7 +30,9 @@ use App\Http\Controllers\Website\IndexController;
 |
 */
 
-
+Route::get('/my-account',function(){
+  return view('website.my-account');
+})->name('adminLogin');
 
 Route::get('admin/login',function(){
     return view('auth.login');
