@@ -450,7 +450,7 @@ document.querySelectorAll("[style^=--rating]").forEach(starRating);
                    //console.log(result[k].product_images)
                    for(let p=0; p<result[k].product_images.length; p++){
                       if(result[k].product_images[p].is_featured_image == 1){
-                         imgShow = `<a href="javascript:void(0);">
+                         imgShow = `<a href="`+detailProductUrl+`">
                             <img src="`+result[k].product_images[p].product_image+`" alt="img">
                          </a>`;
                       }
