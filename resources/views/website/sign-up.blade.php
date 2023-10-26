@@ -83,13 +83,18 @@
                            <input type="checkbox" id="box1" name="box1" value="box1">
                            <label for="box1"> Yes, I understand and agree to the Terms &amp; Conditions.</label>
                         </div>
-
-                        <div class="login-btn-sec remove-social">
+                        <div class="login-btn-sec">
                            <button class="sub-btn" id="submitBtn" href="javascript:;">Sign Up</button>
+                        </div>
+
+                        <!-- <div class="login-btn-sec remove-social">
+                           
                            
                            <p>Do have an account? <a href="{{route('loginWeb')}}">Sign In now!</a></p>
-                        </div>
+                        </div> -->
                      </form>
+
+                     <p class="do_have_an_account">Do have an account? <a href="{{route('loginWeb')}}">Sign In now!</a></p>
                   </div>
                </div>
                <div class="col-lg-6 col-md-6 col-12">
@@ -110,6 +115,15 @@
      
   </div>
 </div>
+
+<div class="modal fade" id="lodaerModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="lodaerModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+     
+      <img src="{{url('/public/loading-buffering.gif')}}" style="width: 50px; height:50px;">
+     
+  </div>
+</div>
+
 
 
    <!-- Side Panel -->

@@ -48,7 +48,7 @@ span.relative.inline-flex {
    </div>
    <!-- banner section start end-->
 
-   <div class="inner-page-main-wrapper float_left ptb-100">
+   <div class="inner-page-main-wrapper float_left">
       <div class="container">
          <div class="row">
             <div class="col-lg-4 col-md-4 col-12">
@@ -120,6 +120,15 @@ span.relative.inline-flex {
 
             </div>
             <div class="col-lg-12 col-md-12 col-12">
+
+                  <div class="side-bar-strip customdesignsearch">
+                     
+                     <div class="input-search">
+                        <input type="text" id="searchbar" placeholder="Search Here">
+                        <button id="searchBtn"><i class="fa fa-search"></i></button>
+                     </div>
+                  </div>
+
                <div class="blog-slider-wrapper float_left">
                   @if($mainProduct)
                   <div class="blog-cat" style="display:none;">
@@ -173,14 +182,7 @@ span.relative.inline-flex {
                   <!--  -->
                   
 
-                  <div class="side-bar-strip">
-                     <h4>Search</h4>
-                     <img src="{{url('public/website/images/side-title.png')}}" alt="img">
-                     <div class="input-search">
-                        <input type="text" id="searchbar" placeholder="Search Here">
-                        <button id="searchBtn"><i class="fa fa-search"></i></button>
-                     </div>
-                  </div>
+                  
 
                   <div class="product-single-wrapper appendProduct">
 
@@ -318,7 +320,7 @@ document.querySelectorAll("[style^=--rating]").forEach(starRating);
          //  category_id = category_id.replace("cat_","");
          //  category_id = btoa(category_id);
 
-         let category_id = $(".categorySelect").val();
+         let category_id = localStorage.getItem('category_id_selected');
          category_id = btoa(category_id);
 
           let searchbar = $("#searchbar").val().trim();
@@ -340,7 +342,7 @@ document.querySelectorAll("[style^=--rating]").forEach(starRating);
 
       setTimeout(function(){
         let category_id = $(".category_all_products").eq(0).attr("id");
-        let selected_category_id = $(".categorySelect").val();
+        let selected_category_id = localStorage.getItem('category_id_selected');
 
         if(selected_category_id){
             //alert(selected_category_id)
@@ -350,14 +352,8 @@ document.querySelectorAll("[style^=--rating]").forEach(starRating);
          }
 
         
-      },500)
-      $(document).on("change",".categorySelect",function(){
-         let cat_id = $(this).val();
-         document.getElementById("cat_"+cat_id).click();
-      })
-
-                
-
+      },500);
+          
       $(document).on("click",".category_all_products",function(){
          $(".category_all_products").removeClass('active');
          $(this).addClass('active');
@@ -365,7 +361,7 @@ document.querySelectorAll("[style^=--rating]").forEach(starRating);
          // category_id = category_id.replace("cat_","");
          // category_id = btoa(category_id);
 
-         let category_id = $(".categorySelect").val();
+         let category_id = localStorage.getItem('category_id_selected');
          category_id = btoa(category_id);
 
          let searchbar = $("#searchbar").val().trim();
@@ -391,7 +387,7 @@ document.querySelectorAll("[style^=--rating]").forEach(starRating);
          //  category_id = category_id.replace("cat_","");
          //  category_id = btoa(category_id);
 
-         let category_id = $(".categorySelect").val();
+         let category_id = localStorage.getItem('category_id_selected');
          category_id = btoa(category_id);
          
           let searchbar = $("#searchbar").val().trim();
@@ -471,7 +467,7 @@ document.querySelectorAll("[style^=--rating]").forEach(starRating);
 
                             <a class="sub_category_name_anchor" href="javascript:void(0);">`+result[k].sub_category.sub_category_name+`</a>
 
-                            <a class="attribute_anchor" href="javascript:void(0);">`+result[k].default_attribute_name+`: `+result[k].default_attribute_value+`</a>
+                            <a class="attribute_anchor" href="javascript:void(0);">`+result[k].default_attribute_value+` (`+result[k].default_attribute_name+`)</a>
                          </h5>
                          <span class="star_rating" style="--rating:`+result[k].average_rating+`"></span>
 

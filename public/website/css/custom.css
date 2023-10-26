@@ -37,7 +37,7 @@ p.product-text {
 
 
 .custom-tabs-prdt {
-    height: 498px;
+    height: 525px;
     overflow: auto;
 }
 
@@ -410,6 +410,110 @@ h4.font-italic.mb-4.heading-color{
     background-color: #fdbd3e;
     border-color: #fdbd3e;
 }
+
+
+p.do_have_an_account {
+    position: absolute;
+    display: flex;
+    justify-content: left;
+    flex-wrap: nowrap;
+    margin: 65px 0px 0px 0px;
+    color: #111130;
+}
+
+
+p.do_have_an_account a {
+    color: #ef5350;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+
+.login_box_main_wrapper .signin-wrapper .left-side form .forgot {
+    font-weight: 600!important;
+}
+
+li .active_cat {
+    background-color: #ccccccdf;
+}
+
+.product-single-wrapper.appendProduct .custom-tabs-prdt {
+    margin-right: 10px;
+}
+
+.inner-page-main-wrapper .side-bar-strip .input-search button {
+    padding: 12px 30px!important;
+}
+
+.inner-page-main-wrapper .side-bar-strip.customdesignsearch {
+    overflow: unset;
+    max-height: unset;
+    width: 500px;
+    float: right;
+    padding: unset;
+    margin-right:22px;
+}
+
+div#categoryList_filter {
+    float: right;
+    display: flex;
+}
+
+.dataTables_wrapper .form-control {
+    padding: 8px 10px;
+}
+
+.dataTables_paginate {
+    display: block;
+    width: auto;
+    margin: -10px auto 10px;
+    background-color: #ffffff;
+    /* border: 1px solid #e9edf2; */
+    padding: 12px 5px;
+    border-radius: 0.25rem;
+}
+
+li.paginate_button.previous {
+    background-color: transparent;
+    padding: 5px 9px;
+    position: relative;
+    /* top: -5px; */
+    color: #343d49;
+    font-size: 0;
+    background-image: url('../../images/left-arrow.png')!important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+}
+
+li.paginate_button.current {
+    padding: 4px 12px;
+    background-color: #000000;
+    margin-left: 5px;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+li.paginate_button.next {
+    background-color: transparent;
+    padding: 5px 9px;
+    position: relative;
+    /* top: -5px; */
+    color: #ffffff;
+    font-size: 0;
+    background-image: url('../../images/right-arrow.png')!important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+}
+
+
+
+
 
 
 

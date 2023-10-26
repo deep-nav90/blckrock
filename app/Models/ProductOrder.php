@@ -13,6 +13,7 @@ class ProductOrder extends Model
 
     protected $fillable = [
         'order_id',
+        'product_id',
         'payment_id',
         'product_price',
         'sale_price',
@@ -24,5 +25,9 @@ class ProductOrder extends Model
         'product_meta_keyord',
         'calculated_amount'
     ];
+
+    public function product(){
+        return $this->belongsTo(Product::class)->with('productImages');
+    }
 
 }

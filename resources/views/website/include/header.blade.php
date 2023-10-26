@@ -67,7 +67,7 @@
                            <li><a href="#"><i class="fa fa-phone"></i> <b>+91 8288800857</b> (Open Right Now)</a>
                            </li>
                            <li class="hidden-xs"><a href="#"><i
-                                    class="fa fa-paper-plane-o"></i>&nbsp;&nbsp;info@example.com</a>
+                                    class="fa fa-paper-plane-o"></i>&nbsp;&nbsp;info@blackrooster.com</a>
                            </li>
                         </ul>
                      </div>
@@ -144,7 +144,7 @@
                                  
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="javascript:void(0);">About</a>
+                                 <a class="nav-link" href="{{route('aboutUS')}}">About Us</a>
                               </li>
 
                               <!-- <li class="nav-item menu-click4 ps-rel">
@@ -198,14 +198,28 @@
                                     <i class="fas fa-chevron-down"></i>
                                        </span></a>
                                  <ul class="dropdown-items menu-open3">
+
+                                 <li class="categorySelectLi active_cat" data-id="0">
+                                    <a data-id="0" href="javascript:void(0);">
+                                       All
+                                    </a>
+                                 </li>
+
                                  @foreach($dropdownCats as $dropdownCat)
-                                 <li><a data-id="{{$dropdownCat->id}}" href="javascrip:void(0)">{{$dropdownCat->category_name}}</a></li>
+
+                                 
+                                 
+                                 <li class="categorySelectLi" data-id="{{$dropdownCat->id}}">
+                                    <a data-id="{{$dropdownCat->id}}" href="javascript:void(0);">
+                                       {{$dropdownCat->category_name}}
+                                    </a>
+                                 </li>
                                  <!-- <option class="optionCategorySelect" data-id="{{$dropdownCat->id}}" value="{{$dropdownCat->id}}">{{$dropdownCat->category_name}}</option> -->
                                  @endforeach()
                                     
                                  </ul>
                               </li>
-                              <li class="nav-item menu-click ps-rel">
+                              <!-- <li class="nav-item menu-click ps-rel">
                                  <a class="nav-link" href="javascript:;">Blog
                                     <span><i class="fas fa-chevron-down"></i></span>
                                  </a>
@@ -232,7 +246,7 @@
                               </li>
                               <li class="nav-item">
                                  <a class="nav-link" href="javascript:void(0);">Store</a>
-                              </li>
+                              </li> -->
 
                               <li class="nav-item menu-click1 ps-rel">
                                  <a class="nav-link" href="javascript:;"><i class="far fa-dot-circle haveCartItem" hidden>&nbsp;</i>Cart &nbsp;<i class="fa fa-shopping-cart"
@@ -326,7 +340,7 @@
                      <a href="{{route('index')}}">Home</a>
                      
                   </li>
-                  <li><a href="javascript:void(0);">about</a></li>
+                  <li><a href="{{route('aboutUS')}}">About Us</a></li>
 
                   <li class="has-sub">
                      <a href="{{route('allProducts')}}">Shop</a>
@@ -338,16 +352,16 @@
                         <li><a href="checkout.html">Checkout</a></li>
                      </ul> -->
                   </li>
-                  <li class="has-sub">
+                  <!-- <li class="has-sub">
                      <a href="javascript:void(0);">Blog</a>
-                    <!--  <ul>
+                     <ul>
                         <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
                         <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
                         <li><a href="blog-single-left-sidebar.html">Blog Single Left Sidebar</a></li>
                         <li><a href="blog-single-right-sidebar.html">Blog Single Right Sidebar</a></li>
-                     </ul> -->
-                  </li>
-                  <li class="border-none"><a href="javascript:void(0);">Store</a></li>
+                     </ul>
+                  </li> -->
+                  <!-- <li class="border-none"><a href="javascript:void(0);">Store</a></li> -->
                </ul>
             </div>
          </div>

@@ -37,7 +37,7 @@ class Order extends Model
     }
 
     public function productOrders(){
-    	return $this->hasMany(ProductOrder::class);
+    	return $this->hasMany(ProductOrder::class)->with('product');
     }
 
     public function BillingShippingAddress(){

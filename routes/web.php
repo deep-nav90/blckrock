@@ -205,6 +205,7 @@ Route::post('login-on-checkout-page',[IndexController::class,'loginOnCheckoutPag
 Route::match(['GET','POST'],'signup',[IndexController::class,'signUp'])->name('signUp');
 Route::match(['GET','POST'],'loginWeb',[IndexController::class,'loginWeb'])->name('loginWeb');
 Route::get('logout',[IndexController::class,'logout'])->name('logout');
+Route::get('about-us',[IndexController::class,'aboutUS'])->name('aboutUS');
 
 
 
