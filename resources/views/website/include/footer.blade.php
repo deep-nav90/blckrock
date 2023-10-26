@@ -470,7 +470,10 @@
             }
          });
 
-
+         $(".shopClick").on("click",function(){
+            localStorage.setItem("category_id_selected", "0");
+            window.location.href = "{{route('allProducts')}}";
+         })
          
       })
    </script>

@@ -164,7 +164,7 @@
             @foreach($categoryWithAllProducts->allProductsMatchCategoryId as $product)
             <div class="custom-tabs-prdt">
                <div class="product-thumbnail">
-                  <a href="javascript:;">
+                  <a href="{{route('singleProductDetails',base64_encode($product->id))}}">
                      @foreach($product->productImages as $productImage)
                         @if($productImage->is_featured_image == 1)
                            <img src="{{$productImage->product_image}}" alt="img">
@@ -184,7 +184,7 @@
                   <span class="star_rating" style="--rating:{{$product->average_rating}}"></span>
                   <span class="product-price">{{$product->default_sale_price}}₹ <span>{{$product->default_product_price}}₹</span> </span>
                   <?php 
-                     $limit = 70;
+                     $limit = 100;
                      if(strlen($product->meta_description) > $limit){
                         $show_description = substr($product->meta_description, 0, $limit) . " ...";
                      }else{
@@ -193,10 +193,10 @@
                    ?>
                   <p class="product-text">
                      <span class="text_view">{{$show_description}}</span>
-                     @if(strlen($product->meta_description) > $limit)
+                     <!-- @if(strlen($product->meta_description) > $limit)
                      <span class="read_more" less_read="{{$show_description}}" full_read = "{{$product->meta_description}}">Read More</span>
                      
-                     @endif()
+                     @endif() -->
 
                      
 

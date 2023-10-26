@@ -180,18 +180,9 @@
                                  </ul>
                               </li> -->
 
-                              <li class="nav-item menu-click3 ps-rel">
-                                 <a class="nav-link" href="{{route('allProducts')}}">Shop <span>
-                                    <!-- <i
-                                          class="fas fa-chevron-down"></i> -->
-                                       </span></a>
-                                <!--  <ul class="dropdown-items menu-open3">
-                                    <li><a href="product.html">Product</a></li>
-                                    <li><a href="product-left-sidebar.html">Product Left Sidebar</a></li>
-                                    <li><a href="product-right-sidebar.html">Product Right Sidebar</a></li>
-                                    <li><a href="product-single.html"> Product Single</a></li>
-                                    <li><a href="checkout.html"> Checkout</a></li>
-                                 </ul> -->
+                              <li class="nav-item">
+                                 <a class="nav-link shopClick" href="javascript:void(0);">Shop</a>
+                                
                               </li>
                               <li class="nav-item menu-click3 ps-rel">
                                  <a class="nav-link" >Our Product <span>
