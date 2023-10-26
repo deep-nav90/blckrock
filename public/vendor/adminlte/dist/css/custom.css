@@ -924,7 +924,7 @@ a.paginate_button.next {
     top: -5px;
     color: #ffffff;
     font-size: 0;
-    background-image: url(http://server3.rvtechnologies.in/which-vocation/Amrik-which-vocation-admin/public/images/right-arrow.png);
+    background-image: url('../../../../images/right-arrow.png');
     background-repeat: no-repeat;
     background-position: center;
     background-color: transparent;
@@ -946,7 +946,7 @@ a.paginate_button.previous {
     top: -5px;
     color: #343d49;
     font-size: 0;
-    background-image: url(http://server3.rvtechnologies.in/which-vocation/Amrik-which-vocation-admin/public/images/left-arrow.png);
+    background-image: url('../../../../images/left-arrow.png');
     background-repeat: no-repeat;
     background-position: center;
     background-color: transparent;

@@ -26,7 +26,7 @@ class IndexController extends Controller
 {
     public function index(Request $request){
 
-        $all_product = Product::whereDeletedAt(null)->select("*", DB::raw('(SELECT attribute_name FROM attributes WHERE attributes.id = (SELECT attribute_id FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND is_default_show = 1 AND product_price_attributes.deleted_at IS NULL)) AS default_attribute_name'), DB::raw('(SELECT product_price FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND product_price_attributes.deleted_at IS NULL) AS default_product_price'), DB::raw('(SELECT sale_price FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND deleted_at IS NULL) AS default_sale_price'), DB::raw('(SELECT attribute_value FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND deleted_at IS NULL) AS default_attribute_value'),DB::raw('(SELECT category_name FROM categories WHERE categories.id = products.category_id) AS cat_name'),DB::raw('(SELECT sub_category_name FROM sub_categories WHERE sub_categories.id = products.sub_category_id) AS sub_cat_name'))->where(DB::raw('(SELECT status FROM sub_categories WHERE sub_categories.id = products.sub_category_id)'), '=', 'Active')->where(DB::raw('(SELECT status FROM categories WHERE categories.id = products.category_id)'), '=', 'Active')->with('productImages','subCategory','productPriceAttributes')->orderBy('average_rating','desc')->limit(4)->get();
+        $all_product = Product::whereDeletedAt(null)->select("*", DB::raw('(SELECT attribute_name FROM attributes WHERE attributes.id = (SELECT attribute_id FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND is_default_show = 1 AND product_price_attributes.deleted_at IS NULL)) AS default_attribute_name'), DB::raw('(SELECT product_price FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND product_price_attributes.deleted_at IS NULL) AS default_product_price'), DB::raw('(SELECT sale_price FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND deleted_at IS NULL) AS default_sale_price'), DB::raw('(SELECT attribute_value FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND deleted_at IS NULL) AS default_attribute_value'),DB::raw('(SELECT category_name FROM categories WHERE categories.id = products.category_id) AS cat_name'),DB::raw('(SELECT sub_category_name FROM sub_categories WHERE sub_categories.id = products.sub_category_id) AS sub_cat_name'))->where(DB::raw('(SELECT status FROM sub_categories WHERE sub_categories.id = products.sub_category_id)'), '=', 'Active')->where(DB::raw('(SELECT status FROM categories WHERE categories.id = products.category_id)'), '=', 'Active')->with('productImages','subCategory','productPriceAttributes')->orderBy('average_rating','desc')->limit(8)->get();
 
         $createObjectCategory = (object)[
             "id" => 0,
@@ -390,6 +390,7 @@ class IndexController extends Controller
                 //return $product;
                 $product_orders = new ProductOrder();
                 $product_orders->order_id = $order->id;
+                $product_orders->product_id = $product->id;
                 $product_orders->payment_id = $payment->id;
 
                 $product_orders->product_price = $product->selected_product_price;
@@ -576,7 +577,8 @@ class IndexController extends Controller
             $data = Order::select("*", DB::raw('(SELECT full_name from users WHERE users.id = orders.user_id) AS user_name'), DB::raw('CASE WHEN payment_received = 1 THEN "Yes" ELSE "No" END as payment_received'), DB::raw('CONCAT("₹",total_amount) AS total_amount'), DB::raw('CONCAT("₹",discount_amount_for_coupon) AS discount_amount_for_coupon'), DB::raw('CONCAT("₹",pay_amount) AS pay_amount'), DB::raw('DATE_FORMAT(created_at, "%m-%d-%Y") AS date_show'))
             ->whereDeletedAt(null)
             ->whereUserId($checkLogin->id)
-            ->orderBy($column,$asc_desc);
+            ->orderBy($column,$asc_desc)
+            ->with('BillingShippingAddress','productOrders');
             $total = $data->get()->count();
 
             if(!empty($request->get("search")["value"])){
@@ -631,8 +633,9 @@ class IndexController extends Controller
                 
 
 
+                $base64Encode = base64_encode($row);
                 
-                $btn .= '<a class="action-button openOrderDetailsModel" style="cursor:pointer;" title="View" data-id="'.$row->id.'" href="javascript:void(0);"><i class="text-info fa fa-eye"></i></a>';
+                $btn .= '<a class="action-button openOrderDetailsModel" orderDetails="'.$base64Encode.'" style="cursor:pointer;" title="View" data-id="'.$row->id.'" href="javascript:void(0);"><i class="text-info fa fa-eye"></i></a>';
                    
 
               
@@ -659,5 +662,9 @@ class IndexController extends Controller
                     "input" => $request->all()
             ];
             return response()->json($return_data);
+    }
+
+    public function aboutUS(Request $request){
+        return view('website.about-us');
     }
 }

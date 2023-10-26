@@ -133,7 +133,7 @@
                         <?php $m = 1;?>
                         @foreach($category->topThreeProducts as $product)
 
-                        @if($m <= 4)
+                        @if($m <= 8)
                         <div class="custom-tabs-prdt">
                            <div class="product-thumbnail">
                               
@@ -155,7 +155,7 @@
                               <span class="star_rating" style="--rating:{{$product->average_rating}}"></span>
                               <span class="product-price">{{$product->default_sale_price}}₹ <span>{{$product->default_product_price}}₹</span> </span>
                               <?php 
-                                 $limit = 70;
+                                 $limit = 100;
                                  if(strlen($product->meta_description) > $limit){
                                     $show_description = substr($product->meta_description, 0, $limit) . " ...";
                                  }else{
@@ -914,22 +914,8 @@ document.querySelectorAll("[style^=--rating]").forEach(starRating);
 
 
       $(document).ready(function(){
-         let selected_category_id = $(".categorySelect").val();
          let id = $(".category_opencity").eq(0).attr("id");
-         if(selected_category_id){
-            //alert(selected_category_id)
-            document.getElementById("category_"+selected_category_id).click();
-         }else{
-            document.getElementById(id).click();
-         }
-
-
-         $(".categorySelect").on("change",function(){
-            let cat_id = $(this).val();
-            document.getElementById("category_"+cat_id).click();
-         })
-         
-         
+         document.getElementById(id).click();
       })
 
       // Get the element with id="defaultOpen" and click on it

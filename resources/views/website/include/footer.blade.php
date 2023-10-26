@@ -11,7 +11,7 @@
    <div class="footer-main-wrapper float_left ptb-100">
       <div class="container">
          <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="col-lg-5 col-md-6 col-sm-12">
                <div class="link">
                   <span>Call Now</span>
                   <h4>+91 828 8800 857</h4>
@@ -25,7 +25,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
                <div class="widgettitle">
                   <h4>Our Service</h4>
                   <div class="line">
@@ -34,29 +34,24 @@
                   <div class="link-page">
                      <ul>
                         <li>
-                           <a href="about-us.html">About Us</a>
+                           <a href="{{route('aboutUS')}}">About Us</a>
                         </li>
                         <li>
-                           <a href="product.html">Product</a>
+                           <a href="{{route('allProducts')}}">Our Products</a>
+                        </li>
+                        
+                        <li>
+                           <a href="javascript:void(0);">Terms & Conditions</a>
                         </li>
                         <li>
-                           <a href="product-left-sidebar.html">Product left Sidebar</a>
-                        </li>
-                        <li>
-                           <a href="product-right-sidebar.html">Product Right Sidebar</a>
-                        </li>
-                        <li>
-                           <a href="product-single.html">Product Single</a>
-                        </li>
-                        <li>
-                           <a href="checkout.html">Checkout</a>
+                           <a href="javascript:void(0);">Privacy Policy</a>
                         </li>
 
                      </ul>
                   </div>
                </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <!-- <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                <div class="widgettitle">
                   <h4>Our Story</h4>
                   <div class="line">
@@ -85,7 +80,7 @@
                      </ul>
                   </div>
                </div>
-            </div>
+            </div> -->
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                <div class="widgettitle">
                   <h4>Our Story</h4>
@@ -136,10 +131,9 @@
             </div>
             <div class="col-lg-7 col-md-7 col-sm-12 col-12">
                <div class="copy-right">
-                  <p>Copyright 2022 © </p>
-                  <a href="javascript:;">Butcher | Meat Shop HTML Template</a>
-                  <p>Design By</p>
-                  <a href="javascript:;">Webstrot</a>
+                  <p>Copyright {{date('Y')}} © </p>
+                  <a href="javascript:;">Black Rooster | Meat Shop</a>
+                  
                </div>
             </div>
          </div>
@@ -446,17 +440,19 @@
 
    <script>
       $(document).ready(function(){
-         $(document).on("change",".categorySelect",function(){
-            let categoryID = $(this).val();
+         $(document).on("click",".categorySelectLi",function(){
+            let categoryID = $(this).data("id");
             localStorage.setItem("category_id_selected", categoryID);
+
+            window.location.href = "{{route('allProducts')}}";
          })
 
-
+         
          let category_id_selected = localStorage.getItem('category_id_selected');
          if(category_id_selected){
-            $(".optionCategorySelect").removeAttr("selected");
-
-            $(".optionCategorySelect[data-id='"+category_id_selected+"']").attr("selected","selected");
+            $(".categorySelectLi").removeClass("active_cat");
+            $(".categorySelectLi[data-id='"+category_id_selected+"']").addClass("active_cat");
+            
          }
       })
       

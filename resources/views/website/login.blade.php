@@ -81,7 +81,7 @@
                         <a class="forgot" href="javascript:;">Forgot Password?</a>
                         <div class="login-btn-sec">
                            <button class="sub-btn" id="submitBtn" href="javascript:;"><span>Sign In</span></button>
-                           <div class="social-btn">
+                           <!-- <div class="social-btn">
                               <span>- OR -</span>
                               <ul>
                                  <li>
@@ -130,10 +130,17 @@
                                        </span></a>
                                  </li>
                               </ul>
-                           </div>
-                           <p>Do have an account? <a href="{{route('signUp')}}">Sign Up now!</a></p>
+                           </div> -->
+                           
                         </div>
+
+                        
+
                      </form>
+
+                     
+
+                     <p class="do_have_an_account">Don't have an account? <a href="{{route('signUp')}}">Sign Up now!</a></p>
                   </div>
                </div>
                <div class="col-lg-6 col-md-12 col-12">
@@ -145,6 +152,15 @@
          </div>
       </div>
    </div>
+
+   <div class="modal fade" id="lodaerModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="lodaerModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+     
+      <img src="{{url('/public/loading-buffering.gif')}}" style="width: 50px; height:50px;">
+     
+  </div>
+</div>
+
 
    <!-- Side Panel -->
    <script src="{{url('public/website/js/jquery-3.6.0.min.js')}}"></script>
@@ -205,7 +221,7 @@
            },
            submitHandler:function(form){
                   $("#submitBtn").attr("disabled","true")
-                   $("#lodaerModal").modal("show");
+                  $("#lodaerModal").modal("show");
 
 
 
