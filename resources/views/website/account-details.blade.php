@@ -195,15 +195,30 @@ img.productImage {
                                                         <input type="text" value="{{$address}}" name="address" class="form-control myaccountInput" placeholder="Enter here">
                                                     </div>
                                                     <div class="col-md-6 col-12">
-                                                        <label>City*</label>
-                                                        <input type="text" value="{{$city}}" name="city" class="form-control myaccountInput" placeholder="Enter here">
+                                                        <label>State*</label>
+
+                                                        <select class="form-control form-select myaccountInput stateSelectBilling" name="state">
+                                                            <option class="option_state_billing" value="">Select State</option>
+                                                            @foreach($states_and_cities as $state_and_citie)
+                                                            <option value="{{$state_and_citie->name}}" @if($state == $state_and_citie->name) selected @endif() class="option_state_billing" city-data="{{$state_and_citie->tblCities}}">{{$state_and_citie->name}}</option>
+                                                            @endforeach()
+
+                                                        </select>
+                                                        <!-- <input type="text" value="{{$city}}" name="city" class="form-control myaccountInput" placeholder="Enter here"> -->
                                                     </div>
                                                 </div>
                                                 <!--  -->
                                                 <div class="mb-3 row">
                                                     <div class="col-md-6 col-12">
-                                                        <label>State*</label>
-                                                        <input type="text" value="{{$state}}" name="state" class="form-control myaccountInput" placeholder="Enter here">
+                                                        <label>City*</label>
+
+                                                        <select class="form-control form-select myaccountInput citySelectBilling appendCityDataBilling" name="city">
+                                                            <option class="option_city_billing" value="">Select City</option>
+                                                            
+
+                                                        </select>
+
+                                                        <!-- <input type="text" value="{{$state}}" name="state" class="form-control myaccountInput" placeholder="Enter here"> -->
                                                     </div>
                                                     <div class="col-md-6 col-12">
                                                         <label>Zip Code*</label>
@@ -627,12 +642,12 @@ img.productImage {
             },
             city: {
               required : true,
-              maxlength : 30,
-              minlength : 2
+              //maxlength : 30,
+             // minlength : 2
             },
             state : {
               required : true,
-              maxlength : 30
+              //maxlength : 30
             },
             zip_code : {
               required : true,
@@ -673,6 +688,9 @@ img.productImage {
              address: {
                required: "Address is required.",
                maxlength:"Address should be less than 200 characters."
+             },
+             state: {
+               required: "State is required.",
              },
              city: {
                required: "City is required.",
@@ -1070,6 +1088,57 @@ img.productImage {
  
         });
     }
+</script>
+
+<script>
+    $(document).ready(function(){
+
+
+        // SELECTED STATE ACCORDING TO CITY SELECT
+
+        let __alreadySelectedState = $(".stateSelectBilling").val();
+
+        if(__alreadySelectedState){
+            let __selectedCityName = "{{$city}}";
+            let __cityDataAttr = $(".option_state_billing[value='"+__alreadySelectedState+"']").attr('city-data');
+            let __cityData = JSON.parse(__cityDataAttr);
+            let __cityHtml = "";
+
+            __cityHtml += `<option class="option_city_billing" value="">Select City</option>`;
+            for(let k=0; k<__cityData.length; k++){
+                let __selectedVariable = "";
+
+                if(__cityData[k].name == __selectedCityName){
+                    __selectedVariable = "selected";
+                }
+                __cityHtml += `
+                    <option value="`+__cityData[k].name+`" `+__selectedVariable+` class="option_city_billing">`+__cityData[k].name+`</option>`;
+            }
+
+            $(".appendCityDataBilling").html(__cityHtml);
+
+        }
+        
+
+        $(document).on("change",".stateSelectBilling",function(){
+
+            let _val = $(this).val();
+
+            let cityDataAttr = $(".option_state_billing[value='"+_val+"']").attr('city-data');
+            let cityData = JSON.parse(cityDataAttr);
+
+            let cityHtml = "";
+
+
+            cityHtml += `<option class="option_city_billing" value="">Select City</option>`;
+            for(let k=0; k<cityData.length; k++){
+            cityHtml += `
+                <option value="`+cityData[k].name+`" class="option_city_billing">`+cityData[k].name+`</option>`;
+            }
+
+            $(".appendCityDataBilling").html(cityHtml);
+        });
+    })
 </script>
 
 @endsection()

@@ -184,16 +184,33 @@ if(Auth::guard('web')->user()){
                                           <input type="text" value="{{$address}}" name="address" class="form-control billingInput" placeholder="Enter here">
                                        </div>
                                        <div class="col-md-6 col-12">
-                                          <label>City*</label>
-                                          <input type="text" value="{{$city}}" name="city" class="form-control billingInput" placeholder="Enter here">
+                                          <label>State*</label>
+                                          <select class="form-control form-select billingInput stateSelectBilling" name="state">
+                                             <option class="option_state_billing" value="">Select State</option>
+                                             @foreach($states_and_cities as $state_and_citie)
+                                             <option value="{{$state_and_citie->name}}" @if($state == $state_and_citie->name) selected @endif() class="option_state_billing" city-data="{{$state_and_citie->tblCities}}">{{$state_and_citie->name}}</option>
+                                             @endforeach()
+
+                                          </select>
                                        </div>
                                     </div>
                                     <!--  -->
                                     <div class="mb-3 row">
+                                       
+
                                        <div class="col-md-6 col-12">
-                                          <label>State*</label>
-                                          <input type="text" value="{{$state}}" name="state" class="form-control billingInput" placeholder="Enter here">
+                                          <label>City*</label>
+
+                                          <select class="form-control form-select billingInput citySelectBilling appendCityDataBilling" name="city">
+                                             <option class="option_city_billing" value="">Select City</option>
+                                             
+
+                                          </select>
+
+                                          <!-- <input type="text" value="{{$city}}" name="city" class="form-control billingInput" placeholder="Enter here"> -->
                                        </div>
+
+
                                        <div class="col-md-6 col-12">
                                           <label>Zip Code*</label>
                                           <input type="text" value="{{$zip_code}}" name="zip_code" class="form-control billingInput" placeholder="Enter here">
@@ -260,15 +277,28 @@ if(Auth::guard('web')->user()){
                                           <input type="text"  name="address" class="form-control shippingInput" placeholder="Enter here">
                                        </div>
                                        <div class="col-md-6 col-12">
-                                          <label>City*</label>
-                                          <input type="text"  name="city" class="form-control shippingInput" placeholder="Enter here">
+                                          <label>State*</label>
+                                          <select class="form-control form-select shippingInput stateSelectShipping" name="state">
+                                             <option class="option_state_shipping" value="">Select State</option>
+                                             @foreach($states_and_cities as $state_and_citie)
+                                             <option value="{{$state_and_citie->name}}" class="option_state_shipping" city-data="{{$state_and_citie->tblCities}}">{{$state_and_citie->name}}</option>
+                                             @endforeach()
+
+                                          </select>
                                        </div>
                                     </div>
                                     <!--  -->
                                     <div class="mb-3 row">
                                        <div class="col-md-6 col-12">
-                                          <label>State*</label>
-                                          <input type="text"  name="state" class="form-control shippingInput" placeholder="Enter here">
+                                          <label>City*</label>
+
+                                          <select class="form-control form-select shippingInput citySelectShipping appendCityDataShipping" name="city">
+                                             <option class="option_city_shipping" value="">Select City</option>
+                                             
+
+                                          </select>
+
+                                          <!-- <input type="text"  name="state" class="form-control shippingInput" placeholder="Enter here"> -->
                                        </div>
                                        <div class="col-md-6 col-12">
                                           <label>Zip Code*</label>
@@ -542,12 +572,12 @@ if(Auth::guard('web')->user()){
             },
             city: {
               required : true,
-              maxlength : 30,
-              minlength : 2
+              //maxlength : 30,
+              //minlength : 2
             },
             state : {
               required : true,
-              maxlength : 30
+              //maxlength : 30
             },
             zip_code : {
               required : true,
@@ -657,12 +687,12 @@ if(Auth::guard('web')->user()){
             },
             city: {
               required : true,
-              maxlength : 30,
-              minlength : 2
+              //maxlength : 30,
+              //minlength : 2
             },
             state : {
               required : true,
-              maxlength : 30
+              //maxlength : 30
             },
             zip_code : {
               required : true,
@@ -1089,9 +1119,14 @@ if(Auth::guard('web')->user()){
                $(".billingInput").each(function(){
                   let name = $(this).attr('name');
                   let _val = $(this).val();
-                  console.log(name)
                   $(".shippingInput[name='"+name+"']").val(_val);
-                })
+               })
+
+               let billingStateVal = $(".stateSelectBilling").val();
+               if(billingStateVal){
+                  let selectedBillingCity = $(".citySelectBilling").val();
+                  shippingCityOptions(billingStateVal,selectedBillingCity);
+               }
             }else{
                $(".shippingInput").each(function(){
                   $(this).val("");
@@ -1099,5 +1134,99 @@ if(Auth::guard('web')->user()){
             }
          })
       })
+   </script>
+
+   <script>
+      $(document).ready(function(){
+
+
+         let __alreadySelectedState = $(".stateSelectBilling").val();
+
+         if(__alreadySelectedState){
+               let __selectedCityName = "{{$city}}";
+               let __cityDataAttr = $(".option_state_billing[value='"+__alreadySelectedState+"']").attr('city-data');
+               let __cityData = JSON.parse(__cityDataAttr);
+               let __cityHtml = "";
+
+               __cityHtml += `<option class="option_city_billing" value="">Select City</option>`;
+               for(let k=0; k<__cityData.length; k++){
+                  let __selectedVariable = "";
+
+                  if(__cityData[k].name == __selectedCityName){
+                     __selectedVariable = "selected";
+                  }
+                  __cityHtml += `
+                     <option value="`+__cityData[k].name+`" `+__selectedVariable+` class="option_city_billing">`+__cityData[k].name+`</option>`;
+               }
+
+               $(".appendCityDataBilling").html(__cityHtml);
+
+         }
+
+
+         $(document).on("change",".stateSelectBilling",function(){
+
+            let _val = $(this).val();
+            
+            let cityDataAttr = $(".option_state_billing[value='"+_val+"']").attr('city-data');
+            let cityData = JSON.parse(cityDataAttr);
+
+            let cityHtml = "";
+
+            
+            cityHtml += `<option class="option_city_billing" value="">Select City</option>`;
+            for(let k=0; k<cityData.length; k++){
+               cityHtml += `
+                              <option value="`+cityData[k].name+`" class="option_city_billing">`+cityData[k].name+`</option>`;
+            }
+
+            $(".appendCityDataBilling").html(cityHtml);
+
+            if($("#scales").prop("checked") == true){
+               $(".stateSelectShipping").val(_val);
+               shippingCityOptions(_val, "");
+            }
+         });
+
+
+         $(document).on("change",".stateSelectShipping",function(){
+
+            let _val = $(this).val();
+            shippingCityOptions(_val, "");
+            
+         });
+
+
+         $(document).on("change",".citySelectBilling",function(){
+            let _val = $(".stateSelectBilling").val();
+            if($("#scales").prop("checked") == true){
+               $(".stateSelectShipping").val(_val);
+               shippingCityOptions(_val, $(this).val());
+            }
+         })
+
+
+      });
+
+
+      function shippingCityOptions(stateVal, cityVal){
+         let cityDataAttr = $(".option_state_shipping[value='"+stateVal+"']").attr('city-data');
+         let cityData = JSON.parse(cityDataAttr);
+
+         let cityHtml = "";
+         cityHtml += `<option class="option_city_shipping" value="">Select City</option>`;
+         for(let k=0; k<cityData.length; k++){
+
+            let selectedVariable = "";
+
+            if(cityVal == cityData[k].name){
+               selectedVariable = "selected";
+            }
+            cityHtml += `
+                           <option value="`+cityData[k].name+`" `+selectedVariable+` class="option_city_shipping">`+cityData[k].name+`</option>`;
+         }
+
+         $(".appendCityDataShipping").html(cityHtml);
+      }
    </script>
    @endsection()

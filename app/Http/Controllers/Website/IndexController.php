@@ -22,6 +22,7 @@ use App\Models\BillingShippingAddress;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Models\ProductOrder;
+use App\Models\TblState;
 class IndexController extends Controller
 {
     public function index(Request $request){
@@ -149,9 +150,17 @@ class IndexController extends Controller
                 $userWithAddress = "";
             }
 
+            $findIndiaCountryID = DB::table('tbl_countries')->whereName('India')->first();
+
+            $states_and_cities = TblState::select("*", DB::raw('(SELECT count(*) FROM tbl_cities WHERE tbl_cities.state_id = tbl_states.id) AS total_city'))
+            ->whereCountryId($findIndiaCountryID->id)
+            ->with('tblCities')
+            ->having('total_city', '>', 0)
+            ->get();
+
             //return $userWithAddress;
 
-            return view('website.checkout',compact('loginUser','userWithAddress'));
+            return view('website.checkout',compact('loginUser','userWithAddress','states_and_cities'));
         }
     }
 
@@ -491,7 +500,16 @@ class IndexController extends Controller
             return redirect(route('loginWeb'));
         }
 
-        return view('website.account-details',compact('checkLogin'));
+
+        $findIndiaCountryID = DB::table('tbl_countries')->whereName('India')->first();
+
+        $states_and_cities = TblState::select("*", DB::raw('(SELECT count(*) FROM tbl_cities WHERE tbl_cities.state_id = tbl_states.id) AS total_city'))
+        ->whereCountryId($findIndiaCountryID->id)
+        ->with('tblCities')
+        ->having('total_city', '>', 0)
+        ->get();
+
+        return view('website.account-details',compact('checkLogin','states_and_cities'));
 
         
     }
