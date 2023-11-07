@@ -36,6 +36,8 @@ if(Auth::guard('web')->user()){
    </div>
    <!-- banner section start end-->
 
+   <input type="hidden" id="razorpayOrderData" value="">
+
    <div class="inner-page-main-wrapper float_left ptb-100">
       <div class="container">
          <div class="row">
@@ -344,6 +346,21 @@ if(Auth::guard('web')->user()){
                                              shipped until the funds have cleared in our account.</span>
                                        </label>
                                     </p> -->
+
+                                    <p>
+                                       <input type="radio" id="test3" class="paymentMethod" methodType="Razorpay" id="test3" name="radio-group">
+
+                                      
+                                       <label class="direct_bank" for="test3">
+
+                                          <img class="razorpay-icon" src="{{url('public/images/razorpay-icon.svg')}}" />   
+                                          
+                                          <span class="small-text">Make your payment directly into our bank account.
+                                             Please use your Order ID as the payment reference. Your order will not be
+                                             shipped until the funds have cleared in our account.</span>
+                                       </label>
+                                    </p>
+
                                     <p>
                                        <input type="radio" class="paymentMethod" methodType="COD" id="test5" name="radio-group">
                                        <label for="test5">Cash On Delivery
@@ -395,6 +412,10 @@ if(Auth::guard('web')->user()){
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js"></script>
+
+   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
 
    <script type="text/javascript">
       $(document).ready(function(){
@@ -821,7 +842,7 @@ if(Auth::guard('web')->user()){
             if(checkPayMethod == false){
                Swal.fire({
                  title: 'Alert',
-                 text: "Please fselect the payment method for place order.",
+                 text: "Please select the payment method for place order.",
                  icon: 'warning',
                  showCancelButton: false,
                  confirmButtonColor: '#3085d6',
@@ -894,6 +915,12 @@ if(Auth::guard('web')->user()){
             form_data.append("couponCode", JSON.stringify(couponCode));
             form_data.append("productInCart", JSON.stringify(productInCart));
             form_data.append("paymentMethod",paymentMethod);
+
+
+            if(paymentMethod == "Razorpay"){
+               callRazorpayPayment(billingInfo, shippingInfo, finalAmount, couponCode, productInCart);
+               return false;
+            }
 
 
 
@@ -1206,6 +1233,174 @@ if(Auth::guard('web')->user()){
          })
 
 
+         $(document).on("click","#test3",function(){
+
+
+            let finalAmount = JSON.parse(localStorage.getItem('finalAmount'));
+            let couponCode = JSON.parse(localStorage.getItem('couponCode'));
+            let productInCart = JSON.parse(localStorage.getItem('productInCart'));
+
+
+            var form_data = new FormData();
+
+
+            var otherBillingData = $('#billingInformation').serializeArray();
+            let billingInfo = [];
+            $.each(otherBillingData, function(key, input) {
+
+               let name = input.name;
+
+               let _val = input.value;
+
+               let obj = {
+                  key : name,
+                  value : _val
+               }
+
+               billingInfo.push(obj);
+
+               //billingFd.append(input.name, input.value);
+            });
+
+          
+            var otherShippingData = $('#shippingInformation').serializeArray();
+            let shippingInfo = [];
+            $.each(otherShippingData, function(key, input) {
+               let name = input.name;
+               let _val = input.value;
+
+               let obj = {
+                  key : name,
+                  value : _val
+               }
+
+               shippingInfo.push(obj);            
+            });
+
+
+            let paymentMethod = $(".paymentMethod:checked").attr('methodType');
+            
+
+
+            form_data.append("billingInfo", JSON.stringify(billingInfo));
+            form_data.append("shippingInfo", JSON.stringify(shippingInfo));
+            form_data.append("finalAmount", JSON.stringify(finalAmount));
+            form_data.append("couponCode", JSON.stringify(couponCode));
+            form_data.append("productInCart", JSON.stringify(productInCart));
+            form_data.append("paymentMethod",paymentMethod);
+
+            $("#lodaerModal").modal("show");
+            $.ajax({
+              url:"{{route('placeOrder')}}",
+              data: form_data,
+              contentType: false,
+              processData: false,
+              type: 'POST',
+              success: function(res){
+                  
+                  console.log("CREATE ORDERID FOR RAZORPAY",res)
+
+                  if(res.status == "true"){
+
+                     let stringConvert = JSON.stringify(res.orderData)
+                     $("#razorpayOrderData").val(stringConvert);
+                      
+                  }else if(res.status == "out_of_stock"){
+                     Swal.fire({
+                       title: 'Alert',
+                       text: res.message,
+                       icon: 'warning',
+                       showCancelButton: false,
+                       confirmButtonColor: '#3085d6',
+                       cancelButtonColor: '#d33',
+                       confirmButtonText: 'Ok',
+                       allowOutsideClick: false
+                     }).then((result) => {
+                       window.location.href = "{{route('allProducts')}}";
+                     })
+
+                     setTimeout(function(){
+
+                        localStorage.removeItem('finalAmount');
+                        localStorage.removeItem('couponCode');
+                        localStorage.removeItem('productInCart');
+                     },300);
+                  }else if(res.status == 'sessionExpire'){
+                     Swal.fire({
+                       title: 'Alert',
+                       text: res.message,
+                       icon: 'warning',
+                       showCancelButton: false,
+                       confirmButtonColor: '#3085d6',
+                       cancelButtonColor: '#d33',
+                       confirmButtonText: 'Ok',
+                       allowOutsideClick: false
+                     }).then((result) => {
+                       window.location.href = "{{route('allProducts')}}";
+                     })
+
+                     setTimeout(function(){
+
+                        localStorage.removeItem('finalAmount');
+                        localStorage.removeItem('couponCode');
+                        localStorage.removeItem('productInCart');
+                     },300);
+                  }else{
+                     Swal.fire({
+                       title: 'Alert',
+                       text: res.message,
+                       icon: 'warning',
+                       showCancelButton: false,
+                       confirmButtonColor: '#3085d6',
+                       cancelButtonColor: '#d33',
+                       confirmButtonText: 'Ok',
+                       allowOutsideClick: false
+                     }).then((result) => {
+                       window.location.href = "";
+                     })
+
+                  }
+
+                  setTimeout(() => {
+                      $("#lodaerModal").modal("hide");
+                  }, 500);
+
+              },
+              error: function(data, textStatus, xhr) {
+                  if(data.status == 422){
+                  
+                  } 
+                  
+                  
+                  
+                     Swal.fire({
+                       title: 'Alert',
+                       text: "Something went wrong. Please try again.",
+                       icon: 'warning',
+                       showCancelButton: false,
+                       confirmButtonColor: '#3085d6',
+                       cancelButtonColor: '#d33',
+                       confirmButtonText: 'Ok',
+                       allowOutsideClick: false
+                     }).then((result) => {
+                       window.location.href = "";
+                     })
+
+                  setTimeout(() => {
+                      $("#lodaerModal").modal("hide");
+                      
+                  }, 500);
+
+                  
+
+
+              }
+          });
+
+
+         })
+
+
       });
 
 
@@ -1227,6 +1422,67 @@ if(Auth::guard('web')->user()){
          }
 
          $(".appendCityDataShipping").html(cityHtml);
+      }
+
+      function callRazorpayPayment(billingInfo, shippingInfo, finalAmount, couponCode, productInCart){
+
+         
+
+         let orderIDData = JSON.parse($("#razorpayOrderData").val());
+         var options = {
+            "key": "{{ env('RAZORPAY_KEY_ID') }}",
+            "amount": orderIDData['amount'],
+            "currency": "INR",
+            "name": "ABC",
+            "description": "Payment Description",
+            "order_id": orderIDData["id"],
+            "handler": function (response) {
+
+               let submitData = {
+                  "billingInfo" : billingInfo,
+                  "shippingInfo" : shippingInfo,
+                  "finalAmount" : finalAmount,
+                  "couponCode" : couponCode,
+                  "productInCart" : productInCart,
+                  "transaction_id" : response.razorpay_payment_id
+               }
+               
+               console.log("submitData", submitData);
+
+               $("#lodaerModal").modal("show");
+               localStorage.removeItem('finalAmount');
+               localStorage.removeItem('couponCode');
+               localStorage.removeItem('productInCart');
+
+               let jsonData = JSON.stringify(submitData);
+
+               // Create a form element and add a hidden input field for the encoded data
+               let form = document.createElement('form');
+               form.method = 'post';
+               form.action = "{{url('payment/success')}}";
+               let input = document.createElement('input');
+               input.type = 'hidden';
+               input.name = 'encodedData';
+               input.value = jsonData;
+               form.appendChild(input);
+               document.body.appendChild(form);
+               form.submit();
+            }
+        };
+
+        var rzp = new Razorpay(options);
+
+        rzp.open();
+
+        rzp.on('payment.failed', function (response) {
+
+         console.log("after payment failure", response)
+
+            // Handle payment failure here
+        });
+
+        console.log(options);
+
       }
    </script>
    @endsection()

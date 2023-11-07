@@ -23,6 +23,9 @@ use App\Models\Order;
 use App\Models\Payment;
 use App\Models\ProductOrder;
 use App\Models\TblState;
+
+use Razorpay\Api\Api;
+
 class IndexController extends Controller
 {
     public function index(Request $request){
@@ -270,7 +273,10 @@ class IndexController extends Controller
     }
 
     public function placeOrder(Request $request){
+        $uniq_id = Str::random(10);
         $data = $request->all();
+        $data['uniq_id'] = $uniq_id;
+        
         $billingInfo = json_decode($data['billingInfo']);
         $shippingInfo = json_decode($data['shippingInfo']);
         $finalAmount = json_decode($data['finalAmount']);
@@ -323,7 +329,65 @@ class IndexController extends Controller
                 return ['status' => 'sessionExpire', 'message' => 'Your account has been blocked by admin.'];
             }
 
-            $checkUserAddress = UserAddress::whereDeletedAt(null)->whereUserId($checkLogin->id)->first();
+
+
+            if($paymentMethod == "Razorpay"){
+
+                $api = new Api(env('RAZORPAY_KEY_ID'), env('RAZORPAY_KEY_SECRET'));
+
+                $orderData = [
+                    'receipt' => $data['uniq_id'],
+                    'amount' => (float)$finalAmount->finalPrice * 100, // Convert to paise
+                    'currency' => 'INR',
+                ];
+
+                try{    
+                    $order = $api->order->create($orderData);
+
+                    $orderRecord = [
+                                    'id' => $order->id, 
+                                    "entity" => $order->entity,
+                                    "amount" => $order->amount,
+                                    "amount_paid" => $order->amount_paid,
+                                    "amount_due" => $order->amount_due,
+                                    "currency" => $order->currency,
+                                    "receipt" => $order->receipt,
+                                    "offer_id" => $order->offer_id,
+                                    "status" => $order->status,
+                                    "attempts" => $order->attempts,
+                                    "created_at" => $order->created_at,
+                                ];
+                
+
+                    return ['status' => 'true','message' => "Razorpay Order ID created successfully.", 'orderData' => $orderRecord];
+
+                }catch(\Exception $ex){
+                    return ['status' => 'false', 'message' => 'Error: ' . $ex->getMessage()];
+                }
+
+            }else{
+                //FOR COD METHOD
+
+                $this->saveDataAfterPaymentComplete($checkLogin, $billingData, $shippingData, $transaction_id="xxxxxxx12345", $paymentMethod, $couponCode, $finalAmount, $productInCart, $data);
+
+                return ['status' => 'true', 'message' => 'Your order has been processed successfully.'];
+
+            }
+
+            
+
+            
+
+        }else{
+            return ['status' => 'false', 'message' => 'Your session has been timeout. Please login again.'];
+        }
+
+
+    }
+
+    public function saveDataAfterPaymentComplete($checkLogin, $billingData, $shippingData, $transaction_id="xxxxxxx12345", $paymentMethod, $couponCode, $finalAmount, $productInCart, $data){
+
+        $checkUserAddress = UserAddress::whereDeletedAt(null)->whereUserId($checkLogin->id)->first();
 
             if($checkUserAddress == ""){
                 $user_address = new UserAddress();
@@ -340,7 +404,6 @@ class IndexController extends Controller
                 
             }
 
-            $transaction_id = "xxxxxxx12345";
             $payment_received  = 1;
             if($paymentMethod == "COD"){
                 $transaction_id = "xxxxxxx12345";
@@ -368,7 +431,7 @@ class IndexController extends Controller
 
 
             $order = new Order();
-            $order->unique_order_id = Str::random(10);
+            $order->unique_order_id = $data['uniq_id'];
             $order->user_id = $checkLogin->id;
             $order->payment_id = $payment->id;
             $order->payment_received = $payment_received;
@@ -470,27 +533,7 @@ class IndexController extends Controller
                 //return ['status' => 'false', 'message' => $ex->getMessage()];
             }
 
-
-
-
-            return ['status' => 'true', 'message' => 'Your order has been processed successfully.'];
-
-        }else{
-            return ['status' => 'false', 'message' => 'Your session has been timeout. Please login again.'];
-        }
-
-
-        
-
-        return ['billingInfo' => $billingInfo,'shippingInfo' => $shippingInfo,'finalAmount' => $finalAmount,'couponCode' => $couponCode,'productInCart' => $productInCart,'paymentMethod' => $paymentMethod];
-
-
-
-
-
-
-
-
+            return "success";
     }
 
     public function accountDetails(Request $request){
@@ -685,4 +728,46 @@ class IndexController extends Controller
     public function aboutUS(Request $request){
         return view('website.about-us');
     }
+
+
+    public function paymentSuccess(Request $request){
+
+
+        $uniq_id = Str::random(10);
+        $data = $request->all();
+        $data['uniq_id'] = $uniq_id;
+        $encodeData = json_decode($request->encodedData);
+        
+        $billingInfo = $encodeData->billingInfo;
+        $shippingInfo = $encodeData->shippingInfo;
+        $finalAmount = $encodeData->finalAmount;
+        $couponCode = $encodeData->couponCode;
+        $productInCart = $encodeData->productInCart;
+        $paymentMethod = "Razorpay";
+        $transaction_id = $encodeData->transaction_id;
+
+        $billingData = [];
+        foreach ($billingInfo as $info) {
+                $key_name = $info->key;
+                $billingData[$key_name] = $info->value;
+        }
+
+        $shippingData = [];
+        foreach ($shippingInfo as $info) {
+                $key_name = $info->key;
+                $shippingData[$key_name] = $info->value;
+        }
+
+
+        $checkLogin = Auth::guard('web')->user();
+        
+        $this->saveDataAfterPaymentComplete($checkLogin, $billingData, $shippingData, $transaction_id, $paymentMethod, $couponCode, $finalAmount, $productInCart, $data);
+
+        return redirect(route('allProducts'));
+        
+    }
+
+    
+
+    
 }

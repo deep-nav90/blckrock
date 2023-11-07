@@ -219,6 +219,10 @@ Route::post('changePasswordUser',[IndexController::class,'changePasswordUser'])-
 Route::post('myOrders',[IndexController::class,'myOrders'])->name('myOrders');
 
 
+Route::post('payment/success',[IndexController::class,'paymentSuccess'])->name('paymentSuccess');
+
+
+
 
 
 
