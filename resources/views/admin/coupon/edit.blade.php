@@ -89,7 +89,7 @@
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="name">Meta Keyword<span class="text-danger"> *</span></label>
+                        <label for="name">Meta Keyword</label>
                         <input type="text" name="meta_keyword" class="form-control" value="{{$coupon->meta_keyword}}" id="meta_keyword" maxlength="50">
                         <div id ="meta_keyword_error" class="error"></div>
                         @if($errors->has('meta_keyword'))
@@ -131,7 +131,7 @@
                   <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label for="name">Meta Description<span class="text-danger"> *</span></label>
+                          <label for="name">Meta Description</label>
                           <textarea type="text" name="meta_description" class="form-control textareaClass" id="meta_description">{{$coupon->meta_description}}</textarea>
                           <div id ="meta_description_error" class="error"></div>
                           @if($errors->has('meta_description'))

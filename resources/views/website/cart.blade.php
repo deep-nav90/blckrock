@@ -113,10 +113,10 @@ h6.h6_coupon {
                }
 
                $limit = 100;
-               if(strlen($coupon->meta_description) > $limit){
-                  $show_description = substr($coupon->meta_description, 0, $limit) . " ...";
+               if(strlen($coupon->product_description) > $limit){
+                  $show_description = substr($coupon->product_description, 0, $limit) . " ...";
                }else{
-                  $show_description = $coupon->meta_description;
+                  $show_description = $coupon->product_description;
                }
 
             ?>
@@ -127,8 +127,8 @@ h6.h6_coupon {
              <!-- <p style="font-size: 12px;" class="wordwrap">
                <span class="text_view">{{$show_description}}</span>
 
-               @if(strlen($coupon->meta_description) > $limit)
-               <span class="read_more" less_read="{{$show_description}}" full_read = "{{$coupon->meta_description}}">Read More</span>
+               @if(strlen($coupon->product_description) > $limit)
+               <span class="read_more" less_read="{{$show_description}}" full_read = "{{$coupon->product_description}}">Read More</span>
                
                @endif()
 

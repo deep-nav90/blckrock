@@ -30,7 +30,6 @@
                 <tr>
                   <th>Sr. No.</th>
                   <th>Attribute Name</th>
-                  <th>Meta Keyword</th>
                   <th>Status</th>
                   <th>Created On</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
@@ -84,14 +83,12 @@
             createdRow: function( row, data, dataIndex ) {
 
               $( row ).find('td:eq(1)').attr('data-id', data['id']).attr('key_type','attribute_name').addClass('td_click').addClass('white_space');
-              $( row ).find('td:eq(2)').attr('data-id', data['id']).attr('key_type','meta_keyword').addClass('td_click').addClass('white_space');
-              $( row ).find('td:eq(3)').attr('data-id', data['id']).attr('key_type','status').addClass('td_click').addClass('white_space');
-              $( row ).find('td:eq(4)').attr('data-id', data['id']).attr('key_type','date_show').addClass('td_click').addClass('white_space');
+              $( row ).find('td:eq(2)').attr('data-id', data['id']).attr('key_type','status').addClass('td_click').addClass('white_space');
+              $( row ).find('td:eq(3)').attr('data-id', data['id']).attr('key_type','date_show').addClass('td_click').addClass('white_space');
             },
             "columns": [
               {data: 'DT_RowIndex', name: 'DT_RowIndex'},
               {data: 'attribute_name', name: 'attribute_name'},
-              {data: 'meta_keyword', name: 'meta_keyword'},
               {data: 'status', name: 'status'},
               {data: 'date_show', name: 'date_show'},
               {data: 'action', name: 'action', orderable: false, searchable: false},

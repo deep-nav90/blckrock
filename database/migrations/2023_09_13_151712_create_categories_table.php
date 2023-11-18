@@ -17,8 +17,8 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('category_name');
             $table->string('category_image')->nullable();
-            $table->string('meta_keyword');
-            $table->text('meta_description');
+            $table->string('meta_keyword')->nullable();
+            $table->text('meta_description')->nulable();
             $table->enum('status',['Active','Inactive'])->default('Active');
             $table->softDeletes();
             $table->timestamps();

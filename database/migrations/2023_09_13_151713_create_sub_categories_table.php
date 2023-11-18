@@ -19,8 +19,8 @@ class CreateSubCategoriesTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('sub_category_name');
             $table->string('sub_category_image')->nullable();
-            $table->string('meta_keyword');
-            $table->text('meta_description');
+            $table->string('meta_keyword')->nullable();
+            $table->text('meta_description')->nullable();
             $table->enum('status',['Active','Inactive'])->default('Active');
             $table->softDeletes();
             $table->timestamps();

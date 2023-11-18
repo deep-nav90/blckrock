@@ -63,10 +63,15 @@
                       </div>
                     </div>
 
+                    <?php 
+                      $meta_k = $attribute->meta_keyword ? $attribute->meta_keyword : "N/A";
+                      $meta_d = $attribute->meta_description ? $attribute->meta_description : "N/A";
+                    ?>
+
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">Meta Keyword</label>
-                        <input type="text" name="meta_keyword" class="form-control" value="{{$attribute->meta_keyword}}" id="meta_keyword" disabled value="{{$attribute->meta_keyword}}" maxlength="50">
+                        <input type="text" name="meta_keyword" class="form-control" value="{{$meta_k}}" id="meta_keyword" disabled maxlength="50">
                         <div id ="meta_keyword_error" class="error"></div>
                         @if($errors->has('meta_keyword'))
                           <div class="error">{{ $errors->first('meta_keyword') }}</div>
@@ -89,7 +94,7 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="name">Meta Description</label>
-                          <textarea type="text" name="meta_description" class="form-control textareaClass" id="meta_description" disabled>{{$attribute->meta_description}}</textarea>
+                          <textarea type="text" name="meta_description" class="form-control textareaClass" id="meta_description" disabled>{{$meta_d}}</textarea>
                           <div id ="meta_description_error" class="error"></div>
                           @if($errors->has('meta_description'))
                             <div class="error">{{ $errors->first('meta_description') }}</div>

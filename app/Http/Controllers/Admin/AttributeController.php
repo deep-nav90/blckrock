@@ -45,10 +45,8 @@ class AttributeController extends Controller
             }elseif($order == 1){
                 $column = "attribute_name";
             }elseif($order == 2){
-                $column = "meta_keyword";
-            }elseif($order == 3){
                 $column = "status";
-            }elseif($order == 4){
+            }elseif($order == 3){
                 $column = "created_at";
             }
         
@@ -68,7 +66,6 @@ class AttributeController extends Controller
             if($search){
                 $data  = $data->where(function($query) use($search){
                             $query->orWhere('attribute_name', 'Like', '%'. $search . '%');
-                            $query->orWhere('meta_keyword', 'Like', '%'. $search . '%');
                             $query->orWhere('status', 'Like', '%'. $search . '%');
                             $query->orWhere(DB::raw('DATE_FORMAT(created_at, "%m-%d-%Y")'), 'Like', '%'. $search . '%');
                         });

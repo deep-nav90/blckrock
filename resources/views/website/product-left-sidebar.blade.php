@@ -152,18 +152,18 @@ span.relative.inline-flex {
 
                         <?php 
                           $limit = 100;
-                          if(strlen($mainProduct->meta_description) > $limit){
-                             $show_description = substr($mainProduct->meta_description, 0, $limit) . " ...";
+                          if(strlen($mainProduct->product_description) > $limit){
+                             $show_description = substr($mainProduct->product_description, 0, $limit) . " ...";
                           }else{
-                             $show_description = $mainProduct->meta_description;
+                             $show_description = $mainProduct->product_description;
                           }
                         ?>
 
 
                         <p class="product-text">
                             <span class="text_view" style="font-size: 12px;">{{$show_description}}</span>
-                            @if(strlen($mainProduct->meta_description) > $limit)
-                            <!-- <span class="read_more" less_read="{{$show_description}}" full_read = "{{$mainProduct->meta_description}}">Read More</span> -->
+                            @if(strlen($mainProduct->product_description) > $limit)
+                            <!-- <span class="read_more" less_read="{{$show_description}}" full_read = "{{$mainProduct->product_description}}">Read More</span> -->
                             
                             @endif()
 
@@ -439,12 +439,12 @@ document.querySelectorAll("[style^=--rating]").forEach(starRating);
                    let limit = 100;
                    let show_description = "";
                    let readMoreShow = '';
-                   if(result[k].meta_description.length > limit){
+                   if(result[k].product_description.length > limit){
 
-                      show_description = result[k].meta_description.substr(0, limit) + " ...";
-                      //readMoreShow += `<span class="read_more" less_read="`+show_description+`" full_read = "`+result[k].meta_description+`">Read More</span>`;
+                      show_description = result[k].product_description.substr(0, limit) + " ...";
+                      //readMoreShow += `<span class="read_more" less_read="`+show_description+`" full_read = "`+result[k].product_description+`">Read More</span>`;
                     }else{
-                      show_description =result[k].meta_description;
+                      show_description =result[k].product_description;
                     }
 
                    //console.log(result[k].product_images)

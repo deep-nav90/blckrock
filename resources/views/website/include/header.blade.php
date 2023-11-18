@@ -92,7 +92,7 @@
                                  <li><a class="dropdown-item clickOnDropDownNavBar" href="javascript:void(0);" id="myAccount">My Account</a></li>
                                  <li><a class="dropdown-item clickOnDropDownNavBar"  href="javascript:void(0);" id="myOrders">My Orders</a></li>
                                  <li><a class="dropdown-item clickOnDropDownNavBar"  href="javascript:void(0);" id="myNotifications">Notifications</a></li>
-                                 <li><a class="dropdown-item clickOnDropDownNavBar"  href="javascript:void(0);" id="navChangePassword">Change Password</a></li>
+                                 <li><a class="dropdown-item clickOnDropDownNavBar"  href="javascript:void(0);" id="changePassword">Change Password</a></li>
                                  <li><a class="dropdown-item clickOnDropDownNavBar" href="javascript:void(0);" id="logoutBtn">Logout</a></li>
                               </ul>
                            </div>

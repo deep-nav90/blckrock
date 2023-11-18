@@ -354,14 +354,17 @@ textarea.form-control {
                   </div>
 
 
-                  
+                  <?php 
+                      $meta_k = $product_find->meta_keyword ? $product_find->meta_keyword : "N/A";
+                      $meta_d = $product_find->meta_description ? $product_find->meta_description : "N/A";
+                    ?>
 
                   <div class="row">
 
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">Meta Keyword<span class="text-danger"> *</span></label>
-                        <input type="text" name="meta_keyword" disabled class="form-control" id="meta_keyword" value="{{$product_find->meta_keyword}}" maxlength="50">
+                        <input type="text" name="meta_keyword" disabled class="form-control" id="meta_keyword" value="{{$meta_k}}" maxlength="50">
                         <div id ="meta_keyword_error" class="error"></div>
                         @if($errors->has('meta_keyword'))
                           <div class="error">{{ $errors->first('meta_keyword') }}</div>
@@ -398,10 +401,21 @@ textarea.form-control {
                     <div class="col-sm-6">
                         <div class="form-group">
                           <label for="name">Meta Description<span class="text-danger"> *</span></label>
-                          <textarea type="text" name="meta_description" disabled class="form-control textareaClass" id="meta_description">{{$product_find->meta_description}}</textarea>
+                          <textarea type="text" name="meta_description" disabled class="form-control textareaClass" id="meta_description">{{$meta_d}}</textarea>
                           <div id ="meta_description_error" class="error"></div>
                           @if($errors->has('meta_description'))
                             <div class="error">{{ $errors->first('meta_description') }}</div>
+                          @endif
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="name">Product Description<span class="text-danger"> *</span></label>
+                          <textarea type="text" name="product_description" disabled class="form-control textareaClass" id="product_description">{{$meta_d}}</textarea>
+                          <div id ="product_description_error" class="error"></div>
+                          @if($errors->has('product_description'))
+                            <div class="error">{{ $errors->first('product_description') }}</div>
                           @endif
                         </div>
                       </div>
@@ -571,6 +585,12 @@ textarea.form-control {
             maxlength:1000,
             minlength:20
           },
+
+          product_description: {
+            required: true,
+            maxlength:1000,
+            minlength:20
+          },
           
           
           
@@ -603,6 +623,11 @@ textarea.form-control {
             required: "Meta Description is required.",
             maxlength:"Meta Description should be less than 1000 characters.",
             minlength:"Meta Description should be atleast 20 characters long."
+          },
+          product_description: {
+            required: "Product Description is required.",
+            maxlength:"Product Description should be less than 1000 characters.",
+            minlength:"Product Description should be atleast 20 characters long."
           },
                     
         },

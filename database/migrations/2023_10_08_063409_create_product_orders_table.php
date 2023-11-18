@@ -30,6 +30,8 @@ class CreateProductOrdersTable extends Migration
             $table->text('product_meta_description')->nullable();
             $table->string('product_meta_keyord')->nullable();
             $table->double('calculated_amount')->default(0);
+            $table->string('attribute_name')->nullable();
+            $table->integer('attribute_value')->default(0);
             $table->softDeletes();       
             $table->timestamps();
         });

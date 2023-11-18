@@ -305,7 +305,7 @@ textarea.form-control {
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="name">Meta Keyword<span class="text-danger"> *</span></label>
+                        <label for="name">Meta Keyword</label>
                         <input type="text" name="meta_keyword" class="form-control" id="meta_keyword" maxlength="50">
                         <div id ="meta_keyword_error" class="error"></div>
                         @if($errors->has('meta_keyword'))
@@ -339,13 +339,25 @@ textarea.form-control {
 
                   <div class="row">
 
-                    <div class="col-sm-6">
+                      <div class="col-sm-6">
                         <div class="form-group">
-                          <label for="name">Meta Description<span class="text-danger"> *</span></label>
+                          <label for="name">Meta Description</label>
                           <textarea type="text" name="meta_description" class="form-control textareaClass" id="meta_description"></textarea>
                           <div id ="meta_description_error" class="error"></div>
                           @if($errors->has('meta_description'))
                             <div class="error">{{ $errors->first('meta_description') }}</div>
+                          @endif
+                        </div>
+                      </div>
+
+
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="name">Product Description</label>
+                          <textarea type="text" name="product_description" class="form-control textareaClass" id="product_description"></textarea>
+                          <div id ="product_description_error" class="error"></div>
+                          @if($errors->has('product_description'))
+                            <div class="error">{{ $errors->first('product_description') }}</div>
                           @endif
                         </div>
                       </div>
@@ -515,7 +527,7 @@ textarea.form-control {
             required: true
           },
           meta_keyword: {
-            required: true,
+            //required: true,
             maxlength:50,
             minlength:2
           },
@@ -523,6 +535,11 @@ textarea.form-control {
             required : true
           },
           meta_description: {
+            //required: true,
+            maxlength:1000,
+            minlength:20
+          },
+          product_description: {
             required: true,
             maxlength:1000,
             minlength:20
@@ -574,6 +591,11 @@ textarea.form-control {
             required: "Meta Description is required.",
             maxlength:"Meta Description should be less than 1000 characters.",
             minlength:"Meta Description should be atleast 20 characters long."
+          },
+          product_description: {
+            required: "Product Description is required.",
+            maxlength:"Product Description should be less than 1000 characters.",
+            minlength:"Product Description should be atleast 20 characters long."
           },
                     
         },

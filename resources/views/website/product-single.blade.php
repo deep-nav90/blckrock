@@ -128,7 +128,7 @@
             <div class="tab-content" id="myTabContent">
                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <h5>About {{$productFind->product_name}}</h5>
-                  <p style="word-break: break-all;">{{$productFind->meta_description}}</p>
+                  <p style="word-break: break-all;">{{$productFind->product_description}}</p>
                </div>
                
                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
@@ -185,16 +185,16 @@
                   <span class="product-price">{{$product->default_sale_price}}₹ <span>{{$product->default_product_price}}₹</span> </span>
                   <?php 
                      $limit = 100;
-                     if(strlen($product->meta_description) > $limit){
-                        $show_description = substr($product->meta_description, 0, $limit) . " ...";
+                     if(strlen($product->product_description) > $limit){
+                        $show_description = substr($product->product_description, 0, $limit) . " ...";
                      }else{
-                        $show_description = $product->meta_description;
+                        $show_description = $product->product_description;
                      }
                    ?>
                   <p class="product-text">
                      <span class="text_view">{{$show_description}}</span>
-                     <!-- @if(strlen($product->meta_description) > $limit)
-                     <span class="read_more" less_read="{{$show_description}}" full_read = "{{$product->meta_description}}">Read More</span>
+                     <!-- @if(strlen($product->product_description) > $limit)
+                     <span class="read_more" less_read="{{$show_description}}" full_read = "{{$product->product_description}}">Read More</span>
                      
                      @endif() -->
 

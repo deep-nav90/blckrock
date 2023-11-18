@@ -50,10 +50,8 @@ class CouponController extends Controller
             }elseif($order == 3){
                 $column = "coupon_amount_and_percentage";
             }elseif($order == 4){
-                $column = "meta_keyword";
-            }elseif($order == 5){
                 $column = "status";
-            }elseif($order == 6){
+            }elseif($order == 5){
                 $column = "created_at";
             }
         
@@ -75,7 +73,6 @@ class CouponController extends Controller
                             $query->orWhere('coupon_name', 'Like', '%'. $search . '%');
                             $query->orWhere('coupon_type', 'Like', '%'. $search . '%');
                             $query->orWhere('coupon_amount_and_percentage', 'Like', '%'. $search . '%');
-                            $query->orWhere('meta_keyword', 'Like', '%'. $search . '%');
                             $query->orWhere('status', 'Like', '%'. $search . '%');
                             $query->orWhere(DB::raw('DATE_FORMAT(created_at, "%m-%d-%Y")'), 'Like', '%'. $search . '%');
                         });

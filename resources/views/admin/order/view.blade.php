@@ -661,26 +661,27 @@ textarea.form-control {
 
                   </div>
 
+
                   <div class="row">
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="name">Meta Keyword</label>
-                        <input type="text" name="product_meta_keyord" class="form-control"  value="{{$productOrder->product_meta_keyord}}" maxlength="50" disabled>
-                        <div id ="product_meta_keyord_error" class="error"></div>
-                        @if($errors->has('product_meta_keyord'))
-                          <div class="error">{{ $errors->first('product_meta_keyord') }}</div>
+                        <label for="name">Attribute Name</label>
+                        <input type="text" name="attribute_name" class="form-control" value="{{$productOrder->attribute_name}}" maxlength="50" disabled>
+                        <div id ="attribute_name_error" class="error"></div>
+                        @if($errors->has('attribute_name'))
+                          <div class="error">{{ $errors->first('attribute_name') }}</div>
                         @endif
                       </div>
                     </div>
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="name">Total Product Price</label>
-                        <input type="text" name="calculated_amount" class="form-control"  value="{{$productOrder->calculated_amount}}" maxlength="50" disabled>
-                        <div id ="calculated_amount_error" class="error"></div>
-                        @if($errors->has('calculated_amount'))
-                          <div class="error">{{ $errors->first('calculated_amount') }}</div>
+                        <label for="name">Attribute Value</label>
+                        <input type="text" name="attribute_value" class="form-control"  value="{{$productOrder->attribute_value}}" maxlength="50" disabled>
+                        <div id ="attribute_value_error" class="error"></div>
+                        @if($errors->has('attribute_value'))
+                          <div class="error">{{ $errors->first('attribute_value') }}</div>
                         @endif
                       </div>
                     </div>
@@ -695,18 +696,31 @@ textarea.form-control {
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="name">Meta Description</label>
-                        <textarea type="text" name="product_meta_description" class="form-control"  disabled>{{$productOrder->product_meta_description}}</textarea>
-                        <div id ="product_meta_description_error" class="error"></div>
-                        @if($errors->has('product_meta_description'))
-                          <div class="error">{{ $errors->first('product_meta_description') }}</div>
+                        <label for="name">Total Product Price</label>
+                        <input type="text" name="calculated_amount" class="form-control"  value="{{$productOrder->calculated_amount}}" maxlength="50" disabled>
+                        <div id ="calculated_amount_error" class="error"></div>
+                        @if($errors->has('calculated_amount'))
+                          <div class="error">{{ $errors->first('calculated_amount') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                    
+
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="name">Product Description</label>
+                        <textarea type="text" name="product_description" class="form-control"  disabled>{{$productOrder->product_description}}</textarea>
+                        <div id ="product_description_error" class="error"></div>
+                        @if($errors->has('product_description'))
+                          <div class="error">{{ $errors->first('product_description') }}</div>
                         @endif
                       </div>
                     </div>
 
 
-
                   </div>
+
+                 
 
 
 

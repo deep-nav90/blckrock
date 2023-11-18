@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->foreign('sub_category_id')->references('id')->on('sub_categories')->onDelete('cascade');
             $table->string('product_name');
             $table->enum('status',['Active','Inactive'])->default('Active');
+            $table->text('product_description')->nullable();
             $table->string('meta_keyword')->nullable();
             $table->text('meta_description')->nullable();
             $table->integer('product_quantity')->default(0);

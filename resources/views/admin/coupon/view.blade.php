@@ -98,10 +98,16 @@
                     </div>
 
 
+                    <?php 
+                      $meta_k = $coupon->meta_keyword ? $coupon->meta_keyword : "N/A";
+                      $meta_d = $coupon->meta_description ? $coupon->meta_description : "N/A";
+                    ?>
+
+
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">Meta Keyword<span class="text-danger"> *</span></label>
-                        <input type="text" name="meta_keyword" class="form-control" value="{{$coupon->meta_keyword}}" id="meta_keyword" maxlength="50" disabled>
+                        <input type="text" name="meta_keyword" class="form-control" value="{{$meta_k}}" id="meta_keyword" maxlength="50" disabled>
                         <div id ="meta_keyword_error" class="error"></div>
                         @if($errors->has('meta_keyword'))
                           <div class="error">{{ $errors->first('meta_keyword') }}</div>
@@ -144,7 +150,7 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="name">Meta Description<span class="text-danger"> *</span></label>
-                          <textarea type="text" name="meta_description" class="form-control textareaClass" id="meta_description" disabled>{{$coupon->meta_description}}</textarea>
+                          <textarea type="text" name="meta_description" class="form-control textareaClass" id="meta_description" disabled>{{$meta_d}}</textarea>
                           <div id ="meta_description_error" class="error"></div>
                           @if($errors->has('meta_description'))
                             <div class="error">{{ $errors->first('meta_description') }}</div>

@@ -32,7 +32,6 @@
                   <th>Coupon Name</th>
                   <th>Coupon Type</th>
                   <th>Amount/Percentage</th>
-                  <th>Meta Keyword</th>
                   <th>Status</th>
                   <th>Created On</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
@@ -88,16 +87,14 @@
               $( row ).find('td:eq(1)').attr('data-id', data['id']).attr('key_type','coupon_name').addClass('td_click').addClass('white_space');
               $( row ).find('td:eq(2)').attr('data-id', data['id']).attr('key_type','coupon_type').addClass('td_click').addClass('white_space');
               $( row ).find('td:eq(3)').attr('data-id', data['id']).attr('key_type','coupon_amount_and_percentage').addClass('td_click').addClass('white_space');
-              $( row ).find('td:eq(4)').attr('data-id', data['id']).attr('key_type','meta_keyword').addClass('td_click').addClass('white_space');
-              $( row ).find('td:eq(5)').attr('data-id', data['id']).attr('key_type','status').addClass('td_click').addClass('white_space');
-              $( row ).find('td:eq(6)').attr('data-id', data['id']).attr('key_type','date_show').addClass('td_click').addClass('white_space');
+              $( row ).find('td:eq(4)').attr('data-id', data['id']).attr('key_type','status').addClass('td_click').addClass('white_space');
+              $( row ).find('td:eq(5)').attr('data-id', data['id']).attr('key_type','date_show').addClass('td_click').addClass('white_space');
             },
             "columns": [
               {data: 'DT_RowIndex', name: 'DT_RowIndex'},
               {data: 'coupon_name', name: 'coupon_name'},
               {data: 'coupon_type', name: 'coupon_type'},
               {data: 'coupon_amount_and_percentage', name: 'coupon_amount_and_percentage'},
-              {data: 'meta_keyword', name: 'meta_keyword'},
               {data: 'status', name: 'status'},
               {data: 'date_show', name: 'date_show'},
               {data: 'action', name: 'action', orderable: false, searchable: false},
