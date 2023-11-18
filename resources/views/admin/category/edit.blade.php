@@ -57,7 +57,7 @@
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="name">Meta Keyword<span class="text-danger"> *</span></label>
+                        <label for="name">Meta Keyword</label>
                         <input type="text" name="meta_keyword" class="form-control" id="meta_keyword" value="{{$category->meta_keyword}}" maxlength="50">
                         <div id ="meta_keyword_error" class="error"></div>
                         @if($errors->has('meta_keyword'))
@@ -80,7 +80,7 @@
                 <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label for="name">Meta Description<span class="text-danger"> *</span></label>
+                          <label for="name">Meta Description</label>
                           <textarea type="text" name="meta_description" class="form-control textareaClass" id="meta_description">{{$category->meta_description}}</textarea>
                           <div id ="meta_description_error" class="error"></div>
                           @if($errors->has('meta_description'))
@@ -179,12 +179,12 @@
             required: true
           },
           meta_keyword: {
-            required: true,
+            //required: true,
             maxlength:50,
             minlength:2
           },
           meta_description: {
-            required: true,
+            //required: true,
             maxlength:1000,
             minlength:20
           },

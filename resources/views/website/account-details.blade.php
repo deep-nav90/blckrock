@@ -986,12 +986,16 @@ img.productImage {
                                     <div class="col-md-2">
                                         <img class="productImage" src="`+product_default_image+`" class="img-fluid" alt="Product Image"/>
                                     </div>
-                                    <div class="col-md-4 text-center d-flex justify-content-center align-items-center">
+                                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                                         <p class="text-muted mb-0 productName">`+orderDetails.product_orders[k].product_name+`</p>
+                                    </div>
+
+                                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                                        <p class="text-muted mb-0 small productAttributeNameValue">`+orderDetails.product_orders[k].attribute_name+`: `+orderDetails.product_orders[k].attribute_value+`</p>
                                     </div>
                                     
                                 
-                                    <div class="col-md-4 text-center d-flex justify-content-center align-items-center">
+                                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
                                         <p class="text-muted mb-0 small productQuantity">Quantity: `+orderDetails.product_orders[k].quantity+`</p>
                                     </div>
                                     <div class="col-md-2 text-center d-flex justify-content-center align-items-center">

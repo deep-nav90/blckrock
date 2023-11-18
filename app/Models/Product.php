@@ -21,6 +21,7 @@ class Product extends Model
         'status',
         'meta_keyword',
         'meta_description',
+        'product_description',
         'product_quantity',
         'average_rating',
         'deleted_at',

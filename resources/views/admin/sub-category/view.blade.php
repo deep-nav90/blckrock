@@ -94,13 +94,19 @@ textarea#meta_description {
                                         
                   </div>
 
+
+                  <?php 
+                      $meta_k = $sub_category->meta_keyword ? $sub_category->meta_keyword : "N/A";
+                      $meta_d = $sub_category->meta_description ? $sub_category->meta_description : "N/A";
+                    ?>
+
                   <div class="row">
 
 
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">Meta Keyword</label>
-                        <input type="text" name="meta_keyword" disabled class="form-control" value="{{$sub_category->meta_keyword}}" id="meta_keyword" maxlength="50">
+                        <input type="text" name="meta_keyword" disabled class="form-control" value="{{$meta_k}}" id="meta_keyword" maxlength="50">
                         <div id ="meta_keyword_error" class="error"></div>
                         @if($errors->has('meta_keyword'))
                           <div class="error">{{ $errors->first('meta_keyword') }}</div>
@@ -133,7 +139,7 @@ textarea#meta_description {
                     <div class="col-sm-6">
                         <div class="form-group">
                           <label for="name">Meta Description</label>
-                          <textarea type="text" disabled name="meta_description" class="form-control textareaClass" id="meta_description">{{$sub_category->meta_description}}</textarea>
+                          <textarea type="text" disabled name="meta_description" class="form-control textareaClass" id="meta_description">{{$meta_d}}</textarea>
                           <div id ="meta_description_error" class="error"></div>
                           @if($errors->has('meta_description'))
                             <div class="error">{{ $errors->first('meta_description') }}</div>

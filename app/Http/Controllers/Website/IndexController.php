@@ -477,13 +477,17 @@ class IndexController extends Controller
 
                 $product_orders->product_name = $product->product_name;
 
-                $product_orders->product_meta_description = $product->meta_description;
+                $product_orders->product_description = $product->product_description;
 
-                $product_orders->product_meta_keyord = $product->meta_keyword;
+                $product_orders->attribute_name = $product->selected_attribute_name;
+                $product_orders->attribute_value = $product->selected_attribute_value;
 
                 $product_orders->calculated_amount = $product->calculate_price;
 
                 $product_orders->save();
+
+                $pendingQuantity = (int)$product->product_quantity - (int)$product->selected_quantity;
+                Product::whereId($product->id)->update(['product_quantity' => $pendingQuantity]);
 
             }
 

@@ -21,9 +21,10 @@ class ProductOrder extends Model
         'category_name',
         'sub_category_name',
         'product_name',
-        'product_meta_description',
-        'product_meta_keyord',
-        'calculated_amount'
+        'product_description',
+        'calculated_amount',
+        'attribute_name',
+        'attribute_value'
     ];
 
     public function product(){

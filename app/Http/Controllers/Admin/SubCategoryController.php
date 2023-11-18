@@ -46,10 +46,8 @@ class SubCategoryController extends Controller
             }elseif($order == 2){
                 $column = "sub_category_name";
             }elseif($order == 3){
-                $column = "meta_keyword";
-            }elseif($order == 4){
                 $column = "status";
-            }elseif($order == 5){
+            }elseif($order == 4){
                 $column = "created_at";
             }
         
@@ -71,7 +69,6 @@ class SubCategoryController extends Controller
                             $query->orWhere(DB::raw('(SELECT category_name from categories WHERE categories.id = sub_categories.category_id)'),'Like','%' . $search . '%');
                             $query->orWhere('sub_category_name', 'Like', '%'. $search . '%');
 
-                            $query->orWhere('meta_keyword', 'Like', '%'. $search . '%');
                             $query->orWhere('status', 'Like', '%'. $search . '%');
 
                             $query->orWhere(DB::raw('DATE_FORMAT(created_at, "%m-%d-%Y")'), 'Like', '%'. $search . '%');
