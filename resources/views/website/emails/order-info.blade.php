@@ -35,11 +35,60 @@
                     border-radius: 10px;box-shadow: 0 0 25px #1111111a;margin:auto;width:100%;min-width: 320px;" class="inner-table">
                             <tr>
                                 <td style="text-align: center;">
-                                    <img src="{{$message->embed($logo)}}" alt="logo">
+                                    <img src="{{$message->embed($logo)}}" style="width:100px;" alt="logo">
                                     <h4 style="font-size:20px;font-weight:600;margin: 0;color: #211f54;line-height:30px">Hello {{$orderDetails->billingShippingAddress->billing_first_name}} {{$orderDetails->billingShippingAddress->billing_lat_name}}</h4>
                                     <p style="color: #454860;margin: 0;font-size: 14px;text-align: center;line-height:30px  ">Your order ({{$orderDetails->unique_order_id}}) has been processed successfully.</p>
                                 </td>
                             </tr>
+
+                            <tr>
+                                <td align="left" valign="top" style="padding-left: 20px;font-family:arial, sans-serif; font-size:14px; color:#474747;">
+
+                            <span style="display: block;"> <b style="color: #256cc5; display: block; font-size:20px;">Order Details:</b></span><br>
+                            <span style="display: block;"> <b style="padding-left: 0px !important;">Order ID</b>: {{$orderDetails->unique_order_id}} </br></span> <br>
+                                
+                                @if($orderDetails->coupon_type != 'None')
+                                <span style="display: block;"><b style="padding-left: 0px !important; ">Coupon Code</b>:<span style="padding-left: 0px;"> {{$orderDetails->coupon_code}}</span></span> 
+                                <br>
+
+                                <span style="display: block;"><b style="padding-left: 0px !important; ">Discount Amount</b>:<span style="padding-left: 0px;"> {{$orderDetails->discount_amount_for_coupon}}</span></span> 
+                                <br>
+                                @endif()
+
+                                <span style="display: block;"><b style="padding-left: 0px !important; ">Shipping Charges</b>:<span style="padding-left: 0px;"> ₹{{$orderDetails->shipping_charger}}</span></span> 
+                                <br>
+
+                                <span style="display: block;"><b style="padding-left: 0px !important; ">Total Amount</b>:<span style="padding-left: 0px;"> ₹{{$orderDetails->total_amount}}</span></span> 
+                                <br>
+
+                                <span style="display: block;"><b style="padding-left: 0px !important; ">Payment Type</b>:<span style="padding-left: 0px;"> {{$orderDetails->payment_type}}</span></span> 
+                                <br>
+
+                                <span style="display: block;"><b style="padding-left: 0px !important; ">Pay Amount</b>:<span style="padding-left: 0px;"> ₹{{$orderDetails->pay_amount}}</span></span> 
+                                <br><br>
+
+                                <span style="display: block;"> <b style="color: #256cc5; display: block; font-size:20px;">Product Details:</b></span><br>
+                                
+                                @foreach($orderDetails->productOrders as $product)
+                                <div class="box-mail" style="border-radius: 5px;border: 2px solid #dfdfdf;padding: 5px; margin-bottom:10px;">
+                                    <span style="display: block;"> <b style="padding-left: 0px !important;">Product Name</b>: {{$product->product_name}} </br></span> <br>
+
+                                    <span style="display: block;"> <b style="padding-left: 0px !important; ">Product Price</b>: ₹{{$product->product_price}} </br></span> <br>
+
+                                    <span style="display: block;"> <b style="padding-left: 0px !important; ">Attribute</b>: {{$product->attribute_value}}({{$product->attribute_name}}) </br></span> <br>
+
+                                    <span style="display: block;"> <b style="padding-left: 0px !important; ">Quantity</b>: {{$product->quantity}} </br></span> <br>
+
+                                    <span style="display: block;"> <b style="padding-left: 0px !important; ">Amount</b>: ₹{{$product->calculated_amount}} </br></span> <br>
+                                </div>
+                                @endforeach()
+
+
+
+                                </td>
+                            </tr>
+
+                            
                            
                            
                         </table>

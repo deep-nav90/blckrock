@@ -29,6 +29,7 @@ class CreateOrdersTable extends Migration
             $table->enum('order_status',['Pending','Accepted','Shipped','Completed','Rejected'])->default('Pending');
             $table->string('payment_type');
             $table->double('pay_amount')->default(0);
+            $table->string('pdf_file_name')->nullable();
             $table->softDeletes();       
             $table->timestamps();
         });

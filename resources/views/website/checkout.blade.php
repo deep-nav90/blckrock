@@ -941,7 +941,7 @@ if(Auth::guard('web')->user()){
 
                      Swal.fire({
                        title: 'Information',
-                       text: "Your order has been processed successfully.",
+                       text: "Your order has been processed successfully. Invoice has been sent to your billing email address.",
                        icon: 'success',
                        showCancelButton: false,
                        confirmButtonColor: '#3085d6',
