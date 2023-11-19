@@ -125,7 +125,7 @@
 									        <svg class="radial-progress" data-countervalue="0" viewBox="0 0 80 80">
 									            <circle class="bar-static" cx="40" cy="40" r="35"></circle>
 									            <circle class="bar--animated" cx="40" cy="40" r="35" style="stroke-dashoffset: 217.8;"></circle>
-									            <text class="countervalue start" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)">0</text>
+									            <text class="countervalue start" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)">{{$total_users}}</text>
 									        </svg>
 									    </div>
 									    <h3>Total Number Of Users</h3>
@@ -141,7 +141,7 @@
 									        <svg class="radial-progress" data-countervalue="0" viewBox="0 0 80 80">
 									            <circle class="bar-static" cx="40" cy="40" r="35"></circle>
 									            <circle class="bar--animated" cx="40" cy="40" r="35" style="stroke-dashoffset: 217.8;"></circle>
-									            <text class="countervalue start" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)"></text>
+									            <text class="countervalue start" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)">{{$total_blocked_users}}</text>
 									        </svg>
 									    </div>
 									    <h3>Total Blocked Users Account</h3>
@@ -158,10 +158,28 @@
 									        <svg class="radial-progress" data-countervalue="0" viewBox="0 0 80 80">
 									            <circle class="bar-static" cx="40" cy="40" r="35"></circle>
 									            <circle class="bar--animated" cx="40" cy="40" r="35" style="stroke-dashoffset: 217.8;"></circle>
-									            <text class="countervalue start" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)">0</text>
+									            <text class="countervalue start" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)">{{$total_number_payments}}</text>
 									        </svg>
 									    </div>
 									    <h3>Total Number Of Payments</h3>
+								    </div>
+				                </div>
+	                        </div>
+	                    </div>
+
+
+						<div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-12">
+	                        <div class="portal-inner">
+				                <div class="left">
+								    <div class="counter_one">
+								    	<div class="counter_wrapper">
+									        <svg class="radial-progress" data-countervalue="0" viewBox="0 0 80 80">
+									            <circle class="bar-static" cx="40" cy="40" r="35"></circle>
+									            <circle class="bar--animated" cx="40" cy="40" r="35" style="stroke-dashoffset: 217.8;"></circle>
+									            <text class="countervalue start" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)">{{$total_coupons}}</text>
+									        </svg>
+									    </div>
+									    <h3>Total Number Of Coupons</h3>
 								    </div>
 				                </div>
 	                        </div>
@@ -179,41 +197,9 @@
 	        		<div id="chartContainer" style="height: 300px; width: 100%;"></div>
 	        	</div>
 	        	
-	        	<div class="table_wrapper">
-	        		<table class="table mb-0">
-					  <thead class="thead-dark">
-					    <tr>
-					      <th scope="col">Sr. No.</th>
-					      <th scope="col">Order ID</th>
-					      <th scope="col">Product Name</th>
-					      <th scope="col">Product Amount</th>
-					      <th scope="col">Paid Amount</th>
-					      <th scope="col">Coupon Code</th>
-						  <th scope="col">Coupon Amount</th>
-					      <th scope="col">Status</th>
-					    
-					      <th scope="col">Date & Time</th>
-					    </tr>
-					  </thead>
-					  <tbody>
-					  
-					    <tr>
-					      <td>1</td>
-					      <td>xxxxxxx1231</td>
-					      <td>ABC</td>
-					      <td>$100</td>
-					      <td>$70</td>
-					      <td>xxx434</td>
-						  <td>30</td>
-					      <td>Completed</td>
-					      
-					      <td>11-May-2023</td>
-					    </tr>
-					    
-					  </tbody>
-					</table>
-	        	</div>
+	        	
 	        </div>
+			
         	<div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 col-12">
         	   <div class="colum-content">
 		          
@@ -222,11 +208,11 @@
 		              <a href="javascript:void(0);">
 		                <div class="inner">
 		                  <div class="left">
-		                    <p>Total Registered Users</p>
-		                    <h3>0</h3>
+		                    <p>Total Revenue</p>
+		                    <h3>{{$totalRevenue}}</h3>
 		                  </div>
 		                  <div class="right">
-		                    <img src="{{ asset('') }}images/user.png" alt="">
+						  <i class="fas fa-2x fa-rupee-sign"></i>
 		                  </div>
 		                </div>
 		              </a>
@@ -238,28 +224,18 @@
 		             <a href="javascript:void(0);">
 		                <div class="inner">
 		                  <div class="left">
-		                    <p>Total Active Account</p>
-		                    <h3>0</h3>
+		                    <p>Total Products</p>
+		                    <h3>{{$totalProducts}}</h3>
 		                  </div>
 		                  <div class="right">
-		                    <img src="{{ asset('') }}images/support.png" alt="">
+						  <i class="fa fa-asterisk fa-2x" aria-hidden="true"></i>
+
+
 		                  </div>
 		                </div>
 		             </a>
 		          </div>
-		          <div class="small-box content">
-		             <a href="javascript:void(0);">
-		                <div class="inner">
-		                  <div class="left">
-		                    <p>Reports</p>
-		                    <h3>0</h3>
-		                  </div>
-		                  <div class="right">
-		                    <img src="{{ asset('') }}images/content.png" alt="" style="width: 36px; height: 40px; object-fit: contain;">
-		                  </div>
-		                </div>
-		             </a>
-		          </div>
+		          
 		          
 
 		          <div class="small-box feedback">
@@ -267,10 +243,11 @@
 		              <div class="inner">
 		                 <div class="left">
 		                   <p>Total Orders</p>
-		                   <h3>0</h3>
+		                   <h3>{{$totalOrders}}</h3>
 		                 </div>
 		                 <div class="right">
-		                   <img src="{{ asset('') }}images/roles.png" alt="" style="width: 40px; height: 40px; object-fit: contain;">
+						 <i class="fa fa-2x fa-briefcase" aria-hidden="true"></i>
+
 		                 </div>
 		              </div>
 		             </a>
@@ -281,6 +258,42 @@
 			   </div> 
 		    </div>
         </div>
+
+		<div class="table_wrapper">
+	        		<table class="table mb-0">
+					  <thead class="thead-dark">
+					    <tr>
+						<th scope="col">Sr. No.</th>
+					      <th scope="col">Order ID</th>
+					      <th scope="col">User Name</th>
+					      <th scope="col">Total Amount</th>
+					      <th scope="col">Discount Amount</th>
+					      <th scope="col">Pay Amount</th>
+					      <th scope="col">Payment Type</th>
+					      <th scope="col">Payment Received</th>
+					      <th scope="col">Status</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  
+					  @foreach($last_10_orders as $order)
+					    <tr>
+					      <td>{{$order->unique_order_id}}</td>
+					      <td>{{$order->user_name}}</td>
+					      <td>{{$order->total_amount}}</td>
+					      <td>{{$order->discount_amount_for_coupon}}</td>
+					      <td>{{$order->pay_amount}}</td>
+					      <td>{{$order->payment_type}}</td>
+						  <td>{{$order->payment_received}}</td>
+					      <td>{{$order->order_status}}</td>
+					      
+					      <td>11-May-2023</td>
+					    </tr>
+					    @endforeach()
+					  </tbody>
+					</table>
+					<a class="btn btn-primary orderRedirect" href="{{route('order_list')}}">View All</a>
+	        	</div>
     </section>
 
 <button type="button" class="btn btn-primary" id="btn_model" data-toggle="modal" data-target="#exampleModal" hidden>
@@ -379,14 +392,14 @@ $window.on('load', check_if_in_view);
 <script>
 window.onload = function () {
 
-	var array_result_job_apply = [];
+	var array_result_for_order = <?php echo $current_year_orders; ?>;
 	
-	var final_arr_for_job_apply = [];
-	array_result_job_apply.forEach(function(currentValue, index, arr){
+	var final_order_array = [];
+	array_result_for_order.forEach(function(currentValue, index, arr){
 		let obj = {};
 		obj.x = new Date(currentValue['create_date']);
 		obj.y = currentValue['count_accourding_to_date'];
-		final_arr_for_job_apply.push(obj);
+		final_order_array.push(obj);
 	})
 
 	var array_result_event_apply =[];
@@ -402,14 +415,14 @@ var options = {
 	animationEnabled: true,
 	theme: "light2",
 	title:{
-		text: "Job Ads vs Events Applied"
+		text: "Orders of user"
 	},
 	axisX:{
 		valueFormatString: "DD MMM"
 	},
 	axisY: {
-		title: "Number Of Applied",
-		suffix: "K",
+		title: "Number Of Orders",
+		suffix: "",
 		minimum: 0
 	},
 	toolTip:{
@@ -425,20 +438,12 @@ var options = {
 	data: [{
 		type: "line",
 		showInLegend: true,
-		name: "Job Ads Applied",
+		name: "Create Order",
 		markerType: "square",
 		xValueFormatString: "DD MMM, YYYY",
 		color: "#F08080",
-		yValueFormatString: "#,##0K",
-		dataPoints: final_arr_for_job_apply
-	},
-	{
-		type: "line",
-		showInLegend: true,
-		name: "Events Applied",
-		lineDashType: "dash",
-		yValueFormatString: "#,##0K",
-		dataPoints: final_arr_for_event_apply
+		yValueFormatString: "#,##0",
+		dataPoints: final_order_array
 	}]
 };
 $("#chartContainer").CanvasJSChart(options);
@@ -467,21 +472,21 @@ function toogleDataSeries(e){
       initChart();
    });
 
-   var array_current_year_booking =[];
+   var array_current_year_revenue = <?php echo $current_year_revenue; ?>;
 	
-	var final_arr_current_year_booking = [];
+	var final_arr_current_year_revenue = [];
 	var k = 1;
-	array_current_year_booking.forEach(function(currentValue, index, arr){
+	array_current_year_revenue.forEach(function(currentValue, index, arr){
 		let obj = {};
 		obj.id = k;
-		obj.group_name = "Order";
-		obj.month = currentValue['booked_date'];
-		obj.total_no_of_bookings = currentValue['count_accourding_to_month'];
-		final_arr_current_year_booking.push(obj);
+		obj.group_name = "Payment";
+		obj.month = currentValue['payment_date'];
+		obj.total_no_of_bookings = currentValue['amount_accourding_to_month'];
+		final_arr_current_year_revenue.push(obj);
 		k++;
 	})
 
-	console.log(final_arr_current_year_booking)
+	console.log(final_arr_current_year_revenue)
 
    initChart = function() {
       var data = getData();
@@ -494,7 +499,7 @@ function toogleDataSeries(e){
          },
          bars: {
             hover_name_text: 'Month',
-            hover_value_text: 'Total Number Of Bookings'
+            hover_value_text: 'Total Revenue'
          },
          x_grid_lines: false,
          //y_grid_lines: false
@@ -569,7 +574,7 @@ function toogleDataSeries(e){
    }
 
    getData = function() {
-      return final_arr_current_year_booking;
+      return final_arr_current_year_revenue;
    }
 
 
