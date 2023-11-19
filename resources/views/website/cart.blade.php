@@ -401,10 +401,18 @@ h6.h6_coupon {
 
          $(".select_quan[p_id='"+p_id+"']").text(count);
 
-         $("#totalProductPrice").text(calculatePrice);
+         let totalPriceArray = [];
+         $(".sales_price").each(function(){
+            totalPriceArray.push(parseFloat($(this).text()));
+         })
+
+         let __totalProductPrice = totalPriceArray.reduce((a, b) => a + b, 0);
+
+
+         $("#totalProductPrice").text(__totalProductPrice);
          checkApplyCouponCode();
 
-         updateProductInCart(p_id, count);
+         updateProductInCart(p_id, count, calculatePrice);
          return false;
       });
       $(document).on("click",".increaseValue",function() {
@@ -418,6 +426,8 @@ h6.h6_coupon {
          let sale_price = $(this).attr('sale_price');
          let p_id = $(this).attr('p_id');
 
+
+
          let calculatePrice = parseFloat(sale_price) * parseFloat($input.val());
          calculatePrice = calculatePrice.toFixed(2);
 
@@ -425,11 +435,19 @@ h6.h6_coupon {
 
          $(".select_quan[p_id='"+p_id+"']").text(count);
 
-         $("#totalProductPrice").text(calculatePrice);
+         let totalPriceArray = [];
+         $(".sales_price").each(function(){
+            totalPriceArray.push(parseFloat($(this).text()));
+         })
+
+         let __totalProductPrice = totalPriceArray.reduce((a, b) => a + b, 0);
+
+
+         $("#totalProductPrice").text(__totalProductPrice);
          checkApplyCouponCode();
 
 
-         updateProductInCart(p_id, count);
+         updateProductInCart(p_id, count, calculatePrice);
 
 
 
@@ -577,16 +595,15 @@ function putFinalPriceOnLocal(){
 
 
    <script type="text/javascript">
-     function updateProductInCart(productID, count){
+     function updateProductInCart(productID, count, calculatePrice){
         let productInCart = JSON.parse(localStorage.getItem('productInCart'));
-        let totalProductPrice = $("#totalProductPrice").text();
          let getProduct = [];
          if(productID){
             getProduct = productInCart.filter(function(item) {
             
               if(item["id"] == productID){
                 item['selected_quantity'] = count;
-                item['calculate_price'] = totalProductPrice;
+                item['calculate_price'] = calculatePrice;
               }
 
               return item;

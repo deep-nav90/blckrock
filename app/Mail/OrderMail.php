@@ -34,6 +34,7 @@ class OrderMail extends Mailable
         return $this->from(env('MAIL_USERNAME'),'Rock')
             ->subject('Order Details')
             ->view('website.emails.order-info')
+            ->attach(storage_path('/app/public/pdf_files'.'/'. $this->orderDetails->pdf_file_name))
             ->with([
                 'loginDetails' => $this->loginDetails, 
                 'orderDetails' => $this->orderDetails,

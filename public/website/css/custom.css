@@ -521,6 +521,14 @@ img.razorpay-icon {
     width: 100px;
 }
 
+.crossP {
+    width: 0%!important;
+}
+
+.shopping-cart-main-wrapper .cart-strip-main-wrapper .cart-item {
+    width: 25%;
+}
+
 
 
 

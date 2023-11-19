@@ -30,7 +30,7 @@ class CompleteOrder extends Mailable
     public function build()
     {
         return $this->from(env('MAIL_USERNAME'),'Rock')
-            ->subject('Complete Order')
+            ->subject('Order Completed')
             ->view('admin.emails.complete-order')
             ->with([
                 'find_order' => $this->find_order,

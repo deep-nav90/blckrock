@@ -30,7 +30,7 @@ class AcceptOrder extends Mailable
     public function build()
     {
         return $this->from(env('MAIL_USERNAME'),'Rock')
-            ->subject('Accept Details')
+            ->subject('Order Accepted')
             ->view('admin.emails.accept-order')
             ->with([
                 'find_order' => $this->find_order,

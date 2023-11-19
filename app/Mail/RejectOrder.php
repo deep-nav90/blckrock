@@ -30,7 +30,7 @@ class RejectOrder extends Mailable
     public function build()
     {
         return $this->from(env('MAIL_USERNAME'),'Rock')
-            ->subject('Reject Details')
+            ->subject('Order Rejected')
             ->view('admin.emails.reject-order')
             ->with([
                 'find_order' => $this->find_order,

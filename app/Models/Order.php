@@ -29,7 +29,8 @@ class Order extends Model
         'order_status',
         'payment_type',
         'pay_amount',
-        'payment_received'
+        'payment_received',
+        'pdf_file_name'
     ];
 
     public function payment(){

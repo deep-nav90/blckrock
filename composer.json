@@ -16,7 +16,9 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
         "razorpay/razorpay": "^2.8",
-        "yajra/laravel-datatables-oracle": "^9.15"
+        "yajra/laravel-datatables-oracle": "^9.15",
+        "barryvdh/laravel-dompdf": "^0.8",
+        "dompdf/dompdf": "^0.8"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
