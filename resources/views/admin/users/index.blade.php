@@ -86,6 +86,15 @@
     </div>
   </div>
 </div>
+
+
+<div class="modal fade" id="lodaerModal" tabindex="-1" role="dialog" aria-labelledby="lodaerModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+     
+      <img src="{{url('public/loading-buffering.gif')}}" style="width: 50px; height:50px;">
+     
+  </div>
+</div>
 @endsection
 
 @section('css')
@@ -231,6 +240,73 @@
             } 
           });
         });
+
+
+        $(document).on("click",".blockUnblock",function(){
+          let actionFor = $(this).attr("title");
+          let dataID = $(this).attr("data-id");
+
+          $(".lodaerModal").modal("show");
+
+          
+
+
+          swal({
+            title: "Are you sure?",
+            text: "Are you sure you want to "+actionFor+" this user?",
+            type: "warning",
+            showCancelButton: true,
+          }, function(willDelete) {
+            if (willDelete) {
+              $.ajax({
+                url: "{{ route('block_user')}}",
+                type: 'post',
+                data: {
+                  id: dataID
+                },
+                dataType: "JSON",
+                headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                  if(response.success == 1) {
+
+                    let msg = "";
+                    if(actionFor == "Block"){
+                      $(".blockUnblock[title='Unblock']").removeAttr("hidden");
+                      $(".blockUnblock[title='Block']").attr("hidden","true");
+                      msg = "User has been blocked succesfully.";
+                    }else{
+                      $(".blockUnblock[title='Block']").removeAttr("hidden");
+                      $(".blockUnblock[title='Unblock']").attr("hidden","true");
+                      msg = "User has been Unblocked succesfully.";
+                    }
+
+                    setTimeout(() => {
+                      $(".lodaerModal").modal("hide");
+                    }, 300);
+                    swal({
+                        title: "Information",
+                        text: msg,
+                        type: "success",
+                        showCancelButton: false,
+                    }, function(willDelete) {
+                       
+                    });
+                  }
+                  else {
+                    console.log("FALSE");
+                    setTimeout(() => {
+                    alert("Something went wrong! Please try again.");
+                    }, 500);
+                  }
+                }
+              });
+            } 
+          });
+
+
+        })
 
 
 

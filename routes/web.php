@@ -56,6 +56,7 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/view/{id}', [UserContoller::class, 'viewUser'])->name('user_view');
         
         Route::post('/delete/user', [UserContoller::class, 'deleteUser'])->name('delete_user');
+        Route::post('/block_user',[UserContoller::class, 'blockUser'])->name('block_user');
 
         Route::post('/order-history', [UserContoller::class, 'orderHistoryList'])->name('orderHistoryList');
         Route::post('/payment-history', [UserContoller::class, 'paymentHistoryList'])->name('paymentHistoryList');

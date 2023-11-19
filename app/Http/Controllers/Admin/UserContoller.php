@@ -102,7 +102,18 @@ class UserContoller extends Controller
                 
                 if(Auth::user()->can('view_user')) {
                     $btn .= '<a class="action-button" title="View" href="view/'.$row->id.'"><i class="text-info fa fa-eye"></i></a>';
-                   
+                    
+                    $block_show = "hidden";
+                    $unblock_show = "";
+                    if($row->is_block == "Unblock"){
+                        $block_show = "";
+                        $unblock_show = "hidden";
+                    }else{
+                        $block_show = "hidden";
+                        $unblock_show = "";
+                    }
+                    $btn .= '<a class="action-button blockUnblock" title="Block" data-id="'.$row->id.'" '.$block_show.' href="javascript:void(0);"><i class="fa fa-unlock-alt" aria-hidden="true"></i></a>';
+                    $btn .= '<a class="action-button blockUnblock" title="Unblock" data-id="'.$row->id.'" '.$unblock_show.' href="javascript:void(0);"><i class="fa fa-lock" aria-hidden="true"></i></a>';
                 }
 
                
@@ -133,6 +144,19 @@ class UserContoller extends Controller
     }
 
     
+    public function blockUser(Request $request){
+        $userID = $request->id;
+        $findUser = User::whereId($userID)->first();
+        if($findUser->is_block == 1){
+            $findUser->is_block = 0;
+        }else{
+
+            $findUser->is_block = 1;
+        }
+
+        $findUser->update();
+        return ['success' => 1];
+    }
     
 
     public function viewUser($id)
