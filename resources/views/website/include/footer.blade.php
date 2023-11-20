@@ -118,7 +118,7 @@
                         <a href="javascript:;"><i class="fab fa-google" aria-hidden="true"></i></a>
                      </li>
                      <li>
-                        <a href="javascript:;"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/+918288800857" target="_blank"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
                      </li>
                      <li>
                         <a href="javascript:;"><i class="fab fa-youtube" aria-hidden="true"></i></a>

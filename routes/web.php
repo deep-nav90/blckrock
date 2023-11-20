@@ -222,6 +222,8 @@ Route::post('myOrders',[IndexController::class,'myOrders'])->name('myOrders');
 
 Route::post('payment/success',[IndexController::class,'paymentSuccess'])->name('paymentSuccess');
 
+Route::get('invoice/{order_id}',[IndexController::class,'invoicePage'])->name('invoicePage');
+
 
 
 

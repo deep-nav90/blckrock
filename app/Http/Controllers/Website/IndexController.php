@@ -325,6 +325,11 @@ class IndexController extends Controller
 
         //Check STOCK AVAILABLE
 
+        if(!isset($productInCart)){
+            return ['status' => 'out_of_stock', 'message' => "You have no item in cart please add first to continue order."];
+        }
+
+
         foreach($productInCart as $product){
 
             $findP = Product::whereId($product->id)->first();
@@ -394,9 +399,9 @@ class IndexController extends Controller
             }else{
                 //FOR COD METHOD
 
-                $this->saveDataAfterPaymentComplete($checkLogin, $billingData, $shippingData, $transaction_id="xxxxxxx12345", $paymentMethod, $couponCode, $finalAmount, $productInCart, $data);
+                $order_id = $this->saveDataAfterPaymentComplete($checkLogin, $billingData, $shippingData, $transaction_id="xxxxxxx12345", $paymentMethod, $couponCode, $finalAmount, $productInCart, $data);
 
-                return ['status' => 'true', 'message' => 'Your order has been processed successfully. Invoice has been sent to your billing email address.'];
+                return ['status' => 'true', 'message' => 'Your order has been processed successfully. Invoice has been sent to your billing email address.', 'order_id' => $order_id];
 
             }
 
@@ -571,7 +576,7 @@ class IndexController extends Controller
 
             
 
-            return "success";
+            return $getOrderDetails->id;
     }
 
     public function accountDetails(Request $request){
@@ -799,9 +804,9 @@ class IndexController extends Controller
 
         $checkLogin = Auth::guard('web')->user();
         
-        $this->saveDataAfterPaymentComplete($checkLogin, $billingData, $shippingData, $transaction_id, $paymentMethod, $couponCode, $finalAmount, $productInCart, $data);
+        $order_id = $this->saveDataAfterPaymentComplete($checkLogin, $billingData, $shippingData, $transaction_id, $paymentMethod, $couponCode, $finalAmount, $productInCart, $data);
 
-        return redirect(route('allProducts'));
+        return redirect(route('invoicePage',base64_encode($order_id)));
         
     }
 
@@ -6764,6 +6769,18 @@ class IndexController extends Controller
 
             file_put_contents(storage_path('/app/public/pdf_files' . '/' . $file_name), $dompdf->output());
             return $file_name;
+    }
+
+    public function invoicePage(Request $request, $orderID){
+        $encodeOrderID = base64_decode($orderID);
+        $loginUserDetail = Auth::guard('web')->user();
+
+        if(empty($loginUserDetail)){
+            return redirect(route('index'));
+        }
+
+        $getOrderDetails = Order::whereId($encodeOrderID)->with('payment','productOrders','billingShippingAddress')->first();
+        return view("website.invoice-page",compact('getOrderDetails','loginUserDetail'));
     }
 
     
