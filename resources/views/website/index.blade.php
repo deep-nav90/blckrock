@@ -1,5 +1,5 @@
 @extends('website.layout.layout')
-@section('title','Food Court')
+@section('title','Black Rooster')
 
 @section('content')
   <!-- banner section start start-->
@@ -58,7 +58,7 @@
                   </p>
                   <br>
                   <p>Nothing less than the ‘natural miracle’, this premium breed is a quality product of nature itself. This bird is completely black – Black plumage, black legs, and toenails, beak, tongue, comb, wattles, meat, bones & even dark organs. This breed has a bachelor’s in adaption and a masters in disease resistance. And of course, an honorary in superb flavour and succulence.</p>
-                  <a class="custom-btn" href="#">Read More</a>
+                  <a class="custom-btn" href="{{route('aboutUS')}}">Read More</a>
                </div>
             </div>
          </div>
@@ -203,7 +203,7 @@
       </div>
    </div>
 
-   <div class="our-butchery-wrapper float_left">
+   <!-- <div class="our-butchery-wrapper float_left">
       <div class="container">
          <div class="row">
             <div class="col-lg-5 col-md-12 col-sm-12">
@@ -228,14 +228,12 @@
                   <figure class="img1">
                      <img class="img-fluid" src="{{url('public/webimg/sideegg.webp')}}" alt="img">
                   </figure>
-                  <!-- <figure class="img2">
-                     <img class="img-fluid doubleImg" src="{{url('public/website/images/banner7.jpg')}}" alt="img">
-                  </figure> -->
+                  
                </div>
             </div>
          </div>
       </div>
-   </div>
+   </div> -->
    <!-- 
    <div class="team-client-main-wrapper float_left ptb-100">
       <div class="container">
@@ -666,64 +664,28 @@
          </div>
          <div class="testi-slider float_left">
             <div id="my-carousel" class="owl-carousel">
+
+               @foreach($OurClients as $OurClient)
                <div class="item">
                   <div class="row">
-                     <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                     <!-- <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                         <img src="{{url('public/website/images/userc1.jpg')}}" alt="img">
-                     </div>
-                     <div class="col-lg-8 col-md-8 col-sm-12 col-12">
-                        <h4>Ibn Battuta</h4>
-                        <span>Business Man</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                           cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                           proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                     </div> -->
+                     <div class="col-lg-9 col-md-8 col-sm-12 col-12">
+                        <h4>{{$OurClient->our_client_name}}</h4>
+                        <span>{{$OurClient->title}}</span>
+                        <p>{{$OurClient->description}}</p>
                      </div>
                   </div>
                </div>
-               <div class="item">
-                  <div class="row">
-                     <div class="col-lg-4 col-md-4 col-sm-12 col-12">
-                        <img src="{{url('public/website/images/userc2.jpg')}}" alt="img">
-                     </div>
-                     <div class="col-lg-8 col-md-8 col-sm-12 col-12">
-                        <h4>Ibn Battuta</h4>
-                        <span>Business Man</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                           cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                           proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="item">
-                  <div class="row">
-                     <div class="col-lg-4 col-md-4 col-sm-12 col-12">
-                        <img src="{{url('public/website/images/userc3.jpg')}}" alt="img">
-                     </div>
-                     <div class="col-lg-8 col-md-8 col-sm-12 col-12">
-                        <h4>Ibn Battuta</h4>
-                        <span>Business Man</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                           cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                           proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                     </div>
-                  </div>
-               </div>
+               @endforeach()
 
             </div>
-            <div class="navigation-img-wrapper">
+            <!-- <div class="navigation-img-wrapper">
                <div class="navigator" data-item="0"><img src="{{url('public/website/images/userc1.jpg')}}" alt="img"></div>
                <div class="navigator" data-item="1"><img src="{{url('public/website/images/userc2.jpg')}}" alt="img"></div>
                <div class="navigator" data-item="2"><img src="{{url('public/website/images/userc3.jpg')}}" alt="img"></div>
-            </div>
+            </div> -->
          </div>
       </div>
    </div>

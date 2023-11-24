@@ -23,6 +23,7 @@ use App\Models\Order;
 use App\Models\Payment;
 use App\Models\ProductOrder;
 use App\Models\TblState;
+use App\Models\OurClient;
 
 use Razorpay\Api\Api;
 use Dompdf\Dompdf;
@@ -71,11 +72,12 @@ class IndexController extends Controller
 
         $categories = [$createObjectCategory, ...$categories];
 
+        $OurClients = OurClient::whereDeletedAt(null)->get();
 
         
        //$categories = [];
 
-    	return view('website.index',compact('categories'));
+    	return view('website.index',compact('categories','OurClients'));
     }
 
     public function singleProductDetails(Request $request, $product_id){

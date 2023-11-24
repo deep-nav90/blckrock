@@ -402,6 +402,25 @@ return [
             ]
         ],
 
+        [
+            'text' => 'Our Client',
+            'icon' => 'fas fa-users',
+            'active' => ['admin/our-clients*'],
+            'can' => ['view_our_client'],
+            'submenu' => [
+                [
+                    'text' => 'Our Clients',
+                    'icon' => 'fas fa-users',
+                    'url'  => 'admin/our-clients/list',
+                    'active' => ['admin/our-clients*'],
+                    'can' => ['view_our_client','delete_our_client','add_our_client','edit_our_client'],
+
+                ],
+                
+
+            ],
+        ],
+
 
 
         [
@@ -427,6 +446,9 @@ return [
                 ]
             ],
         ],
+
+
+        
 
 
     ],

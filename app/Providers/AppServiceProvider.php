@@ -367,6 +367,53 @@ class AppServiceProvider extends ServiceProvider
 
 
 
+
+        Gate::define('delete_our_client', function ($user) {
+            $user = Auth::user();
+            $permissions = $user->role->permissions;
+
+            for ($i=0; $i < count($permissions); $i++) { 
+                if($permissions[$i]->slug == 'delete_our_client') {
+                    return true;
+                }
+            }
+        });
+
+        Gate::define('view_our_client', function ($user) {
+            $user = Auth::user();
+            $permissions = $user->role->permissions;
+
+            for ($i=0; $i < count($permissions); $i++) { 
+                if($permissions[$i]->slug == 'view_our_client') {
+                    return true;
+                }
+            }
+        });
+
+        Gate::define('add_our_client', function ($user) {
+            $user = Auth::user();
+            $permissions = $user->role->permissions;
+
+            for ($i=0; $i < count($permissions); $i++) { 
+                if($permissions[$i]->slug == 'add_our_client') {
+                    return true;
+                }
+            }
+        });
+
+        Gate::define('edit_our_client', function ($user) {
+            $user = Auth::user();
+            $permissions = $user->role->permissions;
+
+            for ($i=0; $i < count($permissions); $i++) { 
+                if($permissions[$i]->slug == 'edit_our_client') {
+                    return true;
+                }
+            }
+        });
+
+
+
         Gate::define('delete_sub_category', function ($user) {
             $user = Auth::user();
             $permissions = $user->role->permissions;
