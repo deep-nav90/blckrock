@@ -1,5 +1,5 @@
 @extends('website.layout.layout')
-@section('title','Food Court')
+@section('title','Black Rooster')
 
 @section('content')
    <!-- banner section start start-->

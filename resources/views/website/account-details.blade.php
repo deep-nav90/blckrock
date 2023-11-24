@@ -1,5 +1,5 @@
 @extends('website.layout.layout')
-@section('title','Food Court')
+@section('title','Black Rooster')
 
 
 <style>
@@ -37,6 +37,12 @@ img.productImage {
 
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to top left, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1))
+}
+
+a.invoiceSRC {
+    font-size: 14px;
+    color: #5e5eff;
+    font-weight: 500;
 }
 
 
@@ -497,7 +503,7 @@ img.productImage {
                 </div>
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                    <p class="lead fw-normal mb-0" style="color: #a8729a;">Order Details</p>
+                    <p class="lead fw-normal mb-0" style="color: #a8729a;">Order Details <a class="invoiceSRC" target="_blank" href="javascript:void(0);">(Click to view invoice)</a></p>
                     <p class="small text-muted mb-0">Order ID : <span class="orderID"></span></p>
                     </div>
 
@@ -1032,6 +1038,8 @@ img.productImage {
             $(".discountAmount").text(orderDetails.discount_amount_for_coupon);
             $(".shippingCharges").text(orderDetails.shipping_charger);
             $(".totalAmountPaid").text(orderDetails.pay_amount);
+
+            $(".invoiceSRC").attr("href","{{url('invoice')}}" + "/" + btoa(orderDetails.id));
 
             $("#staticBackdrop").modal("show");
 

@@ -1,5 +1,5 @@
 @extends('website.layout.layout')
-@section('title','Food Court')
+@section('title','Black Rooster')
 
 @section('content')
 
@@ -949,7 +949,7 @@ if(Auth::guard('web')->user()){
                        confirmButtonText: 'Ok',
                        allowOutsideClick: false
                      }).then((result) => {
-                       window.location.href = "{{route('allProducts')}}";
+                       window.location.href = "{{url('invoice')}}" + "/" + btoa(res.order_id);
                      })
 
                      setTimeout(function(){

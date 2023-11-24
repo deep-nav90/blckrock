@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\UserContoller;
 use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Admin\OurClientController;
 
 use App\Http\Controllers\Website\IndexController;
 
@@ -102,6 +103,18 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::post('/delete', [AttributeController::class, 'deleteAttribute'])->name('delete_attribute');
       
     });
+
+    // Our Client Management
+    Route::group(['prefix' => 'our-clients'], function () {
+      Route::match(['GET','POST'],'/list', [OurClientController::class, 'ourClientList'])->name('our_client_list');
+      Route::match(['GET','POST'],'/add', [OurClientController::class, 'addOurClient'])->name('add_our_client');
+      Route::post('/check_our_client_name', [OurClientController::class, 'checkOurClientNameExists'])->name('check_our_client_name');
+      Route::match(['GET','POST'],'/view/{id}', [OurClientController::class, 'viewOurClient'])->name('view_our_client');
+      Route::match(['GET','POST'],'/edit/{id}', [OurClientController::class, 'editOurClient'])->name('edit_our_client');
+      Route::post('/delete', [OurClientController::class, 'deleteOurClient'])->name('delete_our_client');
+      
+    });
+
 
     // Coupon Management
     Route::group(['prefix' => 'coupons'], function () {
@@ -221,6 +234,8 @@ Route::post('myOrders',[IndexController::class,'myOrders'])->name('myOrders');
 
 
 Route::post('payment/success',[IndexController::class,'paymentSuccess'])->name('paymentSuccess');
+
+Route::get('invoice/{order_id}',[IndexController::class,'invoicePage'])->name('invoicePage');
 
 
 
