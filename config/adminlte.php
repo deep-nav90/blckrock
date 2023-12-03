@@ -421,6 +421,25 @@ return [
             ],
         ],
 
+        [
+            'text' => 'Contact Us',
+            'icon' => 'fas fa-users',
+            'active' => ['admin/contact-us*'],
+            'can' => ['view_our_client'],
+            'submenu' => [
+                [
+                    'text' => 'Contact Us',
+                    'icon' => 'fas fa-users',
+                    'url'  => 'admin/contact-us/list',
+                    'active' => ['admin/contact-us*'],
+                    'can' => ['view_contact_us','delete_contact_us','reply_contact_us'],
+
+                ],
+                
+
+            ],
+        ],
+
 
 
         [

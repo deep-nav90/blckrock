@@ -413,6 +413,40 @@ class AppServiceProvider extends ServiceProvider
         });
 
 
+        Gate::define('delete_contact_us', function ($user) {
+            $user = Auth::user();
+            $permissions = $user->role->permissions;
+
+            for ($i=0; $i < count($permissions); $i++) { 
+                if($permissions[$i]->slug == 'delete_contact_us') {
+                    return true;
+                }
+            }
+        });
+
+        Gate::define('view_contact_us', function ($user) {
+            $user = Auth::user();
+            $permissions = $user->role->permissions;
+
+            for ($i=0; $i < count($permissions); $i++) { 
+                if($permissions[$i]->slug == 'view_contact_us') {
+                    return true;
+                }
+            }
+        });
+
+        Gate::define('reply_contact_us', function ($user) {
+            $user = Auth::user();
+            $permissions = $user->role->permissions;
+
+            for ($i=0; $i < count($permissions); $i++) { 
+                if($permissions[$i]->slug == 'reply_contact_us') {
+                    return true;
+                }
+            }
+        });
+
+
 
         Gate::define('delete_sub_category', function ($user) {
             $user = Auth::user();

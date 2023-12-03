@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\UserContoller;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\OurClientController;
+use App\Http\Controllers\Admin\ContactUsController;
 
 use App\Http\Controllers\Website\IndexController;
 
@@ -112,6 +113,14 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::match(['GET','POST'],'/view/{id}', [OurClientController::class, 'viewOurClient'])->name('view_our_client');
       Route::match(['GET','POST'],'/edit/{id}', [OurClientController::class, 'editOurClient'])->name('edit_our_client');
       Route::post('/delete', [OurClientController::class, 'deleteOurClient'])->name('delete_our_client');
+      
+    });
+
+    // Contact Us Management
+    Route::group(['prefix' => 'contact-us'], function () {
+      Route::match(['GET','POST'],'/list', [ContactUsController::class, 'contactUsList'])->name('contact_us_list');
+      Route::match(['GET','POST'],'/view/{id}', [ContactUsController::class, 'viewContactUs'])->name('view_contact_us');
+      Route::post('/delete', [ContactUsController::class, 'deleteContactUs'])->name('delete_contact_us');
       
     });
 
