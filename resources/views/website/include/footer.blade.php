@@ -15,14 +15,17 @@
                <div class="link">
                   <span>Call Now</span>
                   <h4>+91 828 8800 857</h4>
-                  <span>Get Special Email Offers</span>
+                  <span>Get Special Email Offers</span><br>
+                  <span> info@blackroosterindia.com</span>
                   <div class="line">
                      <img src="{{url('public/website/images/4.png')}}" alt="line">
+                    
                   </div>
-                  <div class="input-filed">
+
+                  <!-- <div class="input-filed">
                      <input type="email" placeholder="Your Email">
                      <button>Join Us</button>
-                  </div>
+                  </div> -->
                </div>
             </div>
             <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
@@ -90,11 +93,11 @@
                   <div class="link-page">
                      <div class="img-ftr">
                         <div class="small-img"> <img src="{{url('public/website/images/s1.jpg')}}" alt="img"> </div>
-                        <div class="small-img"> <img src="{{url('public/website/images/s2.jpg')}}" alt="img"> </div>
-                        <div class="small-img"> <img src="{{url('public/website/images/s3.jpg')}}" alt="img"> </div>
-                        <div class="small-img"> <img src="{{url('public/website/images/s4.jpg')}}" alt="img"> </div>
-                        <div class="small-img"> <img src="{{url('public/website/images/s5.jpg')}}" alt="img"> </div>
-                        <div class="small-img"> <img src="{{url('public/website/images/s6.jpg')}}" alt="img"> </div>
+                        <div class="small-img"> <img src="{{url('public/website/images/s1.jpg')}}" alt="img"> </div>
+                        <div class="small-img"> <img src="{{url('public/website/images/s1.jpg')}}" alt="img"> </div>
+                        <div class="small-img"> <img src="{{url('public/website/images/s1.jpg')}}" alt="img"> </div>
+                        <div class="small-img"> <img src="{{url('public/website/images/s1.jpg')}}" alt="img"> </div>
+                        <div class="small-img"> <img src="{{url('public/website/images/s1.jpg')}}" alt="img"> </div>
                      </div>
                   </div>
                </div>
@@ -111,9 +114,9 @@
                      <li>
                         <a href="javascript:;"><i class="fab fa-facebook-f"></i></a>
                      </li>
-                     <li>
+                     <!-- <li>
                         <a href="javascript:;"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                     </li>
+                     </li> -->
                      <li>
                         <a href="javascript:;"><i class="fab fa-google" aria-hidden="true"></i></a>
                      </li>
@@ -121,18 +124,18 @@
                         <a href="https://wa.me/+918288800857" target="_blank"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
                      </li>
                      <li>
-                        <a href="javascript:;"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="javascript:;"><i class="fab fa-instagram" aria-hidden="true"></i></a>
                      </li>
-                     <li>
+                     <!-- <li>
                         <a href="javascript:;"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
-                     </li>
+                     </li> -->
                   </ul>
                </div>
             </div>
             <div class="col-lg-7 col-md-7 col-sm-12 col-12">
                <div class="copy-right">
                   <p>Copyright {{date('Y')}} © </p>
-                  <a href="javascript:;">Black Rooster | Meat Shop</a>
+                  <a href="javascript:;">Black Rooster | Eggs Shop</a>
                   
                </div>
             </div>
@@ -480,6 +483,18 @@
    
 
    @yield('js')
+
+   <script async src='https://d2mpatx37cqexb.cloudfront.net/delightchat-whatsapp-widget/embeds/embed.min.js'></script>
+   <script>
+      var wa_btnSetting = {"btnColor":"#16BE45","ctaText":"WhatsApp Us","cornerRadius":40,"marginBottom":20,"marginLeft":20,"marginRight":85,"btnPosition":"right","whatsAppNumber":"918288800857","welcomeMessage":"Hello","zIndex":999999,"btnColorScheme":"light"};
+      var wa_widgetSetting = {"title":"Ella","subTitle":"Typically replies in a hour","headerBackgroundColor":"#FBFFC8","headerColorScheme":"dark","greetingText":"Hi there! \nHow can I help you?","ctaText":"Start Chat","btnColor":"#1A1A1A","cornerRadius":40,"welcomeMessage":"Hello","btnColorScheme":"light","brandImage":"https://uploads-ssl.webflow.com/5f68a65cd5188c058e27c898/6204c4267b92625c9770f687_whatsapp-chat-widget-dummy-logo.png","darkHeaderColorScheme":{"title":"#333333","subTitle":"#4F4F4F"}};  
+      window.onload = () => {
+      _waEmbed(wa_btnSetting, wa_widgetSetting);
+      };
+   </script>
+
+
+      
    
 </body>
 
