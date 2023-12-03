@@ -1,4 +1,4 @@
-.index1-logo a img {
+﻿.index1-logo a img {
     width: 210px;
     object-fit: contain;
    /* height: 50px; */
@@ -288,8 +288,8 @@ overflow: auto;
 }
 
 .inner-slider-wrapper {
-    background-image : url('../../webimg/bread.jpg')!important;
-    background-size: contain !important;
+    background-image : url('../../webimg/bread.webp')!important;
+    
 }
 
 img.meat {

@@ -5957,7 +5957,9 @@ td.visible-print {
     }
 }
 
-
+.fw-600{
+    font-weight:600
+}
 
 </style>
 
@@ -5989,18 +5991,18 @@ td.visible-print {
     		<div class="row">
     			<div class="col-xs-6">
     				<address>
-                    <strong>Billed To:</strong><br>
-    					{{$getOrderDetails->BillingShippingAddress->billing_first_name}} {{$getOrderDetails->BillingShippingAddress->billing_last_name}}<br>
-    					{{$getOrderDetails->BillingShippingAddress->billing_address}}<br>
-    					{{$getOrderDetails->BillingShippingAddress->billing_city}}, {{$getOrderDetails->BillingShippingAddress->billing_state}}, {{$getOrderDetails->BillingShippingAddress->billing_zip_code}}<br>
-    					{{$getOrderDetails->BillingShippingAddress->billing_email}}<br>
-                        {{$getOrderDetails->BillingShippingAddress->billing_phone_number}}
+                    <strong>Company name:</strong><br>
+                       <span class="fw-600"> BLACK ROOSTER PRIVATE LIMITED </span><br>
+    					KH NO. 879, NH-44, VILL PRAGPUR, KOT KALAN<br>
+    					JALANDHAR, Punjab, 144024<br>
+                        info@blackroosterindia.com<br>
+                        +91 8288800857
     				</address>
     			</div>
     			<div class="col-xs-6 text-right">
     				<address>
         			<strong>Shipped To:</strong><br>
-                    {{$getOrderDetails->BillingShippingAddress->shipping_first_name}} {{$getOrderDetails->BillingShippingAddress->shipping_last_name}}<br>
+                    <span class="fw-600"> {{$getOrderDetails->BillingShippingAddress->shipping_first_name}} {{$getOrderDetails->BillingShippingAddress->shipping_last_name}}</span><br>
     					{{$getOrderDetails->BillingShippingAddress->shipping_address}}<br>
     					{{$getOrderDetails->BillingShippingAddress->shipping_city}}, {{$getOrderDetails->BillingShippingAddress->shipping_state}}, {{$getOrderDetails->BillingShippingAddress->shipping_zip_code}}<br>
     					{{$getOrderDetails->BillingShippingAddress->shipping_email}}<br>
@@ -6024,9 +6026,9 @@ td.visible-print {
     				<address>
     					<strong>Order Summary:</strong><br>
     					Date: {{$orderDate}}<br>
-                        Discount: ₹{{$getOrderDetails->discount_amount_for_coupon}}<br>
+                        <!-- Discount: ₹{{$getOrderDetails->discount_amount_for_coupon}}<br>
                         Shipping Charges: ₹{{$getOrderDetails->shipping_charger}}<br>
-                        Total Paid: ₹{{$getOrderDetails->pay_amount}}
+                        Total Paid: ₹{{$getOrderDetails->pay_amount}} -->
     				</address>
     			</div>
     		</div>
@@ -6062,7 +6064,27 @@ td.visible-print {
                                     <td class="text-right">₹{{$product->calculated_amount}}</td>
     							</tr>
                                 @endforeach()
-                                
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-right fw-600">Discount</td>
+                                    <td class="text-right"> ₹{{$getOrderDetails->discount_amount_for_coupon}}</td>
+                                </tr>
+                                <tr>
+                                <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-right fw-600">Shipping Charges</td>
+                                    <td class="text-right">₹{{$getOrderDetails->shipping_charger}}</td>
+                                </tr>
+                                <tr>
+                                <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-right fw-600"> Total Paid</td>
+                                    <td class="text-right"> ₹{{$getOrderDetails->pay_amount}}</td>
+                                </tr>
     						</tbody>
     					</table>
 

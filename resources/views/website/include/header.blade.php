@@ -32,6 +32,12 @@
    <link rel="stylesheet" type="text/css" href="{{url('public/website/css/style.css')}}" />
    <link rel="stylesheet" type="text/css" href="{{url('public/website/css/responsive.css')}}" />
    <link rel="stylesheet" type="text/css" href="{{url('public/website/css/custom.css')}}" />
+   <link rel="stylesheet" type="text/css" href="{{url('public/website/css/owlc.css')}}" />
+   
+   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+   <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css"> -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
    <!--favicon-->
    <link rel="shortcut icon" type="image/png" href="{{url('public/website/images/fav-icon.png')}}" />
 
@@ -62,12 +68,12 @@
                   <div class="row">
                      <div class="col-md-9 col-sm-9 col-xs-6">
                         <ul class="contact-details">
-                           <li class="hidden-xs"><a href="#">Family Butchers Est. 1901</a>
-                           </li>
+                           <!-- <li class="hidden-xs"><a href="#">Family Butchers Est. 1901</a>
+                           </li> -->
                            <li><a href="#"><i class="fa fa-phone"></i> <b>+91 8288800857</b> (Open Right Now)</a>
                            </li>
                            <li class="hidden-xs"><a href="#"><i
-                                    class="fa fa-paper-plane-o"></i>&nbsp;&nbsp;info@blackrooster.com</a>
+                                    class="fa fa-paper-plane-o"></i>&nbsp;&nbsp;info@blackroosterindia.com</a>
                            </li>
                         </ul>
                      </div>
@@ -184,7 +190,10 @@
                                  <a class="nav-link shopClick" href="javascript:void(0);">Shop</a>
                                 
                               </li>
-                              <li class="nav-item menu-click3 ps-rel">
+                              <li class="nav-item">
+                                 <a class="nav-link" href="{{route('ContactUs')}}">Contact Us</a>
+                              </li>
+                              <!-- <li class="nav-item menu-click3 ps-rel">
                                  <a class="nav-link" >Our Product <span>
                                     <i class="fas fa-chevron-down"></i>
                                        </span></a>
@@ -205,11 +214,11 @@
                                        {{$dropdownCat->category_name}}
                                     </a>
                                  </li>
-                                 <!-- <option class="optionCategorySelect" data-id="{{$dropdownCat->id}}" value="{{$dropdownCat->id}}">{{$dropdownCat->category_name}}</option> -->
+                              
                                  @endforeach()
                                     
                                  </ul>
-                              </li>
+                              </li> -->
                               <!-- <li class="nav-item menu-click ps-rel">
                                  <a class="nav-link" href="javascript:;">Blog
                                     <span><i class="fas fa-chevron-down"></i></span>

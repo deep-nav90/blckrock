@@ -221,7 +221,7 @@ Route::match(['GET','POST'],'loginWeb',[IndexController::class,'loginWeb'])->nam
 Route::get('logout',[IndexController::class,'logout'])->name('logout');
 Route::get('about-us',[IndexController::class,'aboutUS'])->name('aboutUS');
 
-
+Route::match(['GET','POST'],'contact-us',[IndexController::class,'ContactUs'])->name('ContactUs');
 
 
 
@@ -237,7 +237,9 @@ Route::post('payment/success',[IndexController::class,'paymentSuccess'])->name('
 
 Route::get('invoice/{order_id}',[IndexController::class,'invoicePage'])->name('invoicePage');
 
+Route::get('invoice/download/{order_id}',[IndexController::class,'invoiceDownload'])->name('invoiceDownload');
 
+Route::get('track/order/{order_id}',[IndexController::class,'trackOrder'])->name('trackOrder');
 
 
 

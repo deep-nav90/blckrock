@@ -17,6 +17,7 @@ use App\Models\User;
 use Session;
 use App\Mail\OrderMail;
 use App\Mail\ReceivedOrderMailAdmin;
+use App\Mail\ContactUs;
 use App\Models\UserAddress;
 use App\Models\BillingShippingAddress;
 use App\Models\Order;
@@ -24,10 +25,12 @@ use App\Models\Payment;
 use App\Models\ProductOrder;
 use App\Models\TblState;
 use App\Models\OurClient;
+use App\Models\Contact;
 
 use Razorpay\Api\Api;
 use Dompdf\Dompdf;
 use PDF;
+use Response;
 
 require(dirname(__FILE__)."/textlocal.class.php");
 
@@ -550,7 +553,7 @@ class IndexController extends Controller
 
 
             $getOrderDetails = Order::whereId($order->id)->with('payment','productOrders','billingShippingAddress')->first();
-
+            
             //generatePDF
             $generatePdfFileName = $this->generateInvoiceAndSendToMail($getOrderDetails, $checkLogin);
 
@@ -741,8 +744,15 @@ class IndexController extends Controller
 
                 $base64Encode = base64_encode($row);
                 
-                $btn .= '<a class="action-button openOrderDetailsModel" orderDetails="'.$base64Encode.'" style="cursor:pointer;" title="View" data-id="'.$row->id.'" href="javascript:void(0);"><i class="text-info fa fa-eye"></i></a>';
+                $btn .= '<a href="'.url('invoice'). "/" . base64_encode($row->id) .'" class="action-button" orderDetails="'.$base64Encode.'" style="cursor:pointer;" title="View" data-id="'.$row->id.'" href="javascript:void(0);"><i class="text-info fa fa-eye"></i></a>';
                    
+                $btn .= '<a target="_blank" href="'.url("/invoice/download"). "/" . base64_encode($row->id) . '" class="action-button" orderDetails="'.$base64Encode.'" style="cursor:pointer;" title="Download" data-id="'.$row->id.'" href="javascript:void(0);"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>';
+
+                $btn .= '<a target="_blank" href="'.url("/track/order"). "/" . base64_encode($row->id) . '" class="action-button" orderDetails="'.$base64Encode.'" style="cursor:pointer;" title="Track Order" data-id="'.$row->id.'" href="javascript:void(0);"><i class="fa fa-universal-access" aria-hidden="true"></i>
+                </a>';
+
+                
+
 
               
 
@@ -772,6 +782,27 @@ class IndexController extends Controller
 
     public function aboutUS(Request $request){
         return view('website.about-us');
+    }
+    public function Contactus(Request $request){
+        if($request->isMethod('GET')){
+            return view('website.contact-us');
+        }
+
+        if($request->isMethod('POST')){
+            $data = $request->all();
+
+            try {
+                \Mail::to($data['email'])->send(new ContactUs($data));
+            }catch(\Exception $ex){
+                return ['status' => 'false','message' => "Error: " . $ex->getMessage()]; 
+            }
+
+            $contact_us = new Contact();
+            $contact_us->fill($data);
+            $contact_us->save();
+            return ['status' => 'true','message' => "Your request has been submitted successfully. Admin will be contact you within 1 day."]; 
+        }
+        
     }
 
 
@@ -808,6 +839,7 @@ class IndexController extends Controller
         
         $order_id = $this->saveDataAfterPaymentComplete($checkLogin, $billingData, $shippingData, $transaction_id, $paymentMethod, $couponCode, $finalAmount, $productInCart, $data);
 
+       
         return redirect(route('invoicePage',base64_encode($order_id)));
         
     }
@@ -825,6 +857,29 @@ class IndexController extends Controller
                 <td class="text-right">INR '.$product->calculated_amount.'</td>
             </tr>';
         }
+
+
+        $product_ordered .= '<tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="text-right fw-600">Discount</td>
+                            <td class="text-right"> INR '.$orderDetails->discount_amount_for_coupon.'</td>
+                        </tr>
+                        <tr>
+                        <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="text-right fw-600">Shipping Charges</td>
+                            <td class="text-right">INR '.$orderDetails->shipping_charger.'</td>
+                        </tr>
+                        <tr>
+                        <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="text-right fw-600"> Total Paid</td>
+                            <td class="text-right"> INR '.$orderDetails->pay_amount.'</td>
+                        </tr>';
 
         
 
@@ -6674,6 +6729,10 @@ class IndexController extends Controller
                         .table > tbody > tr > .thick-line {
                             border-top: 2px solid;
                         }
+
+                        .fw-600{
+                            font-weight:600
+                        }
                     </style>
                 
                     <div class="container">
@@ -6685,18 +6744,20 @@ class IndexController extends Controller
                             <hr>
                             <div class="row">
                                 <div class="" style="display: flex;">
-                                    <address style="width:50%;">
-                                    <strong>Billed To:</strong><br>
-                                        '.$orderDetails->BillingShippingAddress->billing_first_name. " " . $orderDetails->BillingShippingAddress->billing_last_name .'<br>
-                                        '.$orderDetails->BillingShippingAddress->billing_address.'<br>
-                                        '.$orderDetails->BillingShippingAddress->billing_city. ", " . $orderDetails->BillingShippingAddress->billing_state . ", " . $orderDetails->BillingShippingAddress->billing_zip_code .'<br>
-                                        '.$orderDetails->BillingShippingAddress->billing_email.'<br>
-                                        '.$orderDetails->BillingShippingAddress->billing_phone_number.'
-                                    </address>
+
+                                <address style="width:50%;">
+                                    <strong>Company name:</strong><br>
+                                    <span class="fw-600"> BLACK ROOSTER PRIVATE LIMITED </span><br>
+                                        KH NO. 879, NH-44, VILL PRAGPUR, KOT KALAN<br>
+                                        JALANDHAR, Punjab, 144024<br>
+                                        info@blackroosterindia.com<br>
+                                        +91 8288800857
+                                </address>
+                                    
 
                                     <address style="width:50%; text-align:right;">
                                     <strong>Shipped To:</strong><br>
-                                    '.$orderDetails->BillingShippingAddress->shipping_first_name. " " . $orderDetails->BillingShippingAddress->shipping_last_name .'<br>
+                                    <span class="fw-600">'.$orderDetails->BillingShippingAddress->shipping_first_name. " " . $orderDetails->BillingShippingAddress->shipping_last_name .'</span><br>
                                     '.$orderDetails->BillingShippingAddress->shipping_address.'<br>
                                     '.$orderDetails->BillingShippingAddress->shipping_city. ", " . $orderDetails->BillingShippingAddress->shipping_state . ", " . $orderDetails->BillingShippingAddress->shipping_zip_code .'<br>
                                     '.$orderDetails->BillingShippingAddress->shipping_email.'<br>
@@ -6716,9 +6777,7 @@ class IndexController extends Controller
                                     <address style="width:50%; text-align:right;">
                                         <strong>Order Summary:</strong><br>
                                         Date: '.Carbon::parse($orderDetails->created_at)->format('m-d-Y').'<br>
-                                        Discount Amount: INR '.$orderDetails->discount_amount_for_coupon.'<br>
-                                        Shipping Charges: INR '.$orderDetails->shipping_charger.'<br>
-                                        Total Paid: INR '.$orderDetails->pay_amount.'
+                                        
                                     </address>
 
                                 </div>
@@ -6783,6 +6842,21 @@ class IndexController extends Controller
 
         $getOrderDetails = Order::whereId($encodeOrderID)->with('payment','productOrders','billingShippingAddress')->first();
         return view("website.invoice-page",compact('getOrderDetails','loginUserDetail'));
+    }
+
+    public function invoiceDownload(Request $request, $orderID){
+        $encodeOrderID = base64_decode($orderID);
+        $findOrder = Order::find($encodeOrderID);
+        $file_path = public_path('/storage/pdf_files') ."/". $findOrder->pdf_file_name;
+        return Response::download($file_path);
+    }
+
+    public function trackOrder(Request $request, $order_id){
+        $encodeOrderID = base64_decode($order_id);
+        $loginUserDetail = Auth::guard('web')->user();
+
+        $getOrderDetails = Order::whereId($encodeOrderID)->with('payment','productOrders','billingShippingAddress')->first();
+        return view("website.track-order",compact('getOrderDetails','loginUserDetail'));
     }
 
     
