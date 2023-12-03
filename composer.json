@@ -17,8 +17,8 @@
         "laravel/ui": "^3.2",
         "razorpay/razorpay": "^2.8",
         "yajra/laravel-datatables-oracle": "^9.15",
-        "barryvdh/laravel-dompdf": "^0.8",
-        "dompdf/dompdf": "^0.8"
+        "barryvdh/laravel-dompdf": "^1.0.0",
+        "dompdf/dompdf": "^1.2.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

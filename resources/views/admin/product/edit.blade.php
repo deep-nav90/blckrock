@@ -593,7 +593,7 @@ textarea.form-control {
           product_description: {
             //required: true,
             maxlength:1000,
-            minlength:20
+            minlength:100
           },
           
           
@@ -631,7 +631,7 @@ textarea.form-control {
           product_description: {
             required: "Product Description is required.",
             maxlength:"Product Description should be less than 1000 characters.",
-            minlength:"Product Description should be atleast 20 characters long."
+            minlength:"Product Description should be atleast 100 characters long."
           },
                     
         },
