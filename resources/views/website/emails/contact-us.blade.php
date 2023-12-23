@@ -52,7 +52,7 @@
                                 <span style="display: block;"><b style="padding-left: 0px !important; ">Email</b>:<span style="padding-left: 0px;"> {{$data['email']}}</span></span> 
                                 <br>
 
-                                <span style="display: block;"><b style="padding-left: 0px !important; ">Subject</b>:<span style="padding-left: 0px;"> {{$data['subject']}}</span></span> 
+                                <span style="display: block;"><b style="padding-left: 0px !important; ">Phone No</b>:<span style="padding-left: 0px;"> {{$data['phone']}}</span></span> 
                                 <br>
 
                                 <span style="display: block;"><b style="padding-left: 0px !important; ">Message</b>:<span style="padding-left: 0px;"> {{$data['message']}}</span></span> 

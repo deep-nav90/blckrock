@@ -39,6 +39,9 @@ a {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
+   .inner-slider-wrapper .breadcrumb li + li:before{
+display: none;
+   }
 
 i:before {
   margin-left: 0 !important;

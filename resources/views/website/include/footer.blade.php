@@ -117,14 +117,14 @@
                      <!-- <li>
                         <a href="javascript:;"><i class="fab fa-twitter" aria-hidden="true"></i></a>
                      </li> -->
-                     <li>
-                        <a href="javascript:;"><i class="fab fa-google" aria-hidden="true"></i></a>
-                     </li>
+                     <!--<li>-->
+                     <!--   <a href="javascript:;"><i class="fab fa-google" aria-hidden="true"></i></a>-->
+                     <!--</li>-->
                      <li>
                         <a href="https://wa.me/+918288800857" target="_blank"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
                      </li>
                      <li>
-                        <a href="javascript:;"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/blackroosterindia/" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
                      </li>
                      <!-- <li>
                         <a href="javascript:;"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
@@ -135,7 +135,7 @@
             <div class="col-lg-7 col-md-7 col-sm-12 col-12">
                <div class="copy-right">
                   <p>Copyright {{date('Y')}} © </p>
-                  <a href="javascript:;">Black Rooster | Eggs Shop</a>
+                  <a href="javascript:;">Black Rooster</a>
                   
                </div>
             </div>

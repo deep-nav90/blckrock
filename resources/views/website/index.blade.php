@@ -29,7 +29,7 @@
                                  <h2>Be Extra in the <span class="color-slider"> Ordinary</span></h2>
                                  <!-- <h1>Start-ups and solutions</h1> -->
                                  <h4>With nutrition that empowers you </h4>   
-                                 <a href="#" class="animated-button">Click me</a>
+                                 <a href="/rock/all-products" class="animated-button">Shop Now</a>
                            </div>
                         </div>
                      </div>
@@ -43,6 +43,7 @@
                                  <h2>An Egg That</h2>
                                  <h1><span class="color-slider"> Stands Out</span></h1>
                                  <h4>One-day  fresh | 11  safety checks | feed |</h4>
+                                 <a href="/rock/all-products" class="animated-button">Shop Now</a>
                            </div>
                         </div>
                      </div>
@@ -56,6 +57,7 @@
                                  <h2>Whip up what’s delicious <span class="color-slider">&</span></h2>
                                  <h1>what’s delicious <span class="color-slider"> nutritious </span></h1>
                                  <h4>Check out these exciting egg recipes</h4>
+                                 <a href="/rock/all-products" class="animated-button">Shop Now</a>
                            </div>
                         </div>
                      </div>
@@ -69,7 +71,7 @@
 <div class="home-delivery-sec-wrapper float_left ptb-100">
       <div class="container">
          <div class="heading-title">
-            <h4>Benifits of <span class="color-slider   ">Kadaknath Eggs</span></h4>
+            <h4>Benefits of <span class="color-slider   ">Kadaknath Eggs</span></h4>
             <!-- <p>know about our delivery processes</p> -->
             <img class="img-fluid" src="{{url('public/website/images/line-yal.png')}}" alt="img">
          </div>
@@ -381,7 +383,7 @@
                         <input type="email" class="form-control" name="email" placeholder="Enter Your Email">
                      </div>
                      <div class="mb-3">
-                        <input type="text" name="subject" class="form-control" placeholder="Enter Your subject"
+                        <input type="text" name="phone" class="form-control" maxlength="10" placeholder="Enter Your phone no" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" 
                            >
                      </div>
                      <div class="mb-3">

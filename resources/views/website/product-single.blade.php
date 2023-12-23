@@ -23,7 +23,8 @@
          <ol class="breadcrumb sicon">
             <li><a href="{{route('index')}}">Home</a></li>
             <li><a href="javascript:void(0);">{{$productFind->category->category_name}}</a></li>
-            <li class="active">{{$productFind->product_name}}</li>
+            <li class="active"><i class="fa fa-angle-double-right"></i>{{$productFind->product_name}}</li>
+            
          </ol>
          <!-- <img class="meat" src="{{url('public/website/images/foodc1.jpg')}}" alt="img"> -->
       </div>

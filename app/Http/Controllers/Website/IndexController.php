@@ -737,7 +737,7 @@ class IndexController extends Controller
 
             foreach ($data as $k => $row) {
 
-                $btn ="";
+                $btn ="<div class='d-flex '>";
 
                 
 
@@ -749,7 +749,7 @@ class IndexController extends Controller
                 $btn .= '<a target="_blank" href="'.url("/invoice/download"). "/" . base64_encode($row->id) . '" class="action-button" orderDetails="'.$base64Encode.'" style="cursor:pointer;" title="Download" data-id="'.$row->id.'" href="javascript:void(0);"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>';
 
                 $btn .= '<a target="_blank" href="'.url("/track/order"). "/" . base64_encode($row->id) . '" class="action-button" orderDetails="'.$base64Encode.'" style="cursor:pointer;" title="Track Order" data-id="'.$row->id.'" href="javascript:void(0);"><i class="fa fa-universal-access" aria-hidden="true"></i>
-                </a>';
+                </a></div>';
 
                 
 
@@ -790,6 +790,7 @@ class IndexController extends Controller
 
         if($request->isMethod('POST')){
             $data = $request->all();
+       
 
             try {
                 \Mail::to($data['email'])->send(new ContactUs($data));
@@ -6743,9 +6744,9 @@ class IndexController extends Controller
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="" style="display: flex;">
+                                <div class="" style="display: flex;background : red">
 
-                                <address style="width:50%;">
+                                <address style="width:48%;">
                                     <strong>Company name:</strong><br>
                                     <span class="fw-600"> BLACK ROOSTER PRIVATE LIMITED </span><br>
                                         KH NO. 879, NH-44, VILL PRAGPUR, KOT KALAN<br>
@@ -6755,7 +6756,7 @@ class IndexController extends Controller
                                 </address>
                                     
 
-                                    <address style="width:50%; text-align:right;">
+                                    <address style="width:48%; text-align:right;">
                                     <strong>Shipped To:</strong><br>
                                     <span class="fw-600">'.$orderDetails->BillingShippingAddress->shipping_first_name. " " . $orderDetails->BillingShippingAddress->shipping_last_name .'</span><br>
                                     '.$orderDetails->BillingShippingAddress->shipping_address.'<br>
@@ -6842,6 +6843,15 @@ class IndexController extends Controller
 
         $getOrderDetails = Order::whereId($encodeOrderID)->with('payment','productOrders','billingShippingAddress')->first();
         return view("website.invoice-page",compact('getOrderDetails','loginUserDetail'));
+    }
+    public function invoicePdf( $order_id)
+    {
+     
+       $encodeOrderID=base64_decode($order_id);
+   
+        $chkorder=Order::whereId($encodeOrderID)->with('payment','productOrders','billingShippingAddress')->first();
+       $pdf = PDF::loadView('website.invoice-pdf',compact('getOrderDetails','loginUserDetail'));
+        return $pdf->stream(' invoice.pdf');
     }
 
     public function invoiceDownload(Request $request, $orderID){

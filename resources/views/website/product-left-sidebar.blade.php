@@ -29,6 +29,9 @@ span.relative.inline-flex {
      text-align: unset; 
     
 }
+.inner-slider-wrapper .breadcrumb .active {
+    margin-top: 4px;
+}
 
 </style>
 
@@ -41,7 +44,8 @@ span.relative.inline-flex {
          </div>
          <ol class="breadcrumb sicon">
             <li><a href="{{route('index')}}">Home</a></li>
-            <li class="active">All Products</li>
+            <li class="active"><i class="fa fa-angle-double-right"></i>All Products</li>
+            <!-- <li class="active">All Products</li> -->
          </ol>
          <!-- <img class="meat" src="{{url('public/website/images/title-bottom.png')}}" alt="img"> -->
       </div>
@@ -121,7 +125,7 @@ span.relative.inline-flex {
             </div>
             <div class="col-lg-12 col-md-12 col-12">
 
-                  <div class="side-bar-strip customdesignsearch">
+                  <div class="side-bar-strip customdesignsearch mt-3">
                      
                      <div class="input-search">
                         <input type="text" id="searchbar" placeholder="Search Here">
