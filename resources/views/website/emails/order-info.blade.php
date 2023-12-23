@@ -35,7 +35,7 @@
                     border-radius: 10px;box-shadow: 0 0 25px #1111111a;margin:auto;width:100%;min-width: 320px;" class="inner-table">
                             <tr>
                                 <td style="text-align: center;">
-                                    <img src="{{$message->embed($logo)}}" style="width:100px;" alt="logo">
+                                  
                                     <h4 style="font-size:20px;font-weight:600;margin: 0;color: #211f54;line-height:30px">Hello {{$orderDetails->billingShippingAddress->billing_first_name}} {{$orderDetails->billingShippingAddress->billing_lat_name}}</h4>
                                     <p style="color: #454860;margin: 0;font-size: 14px;text-align: center;line-height:30px  ">Your order ({{$orderDetails->unique_order_id}}) has been processed successfully.</p>
                                 </td>

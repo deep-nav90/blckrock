@@ -41,6 +41,13 @@
     left: 0;
     top: 40%;
 }
+.login_box_main_wrapper .signin-wrapper .left-side form .login-btn-sec .sub-btn:after {
+   background: #fdbd3e1f!important;
+   color:#ffffff!important;
+}
+p.do_have_an_account a {
+   color:#fdbd3e
+}
 </style>
 
 
@@ -53,7 +60,7 @@
    <div class="login_box_main_wrapper" id="login_height">
       <div class="container">
          <div class="login-logo">
-            <a href="/"> <img style="width: 200px; " src="{{url('public/webimg/newlogo.png')}}" alt="logo"> </a>
+            <a href="/"> <img style="width: 200px; " src="{{url('public/webimg/newlogowhite.png')}}" alt="logo"> </a>
          </div>
          <div class="signin-wrapper">
             <div class="row">

@@ -147,7 +147,7 @@ body .nav-pills .nav-link {
     margin: 6px 0 0;
 }
 .sidebar-dark-primary .sidebar .nav-sidebar li.nav-item.has-treeview.menu-open a.nav-link {
-    background-color: #5fe7ba;
+    background-color: #fdbd3e;
     color: #ffffff;
 }
 .sidebar-dark-primary .sidebar .nav-sidebar li.nav-item.has-treeview.menu-open a.nav-link:hover p,
@@ -600,12 +600,12 @@ body.login-page {
     width: 100%;
 }
 body.login-page .login-box button {
-    background: #5FE7BA;
+    background: #fdbd3e;
     box-shadow: 0px 15px 20px rgba(82, 224, 177, 0.25);
     border-radius: 5px;
     width: 100%;
     height: 56px;
-    border: 1px solid #5FE7BA;
+    border: 1px solid #fdbd3e;
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
@@ -1002,15 +1002,15 @@ form .card-body {
 .completed_job_wrap .custom-check span, .custom-check span {
     height: 20px;
     width: 20px;
-    border: 1px solid #5fe7ba;
+    border: 1px solid #fdbd3e;
     display: inline-block;
     border-radius: 3px;
 }
 .completed_job_wrap .custom-check input.is_complete_update:checked~span, .custom-check input:checked~span {
     height: 20px;
     width: 20px;
-    background-color: #5fe7ba;
-    border-color: #5fe7ba;
+    background-color: #fdbd3e;
+    border-color: #fdbd3e;
 }
 .completed_job_wrap .custom-check input.is_complete_update:checked~span:before, .custom-check input:checked~span:before {
     left: 7px;
@@ -1806,8 +1806,8 @@ form.form_wrap.customers-management-view div#preview-cropped-image {
 }
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
     color: #fff;
-    background-color: #5fe7ba !important;
-    border-color: #5fe7ba !important;
+    background-color: #fdbd3e !important;
+    border-color: #fdbd3e !important;
     box-shadow: none !important;
 }
 .advance-options {
@@ -2159,7 +2159,7 @@ body.sidebar-dark-primary .sidebar .nav-sidebar li.nav-item.has-treeview .menu-o
     padding: 10px 20px 10px 57px;
     outline-style: none;
     background: transparent;
-    border: 1px solid #5FE7BA;
+    border: 1px solid #fdbd3e;
     border-radius: 5px;
     color: #000000 !important;
 }
@@ -2395,7 +2395,7 @@ body .information_fields {
     padding: 0;
 }
 .tabs_wrap .card .card-header.active {
-    background-color: #5fe7ba;
+    background-color: #fdbd3e;
     border-bottom: 0;
     margin: 20px 22px;
     padding: 10px 20px;
@@ -2628,7 +2628,7 @@ body .interior_content span.price, .right.right-side label {
     border-radius: 5px;
 }
 .content-wrapper .Configurations_tabs .tabs_wrap .flex-column a.nav-link.active {
-    background-color: #5fe7ba !important;
+    background-color: #fdbd3e !important;
     color: #ffffff !important;
 }
 .content-wrapper .Configurations_tabs .tabs_wrap .flex-column a.nav-link {
@@ -2741,13 +2741,13 @@ input:-webkit-autofill {
 }
 
 .sidebar ul.nav.nav-pills li.nav-item a.nav-link.active {
-    background-color: #5FE7BA;
-    border: 1px solid #5FE7BA;
+    background-color: #fdbd3e;
+    border: 1px solid #fdbd3e;
     color: #ffffff;
 }
 
 .sidebar ul.nav li.nav-item.has-treeview a.nav-link:hover {
-    background-color: #5fe7ba;
+    background-color: #fdbd3e
 }
 .sidebar-dark-primary .sidebar .nav-sidebar li.nav-item.has-treeview a.nav-link {
     background-color: #f6f7fb;
@@ -2760,8 +2760,8 @@ input:-webkit-autofill {
     border: 1px solid #b3f3de !important;
 }
 .sidebar-dark-primary .sidebar .nav-sidebar li.nav-item.has-treeview a.nav-link.active {
-    background-color: #5FE7BA;
-    border: 1px solid #5FE7BA;
+    background-color: #fdbd3e;
+    border: 1px solid #fdbd3e;
     color: #ffffff;
 }
 ul.dropdown-menu.dropdown-menu-lg.dropdown-menu-right.show li.user-footer a.btn.btn-default {
@@ -2886,7 +2886,7 @@ body .sa-button-container button.cancel {
     margin: 0;
 }
 body .sweet-alert .sa-confirm-button-container button.confirm {
-    background-color: #5FE7BA !important;
+    background-color: #fdbd3e !important;
     padding: 5px 32px;
     font-size: 13px;
     font-weight: 600;
@@ -2928,7 +2928,7 @@ body .permission-names {
     padding-top: 28px;
 }
 body .text-success {
-    color: #5fe7ba!important;
+    color: #fdbd3e!important;
 }
 .form-group select#role_id.form-control.error, .form-group label#role_id-error {
     top: 0;
@@ -2972,8 +2972,8 @@ body .error {
     font-weight: 600;
 }
 body .advance-options-user .left_option .apply_reset_btn button.reset-button {
-    background-color: #5fe7ba !important;
-    border: 1px solid #5fe7ba;
+    background-color: #fdbd3e !important;
+    border: 1px solid #fdbd3e;
     font-weight: 600;
 }
 /*body .advance-options-user .left_option .apply_reset_btn button.reset-button:hover {
@@ -3043,7 +3043,7 @@ body .advance-options-user .left_option .apply_reset_btn button.reset-button {
 .datepicker.datepicker-dropdown.dropdown-menu .datepicker-months table.table-condensed thead tr:nth-child(2),
 .datepicker.datepicker-dropdown.dropdown-menu .datepicker-years table.table-condensed thead tr:nth-child(2) {
     height: 40px;
-    background-color: #5FE7BA;
+    background-color: #fdbd3e;
     border-radius: 10px;
     color: #ffffff;
     font-size: 14px;
@@ -3101,14 +3101,14 @@ body .advance-options-user .left_option .apply_reset_btn button.reset-button {
 .collapse_wrapper p button {
     background-color: transparent;
     border: none;
-    color: #5fe7ba;
+    color: #fdbd3e;
     font-size: 14px;
     font-weight: 600;
     padding: 0;
 }
 .collapse_wrapper p button:hover {
     background-color: transparent;
-    color: #5fe7ba;
+    color: #fdbd3e;
 }
 .collapse_wrapper p button:focus {
     box-shadow: none;
@@ -3121,7 +3121,7 @@ body .advance-options-user .left_option .apply_reset_btn button.reset-button {
     top: 50%;
     transform: translateY(35%);
     right: 20px;
-    color: #5fe7ba;
+    color: #fdbd3e;
     cursor: pointer;
 }
 .form_wrapper .working_wrapper ul {
@@ -3168,7 +3168,7 @@ body .advance-options-user .left_option .apply_reset_btn button.reset-button {
     justify-content: center;
     height: 40px;
     box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
-    border: 1px solid #5fe7ba;
+    border: 1px solid #fdbd3e;
     border-radius: 6px;
 }
 .form_wrapper .head_wrapper {
@@ -3211,7 +3211,7 @@ body .advance-options-user .left_option .apply_reset_btn button.reset-button {
     z-index: 1;
 }
 .check_box_wrap span {
-    border: 1px solid #5FE7BA;
+    border: 1px solid #fdbd3e;
     height: 17px;
     width: 17px;
     border-radius: 3px;
@@ -3223,7 +3223,7 @@ body .advance-options-user .left_option .apply_reset_btn button.reset-button {
     top: 0px;
     width: 6px;
     height: 12px;
-    border: solid #5fe7ba;
+    border: solid #fdbd3e;
     border-width: 0 2px 2px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -3233,7 +3233,7 @@ body .advance-options-user .left_option .apply_reset_btn button.reset-button {
 }
 .check_box_wrap input:checked~span {
     background-color: #ffffff;
-    border-color: #5FE7BA;
+    border-color: #fdbd3e;
 }
 .time-range.list {
     margin: 0 20px;
@@ -3259,8 +3259,8 @@ body .advance-options-user .left_option .apply_reset_btn button.reset-button {
     box-shadow: none !important;
 }
 .tabs_wrapper a.btn.tabButton.active {
-    background-color: #5fe7ba;
-    border-color: #5fe7ba;
+    background-color: #fdbd3e;
+    border-color: #fdbd3e;
 }
 #settings_data ul.nav a.nav-link {
     border: none;
@@ -3313,7 +3313,7 @@ body .advance-options-user .left_option .apply_reset_btn button.reset-button {
 
 #document .box {
     background: #FFFFFF;
-    border: 1px solid #5FE7BA;
+    border: 1px solid #fdbd3e;
     border-radius: 5px;
     flex-wrap: wrap;
     padding: 15px;
@@ -3386,11 +3386,11 @@ body .advance-options-user .left_option .apply_reset_btn button.reset-button {
 }
 
 input:checked + .slider {
-  background-color: #5FE7BA;
+  background-color: #fdbd3e;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #5FE7BA;
+  box-shadow: 0 0 1px #fdbd3e;
 }
 
 input:checked + .slider:before {
@@ -3487,15 +3487,15 @@ ul.day_time_select li .right input[type="time"] {
     border-radius: 5px;
 }
 #open_timing button.btn.btn-primary {
-    background-color: #5FE7BA;
-    border-color: #5FE7BA;
+    background-color: #fdbd3e;
+    border-color: #fdbd3e;
     padding: 5px 40px;
     height: 40px;
 }
 #my_requests_data_show ul li a.active,
 #message_data_show ul li a.active {
-    background-color: #5fe7ba;
-    border-color: #5fe7ba;
+    background-color: #fdbd3e;
+    border-color: #fdbd3e;
     color: #ffffff;
 }
 #my_requests_data_show ul li a,
@@ -3609,7 +3609,7 @@ form .multi-select-container .multi-select-menuitems label input:checked~span:af
     transform: rotate(45deg);
 }
 form .multi-select-container .multi-select-menuitems label input:checked~span {
-    background-color: #5fe7ba;
+    background-color: #fdbd3e;
 }
 form .multi-select-container .multi-select-menuitems label .add_div~span.sp_text {
     word-break: break-all;
@@ -3709,7 +3709,7 @@ div#userList_processing {
     background: #FFFFFF;
     box-shadow: 0px 2.4254px 5.8508px #e0e0e0;
     border-radius: 5px;
-    color: #5fe7ba;
+    color: #fdbd3e;
 }
 .job_define_box_inner .box_inner {
     background-color: #F4F4F4;
@@ -3767,7 +3767,7 @@ div#userList_processing {
     margin: 0;
 }
 .job_define_box_inner .box_inner ul.badges li.active {
-    background-color: #5fe7ba;
+    background-color: #fdbd3e;
     color: #ffffff;
 }
 .job_define_box_inner .box_inner ul.badges {
@@ -3782,12 +3782,12 @@ div#userList_processing {
     background-color: #ffffff;
 }
 .job_define_box_inner .box_inner ul.keywords li {
-    border: 1px solid #5fe7ba;
+    border: 1px solid #fdbd3e;
     padding: 5px 10px;
     font-size: 13px;
     border-radius: 5px;
     margin: 0 5px 0 0;
-    color: #5fe7ba;
+    color: #fdbd3e;
     background-color: #ffffff;
 }
 .job_define_box_inner .box_inner ul.keywords {
@@ -3844,8 +3844,8 @@ i.fa-solid.fa-envelope-open {
     font-style: normal;
 }
 form.form_wrap.customers-management-view a.btn.button_ap_unap {
-    background-color: #5FE7BA;
-    border-color: #5FE7BA;
+    background-color: #fdbd3e;
+    border-color: #fdbd3e;
     color: #ffffff;
     border-radius: 5px;
 }
@@ -3971,7 +3971,7 @@ div#lodaerModal .modal-dialog {
 }
 
 .anchorTag{
-    color: #5FE7BA;
+    color: #fdbd3e;
 }
 
 .logoIMG{

@@ -36,11 +36,11 @@ button.form-btn.send-btn.custom-btn {
       <div class="container">
          <div class="inner-caption">
             <h4>Contact Us</h4>
-            <img src="{{url('public/website/images/title.png')}}" alt="img">
+            <!-- <img src="{{url('public/website/images/title.png')}}" alt="img"> -->
          </div>
          <ol class="breadcrumb sicon">
             <li><a href="{{route('index')}}">Home</a></li>
-            <li class="active">Contact us </li>
+            <li class="active mt-1"><i class="fa fa-angle-double-right"></i>Contact us </li>
          </ol>
          <!-- <img class="meat" src="{{url('public/website/images/title-bottom.png')}}" alt="img"> -->
       </div>
@@ -87,8 +87,8 @@ button.form-btn.send-btn.custom-btn {
                               class="fab fa-facebook-f"></i></a></li>
                      <!-- <li><a class="twitter" href="http://www.twitter.com" target="_blank"><i
                               class="fab fa-twitter"></i></a></li> -->
-                     <li><a class="google" href="http://plus.google.com" target="_blank"><i
-                              class="fab fa-google-plus-g"></i></a></li>
+                     <!--<li><a class="google" href="http://plus.google.com" target="_blank"><i-->
+                     <!--         class="fab fa-google-plus-g"></i></a></li>-->
                      <!-- <li><a class="dribbble" href="http://www.dribbble.com" target="_blank"><i
                               class="fab fa-dribbble"></i></a></li>
                      <li><a class="linkedin" href="http://www.linkedin.com" target="_blank"><i
@@ -139,7 +139,9 @@ button.form-btn.send-btn.custom-btn {
                            <input type="email" class="form-control" name="email" id="exampleInputEmail3" placeholder="Enter Your Email">
                         </div>
                         <div class="mb-4">
-                           <input type="text" class="form-control" name="subject" placeholder="Enter subject" aria-label="Enter subject">
+                            <input type="text" name="phone" class="form-control" maxlength="10" placeholder="Enter Your Phone No" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" 
+                           >
+                         
                         </div>
                         <!-- <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label check-btn" for="exampleCheck1"> I accept the terms & conditions

@@ -2540,6 +2540,7 @@
 								    overflow: hidden;
 								    	&:after{
 									    		content: '';
+												background: #f7b430d1!important;
 								    			width: 0;
 									    		height: 100%;
 									    		position: absolute;
@@ -2548,7 +2549,6 @@
 												transform: skew(50deg);
 												transition-duration: 0.6s;
 												transform-origin: top left;
-												background: #111;
 												
 												-webkit-transition: all 0.3s;
 												-moz-transition: all 0.3s;
