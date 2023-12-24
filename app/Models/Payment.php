@@ -34,7 +34,7 @@ class Payment extends Model
     }
 
     public function order(){
-        return $this->belongsTo(Order::class)->with('user','BillingShippingAddress','productOrders','payment');
+        return $this->belongsTo(Order::class)->with('user','billingShippingAddress','productOrders','payment');
     }
 
 }

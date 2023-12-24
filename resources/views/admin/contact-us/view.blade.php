@@ -91,11 +91,11 @@
 
                 <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="name">Subject</label>
-                        <input type="text" name="subject" class="form-control" id="subject" value="{{$contact_us->subject}}" maxlength="50" disabled>
-                        <div id ="subject_error" class="error"></div>
-                        @if($errors->has('subject'))
-                          <div class="error">{{ $errors->first('subject') }}</div>
+                        <label for="name">Phone Number</label>
+                        <input type="text" name="phone" class="form-control" id="phone" value="{{$contact_us->phone}}" maxlength="50" disabled>
+                        <div id ="phone_error" class="error"></div>
+                        @if($errors->has('phone'))
+                          <div class="error">{{ $errors->first('phone') }}</div>
                         @endif
                       </div>
                     </div>

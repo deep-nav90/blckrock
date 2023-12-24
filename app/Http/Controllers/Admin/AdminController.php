@@ -28,6 +28,7 @@ class AdminController extends Controller
 		$total_blocked_users = User::whereDeletedAt(null)->whereIsBlock(1)->count();
 		$total_number_payments = Payment::select("*", DB::raw('(SELECT payment_received FROM orders WHERE orders.id = payments.order_id) AS payment_received'))->where(DB::raw('(SELECT payment_received FROM orders WHERE orders.id = payments.order_id)'), '=', 1)->whereDeletedAt(null)->count();
 		$total_coupons = Coupon::whereDeletedAt(null)->count();
+		$total_completed_orders = Order::whereDeletedAt(null)->whereOrderStatus('Completed')->count();
 
 		$totalRevenue = Payment::whereDeletedAt(null)->sum('pay_amount');
 		$totalRevenue = $this->number_format_short($totalRevenue);
@@ -37,11 +38,11 @@ class AdminController extends Controller
 		$current_year_orders = Order::select(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as create_date'), DB::raw("count(created_at) AS count_accourding_to_date"), DB::raw('group_concat(id) as ids'))->whereBetween(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d")'),[Carbon::now()->startOfYear()->toDateString(), Carbon::now()->endOfYear()->toDateString()])->groupBy('create_date')->get();
 
 		$current_year_revenue = Payment::select(DB::raw('DATE_FORMAT(created_at, "%M") as payment_date'),DB::raw("sum(pay_amount) AS amount_accourding_to_month"),DB::raw('group_concat(id) as ids'))->groupBy('payment_date')->whereBetween(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d")'),[Carbon::now()->startOfYear()->toDateString(), Carbon::now()->endOfYear()->toDateString()])->get();
+		
+		 $last_10_orders = Order::select("*", DB::raw('(SELECT full_name from users WHERE users.id = orders.user_id) AS user_name'), DB::raw('CASE WHEN payment_received = 1 THEN "Yes" ELSE "No" END as payment_received'), DB::raw('CONCAT("₹",total_amount) AS total_amount'), DB::raw('CONCAT("₹",discount_amount_for_coupon) AS discount_amount_for_coupon'), DB::raw('CONCAT("₹",pay_amount) AS pay_amount'), DB::raw('DATE_FORMAT(created_at, "%m-%d-%Y") AS date_show'))->with('payment','productOrders','billingShippingAddress','user')->orderBy("id","desc")->take(10)->get();
 
-		 $last_10_orders = Order::select("*", DB::raw('(SELECT full_name from users WHERE users.id = orders.user_id) AS user_name'), DB::raw('CASE WHEN payment_received = 1 THEN "Yes" ELSE "No" END as payment_received'), DB::raw('CONCAT("₹",total_amount) AS total_amount'), DB::raw('CONCAT("₹",discount_amount_for_coupon) AS discount_amount_for_coupon'), DB::raw('CONCAT("₹",pay_amount) AS pay_amount'), DB::raw('DATE_FORMAT(created_at, "%m-%d-%Y") AS date_show'))->with('payment','productOrders','BillingShippingAddress','user')->orderBy("id","desc")->take(10)->get();
 
-
-		return view('admin.dashboard',compact('total_users','total_blocked_users','total_number_payments','total_coupons','totalRevenue','totalProducts','totalOrders','current_year_orders','current_year_revenue','last_10_orders'));
+		return view('admin.dashboard',compact('total_users','total_blocked_users','total_number_payments','total_coupons','totalRevenue','totalProducts','totalOrders','current_year_orders','current_year_revenue','last_10_orders','total_completed_orders'));
 	}
 
 	public function number_format_short( $n, $precision = 1 ) {

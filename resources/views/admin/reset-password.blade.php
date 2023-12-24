@@ -184,7 +184,7 @@
                                 type: "success",
                                 showCancelButton: false,
                             }, function(willDelete) {
-                                window.location.href="{{route('admin_home')}}";
+                                window.location.href="{{route('adminLogin')}}";
                             });
                             
                         }else{

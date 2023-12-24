@@ -4,7 +4,9 @@
     </IfModule>
 
     RewriteEngine On
-    RewriteBase /
+    #REWIRTE BASE COMMENT ON MAC SYSTEM FOR WORKING URL
+    #RewriteBase /
+    
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

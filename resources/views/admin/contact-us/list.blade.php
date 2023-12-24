@@ -29,7 +29,7 @@
                   <th>Sr. No.</th>
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Subject</th>
+                  <th>Phone Number</th>
                   <th>Created On</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
@@ -83,14 +83,14 @@
 
               $( row ).find('td:eq(1)').attr('data-id', data['id']).attr('key_type','name').addClass('td_click').addClass('white_space');
               $( row ).find('td:eq(2)').attr('data-id', data['id']).attr('key_type','email').addClass('td_click').addClass('white_space');
-              $( row ).find('td:eq(3)').attr('data-id', data['id']).attr('key_type','subject').addClass('td_click').addClass('white_space');
+              $( row ).find('td:eq(3)').attr('data-id', data['id']).attr('key_type','phone').addClass('td_click').addClass('white_space');
               $( row ).find('td:eq(4)').attr('data-id', data['id']).attr('key_type','date_show').addClass('td_click').addClass('white_space');
             },
             "columns": [
               {data: 'DT_RowIndex', name: 'DT_RowIndex'},
               {data: 'name', name: 'name'},
               {data: 'email', name: 'email'},
-              {data: 'subject', name: 'subject'},
+              {data: 'phone', name: 'phone'},
               {data: 'date_show', name: 'date_show'},
               {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
