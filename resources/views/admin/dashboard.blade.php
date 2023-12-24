@@ -107,6 +107,77 @@
 .table_wrapper {
     overflow: auto;
 }
+
+
+
+.charts_orb {
+  display: flex;
+  align-items: flex-start;
+  /* justify-content: center; */
+  flex-wrap: wrap;
+  font-family: arial;
+  color: #fdbd3e;
+}
+.charts_orb .orb {
+    padding: 20px 15px 20px 20px;
+}
+.charts_orb .orb .orb_graphic {
+  position: relative;
+}
+.charts_orb .orb .orb_graphic .orb_value {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+.charts_orb .orb .orb_label {
+    /* text-transform: uppercase; */
+    text-align: center;
+    margin-top: 1em;
+    color: #000000;
+    width: 110px;
+}
+.charts_orb svg {
+  width: 110px;
+  height: 110px;
+}
+.charts_orb svg circle {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  stroke-dasharray: 314.16, 314.16;
+  stroke-width: 2;
+  fill: transparent;
+  r: 50;
+  cx: 55;
+  cy: 55;
+}
+.charts_orb svg circle.fill {
+  stroke: #000000;
+}
+.charts_orb svg circle.progress {
+  stroke: #fdbd3e;
+  transition: stroke-dashoffset 0.35s;
+  stroke-dashoffset: 214.16;
+  -webkit-animation: NAME-YOUR-ANIMATION 1.5s forwards;
+  -webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes NAME-YOUR-ANIMATION {
+  0% {
+    stroke-dashoffset: 314.16;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+
 </style>
 @endsection()
 @section('content')
@@ -115,75 +186,90 @@
         	<div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-12">
         		<div class="colum-portal">
 	                <div class="row">
+
+					<div class="charts_orb">
+						<article class="orb">
+							<div class="orb_graphic">
+								<svg>
+									<circle class="fill"></circle>
+									<circle class="progress"></circle>
+								</svg>
+								<div class="orb_value count">{{$total_users}}</div>
+							</div>
+							<div class="orb_label">
+								Total Number Of Users
+							</div>
+						</article>
+						
+						<article class="orb">
+							<div class="orb_graphic">
+								<svg>
+									<circle class="fill"></circle>
+									<circle class="progress"></circle>
+								</svg>
+								<div class="orb_value count">{{$total_blocked_users}}</div>
+							</div>
+							<div class="orb_label">
+								Total Blocked Users
+							</div>
+						</article>
+						
+						<article class="orb">
+							<div class="orb_graphic">
+								<svg>
+									<circle class="fill"></circle>
+									<circle class="progress"></circle>
+								</svg>
+								<div class="orb_value count">{{$total_number_payments}}</div>
+							</div>
+							<div class="orb_label">
+								Total Number Of Payments
+							</div>
+						</article>
+						
+						<article class="orb">
+							<div class="orb_graphic">
+								<svg>
+									<circle class="fill"></circle>
+									<circle class="progress"></circle>
+								</svg>
+								<div class="orb_value count">{{$total_coupons}}</div>
+							</div>
+							<div class="orb_label">
+								Total Number Of Coupons
+							</div>
+						</article>
+						
+						<article class="orb">
+							<div class="orb_graphic">
+								<svg>
+									<circle class="fill"></circle>
+									<circle class="progress"></circle>
+								</svg>
+								<div class="orb_value count">{{$totalOrders}}</div>
+							</div>
+							<div class="orb_label">
+								Total Orders
+							</div>
+						</article>
+
+						<article class="orb">
+							<div class="orb_graphic">
+								<svg>
+									<circle class="fill"></circle>
+									<circle class="progress"></circle>
+								</svg>
+								<div class="orb_value count">{{$total_completed_orders}}</div>
+							</div>
+							<div class="orb_label">
+								Total Completed Orders
+							</div>
+						</article>
+					</div>
+
 	                    
 	                    
-	                    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-12">
-	                        <div class="portal-inner">
-				                <div class="left">
-								    <div class="counter_one">
-								    	<div class="counter_wrapper">
-									        <svg class="radial-progress" data-countervalue="0" viewBox="0 0 80 80">
-									            <circle class="bar-static" cx="40" cy="40" r="35"></circle>
-									            <circle class="bar--animated" cx="40" cy="40" r="35" style="stroke-dashoffset: 217.8;"></circle>
-									            <text class="countervalue start" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)">{{$total_users}}</text>
-									        </svg>
-									    </div>
-									    <h3>Total Number Of Users</h3>
-								    </div>
-				                </div>
-	                        </div>
-	                    </div>
-	                    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-12">
-	                        <div class="portal-inner">
-				                <div class="left">
-								    <div class="counter_one">
-								    	<div class="counter_wrapper">
-									        <svg class="radial-progress" data-countervalue="0" viewBox="0 0 80 80">
-									            <circle class="bar-static" cx="40" cy="40" r="35"></circle>
-									            <circle class="bar--animated" cx="40" cy="40" r="35" style="stroke-dashoffset: 217.8;"></circle>
-									            <text class="countervalue start" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)">{{$total_blocked_users}}</text>
-									        </svg>
-									    </div>
-									    <h3>Total Blocked Users Account</h3>
-								    </div>
-				                </div>
-	                        </div>
-	                    </div>
-
-	                    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-12">
-	                        <div class="portal-inner">
-				                <div class="left">
-								    <div class="counter_one">
-								    	<div class="counter_wrapper">
-									        <svg class="radial-progress" data-countervalue="0" viewBox="0 0 80 80">
-									            <circle class="bar-static" cx="40" cy="40" r="35"></circle>
-									            <circle class="bar--animated" cx="40" cy="40" r="35" style="stroke-dashoffset: 217.8;"></circle>
-									            <text class="countervalue start" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)">{{$total_number_payments}}</text>
-									        </svg>
-									    </div>
-									    <h3>Total Number Of Payments</h3>
-								    </div>
-				                </div>
-	                        </div>
-	                    </div>
-
-
-						<div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-12">
-	                        <div class="portal-inner">
-				                <div class="left">
-								    <div class="counter_one">
-								    	<div class="counter_wrapper">
-									        <svg class="radial-progress" data-countervalue="0" viewBox="0 0 80 80">
-									            <circle class="bar-static" cx="40" cy="40" r="35"></circle>
-									            <circle class="bar--animated" cx="40" cy="40" r="35" style="stroke-dashoffset: 217.8;"></circle>
-									            <text class="countervalue start" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)">{{$total_coupons}}</text>
-									        </svg>
-									    </div>
-									    <h3>Total Number Of Coupons</h3>
-								    </div>
-				                </div>
-	                        </div>
-	                    </div>
+	                    
 
 	                   
 
@@ -580,6 +666,23 @@ function toogleDataSeries(e){
 
 
    
+</script>
+
+
+<script>
+	$(document).ready(function(){
+		$('.count').each(function () {
+			$(this).prop('Counter',0).animate({
+				Counter: $(this).text()
+			}, {
+				duration: 1500,
+				easing: 'linear',
+				step: function (now) {
+					$(this).text(Math.ceil(now));
+				}
+			});
+		});
+	})
 </script>
 
 

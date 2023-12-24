@@ -38,13 +38,13 @@ class ContactUsController extends Controller
             }elseif($order == 2){
                 $column = "email";
             }elseif($order == 3){
-                $column = "subject";
+                $column = "phone";
             }elseif($order == 4){
                 $column = "created_at";
             }
         
 
-            $data = Contact::select("*",DB::raw('DATE_FORMAT(created_at, "%m-%d-%Y") AS date_show'))->whereDeletedAt(null)->orderBy($column,$asc_desc);
+            $data = Contact::select("*",DB::raw('DATE_FORMAT(created_at, "%m-%d-%Y") AS date_show'), DB::raw('(CASE WHEN phone IS NOT NULL THEN phone ELSE "N/A" END) AS phone'))->whereDeletedAt(null)->orderBy($column,$asc_desc);
             $total = $data->get()->count();
 
             if(!empty($request->get("search")["value"])){
@@ -60,7 +60,7 @@ class ContactUsController extends Controller
                 $data  = $data->where(function($query) use($search){
                             $query->orWhere('name', 'Like', '%'. $search . '%');
                             $query->orWhere('email', 'Like', '%'. $search . '%');
-                            $query->orWhere('subject', 'Like', '%'. $search . '%');
+                            $query->orWhere('phone', 'Like', '%'. $search . '%');
                             $query->orWhere(DB::raw('DATE_FORMAT(created_at, "%m-%d-%Y")'), 'Like', '%'. $search . '%');
                         });
 

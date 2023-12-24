@@ -20,7 +20,12 @@ class OrderController extends Controller
 {
     public function orderList(Request $request){
         if($request->isMethod('GET')){
-
+            // $find_order = Order::whereId(45)->with('payment','productOrders','billingShippingAddress','user')->first();
+            // try{
+            //     \Mail::to($find_order->billingShippingAddress->billing_email)->send(new AcceptOrder($find_order));
+            // }catch(\Exception $ex){
+            //     return $ex->getMessage();
+            // }
         	// return Order::select("*", DB::raw('(SELECT CONCAT(billing_first_name," ", billing_last_name) from billing_shipping_addresses WHERE billing_shipping_addresses.order_id = orders.id) AS user_name'), DB::raw('CASE WHEN payment_received = 1 THEN "Yes" ELSE "No" END as payment_received'), DB::raw('CONCAT("₹",total_amount) AS total_amount'), DB::raw('CONCAT("₹",discount_amount_for_coupon) AS discount_amount_for_coupon'), DB::raw('CONCAT("₹",pay_amount) AS pay_amount'), DB::raw('DATE_FORMAT(created_at, "%m-%d-%Y") AS date_show'))->whereDeletedAt(null)->get();
 
             return view('admin.order.list');
@@ -164,9 +169,9 @@ class OrderController extends Controller
     }
 
     public function viewOrder(Request $request, $id){
-    	$orderDetail = Order::whereId($id)->with('payment','productOrders','BillingShippingAddress','user')->first();
+    	$orderDetail = Order::whereId($id)->with('payment','productOrders','billingShippingAddress','user')->first();
 
-        // return $orderDetail->BillingShippingAddress->billing_state;
+        // return $orderDetail->billingShippingAddress->billing_state;
 
         return view('admin.order.view',compact('orderDetail'));
     }
@@ -174,13 +179,13 @@ class OrderController extends Controller
     public function acceptRejectOrder(Request $request){
         $data = $request->all();
 
-        $find_order = Order::whereId($data['order_id'])->with('payment','productOrders','BillingShippingAddress','user')->first();
+        $find_order = Order::whereId($data['order_id'])->with('payment','productOrders','billingShippingAddress','user')->first();
 
         if($data['action'] == 'accept'){
             Order::whereId($data['order_id'])->update(['order_status' => 'Accepted']);
 
             try{
-                \Mail::to($find_order->BillingShippingAddress->billing_email)->send(new AcceptOrder($find_order));
+                \Mail::to($find_order->billingShippingAddress->billing_email)->send(new AcceptOrder($find_order));
             }catch(\Exception $ex){
                 //
             }
@@ -189,7 +194,7 @@ class OrderController extends Controller
             Order::whereId($data['order_id'])->update(['order_status' => 'Rejected']);
 
             try{
-                \Mail::to($find_order->BillingShippingAddress->billing_email)->send(new RejectOrder($find_order));
+                \Mail::to($find_order->billingShippingAddress->billing_email)->send(new RejectOrder($find_order));
             }catch(\Exception $ex){
                 //
             }
@@ -201,12 +206,12 @@ class OrderController extends Controller
     public function shipOrder(Request $request){
         $data = $request->all();
 
-        $find_order = Order::whereId($data['order_id'])->with('payment','productOrders','BillingShippingAddress','user')->first();
+        $find_order = Order::whereId($data['order_id'])->with('payment','productOrders','billingShippingAddress','user')->first();
 
         Order::whereId($data['order_id'])->update(['order_status' => 'Shipped']);
 
         try{
-            \Mail::to($find_order->BillingShippingAddress->billing_email)->send(new ShippedOrder($find_order));
+            \Mail::to($find_order->billingShippingAddress->billing_email)->send(new ShippedOrder($find_order));
         }catch(\Exception $ex){
             //
         }
@@ -218,12 +223,12 @@ class OrderController extends Controller
     public function completeOrder(Request $request){
         $data = $request->all();
 
-        $find_order = Order::whereId($data['order_id'])->with('payment','productOrders','BillingShippingAddress','user')->first();
+        $find_order = Order::whereId($data['order_id'])->with('payment','productOrders','billingShippingAddress','user')->first();
 
         Order::whereId($data['order_id'])->update(['order_status' => 'Completed','payment_received' => 1]);
 
         try{
-            \Mail::to($find_order->BillingShippingAddress->billing_email)->send(new CompleteOrder($find_order));
+            \Mail::to($find_order->billingShippingAddress->billing_email)->send(new CompleteOrder($find_order));
         }catch(\Exception $ex){
             //
         }

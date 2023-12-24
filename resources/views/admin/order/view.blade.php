@@ -876,7 +876,7 @@ textarea.form-control {
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">First Name</label>
-                        <input type="text" name="billing_first_name" class="form-control" value="{{$orderDetail->BillingShippingAddress->billing_first_name}}" id="billing_first_name" maxlength="30" disabled>
+                        <input type="text" name="billing_first_name" class="form-control" value="{{$orderDetail->billingShippingAddress->billing_first_name}}" id="billing_first_name" maxlength="30" disabled>
                         <div id ="billing_first_name_error" class="error"></div>
                         @if($errors->has('billing_first_name'))
                           <div class="error">{{ $errors->first('billing_first_name') }}</div>
@@ -887,7 +887,7 @@ textarea.form-control {
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">Last Name</label>
-                        <input type="text" name="billing_last_name" class="form-control" value="{{$orderDetail->BillingShippingAddress->billing_last_name}}" id="billing_last_name" maxlength="30" disabled>
+                        <input type="text" name="billing_last_name" class="form-control" value="{{$orderDetail->billingShippingAddress->billing_last_name}}" id="billing_last_name" maxlength="30" disabled>
                         <div id ="billing_last_name_error" class="error"></div>
                         @if($errors->has('billing_last_name'))
                           <div class="error">{{ $errors->first('billing_last_name') }}</div>
@@ -905,7 +905,7 @@ textarea.form-control {
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">Email</label>
-                        <input type="text" name="billing_email" class="form-control" value="{{$orderDetail->BillingShippingAddress->billing_email}}" id="billing_email" maxlength="30" disabled>
+                        <input type="text" name="billing_email" class="form-control" value="{{$orderDetail->billingShippingAddress->billing_email}}" id="billing_email" maxlength="30" disabled>
                         <div id ="billing_email_error" class="error"></div>
                         @if($errors->has('billing_email'))
                           <div class="error">{{ $errors->first('billing_email') }}</div>
@@ -916,7 +916,7 @@ textarea.form-control {
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">Phone Number</label>
-                        <input type="text" name="billing_phone_number" class="form-control" value="{{$orderDetail->BillingShippingAddress->billing_phone_number}}" id="billing_phone_number" maxlength="30" disabled>
+                        <input type="text" name="billing_phone_number" class="form-control" value="{{$orderDetail->billingShippingAddress->billing_phone_number}}" id="billing_phone_number" maxlength="30" disabled>
                         <div id ="billing_phone_number_error" class="error"></div>
                         @if($errors->has('billing_phone_number'))
                           <div class="error">{{ $errors->first('billing_phone_number') }}</div>
@@ -931,7 +931,7 @@ textarea.form-control {
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">Address</label>
-                        <input type="text" name="billing_address" class="form-control" value="{{$orderDetail->BillingShippingAddress->billing_address}}" id="billing_address" maxlength="30" disabled>
+                        <input type="text" name="billing_address" class="form-control" value="{{$orderDetail->billingShippingAddress->billing_address}}" id="billing_address" maxlength="30" disabled>
                         <div id ="billing_address_error" class="error"></div>
                         @if($errors->has('billing_address'))
                           <div class="error">{{ $errors->first('billing_address') }}</div>
@@ -942,7 +942,7 @@ textarea.form-control {
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">City</label>
-                        <input type="text" name="billing_city" class="form-control" value="{{$orderDetail->BillingShippingAddress->billing_city}}" id="billing_city" maxlength="30" disabled>
+                        <input type="text" name="billing_city" class="form-control" value="{{$orderDetail->billingShippingAddress->billing_city}}" id="billing_city" maxlength="30" disabled>
                         <div id ="billing_city_error" class="error"></div>
                         @if($errors->has('billing_city'))
                           <div class="error">{{ $errors->first('billing_city') }}</div>
@@ -957,7 +957,7 @@ textarea.form-control {
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">State</label>
-                        <input type="text" name="billing_state" class="form-control" value="{{$orderDetail->BillingShippingAddress->billing_state}}" id="billing_state" maxlength="30" disabled>
+                        <input type="text" name="billing_state" class="form-control" value="{{$orderDetail->billingShippingAddress->billing_state}}" id="billing_state" maxlength="30" disabled>
                         <div id ="billing_state_error" class="error"></div>
                         @if($errors->has('billing_state'))
                           <div class="error">{{ $errors->first('billing_state') }}</div>
@@ -968,7 +968,7 @@ textarea.form-control {
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">Zip Code</label>
-                        <input type="text" name="billing_zip_code" class="form-control" value="{{$orderDetail->BillingShippingAddress->billing_zip_code}}" id="billing_zip_code" maxlength="30" disabled>
+                        <input type="text" name="billing_zip_code" class="form-control" value="{{$orderDetail->billingShippingAddress->billing_zip_code}}" id="billing_zip_code" maxlength="30" disabled>
                         <div id ="billing_zip_code_error" class="error"></div>
                         @if($errors->has('billing_zip_code'))
                           <div class="error">{{ $errors->first('billing_zip_code') }}</div>
@@ -1016,7 +1016,7 @@ textarea.form-control {
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">First Name</label>
-                        <input type="text" name="shipping_first_name" class="form-control" value="{{$orderDetail->BillingShippingAddress->shipping_first_name}}" id="shipping_first_name" maxlength="30" disabled>
+                        <input type="text" name="shipping_first_name" class="form-control" value="{{$orderDetail->billingShippingAddress->shipping_first_name}}" id="shipping_first_name" maxlength="30" disabled>
                         <div id ="shipping_first_name_error" class="error"></div>
                         @if($errors->has('shipping_first_name'))
                           <div class="error">{{ $errors->first('shipping_first_name') }}</div>
@@ -1027,7 +1027,7 @@ textarea.form-control {
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">Last Name</label>
-                        <input type="text" name="shipping_last_name" class="form-control" value="{{$orderDetail->BillingShippingAddress->shipping_last_name}}" id="shipping_last_name" maxlength="30" disabled>
+                        <input type="text" name="shipping_last_name" class="form-control" value="{{$orderDetail->billingShippingAddress->shipping_last_name}}" id="shipping_last_name" maxlength="30" disabled>
                         <div id ="shipping_last_name_error" class="error"></div>
                         @if($errors->has('shipping_last_name'))
                           <div class="error">{{ $errors->first('shipping_last_name') }}</div>
@@ -1045,7 +1045,7 @@ textarea.form-control {
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">Email</label>
-                        <input type="text" name="shipping_email" class="form-control" value="{{$orderDetail->BillingShippingAddress->shipping_email}}" id="shipping_email" maxlength="30" disabled>
+                        <input type="text" name="shipping_email" class="form-control" value="{{$orderDetail->billingShippingAddress->shipping_email}}" id="shipping_email" maxlength="30" disabled>
                         <div id ="shipping_email_error" class="error"></div>
                         @if($errors->has('shipping_email'))
                           <div class="error">{{ $errors->first('shipping_email') }}</div>
@@ -1056,7 +1056,7 @@ textarea.form-control {
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">Phone Number</label>
-                        <input type="text" name="shipping_phone_number" class="form-control" value="{{$orderDetail->BillingShippingAddress->shipping_phone_number}}" id="shipping_phone_number" maxlength="30" disabled>
+                        <input type="text" name="shipping_phone_number" class="form-control" value="{{$orderDetail->billingShippingAddress->shipping_phone_number}}" id="shipping_phone_number" maxlength="30" disabled>
                         <div id ="shipping_phone_number_error" class="error"></div>
                         @if($errors->has('shipping_phone_number'))
                           <div class="error">{{ $errors->first('shipping_phone_number') }}</div>
@@ -1071,7 +1071,7 @@ textarea.form-control {
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">Address</label>
-                        <input type="text" name="shipping_address" class="form-control" value="{{$orderDetail->BillingShippingAddress->shipping_address}}" id="shipping_address" maxlength="30" disabled>
+                        <input type="text" name="shipping_address" class="form-control" value="{{$orderDetail->billingShippingAddress->shipping_address}}" id="shipping_address" maxlength="30" disabled>
                         <div id ="shipping_address_error" class="error"></div>
                         @if($errors->has('shipping_address'))
                           <div class="error">{{ $errors->first('shipping_address') }}</div>
@@ -1082,7 +1082,7 @@ textarea.form-control {
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">City</label>
-                        <input type="text" name="shipping_city" class="form-control" value="{{$orderDetail->BillingShippingAddress->shipping_city}}" id="shipping_city" maxlength="30" disabled>
+                        <input type="text" name="shipping_city" class="form-control" value="{{$orderDetail->billingShippingAddress->shipping_city}}" id="shipping_city" maxlength="30" disabled>
                         <div id ="shipping_city_error" class="error"></div>
                         @if($errors->has('shipping_city'))
                           <div class="error">{{ $errors->first('shipping_city') }}</div>
@@ -1097,7 +1097,7 @@ textarea.form-control {
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">State</label>
-                        <input type="text" name="shipping_state" class="form-control" value="{{$orderDetail->BillingShippingAddress->shipping_state}}" id="shipping_state" maxlength="30" disabled>
+                        <input type="text" name="shipping_state" class="form-control" value="{{$orderDetail->billingShippingAddress->shipping_state}}" id="shipping_state" maxlength="30" disabled>
                         <div id ="shipping_state_error" class="error"></div>
                         @if($errors->has('shipping_state'))
                           <div class="error">{{ $errors->first('shipping_state') }}</div>
@@ -1108,7 +1108,7 @@ textarea.form-control {
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">Zip Code</label>
-                        <input type="text" name="shipping_zip_code" class="form-control" value="{{$orderDetail->BillingShippingAddress->shipping_zip_code}}" id="shipping_zip_code" maxlength="30" disabled>
+                        <input type="text" name="shipping_zip_code" class="form-control" value="{{$orderDetail->billingShippingAddress->shipping_zip_code}}" id="shipping_zip_code" maxlength="30" disabled>
                         <div id ="shipping_zip_code_error" class="error"></div>
                         @if($errors->has('shipping_zip_code'))
                           <div class="error">{{ $errors->first('shipping_zip_code') }}</div>

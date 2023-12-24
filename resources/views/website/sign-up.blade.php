@@ -245,7 +245,7 @@ p.do_have_an_account a {
                                 confirmButtonText: 'Ok',
                                 allowOutsideClick: false
                               }).then((result) => {
-                                window.location.href="{{route('loginWeb')}}";
+                                window.location.href="{{route('index')}}";
                               })
 
                                

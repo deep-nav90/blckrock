@@ -147,9 +147,9 @@ class PaymentController extends Controller
 
     	$paymentDetail = Payment::find($id);
 
-    	$orderDetail = Order::whereId($paymentDetail->order_id)->with('payment','productOrders','BillingShippingAddress','user')->first();
+    	$orderDetail = Order::whereId($paymentDetail->order_id)->with('payment','productOrders','billingShippingAddress','user')->first();
 
-        // return $orderDetail->BillingShippingAddress->billing_state;
+        // return $orderDetail->billingShippingAddress->billing_state;
 
         return view('admin.payment.view',compact('orderDetail'));
 

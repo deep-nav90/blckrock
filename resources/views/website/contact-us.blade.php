@@ -204,6 +204,9 @@ button.form-btn.send-btn.custom-btn {
               required : true,
               email:true
             },
+            phone : {
+              required : true,
+            },
             subject : {
               required : true,
               minlength:2,
@@ -228,6 +231,9 @@ button.form-btn.send-btn.custom-btn {
                required: "Email is required.",
                email : "Email is invalid."
                
+             },
+             phone: {
+               required: "Phone Number is required.",
              },
              subject: {
                required: "Subject is required.",

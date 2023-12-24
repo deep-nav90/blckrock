@@ -20,14 +20,14 @@ a.custom-btn.backToHome {
     border-radius: 30px;
     line-height: 47px;
     color: #ffffff;
-    background: #ef5350;
+    background: #fdbd3e;
     padding: 0px 38px;
     margin-top: 15px;
     text-transform: uppercase;
     font-weight: 400;
     position: relative;
     overflow: hidden;
-    margin-left: 185px;
+    margin-left: 142px;
 }
 
     .invoice-title h2, .invoice-title h3 {
@@ -6002,11 +6002,11 @@ td.visible-print {
     			<div class="col-xs-6 text-right">
     				<address>
         			<strong>Shipped To:</strong><br>
-                    <span class="fw-600"> {{$getOrderDetails->BillingShippingAddress->shipping_first_name}} {{$getOrderDetails->BillingShippingAddress->shipping_last_name}}</span><br>
-    					{{$getOrderDetails->BillingShippingAddress->shipping_address}}<br>
-    					{{$getOrderDetails->BillingShippingAddress->shipping_city}}, {{$getOrderDetails->BillingShippingAddress->shipping_state}}, {{$getOrderDetails->BillingShippingAddress->shipping_zip_code}}<br>
-    					{{$getOrderDetails->BillingShippingAddress->shipping_email}}<br>
-                        {{$getOrderDetails->BillingShippingAddress->shipping_phone_number}}
+                    <span class="fw-600"> {{$getOrderDetails->billingShippingAddress->shipping_first_name}} {{$getOrderDetails->billingShippingAddress->shipping_last_name}}</span><br>
+    					{{$getOrderDetails->billingShippingAddress->shipping_address}}<br>
+    					{{$getOrderDetails->billingShippingAddress->shipping_city}}, {{$getOrderDetails->billingShippingAddress->shipping_state}}, {{$getOrderDetails->billingShippingAddress->shipping_zip_code}}<br>
+    					{{$getOrderDetails->billingShippingAddress->shipping_email}}<br>
+                        {{$getOrderDetails->billingShippingAddress->shipping_phone_number}}
     				</address>
     			</div>
     		</div>
@@ -6060,7 +6060,7 @@ td.visible-print {
     								<td>{{$product->product_name}}</td>
     								<td class="text-center">₹{{$product->sale_price}}</td>
     								<td class="text-center">{{$product->attribute_value}}({{$product->attribute_name}})</td>
-    								<td class="text-right">{{$product->quantity}}</td>
+    								<td class="text-center">{{$product->quantity}}</td>
                                     <td class="text-right">₹{{$product->calculated_amount}}</td>
     							</tr>
                                 @endforeach()
