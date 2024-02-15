@@ -58,7 +58,7 @@ button.form-btn.send-btn.custom-btn {
                   </span>
                   <h4><a href="javascript:;">Our Location</a></h4>
                  
-                  <p>Khasra No 879, NH-44, Vill Pragpur Kot Kalan, Jalandhar, Punjab, India <br> Pin : 144001</p>
+                  <p>B- 505, Kanakia Wall Street, Andheri Kurla Road, Chakala, Andneri East Mumbai - <br />400093 India.</p>
                </div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay=".1s">
@@ -77,7 +77,7 @@ button.form-btn.send-btn.custom-btn {
                   </span>
                   <h4><a href="javascript:;">Social</a></h4>
                   <!-- code -->
-                  <div class="icon4-main-wrapper padd-30 float-start w-100" style="background-color: #ffffff;">
+                  <div class="icon4-main-wrapper padd-30 w-100" style="background-color: unset;">
     
         
         
@@ -93,7 +93,8 @@ button.form-btn.send-btn.custom-btn {
                               class="fab fa-dribbble"></i></a></li>
                      <li><a class="linkedin" href="http://www.linkedin.com" target="_blank"><i
                               class="fab fa-linkedin-in"></i></a></li> -->
-                     <li><a class="instagram" href="http://www.instagram.com" target="_blank"><i
+                              <li><a href="https://wa.me/+918288800857" class="whatsapp" target="_blank" style='background-color: #15be45;'><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                     <li><a class="instagram" href="https://www.instagram.com/blackroosterindia/" target="_blank"><i
                               class="fab fa-instagram"></i></a></li>
                   
                   </ul>

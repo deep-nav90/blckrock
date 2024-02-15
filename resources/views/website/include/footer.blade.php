@@ -8,32 +8,12 @@
    }
    
 ?>
-   <div class="footer-main-wrapper float_left ptb-100">
+   <div class="footer-main-wrapper float_left ptb-100 pb-0">
       <div class="container">
          <div class="row">
-            <div class="col-lg-5 col-md-6 col-sm-12">
-               <div class="link">
-                  <span>Call Now</span>
-                  <h4>+91 828 8800 857</h4>
-                  <span>Get Special Email Offers</span><br>
-                  <span> info@blackroosterindia.com</span>
-                  <div class="line">
-                     <img src="{{url('public/website/images/4.png')}}" alt="line">
-                    
-                  </div>
-
-                  <!-- <div class="input-filed">
-                     <input type="email" placeholder="Your Email">
-                     <button>Join Us</button>
-                  </div> -->
-               </div>
-            </div>
-            <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
+             <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
                <div class="widgettitle">
-                  <h4>Our Service</h4>
-                  <div class="line">
-                     <img src="{{url('public/website/images/4.png')}}" alt="line">
-                  </div>
+                  
                   <div class="link-page">
                      <ul>
                         <li>
@@ -44,16 +24,52 @@
                         </li>
                         
                         <li>
-                           <a href="javascript:void(0);">Terms & Conditions</a>
+                           <a href="/rock/terms-conditions">Terms & Conditions</a>
                         </li>
                         <li>
-                           <a href="javascript:void(0);">Privacy Policy</a>
+                           <a href="/rock/privacy-policy">Privacy Policy</a>
                         </li>
 
                      </ul>
                   </div>
+                  <div class="copy-right-wrapper ">
+                      <div class="copy-social">
+                  <ul>
+                     <li>
+                        <a href="javascript:;"><i class="fab fa-facebook-f"></i></a>
+                     </li>
+                     <!-- <li>
+                        <a href="javascript:;"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                     </li> -->
+                     <!--<li>-->
+                     <!--   <a href="javascript:;"><i class="fab fa-google" aria-hidden="true"></i></a>-->
+                     <!--</li>-->
+                     <li>
+                        <a href="https://wa.me/+918288800857" target="_blank"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                     </li>
+                     <li>
+                        <a href="https://www.instagram.com/blackroosterindia/" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                     </li>
+                     <!-- <li>
+                        <a href="javascript:;"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
+                     </li> -->
+                  </ul>
+               </div>
+                  </div>
                </div>
             </div>
+            <div class="col-lg-5 col-md-6 col-sm-12">
+               <div class="link mb-5">
+                  <span class="call">Contact Us</span>
+                  <h4><a href="tel:+918288800857">+91 828 8800 857</a>&nbsp;(10 am - 6 pm)</h4>
+                  <h4><a href="mailto:info@blackroosterindia.com">info@blackroosterindia.com</a></h4>
+               </div>
+               <div class="link">
+                  <span class="call">Address</span>
+                  <h4>B- 505, Kanakia Wall Street, Andheri Kurla Road, Chakala, Andneri East Mumbai - 400093 India.</h4>
+               </div>
+            </div>
+            
             <!-- <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                <div class="widgettitle">
                   <h4>Our Story</h4>
@@ -85,56 +101,34 @@
                </div>
             </div> -->
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-               <div class="widgettitle">
-                  <h4>Our Story</h4>
-                  <div class="line">
-                     <img src="{{url('public/website/images/4.png')}}" alt="line">
-                  </div>
+               <div class="link">
+                  <span class="call">Our Products</h4>
+                  
                   <div class="link-page">
-                     <div class="img-ftr">
-                        <div class="small-img"> <img src="{{url('public/website/images/s1.jpg')}}" alt="img"> </div>
-                        <div class="small-img"> <img src="{{url('public/website/images/s1.jpg')}}" alt="img"> </div>
-                        <div class="small-img"> <img src="{{url('public/website/images/s1.jpg')}}" alt="img"> </div>
-                        <div class="small-img"> <img src="{{url('public/website/images/s1.jpg')}}" alt="img"> </div>
-                        <div class="small-img"> <img src="{{url('public/website/images/s1.jpg')}}" alt="img"> </div>
-                        <div class="small-img"> <img src="{{url('public/website/images/s1.jpg')}}" alt="img"> </div>
+                     <div class="link">
+                        <h4><a href="/rock/product-details/MQ==">Eggitarians (12 PCS)</a> </h4>
+                        <h4><a href="/rock/product-details/Mg==">Eggitarians NORMAL (10 PCS)</a> </h4>
+                        <h4> <a href="/rock/product-details/Mw==">Eggitarians BETTER (30 PCS) </a></h4>
+                        <h4> <a href="/rock/product-details/NA==">Chiken Eggs BETTER (10 PCS) </a></h4>
+                        <h4><a href="/rock/product-details/NQ==">Chicken Eggs (12 PCS) </a></h4>
+                        <h4> <a href="/rock/product-details/Nw==">Duck EGG (75 PCS)</a> </h4>
                      </div>
                   </div>
                </div>
             </div>
          </div>
       </div>
-   </div>
-   <div class="copy-right-wrapper float_left">
+      <div class="copy-right-wrapper copyright-section float_left">
       <div class="container">
-         <div class="row">
+         <div class="row align-items-center">
             <div class="col-lg-5 col-md-5 col-sm-12 col-12">
-               <div class="copy-social">
-                  <ul>
-                     <li>
-                        <a href="javascript:;"><i class="fab fa-facebook-f"></i></a>
-                     </li>
-                     <!-- <li>
-                        <a href="javascript:;"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                     </li> -->
-                     <!--<li>-->
-                     <!--   <a href="javascript:;"><i class="fab fa-google" aria-hidden="true"></i></a>-->
-                     <!--</li>-->
-                     <li>
-                        <a href="https://wa.me/+918288800857" target="_blank"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
-                     </li>
-                     <li>
-                        <a href="https://www.instagram.com/blackroosterindia/" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                     </li>
-                     <!-- <li>
-                        <a href="javascript:;"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
-                     </li> -->
-                  </ul>
+               <div class="footer-logo">
+                   <img src="{{url('public/webimg/BLACKROOSTER-logo.png')}}" alt="footer-logo" width="300px" />
                </div>
             </div>
             <div class="col-lg-7 col-md-7 col-sm-12 col-12">
                <div class="copy-right">
-                  <p>Copyright {{date('Y')}} © </p>
+                  <p class="text-white">Copyright {{date('Y')}} © </p>
                   <a href="javascript:;">Black Rooster</a>
                   
                </div>
@@ -142,6 +136,8 @@
          </div>
       </div>
    </div>
+   </div>
+   
    <!-- footer section end -->
    <!-- Side Panel -->
    <script src="{{url('public/website/js/jquery-3.6.0.min.js')}}"></script>

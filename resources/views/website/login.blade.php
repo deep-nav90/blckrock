@@ -17,7 +17,7 @@
 
 <head>
    <meta charset="utf-8" />
-   <title>Meat</title>
+   <title>Login-Black Rooster</title>
    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
    <!--Template style -->
    <link rel="stylesheet" type="text/css" href="{{url('public/website/css/animate.css')}}" />
@@ -31,6 +31,7 @@
    <!--favicon-->
    <link rel="shortcut icon" type="image/png" href="{{url('public/website/images/fav-icon.png')}}" />
    <link rel="stylesheet" type="text/css" href="{{url('public/website/css/custom.css')}}" />
+   <link rel="stylesheet" type="text/css" href="{{url('public/css/slider.css')}}" />
    
 </head>
 
@@ -85,9 +86,9 @@ p.do_have_an_account a {
                            <input type="checkbox" id="box1">
                            <label for="box1"><span>Remember Me</span></label>
                         </div>
-                        <a class="forgot" href="javascript:;">Forgot Password?</a>
+                        <a class="forgot" href="{{route('userForgotPassword')}}">Forgot Password?</a>
                         <div class="login-btn-sec">
-                           <button class="sub-btn" id="submitBtn" href="javascript:;"><span>Sign In</span></button>
+                           <button class="sub-btn" id="submitBtn" href="javascript:void(0);"><span>Sign In</span></button>
                            <!-- <div class="social-btn">
                               <span>- OR -</span>
                               <ul>
@@ -152,7 +153,10 @@ p.do_have_an_account a {
                </div>
                <div class="col-lg-6 col-md-12 col-12">
                   <div class="login-img">
-                     <img class="img-fluid" src="{{url('public/website/images/product/login.webp')}}" alt="img">
+                      <div class="center-img text-center">
+                        <img class="img-fluid" src="{{url('public/webimg/Eggs_fly.webp')}}" alt="egg" width="80%" height="550px" style="object-fit:contain;height:550px">
+                    </div>
+                     <!--<img class="img-fluid" src="{{url('public/website/images/product/login.webp')}}" alt="img">-->
                   </div>
                </div>
             </div>

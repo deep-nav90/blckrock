@@ -32,6 +32,7 @@
    <link rel="stylesheet" type="text/css" href="{{url('public/website/css/style.css')}}" />
    <link rel="stylesheet" type="text/css" href="{{url('public/website/css/responsive.css')}}" />
    <link rel="stylesheet" type="text/css" href="{{url('public/website/css/custom.css')}}" />
+   <link rel="stylesheet" type="text/css" href="{{url('public/css/animation.css')}}" />
    <link rel="stylesheet" type="text/css" href="{{url('public/website/css/owlc.css')}}" />
    
    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
@@ -42,7 +43,10 @@
    <link rel="shortcut icon" type="image/png" href="{{url('public/website/images/fav-icon.png')}}" />
 
    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-
+   <link rel="stylesheet" href="{{url('public/css/slider.css')}}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 </head>
 
@@ -59,21 +63,21 @@
    <!-- top to return -->
    <a href="javascript:;" id="return-to-top" class="change-bg2"> <i class="fas fa-angle-double-up"></i></a>
    <!-- header start -->
-   <div class="main-header-wrapper1 float_left">
+   <div class="main-header-wrapper1 w-100">
 
       <div class="sb-main-header1">
          <div class="menu-items-wrapper menu-item-wrapper3 d-xl-block d-lg-block d-md-none d-sm-none d-none">
-            <div class="top-header-wrapper float_left">
+            <div class="top-header-wrapper w-100">
                <div class="container">
                   <div class="row">
                      <div class="col-md-9 col-sm-9 col-xs-6">
                         <ul class="contact-details">
                            <!-- <li class="hidden-xs"><a href="#">Family Butchers Est. 1901</a>
                            </li> -->
-                           <li><a href="#"><i class="fa fa-phone"></i> <b>+91 8288800857</b> (Open Right Now)</a>
+                           <li><a href="#"><i class="fa fa-phone"></i> <b>+91 8288800857</b></a>
                            </li>
                            <li class="hidden-xs"><a href="#"><i
-                                    class="fa fa-paper-plane-o"></i>&nbsp;&nbsp;info@blackroosterindia.com</a>
+                                    class="fa fa-envelope"></i>&nbsp;&nbsp;<b>info@blackroosterindia.com</b></a>
                            </li>
                         </ul>
                      </div>
@@ -125,13 +129,14 @@
                   </div>
                </div>
             </div>
-            <div class="float_left">
+            <div class="w-100">
                <div class="container">
                   <div class="row">
                      <div class="col-lg-12 col-md-12">
                         <div class="index1-logo">
                            <a href="{{route('index')}}">
-                              <img src="{{url('public/webimg/newlogo.png')}}" alt="logo">
+                               <img src="{{url('public/webimg/BLACKROOSTER-logo.png')}}" alt="logo" class="fixed-logo">
+                              <img src="{{url('public/webimg/newlogo.png')}}" alt="logo" class="animated-logo">
                            </a>
                         </div>
                         <nav class="navbar navbar-expand-lg">
@@ -298,7 +303,7 @@
                   <div class=" col-md-4 col-sm-4 col-6">
                      <div class="mobile-logo">
                         <a href="{{route('index')}}">
-                           <img src="{{url('public/website/images/logo.jpg')}}" alt="logo">
+                           <img src="{{url('public/webimg/newlogo.png')}}" alt="logo" style='width:210px; object-fit:contain'>
                         </a>
                      </div>
                   </div>
@@ -330,17 +335,18 @@
             </div>
          </div>
          <div id="sidebar">
-            <div class="sidebar_logo">
-               <a href="{{route('index')}}"><img src="{{url('public/website/images/logo.jpg')}}" alt="img"></a>
+            <div class="sidebar_logo" style='position:relative;z-index:55555'>
+               <a href="{{route('index')}}"><img src="{{url('public/webimg/newlogo.png')}}" alt="img" style='object-fit:contain'></a>
             </div>
-            <div id="toggle_close">&times;</div>
+            <div id="toggle_close" style='z-index: 99999;'>&times;</div>
             <div id='cssmenu'>
-               <ul class="float_left">
+               <ul class="w-100">
                   <li class="has-sub">
                      <a href="{{route('index')}}">Home</a>
                      
                   </li>
                   <li><a href="{{route('aboutUS')}}">About Us</a></li>
+                  <li><a href="{{route('ContactUs')}}">Contact Us</a></li>
 
                   <li class="has-sub">
                      <a href="{{route('allProducts')}}">Shop</a>

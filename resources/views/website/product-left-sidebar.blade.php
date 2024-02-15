@@ -475,7 +475,7 @@ document.querySelectorAll("[style^=--rating]").forEach(starRating);
                          </h5>
                          <span class="star_rating" style="--rating:`+result[k].average_rating+`"></span>
 
-                         <span class="product-price">`+result[k].default_sale_price+`$ <span>`+result[k].default_product_price+`$</span> </span>
+                         <span class="product-price">₹`+result[k].default_sale_price+` <span>₹`+result[k].default_product_price+`</span> </span>
                          <p class="product-text">
                             <span class="text_view">`+show_description+`</span>
                             `+readMoreShow+`

@@ -229,8 +229,12 @@ Route::match(['GET','POST'],'signup',[IndexController::class,'signUp'])->name('s
 Route::match(['GET','POST'],'loginWeb',[IndexController::class,'loginWeb'])->name('loginWeb');
 Route::get('logout',[IndexController::class,'logout'])->name('logout');
 Route::get('about-us',[IndexController::class,'aboutUS'])->name('aboutUS');
+Route::get('privacy-policy',[IndexController::class,'privacyPolicy'])->name('privacyPolicy');
+Route::get('terms-conditions',[IndexController::class,'termsConditions'])->name('termsConditions');
 
 Route::match(['GET','POST'],'contact-us',[IndexController::class,'ContactUs'])->name('ContactUs');
+Route::match(['GET','POST'],'user-forgot-passowrd',[IndexController::class,'userForgotPassword'])->name('userForgotPassword');
+Route::match(['GET','POST'],'user-reset-password/{token}',[IndexController::class,'userResetPassword'])->name('userResetPassword');
 
 
 

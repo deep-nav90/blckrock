@@ -104,23 +104,40 @@ class RolesController extends Controller {
 			if($roles->isNotEmpty()) {
 				
 				$adminsPermissions = Permission::where('module_slug', 'admins')->orderBy('name', 'desc')->get();
+				$usersPermissions = Permission::where('module_slug', 'users')->orderBy('name', 'desc')->get();
 				$rolesPermissions = Permission::where('module_slug', 'roles')->orderBy('name', 'desc')->get();
 				$accessPermissions = Permission::where('module_slug', 'permissions')->orderBy('name', 'desc')->get();
 				$categoriesPermissions = Permission::where('module_slug', 'categories')->orderBy('name', 'desc')->get();
 				$subcategoriesPermissions = Permission::where('module_slug', 'sub-categories')->orderBy('name', 'desc')->get();
 				$attributesPermissions = Permission::where('module_slug', 'attributes')->orderBy('name', 'desc')->get();
 				$productsPermissions = Permission::where('module_slug', 'products')->orderBy('name', 'desc')->get();
+
+				$couponsPermissions = Permission::where('module_slug', 'coupons')->orderBy('name', 'desc')->get();
+
+				$ordersPermissions = Permission::where('module_slug', 'orders')->orderBy('name', 'desc')->get();
+
+				$paymentsPermissions = Permission::where('module_slug', 'payments')->orderBy('name', 'desc')->get();
+
+				$ourClientsPermissions = Permission::where('module_slug', 'our-clients')->orderBy('name', 'desc')->get();
+
+				$contactUsPermissions = Permission::where('module_slug', 'contact-us')->orderBy('name', 'desc')->get();
 				
 
 				return view('admin/roles/role_permissions', [
 					'roles' => $roles,
 					'adminsPermissions' => $adminsPermissions,
+					'usersPermissions' => $usersPermissions,
 					'rolesPermissions' => $rolesPermissions,
 					'accessPermissions' => $accessPermissions,
 					'categoriesPermissions' => $categoriesPermissions,
 					'subcategoriesPermissions' => $subcategoriesPermissions,
 					'attributesPermissions' => $attributesPermissions,
-					'productsPermissions' => $productsPermissions
+					'productsPermissions' => $productsPermissions,
+					'couponsPermissions' => $couponsPermissions,
+					'ordersPermissions' => $ordersPermissions,
+					'paymentsPermissions' => $paymentsPermissions,
+					'ourClientsPermissions' => $ourClientsPermissions,
+					'contactUsPermissions' => $contactUsPermissions
 				]);
 			}
 			else {

@@ -18,7 +18,6 @@
       <div class="container">
          <div class="inner-caption">
             <h4>Product Details</h4>
-            <img src="{{url('public/website/images/title.png')}}" alt="img">
          </div>
          <ol class="breadcrumb sicon">
             <li><a href="{{route('index')}}">Home</a></li>
