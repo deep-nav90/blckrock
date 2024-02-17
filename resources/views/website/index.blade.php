@@ -696,7 +696,7 @@ Naturally Nutritious, Deliciously Fresh</div>
                                 </div>
                                 <div class="text-center p-4">
                                     <a class="d-block h5 mb-2 prod-title" href="{{route('singleProductDetails',base64_encode($product->id))}}" title="{{$product->product_name}}">{{$product->product_name}}</a>
-                                    <a class="sub_category_name_anchor" href="javascript:void(0);">{{$product->subCategory->sub_category_name}}</a>
+                                    <!-- <a class="sub_category_name_anchor" href="javascript:void(0);">{{$product->subCategory->sub_category_name}}</a> -->
                                  <a class="attribute_anchor" href="javascript:void(0);">{{$product->default_attribute_value}} ({{$product->default_attribute_name}})</a>
                                  <span class="star_rating" style="--rating:{{$product->average_rating}}"></span>
                                     <span class="rate me-1">₹{{$product->default_sale_price}}</span>
@@ -859,7 +859,7 @@ Eggs are <span class="color-slider">Premium?</span></h4>
                            <div class="product-body">
                               <h5 class="product-title">
                                  <a href="{{route('singleProductDetails',base64_encode($product->id))}}" title="{{$product->product_name}}">{{$product->product_name}}</a>
-                                 <a class="sub_category_name_anchor" href="javascript:void(0);">{{$product->subCategory->sub_category_name}}</a>
+                                 <!-- <a class="sub_category_name_anchor" href="javascript:void(0);">{{$product->subCategory->sub_category_name}}</a> -->
                                  <a class="attribute_anchor" href="javascript:void(0);">{{$product->default_attribute_value}} ({{$product->default_attribute_name}})</a>
                               </h5>
                               <span class="star_rating" style="--rating:{{$product->average_rating}}"></span>

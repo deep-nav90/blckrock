@@ -80,6 +80,9 @@ class IndexController extends Controller
 
         $OurClients = OurClient::whereDeletedAt(null)->get();
 
+
+        
+
         
        //$categories = [];
 

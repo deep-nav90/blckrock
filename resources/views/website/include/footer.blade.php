@@ -6,6 +6,9 @@
    }else{
       $product_find_id = "";
    }
+
+
+   $our_products = App\Models\Product::select("*", DB::raw('(SELECT attribute_name FROM attributes WHERE attributes.id = (SELECT attribute_id FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND is_default_show = 1 AND product_price_attributes.deleted_at IS NULL)) AS default_attribute_name'), DB::raw('(SELECT product_price FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND product_price_attributes.deleted_at IS NULL) AS default_product_price'), DB::raw('(SELECT sale_price FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND deleted_at IS NULL) AS default_sale_price'), DB::raw('(SELECT attribute_value FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND deleted_at IS NULL) AS default_attribute_value'),DB::raw('(SELECT category_name FROM categories WHERE categories.id = products.category_id) AS cat_name'),DB::raw('(SELECT sub_category_name FROM sub_categories WHERE sub_categories.id = products.sub_category_id) AS sub_cat_name'))->where(DB::raw('(SELECT status FROM sub_categories WHERE sub_categories.id = products.sub_category_id)'), '=', 'Active')->where(DB::raw('(SELECT status FROM categories WHERE categories.id = products.category_id)'), '=', 'Active')->whereDeletedAt(null)->with('productImages','subCategory','productPriceAttributes')->orderBy('average_rating','desc')->limit(5)->get();
    
 ?>
    <div class="footer-main-wrapper float_left ptb-100 pb-0">
@@ -106,12 +109,10 @@
                   
                   <div class="link-page">
                      <div class="link">
-                        <h4><a href="/rock/product-details/MQ==">Eggitarians (12 PCS)</a> </h4>
-                        <h4><a href="/rock/product-details/Mg==">Eggitarians NORMAL (10 PCS)</a> </h4>
-                        <h4> <a href="/rock/product-details/Mw==">Eggitarians BETTER (30 PCS) </a></h4>
-                        <h4> <a href="/rock/product-details/NA==">Chiken Eggs BETTER (10 PCS) </a></h4>
-                        <h4><a href="/rock/product-details/NQ==">Chicken Eggs (12 PCS) </a></h4>
-                        <h4> <a href="/rock/product-details/Nw==">Duck EGG (75 PCS)</a> </h4>
+                        @foreach($our_products as $prod)
+                        <h4><a href="{{route('singleProductDetails',base64_encode($prod->id))}}">{{$prod->product_name}} ({{$prod->default_attribute_value}} {{$prod->default_attribute_name}})</a> </h4>
+                        
+                        @endforeach()
                      </div>
                   </div>
                </div>

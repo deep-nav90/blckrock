@@ -1155,6 +1155,10 @@ background: #000000 !important;
 .product-item .prod-title{
     font-size:20px;
     font-weight:600;
+    word-break: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .product-item .star_rating{
     display:block;
