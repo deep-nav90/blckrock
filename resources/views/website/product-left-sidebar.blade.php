@@ -469,13 +469,13 @@ document.querySelectorAll("[style^=--rating]").forEach(starRating);
                          <h5 class="product-title">
                             <a href="`+detailProductUrl+`" title="`+result[k].product_name+`">`+result[k].product_name+`</a>
 
-                            <a class="sub_category_name_anchor" href="javascript:void(0);">`+result[k].sub_category.sub_category_name+`</a>
+                            
 
                             <a class="attribute_anchor" href="javascript:void(0);">`+result[k].default_attribute_value+` (`+result[k].default_attribute_name+`)</a>
                          </h5>
                          <span class="star_rating" style="--rating:`+result[k].average_rating+`"></span>
 
-                         <span class="product-price">`+result[k].default_sale_price+`$ <span>`+result[k].default_product_price+`$</span> </span>
+                         <span class="product-price">₹`+result[k].default_sale_price+` <span>₹`+result[k].default_product_price+`</span> </span>
                          <p class="product-text">
                             <span class="text_view">`+show_description+`</span>
                             `+readMoreShow+`

@@ -25,7 +25,6 @@ if(Auth::guard('web')->user()){
       <div class="container">
          <div class="inner-caption">
             <h4>Checkout</h4>
-            <img src="{{url('public/website/images/title.png')}}" alt="img">
          </div>
          <ol class="breadcrumb sicon">
             <li><a href="{{route('index')}}">Home</a></li>
@@ -60,7 +59,10 @@ if(Auth::guard('web')->user()){
                                  <div class="col-md-6 col-12">
 
                                  <div class="login-img">
-                                    <img class="img-fluid" src="{{url('/public/website/images/product/login.webp')}}" alt="img">
+                                     <div class="center-img text-center">
+                        <img class="img-fluid" src="{{url('/public/webimg/Eggs_fly.png')}}" alt="egg" width="80%" height="550px" style="object-fit:contain;height:400px">
+                    </div>
+                                    <!--<img class="img-fluid" src="{{url('/public/website/images/product/login.webp')}}" alt="img">-->
                                  </div>
 
                                     <!-- <div class="new_customer">

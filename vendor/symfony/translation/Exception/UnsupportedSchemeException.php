@@ -31,7 +31,7 @@ class UnsupportedSchemeException extends LogicException
         ],
     ];
 
-    public function __construct(Dsn $dsn, string $name = null, array $supported = [])
+    public function __construct(Dsn $dsn, ?string $name = null, array $supported = [])
     {
         $provider = $dsn->getScheme();
         if (false !== $pos = strpos($provider, '+')) {
@@ -39,7 +39,7 @@ class UnsupportedSchemeException extends LogicException
         }
         $package = self::SCHEME_TO_PACKAGE_MAP[$provider] ?? null;
         if ($package && !class_exists($package['class'])) {
-            parent::__construct(sprintf('Unable to synchronize translations via "%s" as the provider is not installed. Try running "composer require %s".', $provider, $package['package']));
+            parent::__construct(sprintf('Unable to synchronize translations via "%s" as the provider is not installed; try running "composer require %s".', $provider, $package['package']));
 
             return;
         }

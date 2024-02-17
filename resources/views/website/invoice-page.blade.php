@@ -5969,7 +5969,6 @@ td.visible-print {
       <div class="container">
          <div class="inner-caption">
             <h4>Invoice Order</h4>
-            <img src="{{url('public/website/images/title.png')}}" alt="img">
          </div>
          <ol class="breadcrumb sicon">
             <li><a href="{{route('index')}}">Home</a></li>
@@ -5993,8 +5992,7 @@ td.visible-print {
     				<address>
                     <strong>Company name:</strong><br>
                        <span class="fw-600"> BLACK ROOSTER PRIVATE LIMITED </span><br>
-    					KH NO. 879, NH-44, VILL PRAGPUR, KOT KALAN<br>
-    					JALANDHAR, Punjab, 144024<br>
+                       B- 505, Kanakia Wall Street,<br /> Andheri Kurla Road,<br /> Chakala, Andneri East Mumbai -<br/> 400093 India.<br />
                         info@blackroosterindia.com<br>
                         +91 8288800857
     				</address>

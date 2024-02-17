@@ -33,6 +33,8 @@ use Dompdf\Dompdf;
 use PDF;
 use Response;
 
+use App\Mail\UserForgotPassword;
+
 require(dirname(__FILE__)."/textlocal.class.php");
 
 use Textlocal;
@@ -77,6 +79,9 @@ class IndexController extends Controller
         $categories = [$createObjectCategory, ...$categories];
 
         $OurClients = OurClient::whereDeletedAt(null)->get();
+
+
+        
 
         
        //$categories = [];
@@ -235,6 +240,11 @@ class IndexController extends Controller
 
     public function signUp(Request $request){
         if($request->isMethod('GET')){
+
+            $checkLogin = Auth::guard('web')->user();
+            if($checkLogin){
+                return redirect(route('index'));
+            }
             return view('website.sign-up');
         }
 
@@ -935,7 +945,98 @@ class IndexController extends Controller
         return view("website.track-order",compact('getOrderDetails','loginUserDetail'));
     }
 
-    
+    public function privacyPolicy(Request $request){
+        return view('website.privacy-policy');
+    }
+     public function termsConditions(Request $request){
+        return view('website.terms-conditions');
+    }
+
+    public function userForgotPassword(Request $request){
+        if($request->isMethod('GET')){
+
+            $checkLogin = Auth::guard('web')->user();
+            if($checkLogin){
+                return redirect(route('index'));
+            }
+
+
+            return view('website.forgot-password');
+        }
+
+        if($request->isMethod('POST')){
+            $data = $request->all();
+
+
+            $token = Str::random(32);
+            $email = $request->email;
+
+            $find_user = User::whereEmail($email)->whereDeletedAt(null)->first();
+
+            if($find_user){
+                DB::table('password_resets')->whereEmail($email)->delete();
+
+                DB::table('password_resets')->insert([
+                    'email' => $email,
+                    'token' => $token,
+                    'created_at' => Carbon::now()
+                ]);
+
+                try{
+                    \Mail::to($data['email'])->send(new UserForgotPassword($token, $find_user));
+
+                }catch(\Exception $ex){
+                    return ['status' => 'false', 'message' =>  "Error " . $ex->getMessage()];
+                }
+                return ['status' => 'true', 'message' => 'A reset password link has been sent to your entered email address.'];
+            }else{
+                return ['status' => 'false', 'message' =>  "Please enter registered email address."];
+            }
+            
+        }
+    }
+
+    public function userResetPassword(Request $request, $token){
+
+        if($request->isMethod('GET')){
+
+            $checkLogin = Auth::guard('web')->user();
+            if($checkLogin){
+                return redirect(route('index'));
+            }
+
+
+
+            $token = $token;
+            $check_token = DB::table('password_resets')->whereToken($token)->first();
+
+            return view('website.reset-password',compact('token', 'check_token'));
+
+        }
+
+        if($request->isMethod('POST')){
+
+            $check_token = DB::table('password_resets')->whereToken($token)->first();
+            if($check_token){
+                $find_user = User::whereEmail($check_token->email)->whereDeletedAt(null)->first();
+                if($find_user){
+                    $hash = Hash::make($request->password);
+                    $find_user->password = $hash;
+                    $find_user->update();
+
+                    DB::table('password_resets')->whereToken($token)->delete();
+                    
+                    return ['status' => 'true', 'message' =>  "Password has been reset successfully."];
+                }else{
+                    return ['status' => 'false', 'message' =>  "Your account has been deleted by admin."];
+                }
+            }else{
+                return ['status' => 'false', 'message' =>  "Your link has been invalid or expired. So please send forgot password email again to reset your password."];
+            }
+
+        }
+
+    }
 
     
 }

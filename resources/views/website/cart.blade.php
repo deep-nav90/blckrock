@@ -82,9 +82,8 @@ h6.h6_coupon {
       <div class="container">
          <div class="inner-caption">
             <h4>Shopping Cart</h4>
-            <img src="{{url('public/website/images/title.png')}}" alt="img">
          </div>
-         <ol class="breadcrumb sicon">
+         <ol class="breadcrumb sicon align-items-center">
             <li><a href="{{route('index')}}">Home</a></li>
             <li class="active">Shopping Cart</li>
          </ol>

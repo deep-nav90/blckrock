@@ -70,6 +70,32 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <div class="permissions-section-inner-sec">
+                          <p class="headings"><strong class="list-text">Users</strong></p>
+                          <div class="custom_check_wrap">
+                            <div class="custom-check">
+                              <input type="checkbox" id="users_permissions" class="ckbCheckAll">
+                              <span></span>
+                            </div>
+                              <strong class="list-text">Select All</strong>
+                          </div>
+                          <div id="checkBoxes">
+                            @foreach($usersPermissions as $permission)
+                              <div class="custom_check_wrap">
+                                <div class="custom-check">
+                                  <input type="checkbox" class="checkBoxClass userscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                  <span></span>
+                                </div>
+                                <label class="mb-0">{{ $permission->name }}</label>
+                              </div>
+                            @endforeach
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <div class="permissions-section-inner-sec">
                           <p class="headings"><strong class="list-text">Admins</strong></p>
                           <div class="custom_check_wrap">
                             <div class="custom-check">
@@ -92,6 +118,7 @@
                         </div>
                       </div>
                     </div>
+
                   </div>
 
                   
@@ -208,6 +235,48 @@
                   </div>
 
 
+                  <div class="title">
+                    <h5>Coupon Management</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
+                    
+              
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <div class="permissions-section-inner-sec">
+                          <p class="headings"><strong class="list-text">Coupons</strong></p>
+                          <div class="custom_check_wrap">
+                            <div class="custom-check">
+                              <input type="checkbox" id="coupon_permissions" class="ckbCheckAll">
+                              <span></span>
+                            </div>
+                              <strong class="list-text">Select All</strong>
+                          </div>
+                          <div id="checkBoxes">
+                            @foreach($couponsPermissions as $permission)
+                              <div class="custom_check_wrap">
+                                <div class="custom-check">
+                                  <input type="checkbox" class="checkBoxClass couponscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                  <span></span>
+                                </div>
+                                <label class="mb-0">{{ $permission->name }}</label>
+                              </div>
+                            @endforeach
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    
+
+
+
+                  </div>
+
+
 
                   <div class="title">
                     <h5>Product Management</h5>
@@ -233,6 +302,175 @@
                               <div class="custom_check_wrap">
                                 <div class="custom-check">
                                   <input type="checkbox" class="checkBoxClass productscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                  <span></span>
+                                </div>
+                                <label class="mb-0">{{ $permission->name }}</label>
+                              </div>
+                            @endforeach
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    
+
+
+
+                  </div>
+
+
+                  <div class="title">
+                    <h5>Order Management</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
+                    
+              
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <div class="permissions-section-inner-sec">
+                          <p class="headings"><strong class="list-text">Orders</strong></p>
+                          <div class="custom_check_wrap">
+                            <div class="custom-check">
+                              <input type="checkbox" id="order_permissions" class="ckbCheckAll">
+                              <span></span>
+                            </div>
+                              <strong class="list-text">Select All</strong>
+                          </div>
+                          <div id="checkBoxes">
+                            @foreach($ordersPermissions as $permission)
+                              <div class="custom_check_wrap">
+                                <div class="custom-check">
+                                  <input type="checkbox" class="checkBoxClass orderscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                  <span></span>
+                                </div>
+                                <label class="mb-0">{{ $permission->name }}</label>
+                              </div>
+                            @endforeach
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    
+
+
+
+                  </div>
+
+
+                  <div class="title">
+                    <h5>Payment Management</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
+                    
+              
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <div class="permissions-section-inner-sec">
+                          <p class="headings"><strong class="list-text">Payments</strong></p>
+                          <div class="custom_check_wrap">
+                            <div class="custom-check">
+                              <input type="checkbox" id="payment_permissions" class="ckbCheckAll">
+                              <span></span>
+                            </div>
+                              <strong class="list-text">Select All</strong>
+                          </div>
+                          <div id="checkBoxes">
+                            @foreach($paymentsPermissions as $permission)
+                              <div class="custom_check_wrap">
+                                <div class="custom-check">
+                                  <input type="checkbox" class="checkBoxClass paymentscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                  <span></span>
+                                </div>
+                                <label class="mb-0">{{ $permission->name }}</label>
+                              </div>
+                            @endforeach
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    
+
+
+
+                  </div>
+
+
+                  <div class="title">
+                    <h5>Our Client Management</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
+                    
+              
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <div class="permissions-section-inner-sec">
+                          <p class="headings"><strong class="list-text">Our Clients</strong></p>
+                          <div class="custom_check_wrap">
+                            <div class="custom-check">
+                              <input type="checkbox" id="our_client_permissions" class="ckbCheckAll">
+                              <span></span>
+                            </div>
+                              <strong class="list-text">Select All</strong>
+                          </div>
+                          <div id="checkBoxes">
+                            @foreach($ourClientsPermissions as $permission)
+                              <div class="custom_check_wrap">
+                                <div class="custom-check">
+                                  <input type="checkbox" class="checkBoxClass ourClientscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                  <span></span>
+                                </div>
+                                <label class="mb-0">{{ $permission->name }}</label>
+                              </div>
+                            @endforeach
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    
+
+
+
+                  </div>
+
+
+
+                  <div class="title">
+                    <h5>Contact Us Management</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
+                    
+              
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <div class="permissions-section-inner-sec">
+                          <p class="headings"><strong class="list-text">Contact Us</strong></p>
+                          <div class="custom_check_wrap">
+                            <div class="custom-check">
+                              <input type="checkbox" id="contact_us_permissions" class="ckbCheckAll">
+                              <span></span>
+                            </div>
+                              <strong class="list-text">Select All</strong>
+                          </div>
+                          <div id="checkBoxes">
+                            @foreach($contactUsPermissions as $permission)
+                              <div class="custom_check_wrap">
+                                <div class="custom-check">
+                                  <input type="checkbox" class="checkBoxClass contactUscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
                                   <span></span>
                                 </div>
                                 <label class="mb-0">{{ $permission->name }}</label>
@@ -450,6 +688,10 @@
         $(".adminscheckBox").prop('checked', this.checked)
       })
 
+      $("#users_permissions").click(function() {
+        $(".userscheckBox").prop('checked', this.checked)
+      })
+
       $("#category_permissions").click(function(){
         $(".categoriescheckBox").prop('checked', this.checked)
       })
@@ -462,8 +704,29 @@
         $(".attributescheckBox").prop('checked', this.checked)
       })
 
+      $("#coupon_permissions").click(function(){
+        $(".couponscheckBox").prop('checked', this.checked)
+      })
+
+
       $("#product_permissions").click(function(){
         $(".productscheckBox").prop('checked', this.checked)
+      })
+
+      $("#order_permissions").click(function(){
+        $(".orderscheckBox").prop('checked', this.checked)
+      })
+
+      $("#payment_permissions").click(function(){
+        $(".paymentscheckBox").prop('checked', this.checked)
+      })
+
+      $("#our_client_permissions").click(function(){
+        $(".ourClientscheckBox").prop('checked', this.checked)
+      })
+
+      $("#contact_us_permissions").click(function(){
+        $(".contactUscheckBox").prop('checked', this.checked)
       })
 
       

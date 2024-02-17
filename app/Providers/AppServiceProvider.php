@@ -559,6 +559,18 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
+        Gate::define('block_unblock_user', function ($user) {
+            $user = Auth::user();
+            $permissions = $user->role->permissions;
+
+            for ($i=0; $i < count($permissions); $i++) { 
+                if($permissions[$i]->slug == 'block_unblock_user') {
+                    return true;
+                }
+            }
+        });
+
+
         Gate::define('add_permissions', function ($user) {
             $user = Auth::user();
             $permissions = $user->role->permissions;

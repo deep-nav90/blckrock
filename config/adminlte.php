@@ -266,21 +266,21 @@ return [
             'text' => 'User Management',
             'icon' => 'fas fa-users',
             'active' => ['admin/users*'],
-            'can' => ['view_admin'],
+            'can' => ['view_user', 'block_unblock_user', 'delete_user', 'add_admin', 'view_admin', 'edit_admin', 'delete_admin'],
             'submenu' => [
                 [
                     'text' => 'Users',
                     'icon' => 'fas fa-user-friends',
                     'url'  => 'admin/users/list',
                     'active' => ['admin/users*'],
-                    'can' => ['view_user','delete_user'],
+                    'can' => ['view_user', 'block_unblock_user', 'delete_user'],
                 ],
                 [
                     'text' => 'admins',
                     'icon' => 'fas fa-user-shield',
                     'url'  => 'admin/admins/list',
                     'active' => ['admin/admins*'],
-                    'can' => ['view_admin','delete_admin','add_admin','edit_admin'],
+                    'can' => ['add_admin', 'view_admin', 'edit_admin', 'delete_admin'],
 
                 ],
             ],
@@ -290,7 +290,7 @@ return [
             'text' => 'Category Management',
             'icon' => 'fas fa-paper-plane',
             'active' => ['admin/categories*'],
-            'can' => ['view_category'],
+            'can' => ['view_category','delete_category','add_category','edit_category', 'view_sub_category','delete_sub_category','add_sub_category','edit_sub_category'],
             'submenu' => [
                 [
                     'text' => 'Categories',
@@ -317,7 +317,7 @@ return [
             'text' => 'Attribute Management',
             'icon' => 'fas fa-won-sign',
             'active' => ['admin/attributes*'],
-            'can' => ['view_attribute'],
+            'can' => ['view_attribute','delete_attribute','add_attribute','edit_attribute'],
             'submenu' => [
                 [
                     'text' => 'Attributes',
@@ -336,7 +336,7 @@ return [
             'text' => 'Coupon Management',
             'icon' => 'fab fa-cc-discover',
             'active' => ['admin/coupons*'],
-            'can' => ['view_coupon'],
+            'can' => ['view_coupon','delete_coupon','add_coupon','edit_coupon'],
             'submenu' => [
                 [
                     'text' => 'Coupons',
@@ -357,7 +357,7 @@ return [
             'text' => 'Product Management',
             'icon' => 'fas fa-suitcase',
             'url'  => '#',
-            'can' => ['view_product'],
+            'can' => ['view_product','delete_product','add_product','edit_product'],
             'submenu' => [
                 [
                     'text' => 'Products',
@@ -374,7 +374,7 @@ return [
             'text' => 'Order Management',
             'icon' => 'fas fa-suitcase',
             'url'  => '#',
-            'can' => ['view_order'],
+            'can' => ['view_order','accept_order','reject_order','complete_order','payment_received'],
             'submenu' => [
                 [
                     'text' => 'Orders',
@@ -403,10 +403,10 @@ return [
         ],
 
         [
-            'text' => 'Our Client',
+            'text' => 'Our Client Management',
             'icon' => 'fas fa-users',
             'active' => ['admin/our-clients*'],
-            'can' => ['view_our_client'],
+            'can' => ['view_our_client','delete_our_client','add_our_client','edit_our_client'],
             'submenu' => [
                 [
                     'text' => 'Our Clients',
@@ -425,7 +425,7 @@ return [
             'text' => 'Contact Us',
             'icon' => 'fas fa-users',
             'active' => ['admin/contact-us*'],
-            'can' => ['view_our_client'],
+            'can' => ['view_contact_us','delete_contact_us','reply_contact_us'],
             'submenu' => [
                 [
                     'text' => 'Contact Us',

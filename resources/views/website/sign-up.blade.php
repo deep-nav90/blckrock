@@ -17,7 +17,7 @@
 
 <head>
    <meta charset="utf-8" />
-   <title>Meat</title>
+   <title>Sign Up- Black Rooster</title>
    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
    <!--Template style -->
    <link rel="stylesheet" type="text/css" href="{{url('public/website/css/animate.css')}}" />
@@ -29,6 +29,7 @@
    <link rel="stylesheet" type="text/css" href="{{url('public/website/css/style.css')}}" />
    <link rel="stylesheet" type="text/css" href="{{url('public/website/css/responsive.css')}}" />
    <link rel="stylesheet" type="text/css" href="{{url('public/website/css/custom.css')}}" />
+   <link rel="stylesheet" type="text/css" href="{{url('public/css/slider.css')}}" />
    <!--favicon-->
    <link rel="shortcut icon" type="image/png" href="{{url('public/website/images/fav-icon.png')}}" />
 </head>
@@ -88,7 +89,7 @@ p.do_have_an_account a {
                         </div>
                         <div class="cond">
                            <input type="checkbox" id="box1" name="box1" value="box1">
-                           <label for="box1"> Yes, I understand and agree to the Terms &amp; Conditions.</label>
+                           <label for="box1"> Yes, I understand and agree to the <a href="{{route('termsConditions')}}" style='color: #fdbd3e;'>Terms &amp; Conditions.</a></label>
                         </div>
                         <div class="login-btn-sec">
                            <button class="sub-btn" id="submitBtn" href="javascript:;">Sign Up</button>
@@ -106,7 +107,10 @@ p.do_have_an_account a {
                </div>
                <div class="col-lg-6 col-md-6 col-12">
                   <div class="login-img">
-                     <img class="img-fluid" src="{{url('public/website/images/product/login.webp')}}" alt="img">
+                      <div class="center-img text-center">
+                        <img class="img-fluid" src="{{url('public/webimg/Eggs_fly.webp')}}" alt="egg" width="80%" height="550px" style="object-fit:contain;height:550px">
+                    </div>
+                     <!--<img class="img-fluid" src="{{url('public/website/images/product/login.webp')}}" alt="img">-->
                   </div>
                </div>
             </div>

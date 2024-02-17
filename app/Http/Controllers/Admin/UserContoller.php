@@ -103,6 +103,11 @@ class UserContoller extends Controller
                 if(Auth::user()->can('view_user')) {
                     $btn .= '<a class="action-button" title="View" href="view/'.$row->id.'"><i class="text-info fa fa-eye"></i></a>';
                     
+                    
+                }
+
+                if(Auth::user()->can('block_unblock_user')){
+
                     $block_show = "hidden";
                     $unblock_show = "";
                     if($row->is_block == "Unblock"){
@@ -114,6 +119,7 @@ class UserContoller extends Controller
                     }
                     $btn .= '<a class="action-button blockUnblock" title="Block" data-id="'.$row->id.'" '.$block_show.' href="javascript:void(0);"><i class="fa fa-unlock-alt" aria-hidden="true"></i></a>';
                     $btn .= '<a class="action-button blockUnblock" title="Unblock" data-id="'.$row->id.'" '.$unblock_show.' href="javascript:void(0);"><i class="fa fa-lock" aria-hidden="true"></i></a>';
+
                 }
 
                

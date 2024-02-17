@@ -18,7 +18,6 @@
       <div class="container">
          <div class="inner-caption">
             <h4>Product Details</h4>
-            <img src="{{url('public/website/images/title.png')}}" alt="img">
          </div>
          <ol class="breadcrumb sicon">
             <li><a href="{{route('index')}}">Home</a></li>
@@ -68,7 +67,7 @@
                   <div class="card-product attributePrice" data-id="{{$product_price_attribute->id}}">
                      <div class="card-product-text">
                         <h5><span class="multiplyBy">1</span> x {{$productFind->product_name}}</h5>
-                        <span class="sub_cat">{{$productFind->subCategory->sub_category_name}}</span>
+                        <!-- <span class="sub_cat">{{$productFind->subCategory->sub_category_name}}</span> -->
                         <span class="attributePrice">({{$product_price_attribute->attribute_value}} {{$product_price_attribute->attribute->attribute_name}})</span>
                      </div>
                      <div class="card-product-rate">
@@ -133,18 +132,23 @@
                </div>
                
                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                  <h5>Be the first one to review "{{$productFind->product_name}}"</h5>
+                  <h5>Be the review to "{{$productFind->product_name}}"</h5>
                   <span>YOUR REVIEWS</span>
+
+
+                  <input type="hidden" id="rating_product" name="rating_product" value="0">
+                  
                   <ul class="star-review">
+                     <span class="star_rating2" style="--rating2:1"></span>
+                     <!-- <li> <a href="javascript:;"><i class="fa fa-star" aria-hidden="true"></i></a> </li>
                      <li> <a href="javascript:;"><i class="fa fa-star" aria-hidden="true"></i></a> </li>
                      <li> <a href="javascript:;"><i class="fa fa-star" aria-hidden="true"></i></a> </li>
                      <li> <a href="javascript:;"><i class="fa fa-star" aria-hidden="true"></i></a> </li>
-                     <li> <a href="javascript:;"><i class="fa fa-star" aria-hidden="true"></i></a> </li>
-                     <li> <a href="javascript:;"><i class="fa fa-star" aria-hidden="true"></i></a> </li>
+                     <li> <a href="javascript:;"><i class="fa fa-star" aria-hidden="true"></i></a> </li> -->
                   </ul>
                   <div class="text-msg">
-                     <textarea name="message" style="resize: none;" id="" cols="30" rows="5" placeholder="Type Here.."></textarea>
-                     <button id="reviewSubmitBtn">Submit</button>
+                     <textarea name="review_product" id="review_product" style="resize: none;" cols="30" rows="5" placeholder="Type Here.."></textarea>
+                     <button id="reviewSubmitBtn" type="button">Submit</button>
                   </div>
                </div>
             </div>
@@ -176,8 +180,8 @@
                </div>
                <div class="product-body">
                   <h5 class="product-title">
-                     <a href="product-single.html" title="{{$product->product_name}}">{{$product->product_name}}</a>
-                     <a class="sub_category_name_anchor" href="javascript:void(0);">{{$product->subCategory->sub_category_name}}</a>
+                     <a href="{{route('singleProductDetails',base64_encode($product->id))}}" title="{{$product->product_name}}">{{$product->product_name}}</a>
+                     <!-- <a class="sub_category_name_anchor" href="javascript:void(0);">{{$product->subCategory->sub_category_name}}</a> -->
 
                      <a class="attribute_anchor" href="javascript:void(0);">{{$product->default_attribute_name}}: {{$product->default_attribute_value}}</a>
 
@@ -237,34 +241,70 @@
    };
 
    const starRating = (el) => {
-     // const colorDefault = getComputedStyle(el).getPropertyValue("--color");
-     // const colorClick = "#f00";
-     // let ratingSelected = 0;
+   //   const colorDefault = getComputedStyle(el).getPropertyValue("--color");
+   //   const colorClick = "#f00";
+   //   let ratingSelected = 0;
      
-     // el.addEventListener("pointerdown", (evt) => {
-     //   ratingSelected = ratingFromPoint(evt);
-     //   el.style.setProperty("--color", colorClick);
-     //   el.style.setProperty("--rating", ratingSelected);
-     // });
+   //   el.addEventListener("pointerdown", (evt) => {
+   //     ratingSelected = ratingFromPoint(evt);
+   //     el.style.setProperty("--color", colorClick);
+   //     el.style.setProperty("--rating", ratingSelected);
+   //   });
      
-     // el.addEventListener("pointermove", (evt) => {
-     //   evt.preventDefault();
-     //   const ratingHover = ratingFromPoint(evt);
-     //   el.style.setProperty("--rating", ratingHover);
-     // });
+   //   el.addEventListener("pointermove", (evt) => {
+   //     evt.preventDefault();
+   //     const ratingHover = ratingFromPoint(evt);
+   //     el.style.setProperty("--rating", ratingHover);
+   //   });
      
-     // el.addEventListener("pointerleave", (evt) => {
-     //   el.style.setProperty("--color", colorDefault);
-     //   el.style.setProperty("--rating", ratingSelected);
-     // });
+   //   el.addEventListener("pointerleave", (evt) => {
+   //     el.style.setProperty("--color", colorDefault);
+   //     el.style.setProperty("--rating", ratingSelected);
+   //   });
 
-     // el.addEventListener("pointerup", (evt) => {
-     //   ratingSelected = ratingFromPoint(evt);
-     //   console.log(ratingSelected); // @TODO: Send ratingSelected value to server
-     // });
+   //   el.addEventListener("pointerup", (evt) => {
+   //     ratingSelected = ratingFromPoint(evt);
+   //     console.log(ratingSelected); // @TODO: Send ratingSelected value to server
+   //   });
    };
 
    document.querySelectorAll("[style^=--rating]").forEach(starRating);
+
+
+
+
+   const starRating2 = (el) => {
+     const colorDefault = getComputedStyle(el).getPropertyValue("--color");
+     const colorClick = "#f00";
+     let ratingSelected = 0;
+     
+     el.addEventListener("pointerdown", (evt) => {
+       ratingSelected = ratingFromPoint(evt);
+       el.style.setProperty("--color", colorClick);
+       el.style.setProperty("--rating", ratingSelected);
+     });
+     
+     el.addEventListener("pointermove", (evt) => {
+       evt.preventDefault();
+       const ratingHover = ratingFromPoint(evt);
+       el.style.setProperty("--rating", ratingHover);
+     });
+     
+     el.addEventListener("pointerleave", (evt) => {
+       el.style.setProperty("--color", colorDefault);
+       el.style.setProperty("--rating", ratingSelected);
+     });
+
+     el.addEventListener("pointerup", (evt) => {
+       ratingSelected = ratingFromPoint(evt);
+
+       $("#rating_product").val(ratingSelected);
+
+       console.log(ratingSelected); // @TODO: Send ratingSelected value to server
+     });
+   };
+
+   document.querySelectorAll("[style^=--rating2]").forEach(starRating2);
 
 </script>
 
@@ -452,7 +492,7 @@
 
          let productPriceAttribute = JSON.parse($(this).attr("data-all"));
          $(".attr_price_name").text(productPriceAttribute.attribute_value + " " + productPriceAttribute.attribute.attribute_name);
-         $(".h5_class_from_only").text(productPriceAttribute.sale_price + "₹");
+         //$(".h5_class_from_only").text(productPriceAttribute.sale_price + "₹");
 
 
          let quantity = $(".checkboxForAttribute:checked").parents(".attributePrice").find(".multiplyBy").text();
@@ -508,6 +548,30 @@
       
      })
    </script>
+
+
+<script>
+   $(document).ready(function(){
+      $("#reviewSubmitBtn").on("click",function(){
+         let rating_product = $("#rating_product").val();
+         let review_product = $("#review_product").val();
+         console.log("rating_product", rating_product);
+         console.log("review_product", review_product);
+
+         if(parseInt(rating_product) == 0){
+            Swal.fire("Alert", "Please select rating.", "error");
+            return false;
+         }
+
+         if(review_product == ""){
+            Swal.fire("Alert", "Please enter review.", "error");
+            return false;
+         }
+
+         //ajax to submit rating & review
+      })
+   })
+</script>
 
 
    @endsection()
