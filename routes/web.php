@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\UserContoller;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\OurClientController;
 use App\Http\Controllers\Admin\ContactUsController;
+use App\Http\Controllers\Admin\RatingReviewController;
 
 use App\Http\Controllers\Website\IndexController;
 
@@ -121,6 +122,14 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::match(['GET','POST'],'/list', [ContactUsController::class, 'contactUsList'])->name('contact_us_list');
       Route::match(['GET','POST'],'/view/{id}', [ContactUsController::class, 'viewContactUs'])->name('view_contact_us');
       Route::post('/delete', [ContactUsController::class, 'deleteContactUs'])->name('delete_contact_us');
+      
+    });
+
+    // Rating & Review Management
+    Route::group(['prefix' => 'rating-review'], function () {
+      Route::match(['GET','POST'],'/list', [RatingReviewController::class, 'ratingReviewList'])->name('rating_review_list');
+      Route::match(['GET','POST'],'/view/{id}', [RatingReviewController::class, 'viewRatingReview'])->name('view_rating_review');
+      Route::post('/delete', [RatingReviewController::class, 'deleteRatingReview'])->name('delete_rating_review');
       
     });
 
@@ -254,6 +263,8 @@ Route::get('/invoice_pdf/{order_id}', [IndexController::class,'invoicePdf'])->na
 Route::get('invoice/download/{order_id}',[IndexController::class,'invoiceDownload'])->name('invoiceDownload');
 
 Route::get('track/order/{order_id}',[IndexController::class,'trackOrder'])->name('trackOrder');
+
+Route::post('give-rate',[IndexController::class,'giveRating'])->name('giveRating');
 
 
 

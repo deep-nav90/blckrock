@@ -10,6 +10,11 @@
    }else{
       $product_find_id = "";
    }
+
+   $isLogin = 0;
+   if($loginUser){
+      $isLogin = 1;
+   }
    
 ?>
 
@@ -122,7 +127,7 @@
                
                <li class="nav-item" role="presentation">
                   <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
-                     role="tab" aria-controls="contact" aria-selected="false">Review (14)</button>
+                     role="tab" aria-controls="contact" aria-selected="false">Review ({{$totalReviews}})</button>
                </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -139,7 +144,7 @@
                   <input type="hidden" id="rating_product" name="rating_product" value="0">
                   
                   <ul class="star-review">
-                     <span class="star_rating2" style="--rating2:1"></span>
+                     <span class="star_rating" give_rate="true" style="--rating:{{$give_rating}}"></span>
                      <!-- <li> <a href="javascript:;"><i class="fa fa-star" aria-hidden="true"></i></a> </li>
                      <li> <a href="javascript:;"><i class="fa fa-star" aria-hidden="true"></i></a> </li>
                      <li> <a href="javascript:;"><i class="fa fa-star" aria-hidden="true"></i></a> </li>
@@ -147,7 +152,7 @@
                      <li> <a href="javascript:;"><i class="fa fa-star" aria-hidden="true"></i></a> </li> -->
                   </ul>
                   <div class="text-msg">
-                     <textarea name="review_product" id="review_product" style="resize: none;" cols="30" rows="5" placeholder="Type Here.."></textarea>
+                     <textarea name="review_product" maxlength="1000" id="review_product" style="resize: none;" cols="30" rows="5" placeholder="Enter Review Here...">{{$give_review}}</textarea>
                      <button id="reviewSubmitBtn" type="button">Submit</button>
                   </div>
                </div>
@@ -241,70 +246,49 @@
    };
 
    const starRating = (el) => {
-   //   const colorDefault = getComputedStyle(el).getPropertyValue("--color");
-   //   const colorClick = "#f00";
-   //   let ratingSelected = 0;
-     
-   //   el.addEventListener("pointerdown", (evt) => {
-   //     ratingSelected = ratingFromPoint(evt);
-   //     el.style.setProperty("--color", colorClick);
-   //     el.style.setProperty("--rating", ratingSelected);
-   //   });
-     
-   //   el.addEventListener("pointermove", (evt) => {
-   //     evt.preventDefault();
-   //     const ratingHover = ratingFromPoint(evt);
-   //     el.style.setProperty("--rating", ratingHover);
-   //   });
-     
-   //   el.addEventListener("pointerleave", (evt) => {
-   //     el.style.setProperty("--color", colorDefault);
-   //     el.style.setProperty("--rating", ratingSelected);
-   //   });
-
-   //   el.addEventListener("pointerup", (evt) => {
-   //     ratingSelected = ratingFromPoint(evt);
-   //     console.log(ratingSelected); // @TODO: Send ratingSelected value to server
-   //   });
-   };
-
-   document.querySelectorAll("[style^=--rating]").forEach(starRating);
-
-
-
-
-   const starRating2 = (el) => {
      const colorDefault = getComputedStyle(el).getPropertyValue("--color");
      const colorClick = "#f00";
      let ratingSelected = 0;
      
      el.addEventListener("pointerdown", (evt) => {
-       ratingSelected = ratingFromPoint(evt);
-       el.style.setProperty("--color", colorClick);
-       el.style.setProperty("--rating", ratingSelected);
+      if(el.getAttribute("give_rate") == "true"){
+         ratingSelected = ratingFromPoint(evt);
+         el.style.setProperty("--color", colorClick);
+         el.style.setProperty("--rating", ratingSelected);
+      }
+       
      });
      
      el.addEventListener("pointermove", (evt) => {
-       evt.preventDefault();
-       const ratingHover = ratingFromPoint(evt);
-       el.style.setProperty("--rating", ratingHover);
+      if(el.getAttribute("give_rate") == "true"){
+         evt.preventDefault();
+         const ratingHover = ratingFromPoint(evt);
+         el.style.setProperty("--rating", ratingHover);
+      }
+       
      });
      
      el.addEventListener("pointerleave", (evt) => {
-       el.style.setProperty("--color", colorDefault);
-       el.style.setProperty("--rating", ratingSelected);
+      if(el.getAttribute("give_rate") == "true"){
+         el.style.setProperty("--color", colorDefault);
+         el.style.setProperty("--rating", ratingSelected);
+
+         
+      }
+       
      });
 
      el.addEventListener("pointerup", (evt) => {
-       ratingSelected = ratingFromPoint(evt);
-
-       $("#rating_product").val(ratingSelected);
-
-       console.log(ratingSelected); // @TODO: Send ratingSelected value to server
+      if(el.getAttribute("give_rate") == "true"){
+         ratingSelected = ratingFromPoint(evt);
+         console.log(ratingSelected); // @TODO: Send ratingSelected value to server
+         $("#rating_product").val(ratingSelected);
+      }
+       
      });
    };
 
-   document.querySelectorAll("[style^=--rating2]").forEach(starRating2);
+   document.querySelectorAll("[style^=--rating]").forEach(starRating);
 
 </script>
 
@@ -567,6 +551,77 @@
             Swal.fire("Alert", "Please enter review.", "error");
             return false;
          }
+
+         let checkLogin = "{{$isLogin}}";
+
+         if(checkLogin == 0){
+            Swal.fire("Alert", "Please login first to give the review.", "error");
+            return false;
+         }
+
+         let payload = {
+            "_token": "{{ csrf_token() }}",
+            "rating": rating_product,
+            "review" : review_product,
+            "product_id" : "{{$productFind->id}}"
+         }
+
+
+         $("#lodaerModal").modal("show");
+
+         $.ajax({
+            url:"{{route('giveRating')}}",
+            data: payload,
+            //contentType: false,
+            //processData: false,
+            type: 'POST',
+            success: function(res){
+               
+               console.log(res);
+
+               if(res.status == "true"){
+                  Swal.fire({
+                     title: 'Information',
+                     text: res.message,
+                     icon: 'success',
+                     showCancelButton: false,
+                     confirmButtonColor: '#3085d6',
+                     cancelButtonColor: '#d33',
+                     confirmButtonText: 'Ok',
+                     allowOutsideClick: false
+                  }).then((result) => {
+                     
+                  })
+               }else{
+                  Swal.fire("Alert", res.message, "error");
+
+               }
+
+               
+
+               setTimeout(() => {
+                  $("#lodaerModal").modal("hide");
+               }, 500);
+            },
+            error: function(data, textStatus, xhr) {
+               if(data.status == 422){
+               
+               } 
+               
+               
+               
+               Swal.fire("Alert", "Something went wrong. Please try again.", "error");
+
+               setTimeout(() => {
+                  $("#lodaerModal").modal("hide");
+                  
+               }, 500);
+
+               
+
+
+            }
+      });
 
          //ajax to submit rating & review
       })

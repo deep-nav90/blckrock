@@ -440,6 +440,25 @@ return [
             ],
         ],
 
+        [
+            'text' => 'Rating & Review',
+            'icon' => 'fa fa-star',
+            'active' => ['admin/rating-review*'],
+            'can' => ['view_rating_review','delete_rating_review'],
+            'submenu' => [
+                [
+                    'text' => 'Rating & Review',
+                    'icon' => 'fa fa-star',
+                    'url'  => 'admin/rating-review/list',
+                    'active' => ['admin/rating-review*'],
+                    'can' => ['view_rating_review','delete_rating_review'],
+
+                ],
+                
+
+            ],
+        ],
+
 
 
         [

@@ -446,6 +446,28 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
+        Gate::define('delete_rating_review', function ($user) {
+            $user = Auth::user();
+            $permissions = $user->role->permissions;
+
+            for ($i=0; $i < count($permissions); $i++) { 
+                if($permissions[$i]->slug == 'delete_rating_review') {
+                    return true;
+                }
+            }
+        });
+
+        Gate::define('view_rating_review', function ($user) {
+            $user = Auth::user();
+            $permissions = $user->role->permissions;
+
+            for ($i=0; $i < count($permissions); $i++) { 
+                if($permissions[$i]->slug == 'view_rating_review') {
+                    return true;
+                }
+            }
+        });
+
 
 
         Gate::define('delete_sub_category', function ($user) {

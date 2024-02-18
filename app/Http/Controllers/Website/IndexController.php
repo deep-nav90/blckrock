@@ -34,6 +34,8 @@ use PDF;
 use Response;
 
 use App\Mail\UserForgotPassword;
+use App\Models\RatingReview;
+use App\Models\Notification;
 
 require(dirname(__FILE__)."/textlocal.class.php");
 
@@ -91,10 +93,26 @@ class IndexController extends Controller
 
     public function singleProductDetails(Request $request, $product_id){
     	if($request->isMethod('GET')){
+            $loginUser = Auth::guard('web')->user();
     		$product_id = base64_decode($product_id);
     		$productFind = Product::select("*", DB::raw('(SELECT attribute_name FROM attributes WHERE attributes.id = (SELECT attribute_id FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND is_default_show = 1 AND product_price_attributes.deleted_at IS NULL)) AS default_attribute_name'), DB::raw('(SELECT product_price FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND deleted_at IS NULL) AS default_product_price'), DB::raw('(SELECT sale_price FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND deleted_at IS NULL) AS default_sale_price'), DB::raw('(SELECT attribute_value FROM product_price_attributes WHERE product_price_attributes.product_id = products.id AND product_price_attributes.is_default_show = 1 AND deleted_at IS NULL) AS default_attribute_value'),DB::raw('(SELECT category_name FROM categories WHERE categories.id = products.category_id) AS cat_name'),DB::raw('(SELECT sub_category_name FROM sub_categories WHERE sub_categories.id = products.sub_category_id) AS sub_cat_name'))->whereId($product_id)->with('category','subCategory','productPriceAttributes','productImages')->first();
             $categoryWithAllProducts = Category::whereId($productFind->category_id)->with('allProductsMatchCategoryId')->first();
-    		return view('website.product-single',compact('productFind','categoryWithAllProducts'));
+
+            $rate_review = null;
+            $give_rating = 0;
+            $give_review = "";
+            $totalReviews = RatingReview::whereDeletedAt(null)->whereProductId($product_id)->count();
+            if($loginUser){
+                $rate_review = RatingReview::whereDeletedAt(null)->whereProductId($product_id)->whereUserId($loginUser->id)->first();
+                if($rate_review){
+                    $give_rating = $rate_review->rating;
+                    $give_review = $rate_review->review;
+                }
+                
+            }
+            
+
+    		return view('website.product-single',compact('productFind','categoryWithAllProducts','loginUser','rate_review','give_rating','give_review','totalReviews'));
     	}
 
     	if($request->isMethod('POST')){
@@ -586,14 +604,6 @@ class IndexController extends Controller
             $getOrderDetails->pdf_file_name = $generatePdfFileName;
             $getOrderDetails->update();
 
-            if($paymentMethod != "COD"){
-                try{
-                    \Mail::to($getOrderDetails->billingShippingAddress->billing_email)->send(new AcceptOrder($getOrderDetails));
-                }catch(\Exception $ex){
-                    //
-                }
-            }
-
 
             try{
 
@@ -604,6 +614,39 @@ class IndexController extends Controller
             }catch(\Exception $ex){
                 //return ['status' => 'false', 'message' => $ex->getMessage()];
             }
+
+            foreach($getOrderDetails->productOrders as $productOrder){
+                $notification_new_order = new Notification();
+                $notification_new_order->user_id = $checkLogin->id;
+                $notification_new_order->product_id = $productOrder->product->id;
+                $notification_new_order->title = "New Order";
+                $notification_new_order->description = "Your order" . " (" . $productOrder->order->unique_order_id . ") for product " . $productOrder->product->product_name . ' has been ordered successfully.';
+                $notification_new_order->save();
+
+            }
+
+            if($paymentMethod != "COD"){
+                try{
+                    \Mail::to($getOrderDetails->billingShippingAddress->billing_email)->send(new AcceptOrder($getOrderDetails));
+                }catch(\Exception $ex){
+                    //
+                }
+
+                foreach($getOrderDetails->productOrders as $productOrder){
+                    $notification_order_accept = new Notification();
+                    $notification_order_accept->user_id = $checkLogin->id;
+                    $notification_order_accept->product_id = $productOrder->product->id;
+                    $notification_order_accept->title = "Accepted Order";
+                    $notification_order_accept->description = "Your order" . " (" . $productOrder->order->unique_order_id . ") for product " . $productOrder->product->product_name . ' has been accepted successfully.';
+                    $notification_order_accept->save();
+
+                }
+
+                 
+            }
+
+
+            
 
             try{
 
@@ -1036,6 +1079,52 @@ class IndexController extends Controller
 
         }
 
+    }
+
+
+    public function giveRating(Request $request){
+        $checkLogin = Auth::guard('web')->user();
+        if(empty($checkLogin)){
+            return ['status' => 'false', 'message' => 'Please login first to give the review.'];
+        }
+        $data = $request->all();
+        $data['user_id'] = $checkLogin->id;
+
+        $check_rate_review = RatingReview::whereDeletedAt(null)->whereUserId($checkLogin->id)->whereProductId($data['product_id'])->first();
+
+        if($check_rate_review){
+            $check_rate_review->fill($data);
+            $check_rate_review->save();
+
+            //calculate average rating
+
+            $total_number_of_users_give_rating = RatingReview::whereDeletedAt(null)->whereProductId($data['product_id'])->count();
+            $sum_of_rate = RatingReview::whereDeletedAt(null)->whereProductId($data['product_id'])->sum('rating');
+            $average_rating = round($sum_of_rate / $total_number_of_users_give_rating, 2);
+
+            Product::whereId($data['product_id'])->update(['average_rating' => $average_rating]);
+
+
+
+            return ['status' => 'true', 'message' => 'Your rate & review has been updated successfully.']; 
+        }else{  
+            $rate_review = new RatingReview();
+            $rate_review->fill($data);
+            $rate_review->save();
+
+            //calculate average rating
+
+            $total_number_of_users_give_rating = RatingReview::whereDeletedAt(null)->whereProductId($data['product_id'])->count();
+            $sum_of_rate = RatingReview::whereDeletedAt(null)->whereProductId($data['product_id'])->sum('rating');
+            $average_rating = round($sum_of_rate / $total_number_of_users_give_rating, 2);
+
+            Product::whereId($data['product_id'])->update(['average_rating' => $average_rating]);
+            
+            return ['status' => 'true', 'message' => 'Your rate & review has been saved successfully.']; 
+        }
+        
+        
+        
     }
 
     

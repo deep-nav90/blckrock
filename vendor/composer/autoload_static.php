@@ -448,8 +448,8 @@ class ComposerStaticInitda850894c068cf58cdc5d8b4e87e50ad
         ),
         'League\\Uri\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/uri-interfaces/src',
-            1 => __DIR__ . '/..' . '/league/uri/src',
+            0 => __DIR__ . '/..' . '/league/uri/src',
+            1 => __DIR__ . '/..' . '/league/uri-interfaces/src',
         ),
         'League\\OAuth2\\Server\\' => 
         array (
@@ -708,6 +708,7 @@ class ComposerStaticInitda850894c068cf58cdc5d8b4e87e50ad
         'App\\Models\\ProductImage' => __DIR__ . '/../..' . '/app/Models/ProductImage.php',
         'App\\Models\\ProductOrder' => __DIR__ . '/../..' . '/app/Models/ProductOrder.php',
         'App\\Models\\ProductPriceAttribute' => __DIR__ . '/../..' . '/app/Models/ProductPriceAttribute.php',
+        'App\\Models\\RatingReview' => __DIR__ . '/../..' . '/app/Models/RatingReview.php',
         'App\\Models\\Role' => __DIR__ . '/../..' . '/app/Models/Role.php',
         'App\\Models\\SubCategory' => __DIR__ . '/../..' . '/app/Models/SubCategory.php',
         'App\\Models\\TblCity' => __DIR__ . '/../..' . '/app/Models/TblCity.php',

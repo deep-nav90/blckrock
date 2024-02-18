@@ -15,6 +15,7 @@ use App\Mail\AcceptOrder;
 use App\Mail\RejectOrder;
 use App\Mail\ShippedOrder;
 use App\Mail\CompleteOrder;
+use App\Models\Notification;
 
 class OrderController extends Controller
 {
@@ -189,6 +190,16 @@ class OrderController extends Controller
             }catch(\Exception $ex){
                 //
             }
+
+            foreach($find_order->productOrders as $productOrder){
+                $notification_order_accept = new Notification();
+                $notification_order_accept->user_id = $find_order->user_id;
+                $notification_order_accept->product_id = $productOrder->product->id;
+                $notification_order_accept->title = "Accepted Order";
+                $notification_order_accept->description = "Your order" . " (" . $productOrder->order->unique_order_id . ") for product " . $productOrder->product->product_name . ' has been accepted successfully.';
+                $notification_order_accept->save();
+
+            }
             return ['status' => 'true', 'message' => 'Order has been accepted successfully.'];
         }else{
             Order::whereId($data['order_id'])->update(['order_status' => 'Rejected']);
@@ -197,6 +208,16 @@ class OrderController extends Controller
                 \Mail::to($find_order->billingShippingAddress->billing_email)->send(new RejectOrder($find_order));
             }catch(\Exception $ex){
                 //
+            }
+
+
+            foreach($find_order->productOrders as $productOrder){
+                $notification_order_rejected = new Notification();
+                $notification_order_rejected->user_id = $find_order->user_id;
+                $notification_order_rejected->product_id = $productOrder->product->id;
+                $notification_order_rejected->title = "Rejected Order";
+                $notification_order_rejected->description = "Your order" . " (" . $productOrder->order->unique_order_id . ") for product " . $productOrder->product->product_name . ' has been rejected by Admin.';
+                $notification_order_rejected->save();
             }
 
             return ['status' => 'true', 'message' => 'Order has been rejected successfully.'];
@@ -215,6 +236,15 @@ class OrderController extends Controller
         }catch(\Exception $ex){
             //
         }
+
+        foreach($find_order->productOrders as $productOrder){
+            $notification_order_shipped = new Notification();
+            $notification_order_shipped->user_id = $find_order->user_id;
+            $notification_order_shipped->product_id = $productOrder->product->id;
+            $notification_order_shipped->title = "Shipped Order";
+            $notification_order_shipped->description = "Your order" . " (" . $productOrder->order->unique_order_id . ") for product " . $productOrder->product->product_name . ' has been shipped by Admin.';
+            $notification_order_shipped->save();
+        }
         return ['status' => 'true', 'message' => 'Order has been shipped successfully.'];
 
 
@@ -232,6 +262,16 @@ class OrderController extends Controller
         }catch(\Exception $ex){
             //
         }
+
+        foreach($find_order->productOrders as $productOrder){
+            $notification_order_complete = new Notification();
+            $notification_order_complete->user_id = $find_order->user_id;
+            $notification_order_complete->product_id = $productOrder->product->id;
+            $notification_order_complete->title = "Completed Order";
+            $notification_order_complete->description = "Your order" . " (" . $productOrder->order->unique_order_id . ") for product " . $productOrder->product->product_name . ' has been completed by Admin.';
+            $notification_order_complete->save();
+        }
+
         return ['status' => 'true', 'message' => 'Order has been completed successfully.'];
     }
 
