@@ -471,7 +471,7 @@ document.querySelectorAll("[style^=--rating]").forEach(starRating);
 
                             
 
-                            <a class="attribute_anchor" href="javascript:void(0);">`+result[k].default_attribute_value+` (`+result[k].default_attribute_name+`)</a>
+                            
                          </h5>
                          <span class="star_rating" style="--rating:`+result[k].average_rating+`"></span>
 

@@ -110,7 +110,7 @@
                   <div class="link-page">
                      <div class="link">
                         @foreach($our_products as $prod)
-                        <h4><a href="{{route('singleProductDetails',base64_encode($prod->id))}}">{{$prod->product_name}} ({{$prod->default_attribute_value}} {{$prod->default_attribute_name}})</a> </h4>
+                        <h4><a href="{{route('singleProductDetails',base64_encode($prod->id))}}">{{$prod->product_name}}</a> </h4>
                         
                         @endforeach()
                      </div>

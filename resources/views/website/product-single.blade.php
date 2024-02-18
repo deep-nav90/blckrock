@@ -61,7 +61,9 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                <div class="product-des">
-                  <h4>{{$productFind->product_name}} (<span class="attr_price_name">{{$productFind->default_attribute_value}} {{$productFind->default_attribute_name}}</span>)</h4>
+                  <h4>{{$productFind->product_name}} 
+                     <!-- (<span class="attr_price_name">{{$productFind->default_attribute_value}} {{$productFind->default_attribute_name}}</span>) -->
+                  </h4>
                   <span class="from_only">From only ₹{{$productFind->default_sale_price}}</span>
                   <h5 class="h5_class_from_only">{{$productFind->default_product_price}}₹</h5>
                   <span class="star_rating" style="--rating:{{$productFind->average_rating}}"></span>
@@ -188,7 +190,7 @@
                      <a href="{{route('singleProductDetails',base64_encode($product->id))}}" title="{{$product->product_name}}">{{$product->product_name}}</a>
                      <!-- <a class="sub_category_name_anchor" href="javascript:void(0);">{{$product->subCategory->sub_category_name}}</a> -->
 
-                     <a class="attribute_anchor" href="javascript:void(0);">{{$product->default_attribute_name}}: {{$product->default_attribute_value}}</a>
+                     <!-- <a class="attribute_anchor" href="javascript:void(0);">{{$product->default_attribute_name}}: {{$product->default_attribute_value}}</a> -->
 
                   </h5>
                   <span class="star_rating" style="--rating:{{$product->average_rating}}"></span>
@@ -475,7 +477,7 @@
          $(this).prop("checked", true);
 
          let productPriceAttribute = JSON.parse($(this).attr("data-all"));
-         $(".attr_price_name").text(productPriceAttribute.attribute_value + " " + productPriceAttribute.attribute.attribute_name);
+         // $(".attr_price_name").text(productPriceAttribute.attribute_value + " " + productPriceAttribute.attribute.attribute_name);
          //$(".h5_class_from_only").text(productPriceAttribute.sale_price + "₹");
 
 
