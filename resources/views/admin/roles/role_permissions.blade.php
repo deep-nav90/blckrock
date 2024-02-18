@@ -488,6 +488,48 @@
 
                   </div>
 
+
+                  <div class="title">
+                    <h5>Rating & Review Management</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
+                    
+              
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <div class="permissions-section-inner-sec">
+                          <p class="headings"><strong class="list-text">Rating & review</strong></p>
+                          <div class="custom_check_wrap">
+                            <div class="custom-check">
+                              <input type="checkbox" id="rating_review_permissions" class="ckbCheckAll">
+                              <span></span>
+                            </div>
+                              <strong class="list-text">Select All</strong>
+                          </div>
+                          <div id="checkBoxes">
+                            @foreach($ratingReviewPermissions as $permission)
+                              <div class="custom_check_wrap">
+                                <div class="custom-check">
+                                  <input type="checkbox" class="checkBoxClass ratingReviewcheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                  <span></span>
+                                </div>
+                                <label class="mb-0">{{ $permission->name }}</label>
+                              </div>
+                            @endforeach
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    
+
+
+
+                  </div>
+
                   
 
                   
@@ -729,6 +771,10 @@
         $(".contactUscheckBox").prop('checked', this.checked)
       })
 
+      $("#rating_review_permissions").click(function(){
+        $(".ratingReviewcheckBox").prop('checked', this.checked)
+      })
+
       
       $("#roles_permissions").click(function() {
         $(".rolescheckBox").prop('checked', this.checked)
@@ -736,9 +782,6 @@
       $("#access_permissions").click(function() {
         $(".accesscheckBox").prop('checked', this.checked)
       })
-      
-      
-     
     }
   </script>
 @stop

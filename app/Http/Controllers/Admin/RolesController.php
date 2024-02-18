@@ -122,6 +122,7 @@ class RolesController extends Controller {
 
 				$contactUsPermissions = Permission::where('module_slug', 'contact-us')->orderBy('name', 'desc')->get();
 				
+				$ratingReviewPermissions = Permission::where('module_slug', 'rating-review')->orderBy('name', 'desc')->get();
 
 				return view('admin/roles/role_permissions', [
 					'roles' => $roles,
@@ -137,7 +138,8 @@ class RolesController extends Controller {
 					'ordersPermissions' => $ordersPermissions,
 					'paymentsPermissions' => $paymentsPermissions,
 					'ourClientsPermissions' => $ourClientsPermissions,
-					'contactUsPermissions' => $contactUsPermissions
+					'contactUsPermissions' => $contactUsPermissions,
+					'ratingReviewPermissions' => $ratingReviewPermissions
 				]);
 			}
 			else {

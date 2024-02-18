@@ -63,6 +63,7 @@ return array(
     'App\\Models\\ProductImage' => $baseDir . '/app/Models/ProductImage.php',
     'App\\Models\\ProductOrder' => $baseDir . '/app/Models/ProductOrder.php',
     'App\\Models\\ProductPriceAttribute' => $baseDir . '/app/Models/ProductPriceAttribute.php',
+    'App\\Models\\RatingReview' => $baseDir . '/app/Models/RatingReview.php',
     'App\\Models\\Role' => $baseDir . '/app/Models/Role.php',
     'App\\Models\\SubCategory' => $baseDir . '/app/Models/SubCategory.php',
     'App\\Models\\TblCity' => $baseDir . '/app/Models/TblCity.php',
