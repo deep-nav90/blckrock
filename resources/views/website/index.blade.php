@@ -582,31 +582,31 @@ Naturally Nutritious, Deliciously Fresh</div>
           <th style="position: relative;width: 360px;"><img src="{{url('public/webimg/pngegg.webp')}}" alt="" class="table-img" style="top:-30px" /></th>
       </tr>
       <tr>
-          <th>PROPERTIES</th>
-          <th>KADAKNATH</th>
-          <th>BROILER</th>
+          <th>Properties</th>
+          <th>Kadaknath</th>
+          <th>Other Breed Chicken</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td>PROTEIN</td>
-          <td>2.5</td>
-          <td>15- 18/-</td>
+          <td>Protein Content</td>
+          <td>25%</td>
+          <td>18-20 %</td>
       </tr>
       <tr>
-          <td>FAT</td>
-          <td>0・13～1031+</td>
-          <td>13 - 25°/•</td>
+          <td>Fat Content</td>
+          <td>0・73-1.03</td>
+          <td>13-25%</td>
       </tr>
       <tr>
-          <td>CHOLES TERR / 100 GM</td>
-          <td>60 mg</td>
-          <td>215 mg</td>
+          <td>Linoleic Acid</td>
+          <td>24% 21%</td>
+          <td>NIL</td>
       </tr>
       <tr>
-          <td>LINOLEIC ACID</td>
-          <td>24% •</td>
-          <td>21%</td>
+          <td>Cholestrol</td>
+          <td>184.75Mg/100g</td>
+          <td>218.12Mg/100g</td>
       </tr>
   </tbody>
 </table>
@@ -697,7 +697,7 @@ Naturally Nutritious, Deliciously Fresh</div>
                                 <div class="text-center p-4">
                                     <a class="d-block h5 mb-2 prod-title" href="{{route('singleProductDetails',base64_encode($product->id))}}" title="{{$product->product_name}}">{{$product->product_name}}</a>
                                     <!-- <a class="sub_category_name_anchor" href="javascript:void(0);">{{$product->subCategory->sub_category_name}}</a> -->
-                                 <a class="attribute_anchor" href="javascript:void(0);">{{$product->default_attribute_value}} ({{$product->default_attribute_name}})</a>
+                                 <!-- <a class="attribute_anchor" href="javascript:void(0);">{{$product->default_attribute_value}} ({{$product->default_attribute_name}})</a> -->
                                  <span class="star_rating" style="--rating:{{$product->average_rating}}"></span>
                                     <span class="rate me-1">₹{{$product->default_sale_price}}</span>
                                     <span class="text-body text-decoration-line-through">₹{{$product->default_product_price}}</span>
@@ -860,7 +860,7 @@ Eggs are <span class="color-slider">Premium?</span></h4>
                               <h5 class="product-title">
                                  <a href="{{route('singleProductDetails',base64_encode($product->id))}}" title="{{$product->product_name}}">{{$product->product_name}}</a>
                                  <!-- <a class="sub_category_name_anchor" href="javascript:void(0);">{{$product->subCategory->sub_category_name}}</a> -->
-                                 <a class="attribute_anchor" href="javascript:void(0);">{{$product->default_attribute_value}} ({{$product->default_attribute_name}})</a>
+                                 <!-- <a class="attribute_anchor" href="javascript:void(0);">{{$product->default_attribute_value}} ({{$product->default_attribute_name}})</a> -->
                               </h5>
                               <span class="star_rating" style="--rating:{{$product->average_rating}}"></span>
                               <span class="product-price">{{$product->default_sale_price}}₹ <span>{{$product->default_product_price}}₹</span> </span>

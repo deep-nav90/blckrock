@@ -840,7 +840,7 @@ textarea.form-control {
                   <img class="click_upload img_upload" id="accept_`+acceptable_file_arr+`" src="`+e.target.result+`" alt="woman">
                   
                   <div class="add_img cross_icon">
-                    <img class="click_upload plus_icon cross_icon" ui="image" id="cross_`+acceptable_file_arr+`" src="{{url('/cross.png')}}" alt="cross">
+                    <img class="click_upload plus_icon cross_icon" ui="image" id="cross_`+acceptable_file_arr+`" src="{{url('/public/cross.png')}}" alt="cross">
                   </div>
 
                   <div class="custom_check_wrap">
