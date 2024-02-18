@@ -141,7 +141,7 @@
                   <span>YOUR REVIEWS</span>
 
 
-                  <input type="hidden" id="rating_product" name="rating_product" value="0">
+                  <input type="hidden" id="rating_product" name="rating_product" value="{{$give_rating}}">
                   
                   <ul class="star-review">
                      <span class="star_rating" give_rate="true" style="--rating:{{$give_rating}}"></span>
